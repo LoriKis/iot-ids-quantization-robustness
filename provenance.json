@@ -1,0 +1,12 @@
+{
+  "starting_branch": "main",
+  "starting_commit": "c511dfe468036ad3bf92137b2ee809ce30bdc482",
+  "starting_modifications": [],
+  "project_url": "https://github.com/awnrihani/IOT-network-traffic-DL",
+  "upstream_url": "https://github.com/robotumbel/PAVE_artifact",
+  "upstream_commit": "e73911bbdb241f3fb6c5de346139010c4aadefd4",
+  "dataset_path": "data/balanced_CICIoT.csv",
+  "dataset_sha256": "0d869e334cc9a2795c96996fbde8fb04a8acac61f5e67c5d46aee2b0717a53ed",
+  "paper": "https://doi.org/10.1016/j.hcc.2026.100426",
+  "local_only": true
+}
