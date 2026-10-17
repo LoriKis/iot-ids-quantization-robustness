@@ -16,7 +16,9 @@
 - Separate public inspection clone matches pinned e73911b; two commits, main,
   v1.0; release API has no attached assets. No Table 4 generator, checkpoints,
   split IDs, original configs or per-seed outputs found in the public history.
-  Anonymous URL returned HTML, but its client script returned 403; inventory unknown.
+  Anonymous file API exposes root/README and six scientific code files matching
+  public text/AST. Client script, nested listings and processed CSV returned 403;
+  remaining inventory unknown. All requests bounded; no repeated failing URLs.
 - Added configs/milestone1_target.json and separate research/milestone1.py:
   route A training blocked, full B training disabled; explicit bounded B helper smoke.
 - Four gate tests passed. Final real-data component smoke: one seed/one epoch,

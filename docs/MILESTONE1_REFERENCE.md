@@ -120,13 +120,30 @@ A separate inspection clone is at `work/milestone1_reference/public_artifact`.
 | https://api.github.com/repos/robotumbel/PAVE_artifact/branches | HTTP 200; one branch, main, pinned SHA | No additional branch with experiment records |
 | https://api.github.com/repos/robotumbel/PAVE_artifact/releases | HTTP 200; one v1.0 release, published 2026-08-23; `assets: []` | Automatic source archives only; no checkpoint/split/result attachments |
 | https://github.com/robotumbel/PAVE_artifact/releases/tag/v1.0 | Identified by the release API; direct web-tool release-page request had cache miss | API result resolves the release inventory |
-| https://anonymous.4open.science/r/PAVE_artifact-9413/ | Web tool unable to open; bounded local HTTP GET returned 200, but only client HTML shell | File inventory could not be verified |
-| https://anonymous.4open.science/script/core.3b07189932.min.js | URL observed in that HTML; HTTP 403 Forbidden | Stopped; no repeated equivalent retries or claims about absent anonymous files |
+| https://anonymous.4open.science/r/PAVE_artifact-9413/ | Web tool unable to open; bounded local HTTP GET returned 200, but only client HTML shell | Subsequently inspected through the working read-only file API |
+| https://anonymous.4open.science/script/core.3b07189932.min.js | URL observed in that HTML; HTTP 403 Forbidden | No repeated equivalent requests |
+| https://anonymous.4open.science/api/repo/PAVE_artifact-9413/files/ | HTTP 200; root lists LICENSE, README.md, code/, data/ | Root contains no separate config/checkpoint/result directory |
+| https://anonymous.4open.science/api/repo/PAVE_artifact-9413/file/README.md and six relevant source files | HTTP 200; README and scientific source match public checkout after newline normalization; all six Python ASTs identical | Confirms same loader, model, training helpers, attacks, revision runner, audit ASR and config behavior in both sources |
+| API nested listings `files/code`, `files/data` | HTTP 401; these URL forms were not retried | Switched to query form after checking the service's own public route implementation |
+| API query listings `files/?path=code`, `files/?path=data`, `files/?path=code%2Fmodels`, `files/?path=code%2Fattacks` | All HTTP 403 | Nested anonymous inventory remains unverified; exact URLs recorded in directory-inventory.json |
+| https://anonymous.4open.science/api/repo/PAVE_artifact-9413/file/data/balanced_CICIoT.csv | One bounded request, HTTP 403 | Anonymous CSV contents/hash not verified; no raw data requested |
 
 Initial sandboxed HTTP requests failed DNS resolution; the bounded approved
 network request succeeded for the HTML and GitHub APIs. This was read-only
 network inspection, not a remote write. Access records and responses are saved
 under `work/milestone1_reference/`. No raw CICIoT dataset was downloaded.
+
+The six anonymous source files retrieved are `code/data_loader.py`,
+`code/sota_compare.py`, `code/revision_experiments.py`,
+`code/models/standard_transformer.py`, `code/pave_audit.py`, and `code/config.py`.
+Two Python files and the README differ only in line endings; the other four are
+byte-identical to the pinned public files. The comparison includes SHA-256 and
+normalized-text/AST equality records in `anonymous/comparison.json`. No scientific
+behavior difference was found in those retrieved files. To determine the correct
+nested-listing URL, the service's primary source was inspected:
+https://raw.githubusercontent.com/tdurieux/anonymous_github/main/src/server/routes/repository-public.ts
+(the public files route uses the `path` query parameter). Requests were bounded;
+failing URLs were not repeatedly retried.
 
 The README links to CIC's dataset index and maps reviewer revision outputs such
 as `rev_proj.csv` to experiments. It has **no explicit Table 4 command or link to
@@ -136,7 +153,9 @@ train/validation/test partitions, source-row identifiers or dependency lock.
 The three CSVs are processed **subsets**, not stored partition assignments.
 The paper's availability statement (printed p.18 / PDF p.22) promises processed
 splits and trained checkpoints; that promise is not satisfied by the inspected
-public release. Contents of the inaccessible anonymous repository remain unknown.
+public release. The anonymous files that were retrieved have the same behavior;
+its inaccessible nested inventory could still contain additional materials, so
+their absence from that source is not asserted.
 
 ## Evidence table: paper versus code actually executed
 

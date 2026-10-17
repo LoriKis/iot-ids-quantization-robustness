@@ -16,7 +16,8 @@ procedure, F1 averaging, exact ASR numerator/denominator, and per-seed results.
 For PGD, Section 5.4 gives seven steps with alpha=.025 and random start, whereas
 Section 3.3 says alpha=epsilon/K; please confirm the executed settings and clipping.
 The paper promises splits/checkpoints, but the public v1.0 release has no attached
-assets and we could not inspect the anonymous site's file inventory.
+assets. The anonymous README and six relevant scientific source files match the
+public release; its nested file listings and processed CSV request returned 403.
 
 These materials would let us reproduce the stated experiment without substituting
 the released revision experiment or inventing missing scientific settings.

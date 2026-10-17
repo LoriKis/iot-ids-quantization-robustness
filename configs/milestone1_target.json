@@ -47,7 +47,7 @@
     "sequence_construction": "Paper explicitly describes length 10 augmentation for RNN; Transformer token/sequence construction and augmentation are not specified. Released helper repeats a row 50 times with training noise 0.01.",
     "phase1_seeds_and_aggregation": "Paper 6.1 lists five Phase 2 seeds [1,7,13,21,42]; Phase 1 split rotation is stated but Table 4 seed list and pooling/averaging/rounding are not established. Artifact defaults to three seeds [1,7,13], without torch seeding.",
     "checkpoint_selection": "No Table 4 checkpoint or final-vs-best-validation selection rule found.",
-    "table4_script_command_environment": "No Table 4 generator, original config, dependency lock, per-seed outputs or trained checkpoints found in public history/release. Anonymous site's client script returns HTTP 403.",
+    "table4_script_command_environment": "No Table 4 generator, original config, dependency lock, per-seed outputs or trained checkpoints found in public history/release. Anonymous root and README plus six relevant scientific files are accessible through its file API and match public source after newline normalization; nested listings and processed CSV requests return HTTP 403, so the rest of its inventory remains unverified.",
     "pgd_executable_settings": "Section 3.3 says alpha=epsilon/K; Section 5.4 says epsilon/4. Need actual Phase 1 generator to resolve implementation, clipping and random-start details."
   },
   "paper_configuration_is_not_an_executable_reference": true,
