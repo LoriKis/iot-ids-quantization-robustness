@@ -17,7 +17,7 @@ from torch.ao import quantization as aq
 
 from .attacks import attack
 from .common import (ROOT, atomic_json, atomic_torch, digest, environment,
-                     provenance, seed_all, sha256, unit_status)
+                     provenance, runtime_signature, seed_all, sha256, unit_status)
 from .data import build_data, sequences, stratified_cap
 from .evaluation import evaluate, metrics, transfer
 from .quantization import bpda_model, inventory, load_int8, prepare_static, ptq
@@ -158,7 +158,7 @@ def run(config_path, run_dir, phase, resume):
     prov = provenance()
     env = environment()
     identity = digest({"config": config, "source_digest": prov["source_digest"],
-                       "torch": env["torch"], "python": sys.version_info[:3]})
+                       "runtime": runtime_signature(env)})
     snapshot = root / "run.json"
     if root.exists():
         if not resume or not snapshot.exists():

@@ -140,6 +140,12 @@ def provenance():
             "upstream_revision": PIN, "model_source_hash": verify_upstream()}
 
 
+def runtime_signature(env):
+    """Material runtime versions, excluding volatile RAM/disk snapshots."""
+    return {key: env[key] for key in
+            ("python", "torch", "numpy", "pandas", "scipy", "sklearn", "device")}
+
+
 @contextlib.contextmanager
 def unit_status(folder, identity, resume=False):
     folder = Path(folder)

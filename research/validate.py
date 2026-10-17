@@ -87,6 +87,15 @@ def validate_run(root, phase):
                 ids = np.asarray(manifest["selected_row_ids"][partition])
                 if not np.array_equal(predictions["ids"], ids):
                     raise ValueError("Mismatched evaluation examples")
+                needed = {"y", "prediction", "source_prediction", "target_clean", "source_clean", "linf"} if kind == "transfer" else {"y", "clean_prediction"}
+                if not needed.issubset(predictions.files):
+                    raise ValueError("Missing prediction array")
+                y = predictions["y"]
+                clean = predictions["target_clean"] if kind == "transfer" else predictions["clean_prediction"]
+                for key in needed - {"linf"}:
+                    array = predictions[key]
+                    if array.shape != (len(ids),) or not np.issubdtype(array.dtype, np.integer) or np.any(array < 0) or np.any(array >= len(manifest["labels"])):
+                        raise ValueError(f"Invalid label/prediction shape or values: {key}")
                 for row in rows:
                     if row["n"] != len(ids) or row["partition"] != partition:
                         raise ValueError("Dataset/partition/sample count mismatch")
@@ -95,6 +104,25 @@ def validate_run(root, phase):
                             raise ValueError(f"Out-of-range {metric}")
                     if row["asr_denominator"] == 0 and row["attack_success_rate"] is not None:
                         raise ValueError("Undefined ASR must be null")
+                    if kind == "transfer":
+                        pred, norms, epsilon = predictions["prediction"], predictions["linf"], row["settings"]["epsilon"]
+                    elif row["attack"] == "clean":
+                        pred, norms, epsilon = clean, np.zeros(len(ids)), 0.0
+                    else:
+                        prefix = f"{row['attack']}_{row['epsilon']}"
+                        if not {f"{prefix}_prediction", f"{prefix}_linf"}.issubset(predictions.files):
+                            raise ValueError("Missing prediction array for attack")
+                        pred, norms, epsilon = predictions[f"{prefix}_prediction"], predictions[f"{prefix}_linf"], row["epsilon"]
+                    if pred.shape != y.shape or not np.issubdtype(pred.dtype, np.integer) or np.any(pred < 0) or np.any(pred >= len(manifest["labels"])):
+                        raise ValueError("Invalid adversarial predictions")
+                    if norms.shape != y.shape or not np.isfinite(norms).all() or np.any(norms < 0) or np.max(norms) > epsilon + 2e-6:
+                        raise ValueError("Invalid stored perturbation budget")
+                    eligible = clean == y
+                    numerator = int(np.sum(eligible & (pred != y)))
+                    if row["asr_denominator"] != int(eligible.sum()) or row["asr_numerator"] != numerator:
+                        raise ValueError("Metrics disagree with raw attack-success counts")
+                    if abs(row["accuracy"] - float(np.mean(pred == y))) > 1e-12 or abs(row["robust_accuracy"] - float(np.mean(eligible & (pred == y)))) > 1e-12:
+                        raise ValueError("Metrics disagree with raw predictions")
                 if kind in ("evaluation", "qat"):
                     require(folder / "benchmark.json")
                     finite(json.loads((folder / "benchmark.json").read_text()))

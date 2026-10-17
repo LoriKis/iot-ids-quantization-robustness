@@ -75,6 +75,8 @@ a physical traffic construction. Domain clipping uses training min/max per featu
 extended per example to include its original value. Intersect it with x±epsilon;
 this preserves epsilon-zero identity for out-of-training-range evaluation rows.
 Integer, categorical, protocol coupling and packet conservation are not enforced.
+Features constant on training data have zero-width training bounds and therefore
+cannot move for in-range clean values, despite the all-features mutable mask.
 
 FGSM is one CE sign-gradient step from the clean point. PGD uses uniform random
 starts in the epsilon ball, projects every iterate, includes the original and
@@ -104,7 +106,12 @@ agree exactly with the real INT8 target. Attacks are evaluated against the actua
 converted model. This is an exact-forward BPDA approximation, **not** exact INT8
 white-box evaluation and **not** merely an FP32-copy attack. Large perturbed
 out-of-range saturation can weaken this derivative approximation; report that
-limitation with the masking diagnostics.
+limitation with the masking diagnostics. The rationale follows the exact-forward,
+approximate-backward construction in [Athalye, Carlini and Wagner (2018), section
+4](https://proceedings.mlr.press/v80/athalye18a/athalye18a.pdf). Its masking
+diagnostics motivate iteration/restart comparisons, FGSM retention and transfer
+checks; our bounded checks do not establish attack convergence or certified
+robustness.
 
 Attack-success denominator is target clean-correct examples; numerator is those
 misclassified by the attack. Zero denominator is undefined (null), not fabricated
@@ -117,7 +124,12 @@ predictions and perturbation norms are saved with every unit.
 ## Quantization scope and efficiency
 
 Default main path is static PTQ of Linear islands using FBGEMM CPU kernels,
-per-channel qint8 weights and calibrated quint8 activations. Each chosen Linear
+per-channel qint8 weights and calibrated quint8 activations. The pinned FBGEMM
+PTQ qconfig uses HistogramObserver with reduce_range=True (nominal calibration
+codes 0–127), plus per-channel weight observers. QAT uses the default moving-
+average fake-quant observers with the same reduced activation calibration range.
+Deployment activations retain quint8 storage, rather than an integer-only
+seven-bit or eight-bit whole graph. Each chosen Linear
 gets QuantStub→Linear→DeQuantStub. Before observer insertion the wrapped FP32
 model must have bitwise-identical logits. Calibration uses only fixed training
 rows (up to 16/class in full). It never sees validation/test rows.

@@ -10,7 +10,7 @@ import torch
 from torch import nn
 
 from research.attacks import attack
-from research.common import ROOT, atomic_json, atomic_torch, digest, make_model, seed_all, unit_status, verify_upstream
+from research.common import ROOT, atomic_json, atomic_torch, digest, make_model, runtime_signature, seed_all, unit_status, verify_upstream
 from research.data import build_data, partitions, sequences
 from research.evaluation import metrics
 from research.quantization import bpda_model, inventory, load_int8, prepare_static, ptq, selected_names
@@ -232,3 +232,11 @@ def test_incomplete_run_and_finite_metrics(tmp_path):
         finite({"metric": float("nan")})
     result = metrics([0, 1], [1, 1], [1, 0], ["a", "b"])
     assert result["asr_denominator"] == 0 and result["attack_success_rate"] is None
+
+
+def test_runtime_signature_tracks_dependency_compatibility():
+    env = {k: "version-a" for k in ("python", "torch", "numpy", "pandas", "scipy", "sklearn", "device")}
+    signature = runtime_signature(env)
+    assert signature != runtime_signature({**env, "sklearn": "version-b"})
+    assert signature != runtime_signature({**env, "numpy": "version-b"})
+    assert signature == runtime_signature({**env, "disk_free_bytes": 123})

@@ -1,8 +1,10 @@
 """Summarize only measured, completed units. Smoke/pilot are labeled explicitly."""
 import argparse
 import json
+import os
 from pathlib import Path
 
+os.environ["MPLCONFIGDIR"] = str(Path(__file__).resolve().parents[1] / "work/matplotlib")
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt

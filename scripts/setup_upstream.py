@@ -8,6 +8,6 @@ from research.common import UPSTREAM, PIN, verify_upstream
 
 if not UPSTREAM.exists():
     UPSTREAM.parent.mkdir(parents=True, exist_ok=True)
-    subprocess.run(["git", "clone", "https://github.com/robotumbel/PAVE_artifact.git", str(UPSTREAM)], check=True)
-    subprocess.run(["git", "-C", str(UPSTREAM), "checkout", "--detach", PIN], check=True)
+    subprocess.run(["git", "-c", "core.autocrlf=false", "clone", "https://github.com/robotumbel/PAVE_artifact.git", str(UPSTREAM)], check=True)
+    subprocess.run(["git", "-C", str(UPSTREAM), "-c", "core.autocrlf=false", "checkout", "--detach", PIN], check=True)
 print("Verified pinned, clean model source:", verify_upstream())
