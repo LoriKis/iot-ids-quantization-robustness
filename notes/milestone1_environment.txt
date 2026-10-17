@@ -1,0 +1,18 @@
+﻿PAVE Artifact - Environment Provenance
+=======================================
+
+Git commit hash (upstream/PAVE_artifact):
+e73911bbdb241f3fb6c5de346139010c4aadefd4
+
+Python interpreter:
+Python 3.10.11
+
+Clone URL:
+https://github.com/robotumbel/PAVE_artifact.git
+
+Environment type:
+venv (.venv_pave_m1) - upstream ships no environment.yml or requirements.txt;
+packages specified inline in README.md:
+  torch numpy pandas scikit-learn scipy matplotlib
+
+Bootstrap completed: 2026-10-17T19:03:58Z
