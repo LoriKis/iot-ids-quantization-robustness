@@ -101,10 +101,9 @@ def seed_all(seed):
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
-    # Static CPU quantized_resize_cpu_ is not registered as deterministic in
-    # torch 2.5.1. Keep deterministic choices where available and explicitly
-    # warn rather than pretending strict deterministic INT8 is supported.
-    torch.use_deterministic_algorithms(True, warn_only=True)
+    # Static Linear islands narrowly exempt their unsupported INT8 kernel;
+    # all float training and attack operations retain the strict guard.
+    torch.use_deterministic_algorithms(True)
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
 
@@ -125,7 +124,7 @@ def environment():
         "cuda_version": torch.version.cuda,
         "quantized_engines": torch.backends.quantized.supported_engines,
         "threads": torch.get_num_threads(), "device": "cpu",
-        "determinism_policy": "seed all RNGs; deterministic algorithms warn_only=True because torch 2.5.1 quantized_resize_cpu_ has no registered deterministic implementation",
+        "determinism_policy": "seed all RNGs; strict float deterministic algorithms; static Linear kernel temporarily exempted because torch 2.5.1 quantized_resize_cpu_ is unsupported under the guard",
     }
 
 

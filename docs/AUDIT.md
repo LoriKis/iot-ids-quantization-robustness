@@ -27,6 +27,15 @@ unchanged pinned `upstream/PAVE_artifact` checkout.
 | Wrong smoke dataset | Upstream `main` sets `dsets=['CICIoMT']` with `--quick` | Smoke configuration strictly requires CICIoT |
 | No established research completion | Starting tree contained wrappers/notes and a tracked pyc; no results or INT8 implementation | New pipeline; measured results are explicitly smoke/pilot, full study pending |
 
+## Measured duplicate audit
+
+The CSV contains 18,044 duplicate feature rows (11,953 unique feature vectors),
+17,721 duplicate full labeled rows, and 229 exact feature groups with conflicting
+labels. Grouped split counts are 21,365 / 5,363 / 3,269; large indivisible groups
+prevent the nominal fold fractions. These are fixed and shared across variants.
+The corrected test is not a naturally distributed or independent capture/device
+benchmark; contradictory feature labels also limit deterministic classification.
+
 ## Architecture and representation
 
 The authoritative model is `code/models/standard_transformer.py:StandardTransformerIDS`,

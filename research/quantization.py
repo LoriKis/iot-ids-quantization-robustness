@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import copy
+import warnings
 
 import torch
 from torch import nn
@@ -18,7 +19,20 @@ class LinearIsland(nn.Module):
         self.dequant = aq.DeQuantStub()
 
     def forward(self, x):
-        return self.dequant(self.linear(self.quant(x)))
+        # PyTorch 2.5.1 rejects quantized_resize_cpu_ under the deterministic
+        # guard (and emits a C++ warning on EVERY call with warn_only=True).
+        # Exempt only this actual static kernel; restore the caller's policy
+        # immediately, including on failure. This is a single-process runner.
+        enabled = torch.are_deterministic_algorithms_enabled()
+        warn_only = torch.is_deterministic_algorithms_warn_only_enabled()
+        exempt = isinstance(self.linear, StaticLinear) and enabled
+        if exempt:
+            torch.use_deterministic_algorithms(False)
+        try:
+            return self.dequant(self.linear(self.quant(x)))
+        finally:
+            if exempt:
+                torch.use_deterministic_algorithms(True, warn_only=warn_only)
 
 
 def selected_names(model, scope):
@@ -40,6 +54,7 @@ def prepare_static(model, scope, example, *, qat=False, backend="fbgemm"):
     if backend not in torch.backends.quantized.supported_engines:
         raise RuntimeError(f"Unsupported quantization engine: {backend}")
     torch.backends.quantized.engine = backend
+    warnings.warn("Static INT8 kernels are narrowly exempted from PyTorch's unsupported determinism guard; float operations retain the requested policy.", UserWarning)
     converted = copy.deepcopy(model).cpu().eval()
     names = selected_names(converted, scope)
     if not names:

@@ -131,6 +131,7 @@ def test_pgd_retains_fgsm_and_more_restarts(small_model):
 def test_actual_quantization_and_bpda(small_model, scope, count, mode):
     x = torch.randn(6, 10, 39)
     q, inv = ptq(small_model, scope, x, mode)
+    assert torch.are_deterministic_algorithms_enabled()
     assert len(inv["converted"]) == count
     assert set(inv["requested"]) == set(selected_names(small_model, scope))
     bpda = bpda_model(q, inv["requested"], x)
@@ -141,6 +142,7 @@ def test_actual_quantization_and_bpda(small_model, scope, count, mode):
     y = q(x)["logits"].argmax(1)
     adv = attack(bpda, x, y, kind="pgd", epsilon=0.1, steps=2)
     assert torch.isfinite(q(adv)["logits"]).all()
+    assert torch.are_deterministic_algorithms_enabled()
 
 
 def test_qat_real_conversion(small_model):

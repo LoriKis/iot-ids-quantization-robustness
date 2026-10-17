@@ -15,7 +15,11 @@ Hash the raw numeric feature row independently of its label. Exact duplicates,
 including any conflicting-label groups, remain in one split using shuffled
 StratifiedGroupKFold: first outer fold test (about 20%); first five-fold split of
 the remaining population validation (about 16%); the rest training (about 64%).
-Split seed is 2026 and inner seed 2027, independent of training seeds. The
+Split seed is 2026 and inner seed 2027, independent of training seeds. Large
+duplicate groups prevent exact 64/16/20 proportions: the measured full split
+is 21,365 training, 5,363 validation and 3,269 test rows (71.2/17.9/10.9%). There
+are 18,044 repeated feature rows and 229 feature groups with conflicting labels;
+the latter imply ambiguity for a deterministic feature-only classifier. The
 processed CSV has no flow ID, device ID, capture ID, or timestamp column suitable
 for provenance grouping. Exact duplicate isolation cannot exclude near-duplicate
 or shared-capture leakage; no unseen-device generalization claim is justified.
@@ -51,10 +55,12 @@ epochs do not mean equal training compute. No early stopping or implicit schedul
 
 Train/data-loader/augmentation Python, NumPy and torch RNGs are explicitly seeded;
 workers=0 and a seeded loader generator avoid platform worker differences.
-Deterministic algorithm selection uses warn_only=True: PyTorch 2.5.1 does not
-register static quantized_resize_cpu_ as deterministic and strict mode rejects
-real static inference. Within-run forward/reload agreement is checked, but
-cross-platform bitwise reproducibility is not claimed.
+Float training and attacks use strict deterministic algorithm selection. PyTorch
+2.5.1 does not register static quantized_resize_cpu_ as deterministic. Each actual
+static Linear island temporarily disables that guard only for its kernel call
+and immediately restores the prior policy, including on error. This avoids
+per-operator C++ warning I/O contaminating benchmarks. Within-run forward/reload
+agreement is checked; cross-platform bitwise reproducibility is not claimed.
 CUDA RNGs/deterministic settings are set when available, but this implementation's
 verified execution and quantized inference are CPU-only. Do not infer CUDA support.
 
