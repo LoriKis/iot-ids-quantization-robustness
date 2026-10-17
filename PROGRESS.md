@@ -1,0 +1,117 @@
+# Local progress and resume
+
+Project: C:\Users\loran\Documents\Codex\2026-10-17\files-pasted-by-the-user-you\IOT-network-traffic-DL
+Branch: local/research-pipeline-fixes.
+Starting state: clean main, c511dfe468036ad3bf92137b2ee809ce30bdc482.
+Reference: e73911bbdb241f3fb6c5de346139010c4aadefd4, unchanged.
+No applicable AGENTS.md found. All work remains local.
+
+## Completed
+
+- Inspected native Windows/PowerShell, CPU, RAM, disk, Python installations,
+  Intel GPU and absence of usable CUDA; selected a coherent CPU-only workflow.
+- Installed portable Python 3.11.9 and isolated .venv with torch 2.5.1+cpu.
+  No global environment, PATH or Git configuration changed.
+- Downloaded processed PAVE data; pinned its origin/hash/schema/labels.
+- Audited and repaired wrong FGSM selection, repeated training/output collisions,
+  validation mislabeled as test, pre-split preprocessing, incomplete seeding,
+  dataset-switching quick mode, interpreter selection, pin/failure checks.
+- Implemented duplicate-group splits, training-only scaling, isolated synthetic
+  sequences, ordinary/AT checkpoints, shared clean/FGSM/PGD evaluation, static
+  PTQ, dynamic quantization support, four ablations, real INT8 exact-forward BPDA,
+  four transfers, converted QAT feasibility, CPU efficiency, result validation,
+  completed-unit resume, analysis and full-study configurations.
+- Real data has 18,044 duplicate feature rows, 17,721 duplicate labeled rows,
+  and 229 conflicting-label feature groups. Full grouped split counts:
+  21,365 train / 5,363 validation / 3,269 test.
+- Documentation: docs/AUDIT.md, docs/PROTOCOL.md, docs/SETUP.md,
+  docs/VERIFIED_RESULTS.md, docs/environment-windows.json.
+- Local commits: 3ff878d (setup/protocol), 222892c (pipeline/tests),
+  14c387e (INT8 backend guard), 39c3f2c (artifact/runtime hardening),
+  followed by the final verification/documentation commit.
+
+## Verified commands and outcomes
+
+Commands used explicit .venv/Scripts/python.exe in native PowerShell.
+
+- pip install -r requirements.txt: succeeded in the project environment.
+- pip check: no broken requirements.
+- scripts/setup.ps1: succeeded, reused the resolved environment and verified pin.
+- python -m pytest -q --junitxml=work/tests.xml:
+  23 passed (115.27 s console; XML has test-suite timing).
+- Focused INT8 regression: 12 passed, 11 deselected, 92.95 s.
+- Focused runtime/resume/completeness regression: 4 passed, 20 deselected, 68.36 s.
+- python -m research.runner --config configs/smoke.json --run-dir runs/smoke-verified --phase both:
+  27 completed units, 72 measured metric rows. Real CICIoT, 216/54/54 rows,
+  seed 1, one epoch; includes actual converted QAT.
+- python -m research.runner --config configs/pilot.json --run-dir runs/pilot-verified --phase both:
+  25 completed units, 82 measured metric rows. Real CICIoT, 864/108/108 rows,
+  seed 1, one epoch; all mandatory ablations and transfer paths.
+- python -m research.analyze for smoke/pilot: succeeded; plots visually checked.
+- python -m research.estimate runs/pilot-verified --output artifacts/pilot-estimate:
+  central 200.84 hours, heuristic planning range 200.84–803.34 hours;
+  conservative output-storage estimate 2.76 GB; sampled process RSS about 243 MB.
+  Memory/storage/runtime forecasts are estimates, not measured full-study peaks.
+- work/check_completed_artifacts.py: six checks passed using an isolated copy:
+  compatible completed-training resume preserves checkpoint, incompatible resume
+  rejected, output collision rejected, missing metric row rejected, empty
+  predictions rejected, corrupt INT8 state rejected. Original runs untouched.
+- FP32/actual INT8 reload predictions identical; BPDA clean forward error zero.
+- research.reproduce and repaired FGSM wrapper dry-runs succeeded.
+- Upstream remains clean; no remote actions were performed.
+
+Pilot test FP32 clean accuracy 0.3148, PGD robust accuracy 0.2315 at epsilon .1,
+macro-F1 clean 0.2601. All-linear PTQ clean 0.3241, PGD robust 0.2037. These are
+undertrained one-seed/one-epoch pilot measurements, not full scientific results.
+Pilot training: FP32 11.23 seconds; AT 74.35 seconds. Full tables are in the report.
+
+## Decisions and limitations
+
+- Full architecture remains unchanged: 351,612 parameters, width 96, 4 heads,
+  3 blocks, FFN 384, 27 classes, 50 synthetic repeated-row positions.
+- Static PTQ converts 23 Linear modules in the all-linear case, including all
+  12 explicit attention projections. Other operators remain floating point.
+- Float deterministic guard is strict; actual static Linear kernels alone are
+  narrowly exempted because torch 2.5.1 rejects quantized_resize_cpu_ under it.
+- INT8 gradients are approximate BPDA with real target forward kernels.
+- Calibration and AT use training only; validation selects/fixes checkpoints
+  and attack budgets. No test performance was used to alter full hyperparameters.
+- Test data has missing capture/device/flow provenance and substantial duplicates.
+  Feature-space attacks do not establish realizable packet attacks.
+- Smoke revision 222892c had native warning timing overhead; use pilot efficiency
+  measurements, not smoke timings. Pilot revision was 14c387e.
+- Later hardening changed source fingerprints; current CLI intentionally rejects
+  resuming the historical smoke/pilot roots after source changes. Their completed
+  artifacts remain validated/analyzable. New experiments require a fresh root.
+- Completed-unit resume only; no mid-training optimizer/RNG recovery is claimed.
+- Full publisher HTML/PDF returned 403/cache failures. Accessible publisher
+  abstract and pinned source were read; no exact matching paper baseline claimed.
+- QAT actual conversion is feasible and verified in a bounded real-data smoke.
+  A full four-seed QAT comparison, full paper reproduction, Linux execution and
+  isolated per-model peak memory remain unverified.
+
+## Remaining tasks
+
+- User-initiated full four-seed study; no overnight/multi-day matrix launched.
+- Inspect full validation diagnostics/frozen settings, then execute final test.
+- Draw research conclusions only after full results and paired seed uncertainty.
+- Optional expanded QAT study and exact paper mapping when full text is available.
+
+## Next exact commands (PowerShell, from project root)
+
+The full study is lengthy. Review docs/VERIFIED_RESULTS.md before launching.
+
+```powershell
+.\.venv\Scripts\python.exe -m research.runner --config configs/full.json --run-dir runs/full-study --phase validation
+.\.venv\Scripts\python.exe -m research.runner --config configs/full.json --run-dir runs/full-study --phase test --resume
+.\.venv\Scripts\python.exe -m research.analyze runs/full-study --phase test --output artifacts/full-study-test
+```
+
+To rerun bounded verification, choose NEW directories:
+
+```powershell
+.\.venv\Scripts\python.exe -m research.runner --config configs/smoke.json --run-dir runs/smoke-new --phase both
+```
+
+Nothing was pushed, published, uploaded, or sent to remote CI. No unrelated user
+changes were staged, reset, stashed, discarded or overwritten.
