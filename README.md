@@ -1,52 +1,80 @@
-# PAVE Adversarial Robustness Research
+# PAVE Transformer robustness–efficiency study
 
-Investigation of the adversarial robustness of a Transformer-based network
-intrusion detection system using the PAVE framework and the CICIoT2023 dataset.
+Local implementation for the MSc question: **What robustness–efficiency trade-off
+results from combining Transformer intrusion detection, INT8 quantization and
+adversarial training?**
 
-## Upstream Repository
+The corrected pipeline uses PAVE's unchanged Standard Transformer and its
+processed balanced CICIoT2023 multiclass data. Full scientific results remain
+pending; smoke/pilot output establishes implementation and runtime only.
 
-**Source:** https://github.com/robotumbel/PAVE_artifact.git  
-**Location:** `upstream/PAVE_artifact/` — **READ-ONLY**. No researcher script
-may create, edit, or delete files inside this directory.
+Read [audit](docs/AUDIT.md), [protocol](docs/PROTOCOL.md),
+[setup and commands](docs/SETUP.md), [verified outcomes](docs/VERIFIED_RESULTS.md)
+and [progress/resume](PROGRESS.md).
 
-## Directory Layout
+## Windows PowerShell (the tested platform)
 
-```
-project_root/
-├── upstream/
-│   └── PAVE_artifact/          ← cloned upstream (read-only)
-├── experiments/
-│   └── milestone1/             ← researcher wrapper scripts
-├── results/
-│   └── milestone1/             ← captured evaluation output
-├── notes/
-│   ├── milestone1_environment.txt   ← git commit hash + Python version
-│   ├── milestone1_packages.txt      ← pip freeze snapshot
-│   └── pave_reproduction_notes.md  ← discovery report + audit notes
-└── README.md
+From this repository root, after setup:
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q
+.\.venv\Scripts\python.exe -m research.runner --config configs/smoke.json --run-dir runs/smoke-new --phase both
+.\.venv\Scripts\python.exe -m research.analyze runs/smoke-new --phase both --output artifacts/smoke-new
 ```
 
-## Quickstart (Milestone 1)
+Use a new run/output directory for a new experiment. A compatible existing run
+supports `--resume` for completed units only. A failed/partial unit is preserved
+and requires a new run directory. Do not claim mid-training resume.
 
-```bash
-# 1. Clone (already done if you are reading this)
-git clone https://github.com/robotumbel/PAVE_artifact.git upstream/PAVE_artifact
+## Full study (explicitly launch after reviewing pilot estimates)
 
-# 2. Bootstrap environment
-bash experiments/milestone1/setup_environment.sh
-
-# 3. Run full pipeline
-bash experiments/milestone1/run_all.sh
+```powershell
+.\.venv\Scripts\python.exe -m research.runner --config configs/full.json --run-dir runs/full-study --phase validation
+.\.venv\Scripts\python.exe -m research.runner --config configs/full.json --run-dir runs/full-study --phase test --resume
+.\.venv\Scripts\python.exe -m research.analyze runs/full-study --phase test --output artifacts/full-study-test
 ```
 
-Results land in `results/milestone1/`. Provenance logs land in `notes/`.
+Four training seeds: 1,7,13,29; split seed 2026. Validation selects checkpoints
+and freezes the attack budget before test. Main variants receive full curves;
+ablations and four transfer directions use the focused epsilon .1.
 
-## Upstream Attribution
+Default quantization is **static PTQ of INT8 Linear islands**, including explicit
+attention Q/K/V/output projections. Attention matmuls, softmax and normalization
+remain floating point. INT8 attacks use actual target forward kernels and
+approximate BPDA gradients; they are not exact INT8 white-box attacks.
 
-The PAVE framework is the work of its original authors. This repository
-contains only wrapper scripts and captured outputs; the upstream code is
-unmodified. See `upstream/PAVE_artifact/` for the original license.
+PAVE's sequences are repeated tabular rows, not recorded temporal traffic.
+Perturbations study normalized feature-space vulnerability, not realizable packet
+attacks. The dataset is balanced and does not establish natural class prevalence.
 
-## Pinned Commit
+## Separate artifact reproduction
 
-See `notes/milestone1_environment.txt` for the exact commit hash used.
+```powershell
+.\.venv\Scripts\python.exe -m research.reproduce --out runs/reproduction-new --dry-run
+```
+
+Remove `--dry-run` to execute the original `exp_proj` in a separate local copy.
+This retains upstream limitations; no exact paper-table match is claimed.
+See the audit for the blocked full-paper access and the unverified correspondence.
+
+## Evaluation-only Milestone 1 entry points
+
+The repaired wrappers require an existing run and never train:
+
+```powershell
+.\.venv\Scripts\python.exe experiments/milestone1/run_clean.py --run-dir runs/smoke-new --partition test
+.\.venv\Scripts\python.exe experiments/milestone1/run_fgsm.py --run-dir runs/smoke-new --partition test
+.\.venv\Scripts\python.exe experiments/milestone1/run_pgd.py --run-dir runs/smoke-new --partition test
+```
+
+All load the same ordinary baseline checkpoint per seed. They write unique
+manual evaluation directories; they do not invoke the upstream defense sweeps.
+
+## Local-only and attribution
+
+No code pushes, publishes, uploads data, opens PRs, or triggers remote CI.
+Datasets, environments, checkpoints, upstream clones, caches and runs are ignored.
+PAVE is attributed to its original authors; its upstream MIT license is preserved
+in the pinned, unmodified reference checkout. `provenance.json` pins both starting
+revisions and the processed data hash. Historical milestone notes describe the
+starting implementation and are superseded by the new audit/protocol.

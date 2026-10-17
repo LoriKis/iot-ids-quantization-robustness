@@ -1,0 +1,16 @@
+{
+  "tier": "pilot", "dataset": "CICIoT", "model": "StandardTransformerIDS",
+  "seeds": [1], "split_seed": 2026, "threads": 1, "batch_size": 32,
+  "sequence_length": 50, "train_noise_std": 0.01,
+  "per_class": {"train": 32, "validation": 4, "test": 4},
+  "training": {"epochs": 1, "learning_rate": 0.001, "weight_decay": 0, "grad_clip": 1.0},
+  "adversarial_training": {"adversarial_fraction": 0.5,
+    "attack": {"kind": "pgd", "epsilon": 0.1, "alpha": 0.025, "steps": 3, "restarts": 1, "random_start": true}},
+  "quantization": {"mode": "static", "backend": "fbgemm", "calibration_per_class": 4,
+    "scopes": ["classifier", "ffn", "attention", "all_linear"]},
+  "epsilons": [0, 0.05, 0.1], "focused_epsilon": 0.1, "alpha_fraction": 0.25,
+  "selection_per_class": 2,
+  "attack_candidates": [{"steps": 3, "restarts": 1}, {"steps": 5, "restarts": 2}],
+  "benchmark": {"batch_sizes": [1, 32], "warmup": 5, "repetitions": 20},
+  "qat": false, "qat_epochs": 1, "qat_learning_rate": 0.0001
+}
