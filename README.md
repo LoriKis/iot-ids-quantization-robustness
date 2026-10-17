@@ -1,5 +1,14 @@
 # PAVE Transformer robustness–efficiency study
 
+**Active scope: Milestone 1 only.** The full supplied paper has now been read.
+The Table 4 values are verified, but the exact multiclass reference remains
+unresolved. See [reference investigation](docs/MILESTONE1_REFERENCE.md) and
+[unsent clarification draft](docs/MILESTONE1_CLARIFICATION.md).
+`research.milestone1 --route paper --dry-run` reports the target; paper training
+is gated. The dedicated artifact component smoke is separately labelled and is
+not scientific reproduction. The full-study commands below are retained as
+historical preparation and are outside the active scope.
+
 Local implementation for the MSc question: **What robustness–efficiency trade-off
 results from combining Transformer intrusion detection, INT8 quantization and
 adversarial training?**
@@ -55,7 +64,8 @@ attacks. The dataset is balanced and does not establish natural class prevalence
 
 Remove `--dry-run` to execute the original `exp_proj` in a separate local copy.
 This retains upstream limitations; no exact paper-table match is claimed.
-See the audit for the blocked full-paper access and the unverified correspondence.
+See the new reference investigation for the supplied full paper and the still
+unverified experiment correspondence; the earlier access failure is historical.
 
 ## Evaluation-only Milestone 1 entry points
 

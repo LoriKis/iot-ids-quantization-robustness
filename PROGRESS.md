@@ -1,5 +1,39 @@
 # Local progress and resume
 
+## Active Milestone 1 reference investigation (2026-10-18)
+
+- Scope is Milestone 1 only. No full reference seed, later-milestone study,
+  quantization, adversarial training, ablation or multi-seed run authorized here.
+- Read supplied full PAVE PDF; visually verified all seven candidate Table 4
+  CICIoT Std.Trans. values. Exact multiclass reference is NOT identified.
+- Paper describes binary context, attack-positive F1 and separate macro-F1;
+  Table 4 mode, F1 field, ASR denominator and seed aggregation are not proven.
+- Confirmed paper-versus-called-code differences in data composition, scaling,
+  partition, optimizer decay, epochs, PGD and output metrics. The paper also
+  contains conflicting PGD step-size descriptions. See docs/MILESTONE1_REFERENCE.md.
+- configs/, docs/, experiments/ exist and are tracked. IOT DL.zip omitted them;
+  previous source-only export contains them. Added read-only source export checker.
+- Separate public inspection clone matches pinned e73911b; two commits, main,
+  v1.0; release API has no attached assets. No Table 4 generator, checkpoints,
+  split IDs, original configs or per-seed outputs found in the public history.
+  Anonymous URL returned HTML, but its client script returned 403; inventory unknown.
+- Added configs/milestone1_target.json and separate research/milestone1.py:
+  route A training blocked, full B training disabled; explicit bounded B helper smoke.
+- Four gate tests passed. Final real-data component smoke: one seed/one epoch,
+  54 training and 27 validation rows; Standard Transformer only. Exact saved-scaler
+  reconstruction, checkpoint reload, same-checkpoint clean/FGSM/PGD, attack bound,
+  saved artifact checksums/coverage passed. Two development/final component smokes
+  are preserved separately; neither is a scientific result.
+- Final smoke train 8.45 s; clean/FGSM/PGD 0.06/0.18/1.06 s; total after imports
+  16.51 s. Full reference runtime/command remain unknown, rather than guessed.
+- Clarification drafted in docs/MILESTONE1_CLARIFICATION.md; NOT sent.
+- Earlier corrected pipeline, environments, results and commits are preserved.
+  Pinned upstream is unchanged. All work local; only read-only remote inspection.
+- Milestone 1 remains INCOMPLETE pending reference identity/materials. The next
+  scientific step is resolving that clarification, then preparing one reference seed.
+
+The sections below record earlier work and are not a mandate to resume the full study.
+
 Project: C:\Users\loran\Documents\Codex\2026-10-17\files-pasted-by-the-user-you\IOT-network-traffic-DL
 Branch: local/research-pipeline-fixes.
 Starting state: clean main, c511dfe468036ad3bf92137b2ee809ce30bdc482.
