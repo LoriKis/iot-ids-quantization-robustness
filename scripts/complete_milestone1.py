@@ -7,6 +7,7 @@ training. Without that flag, this is the exact normal continuation command.
 import argparse
 import datetime
 import json
+import os
 import subprocess
 import sys
 import time
@@ -15,15 +16,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--wait-for-first", action="store_true")
-    args = parser.parse_args()
+def execute(args):
     run = ROOT / "runs/milestone1-artifact-full"
     log = run / "controller.log"
     status = run / "controller.json"
     def write(state, **extra):
-        value = {"state": state, "updated_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(), **extra}
+        value = {"state": state, "pid": os.getpid(), "updated_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(), **extra}
         temp = status.with_suffix(".tmp")
         temp.write_text(json.dumps(value, indent=2), encoding="utf-8")
         temp.replace(status)
@@ -70,6 +68,30 @@ def main():
             if path.is_file():
                 shutil.copy2(path, deliverable / path.name)
         write("complete", verified_seeds=[1, 7, 13, 29], review_zip=str(archive), report=str(deliverable / "REPORT.md"), claim="Released-artifact multiclass baseline and documented paper-reproduction attempt.")
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--wait-for-first", action="store_true")
+    args = parser.parse_args()
+    run = ROOT / "runs/milestone1-artifact-full"
+    run.mkdir(parents=True, exist_ok=True)
+    # OS lock survives namespace/process-list restrictions, and releases on exit.
+    with (run / "controller.lock").open("a+b") as handle:
+        if handle.tell() == 0:
+            handle.write(b"0")
+            handle.flush()
+        handle.seek(0)
+        try:
+            if os.name == "nt":
+                import msvcrt
+                msvcrt.locking(handle.fileno(), msvcrt.LK_NBLCK, 1)
+            else:
+                import fcntl
+                fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except OSError:
+            parser.error("A local Milestone 1 completion controller already holds the OS lock")
+        execute(args)
 
 
 if __name__ == "__main__":

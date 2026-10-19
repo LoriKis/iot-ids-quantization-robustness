@@ -103,7 +103,7 @@ def build(run, output):
         ["3. Standard Transformer multiclass pipeline", "Completed with evidence" if complete == expected else "Not completed for all required seeds", f"Verified full-budget seeds: {complete}"],
         ["4. Reproduce published clean results", "Unresolved / not demonstrated", "Numerical reproduction under matched conditions has NOT been established"],
         ["5. Provided FGSM and PGD evaluation", "Completed with evidence" if complete == expected else "Not completed for all required seeds", "Same saved final checkpoint and row IDs; unchanged upstream attack functions"],
-        ["6. Compare with published results", "Completed with documented limitation", "Descriptive comparison only; potentially different experiments"],
+        ["6. Compare with published results", "Completed with documented limitation" if complete else "Not completed: awaiting first measured seed", "Descriptive comparison only; potentially different experiments"],
         ["7. Explain architecture, pipeline, attacks and validity", "Completed with evidence", "Explanations and executed configuration below"]
     ]
     source = ROOT.parent / "outputs/milestone1-reference-review/evidence/PAVE-source.pdf"
@@ -354,6 +354,11 @@ def export_package(run, output, destination):
         shutil.copy2(ROOT / "upstream/PAVE_artifact/LICENSE", stage / "reference-source/LICENSE")
         for path in output.iterdir():
             if path.is_file(): shutil.copy2(path, stage / path.name)
+        shutil.copytree(output, source / "reports/milestone1-artifact", dirs_exist_ok=True)
+        validation = ROOT / "work/milestone1-full-preflight.xml"
+        if validation.exists():
+            (stage / "validation").mkdir(exist_ok=True)
+            shutil.copy2(validation, stage / "validation/preflight.xml")
         for folder in sorted(run.glob("seed-*")):
             for name in ["metrics.csv", "metrics.json", "per_class.csv", "predictions.csv", "split_ids.json", "preprocessing.json", "preprocessing.npz", "runtime.json", "verification.json", "training_complete.json", "training_adapter.py", "raw.log", "status.json", "manifest.json", "confusion_matrices.npz"]:
                 path = folder / name

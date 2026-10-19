@@ -25,6 +25,17 @@ Exact Table 4 correspondence remains unresolved; the required claim is
   recomputed metrics, sanity checks and artifact manifest; a launch is not completion.
 - Exact continuation from the repository root:
   `.\.venv\Scripts\python.exe -B -m research.artifact_baseline --run-dir runs/milestone1-artifact-full --resume`
+- Full completion including verification, report/figure and local review ZIP:
+  `.\.venv\Scripts\python.exe -B scripts/complete_milestone1.py`
+  If the controller is already active, its OS lock prevents a duplicate controller.
+  The current controller waits for the first seed to finish and validate before
+  launching the remaining sequential seeds. `runs/milestone1-artifact-full/controller.json`
+  records its current state; `controller.log` records commands and failures.
+- Preflight: six tests passed, including exact training-adapter and interrupted-
+  resume equivalence, upstream epsilon-zero/bounds and unchanged model parameters.
+- Full training has started; this source/progress commit does NOT establish a
+  completed experiment. Only verified per-seed manifests and the generated
+  completion.json count towards the result package.
 - No quantization, adversarial training, transfers, ablations or remote writes.
 
 The earlier execution-block entries below are historical and superseded by this
