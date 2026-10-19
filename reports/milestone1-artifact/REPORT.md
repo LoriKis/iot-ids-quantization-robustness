@@ -9,7 +9,7 @@ clean (unperturbed), FGSM and PGD inputs, and document the attempted paper compa
 Clean includes unperturbed examples from **all 27 classes**, including malicious
 traffic. Clean does not mean benign.
 
-INCOMPLETE: completed seeds []; outstanding [1, 7, 13, 29]. No unfinished run is counted as a result.
+INCOMPLETE: completed seeds [1]; outstanding [7, 13, 29]. No unfinished run is counted as a result.
 
 Exact Table 4 reproduction remains unresolved. This does not block the authorized
 artifact attempt. No quantization, QAT, adversarial training, transfer experiment,
@@ -149,21 +149,24 @@ than two seeds cannot establish variability.
 
 | Condition | Seeds | Accuracy (%) | Macro-F1 (%) | Weighted-F1 (%) | MCC | ASR (%) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Clean | 0 | not completed | not completed | not completed | not completed | not completed |
-| FGSM | 0 | not completed | not completed | not completed | not completed | not completed |
-| PGD | 0 | not completed | not completed | not completed | not completed | not completed |
+| Clean | 1 | 66.033 (SD unavailable) | 61.289 (SD unavailable) | 61.295 (SD unavailable) | 0.653 (SD unavailable) | 0.000 (SD unavailable) |
+| FGSM | 1 | 43.400 (SD unavailable) | 41.218 (SD unavailable) | 41.215 (SD unavailable) | 0.414 (SD unavailable) | 34.276 (SD unavailable) |
+| PGD | 1 | 39.667 (SD unavailable) | 38.724 (SD unavailable) | 38.719 (SD unavailable) | 0.376 (SD unavailable) | 39.929 (SD unavailable) |
 
 Only completed, verified full-budget seeds enter this table and the figure.
 `per_seed.csv` contains individual measurements; `summary.csv` contains unrounded
 means and sample SD. Missing seeds are not filled with zeros or smoke results.
 
-No results figure is generated before a full-budget seed completes.
+![Measured clean/FGSM/PGD results](results.png)
 
-Completed-seed training time: **0.00 seconds**. Completed evaluation
-time: **0.00 seconds**. These are measured accumulated training and
+Completed-seed training time: **1293.75 seconds**. Completed evaluation
+time: **94.99 seconds**. These are measured accumulated training and
 evaluation durations, not estimates of uncompleted seeds; runtime records also
 include per-invocation loading time and sampled peak RSS. Epoch checkpoints retain
 progress if the session ends; `completion.json` lists outstanding work.
+Wall-clock span from initial run setup to the last completed seed is
+1402 seconds;
+it includes loading, verification and any idle gaps between sequential launches.
 
 ## Verification and failures
 
@@ -177,13 +180,15 @@ checkpoint identity and artifact checksums are verified. A process exit code alo
 is not accepted as completion. Raw logs and any unfinished checkpoint/status files
 remain available; incomplete work is visible in `completion.json`.
 
+No completed seed has PGD accuracy higher than FGSM accuracy. This ordering check alone does not establish a strongest-attack or worst-case robustness guarantee.
+
 ## Paper comparison and limits
 
 | Condition | Paper accuracy (%) | Our accuracy (%) | Descriptive difference (pp) | Paper F1 (averaging unverified) | Paper ASR (denominator unverified) |
 | --- | --- | --- | --- | --- | --- |
-| Clean | 98.68 | not completed | not available | 98.63 | — |
-| FGSM | 98.19 | not completed | not available | 97.95 | 0.81 |
-| PGD | 98.19 | not completed | not available | not reported | 0.81 |
+| Clean | 98.68 | 66.033 | -32.647 | 98.63 | — |
+| FGSM | 98.19 | 43.400 | -54.790 | 97.95 | 0.81 |
+| PGD | 98.19 | 39.667 | -58.523 | not reported | 0.81 |
 
 Accuracy differences above are **descriptive differences between potentially
 different experiments**, not reproduction-error estimates. Paper F1 is not labelled
@@ -230,7 +235,7 @@ This report does not launch Milestone 2 or claim literal exact paper reproductio
 | --- | --- | --- |
 | 1. Clone PAVE; read README and paper | Completed with evidence | Pinned e73911b, full local PDF and previous reference investigation |
 | 2. Environment and processed CICIoT data | Completed with documented limitation | Hashed released 27-class balanced subset, not the raw 33-attack dataset composition |
-| 3. Standard Transformer multiclass pipeline | Not completed for all required seeds | Verified full-budget seeds: [] |
+| 3. Standard Transformer multiclass pipeline | Not completed for all required seeds | Verified full-budget seeds: [1] |
 | 4. Reproduce published clean results | Unresolved / not demonstrated | Numerical reproduction under matched conditions has NOT been established |
 | 5. Provided FGSM and PGD evaluation | Not completed for all required seeds | Same saved final checkpoint and row IDs; unchanged upstream attack functions |
 | 6. Compare with published results | Completed with documented limitation | Descriptive comparison only; potentially different experiments |

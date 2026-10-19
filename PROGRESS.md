@@ -36,6 +36,16 @@ Exact Table 4 correspondence remains unresolved; the required claim is
 - Full training has started; this source/progress commit does NOT establish a
   completed experiment. Only verified per-seed manifests and the generated
   completion.json count towards the result package.
+- Seed 1 subsequently completed and passed independent verification: all 15
+  epochs / actual 705 Adam steps, 3000 aligned evaluation rows, final checkpoint
+  reload, metric recomputation, confusion matrices, epsilon-zero/bounds and
+  unchanged evaluation parameters. Accuracy clean/FGSM/PGD =
+  66.0333% / 43.4000% / 39.6667%; macro-F1 =
+  61.2889% / 41.2185% / 38.7235%. One seed has no across-seed SD.
+  Training 1293.75s; evaluation 94.99s; invocation after imports 1400.41s.
+- The completion controller reused seed 1 and started seed 7 only after independent
+  validation. Seeds 13 and 29 remain queued. Generated report/figure currently
+  include completed seeds only; their completion.json is the authoritative count.
 - No quantization, adversarial training, transfers, ablations or remote writes.
 
 The earlier execution-block entries below are historical and superseded by this

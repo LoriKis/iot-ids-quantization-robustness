@@ -82,7 +82,7 @@ def build(run, output):
         for ax, metric, title in zip(axes, ["accuracy", "macro_f1"], ["Accuracy", "Macro-F1"]):
             rows = summary[summary.metric == metric].set_index("condition").loc[["Clean", "FGSM", "PGD"]]
             means = rows["mean"].to_numpy(dtype=float)*100
-            errors = rows.sample_std.fillna(0).to_numpy(dtype=float)*100
+            errors = pd.to_numeric(rows.sample_std, errors="coerce").fillna(0).to_numpy(dtype=float)*100
             ax.bar(["Clean", "FGSM ε=.10", "PGD ε=.10"], means, yerr=errors if len(complete)>1 else None, capsize=5, color=colors, width=.65)
             for i, value in enumerate(means): ax.text(i, value+2, f"{value:.2f}", ha="center", fontsize=9)
             ax.set(ylim=(0, 105), ylabel=title+" (%)", title=title)
@@ -215,6 +215,9 @@ from the clean input without random initialization. Neither upstream function
 clips to feature-domain boundaries or projects to protocol-valid traffic. Epsilon
 .10 is in StandardScaler units, not ten percent of each raw feature's range.
 Model parameters are unchanged during evaluation; input gradients are enabled.
+Perturbation checks permit 1e-5 float32 roundoff, and retain each condition's
+measured maximum. An observed maximum such as .10000038 is rounding at epsilon
+.10, not an intentional larger attack budget.
 
 - Accuracy: proportion of correctly classified evaluated rows.
 - Macro-F1: arithmetic mean of all 27 per-class F1 values, zero_division=0.
