@@ -1,5 +1,42 @@
 # Local progress and resume
 
+## Verified practical Milestone 1 package (2026-10-20)
+
+**Released-artifact multiclass baseline and documented paper-reproduction attempt.**
+
+- All four predetermined seeds **1, 7, 13, 29** completed and independently
+  validated: full 29,997-row processed CSV, 23,997 training rows per split,
+  15 epochs / 705 actual Adam updates per seed, final epoch only.
+- Clean/FGSM/PGD use the same saved checkpoint and 3,000 aligned validation
+  examples within each seed. There are 12 complete condition rows and 36,000
+  saved prediction rows; all 60 epoch checkpoints remain recoverable.
+- Mean ± sample SD (ddof=1), four seeds:
+  accuracy **65.8083 ± 0.4281 / 44.4167 ± 2.1188 / 41.6417 ± 2.9674%**;
+  macro-F1 **61.1401 ± 0.4226 / 42.8501 ± 2.1451 / 40.3725 ± 2.7549%**,
+  in clean / FGSM / PGD order. Weighted-F1, MCC, ASR, per-class scores and
+  confusion matrices are saved separately with explicit definitions.
+- Measured total training **4397.54s**, evaluation **369.76s**; initial run setup
+  to final completed seed **4848s (1h 20m 48s)**. No full training/evaluation or
+  attack sanity-check failures occurred. Six preflight tests passed; interrupted
+  training/resume is exactly equivalent on the test fixture. Duplicate completion
+  controllers are rejected by an OS lock. A report-only pandas warning was fixed.
+- Final report/figure/summaries: **reports/milestone1-artifact/**. Raw logs,
+  per-seed manifests, model/optimizer/RNG checkpoints, preprocessing, split IDs,
+  labels and predictions: **runs/milestone1-artifact-full/** (ignored by Git).
+- Every completed seed passes checkpoint reload prediction equivalence, actual
+  optimizer-step count, input-gradient/no-parameter-update checks, epsilon-zero
+  identity, finite recomputed metrics, confusion matrix/row alignment and file
+  integrity checks. Float32 perturbation tolerance is 1e-5; measured maxima saved.
+- The practical baseline package is **ready for review before Milestone 2**.
+  **Matched-condition numerical reproduction of Table 4 is NOT demonstrated**;
+  its mode, metric/seed provenance and data correspondence remain unresolved.
+  The report's official seven-item checklist preserves that unresolved requirement.
+- Everything remained local. Existing code, results, environments, commits and
+  the corrected research protocol are preserved; pinned upstream remains clean.
+  The user-owned untracked `IOT DL.zip` remains untouched and uncommitted.
+- No Milestone 2, quantization, QAT, adversarial training, transfers or ablations
+  were started. The execution history below is retained for provenance.
+
 ## Active released-artifact baseline execution (2026-10-20)
 
 The user now authorizes the full local FP32 multiclass baseline for replication
@@ -46,6 +83,15 @@ Exact Table 4 correspondence remains unresolved; the required claim is
 - The completion controller reused seed 1 and started seed 7 only after independent
   validation. Seeds 13 and 29 remain queued. Generated report/figure currently
   include completed seeds only; their completion.json is the authoritative count.
+- Seed 7 subsequently completed and verified: accuracy clean/FGSM/PGD =
+  65.1667% / 47.4333% / 46.0000%; macro-F1 =
+  60.5237% / 45.9685% / 44.3816%. Seed 13 has now started; seed 29 remains queued.
+  The report is rebuilt automatically after all four seeds validate; until then,
+  per-seed `status.json` and manifests are the live experimental evidence.
+- Seed 13 subsequently completed and verified: accuracy clean/FGSM/PGD =
+  66.0333% / 42.6000% / 41.0333%; macro-F1 =
+  61.2633% / 41.7114% / 39.9642%. Seed 29 is now training; three full seeds
+  are complete, but four-seed aggregation/review readiness is still pending.
 - No quantization, adversarial training, transfers, ablations or remote writes.
 
 The earlier execution-block entries below are historical and superseded by this

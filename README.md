@@ -1,5 +1,14 @@
 # PAVE Transformer robustness–efficiency study
 
+**Practical Milestone 1 baseline completed (2026-10-20):** four full seeds
+1, 7, 13, 29 are verified. Read the [course report](reports/milestone1-artifact/REPORT.md),
+[per-seed results](reports/milestone1-artifact/per_seed.csv),
+[mean/sample-SD results](reports/milestone1-artifact/summary.csv), and
+[measured figure](reports/milestone1-artifact/results.png).
+Accuracy is 65.81 ± 0.43% clean, 44.42 ± 2.12% FGSM and 41.64 ± 2.97% PGD.
+The practical package is ready for review; matched Table 4 reproduction remains
+unresolved. Milestone 2 has not started.
+
 **Current execution (2026-10-20):** the full local released-artifact multiclass
 baseline is authorized despite unresolved Table 4 correspondence. Frozen settings
 are in `configs/milestone1_artifact_full.json`; execute or resume sequential seeds:

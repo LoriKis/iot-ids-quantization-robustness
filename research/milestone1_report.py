@@ -85,7 +85,7 @@ def build(run, output):
             means = rows["mean"].to_numpy(dtype=float)*100
             errors = pd.to_numeric(rows.sample_std, errors="coerce").fillna(0).to_numpy(dtype=float)*100
             ax.bar(["Clean", "FGSM ε=.10", "PGD ε=.10"], means, yerr=errors if len(complete)>1 else None, capsize=5, color=colors, width=.65)
-            for i, value in enumerate(means): ax.text(i, value+2, f"{value:.2f}", ha="center", fontsize=9)
+            for i, value in enumerate(means): ax.text(i, value+(errors[i] if len(complete)>1 else 0)+2, f"{value:.2f}", ha="center", fontsize=9)
             ax.set(ylim=(0, 105), ylabel=title+" (%)", title=title)
             ax.grid(axis="y", alpha=.2)
             ax.set_axisbelow(True)
@@ -108,7 +108,7 @@ def build(run, output):
         ["4. Reproduce published clean results", "Unresolved / not demonstrated", "Numerical reproduction under matched conditions has NOT been established"],
         ["5. Provided FGSM and PGD evaluation", "Completed with evidence" if complete == expected else "Not completed for all required seeds", "Same saved final checkpoint and row IDs; unchanged upstream attack functions"],
         ["6. Compare with published results", "Completed with documented limitation" if complete else "Not completed: awaiting first measured seed", "Descriptive comparison only; potentially different experiments"],
-        ["7. Explain architecture, pipeline, attacks and validity", "Completed with evidence", "Explanations and executed configuration below"]
+        ["7. Explain architecture, pipeline, attacks and validity", "Completed with evidence", "Explanations and executed configuration in this report"]
     ]
     source = ROOT.parent / "outputs/milestone1-reference-review/evidence/PAVE-source.pdf"
     if sha(source) != "be81c110fd12901c8be6455b217ba53ca942c1b0bb9c52bb5dda84bf655b6e90":
@@ -273,6 +273,9 @@ during attacks. Saved prediction coverage, confusion matrices, per-class support
 checkpoint identity and artifact checksums are verified. A process exit code alone
 is not accepted as completion. Raw logs and any unfinished checkpoint/status files
 remain available; incomplete work is visible in `completion.json`.
+No completed seed reported a training failure, failed attack sanity check or
+incomplete output check. A report-only pandas formatting warning was corrected;
+no change to the inherited training or attack algorithms was needed.
 
 {attack_note}
 
@@ -332,7 +335,8 @@ Run from `{ROOT}` using its existing environment:
 ```powershell
 .\\.venv\\Scripts\\python.exe -B -m research.artifact_baseline --run-dir runs/milestone1-artifact-full --resume
 .\\.venv\\Scripts\\python.exe -B -m research.artifact_baseline --run-dir runs/milestone1-artifact-full --verify-only
-.\\.venv\\Scripts\\python.exe -B -m research.milestone1_report --run-dir runs/milestone1-artifact-full --output reports/milestone1-artifact --export ../outputs/milestone1-practical-review.zip
+$reviewZip = '..\\outputs\\milestone1-practical-review-' + (Get-Date -Format 'yyyyMMdd-HHmmss') + '.zip'
+.\\.venv\\Scripts\\python.exe -B -m research.milestone1_report --run-dir runs/milestone1-artifact-full --output reports/milestone1-artifact --export $reviewZip
 ```
 
 The first command reuses verified completed seeds and resumes the last complete
@@ -340,6 +344,9 @@ epoch of incomplete seeds, restoring Adam/RNG state. It never reduces the full
 budget to smoke. For an independent rerun, use a new run directory with the same
 frozen config. The unchanged pinned checkout and hashed CSV are required; the
 existing setup instructions explain restoring those excluded dependencies.
+Alternatively, `.\\.venv\\Scripts\\python.exe -B scripts/complete_milestone1.py`
+resumes outstanding work, validates all four seeds and creates a fresh review ZIP.
+Exports preserve existing ZIPs; the timestamp above avoids an output collision.
 
 Large data/checkpoints, environments and package caches are excluded from the
 review ZIP. Original checkpoint/preprocessing/evaluation files remain under
@@ -381,7 +388,7 @@ def export_package(run, output, destination):
                     dest = stage / "results" / folder.name / name
                     dest.parent.mkdir(parents=True, exist_ok=True)
                     shutil.copy2(path, dest)
-        references = ["research/artifact_baseline.py", "research/milestone1.py", "research/milestone1_report.py", "configs/milestone1_artifact_full.json", "configs/milestone1_target.json", "docs/MILESTONE1_REFERENCE.md", "README.md", "PROGRESS.md"]
+        references = ["research/artifact_baseline.py", "research/milestone1.py", "research/milestone1_report.py", "scripts/complete_milestone1.py", "configs/milestone1_artifact_full.json", "configs/milestone1_target.json", "docs/MILESTONE1_REFERENCE.md", "README.md", "PROGRESS.md"]
         for name in references:
             if not (source / name).is_file():
                 raise ValueError(f"Referenced project file missing from source export: {name}; stage/commit new source first")

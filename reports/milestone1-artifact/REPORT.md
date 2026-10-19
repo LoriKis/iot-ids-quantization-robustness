@@ -9,7 +9,7 @@ clean (unperturbed), FGSM and PGD inputs, and document the attempted paper compa
 Clean includes unperturbed examples from **all 27 classes**, including malicious
 traffic. Clean does not mean benign.
 
-INCOMPLETE: completed seeds [1]; outstanding [7, 13, 29]. No unfinished run is counted as a result.
+Four full seeds completed and verified.
 
 Exact Table 4 reproduction remains unresolved. This does not block the authorized
 artifact attempt. No quantization, QAT, adversarial training, transfer experiment,
@@ -129,6 +129,9 @@ from the clean input without random initialization. Neither upstream function
 clips to feature-domain boundaries or projects to protocol-valid traffic. Epsilon
 .10 is in StandardScaler units, not ten percent of each raw feature's range.
 Model parameters are unchanged during evaluation; input gradients are enabled.
+Perturbation checks permit 1e-5 float32 roundoff, and retain each condition's
+measured maximum. An observed maximum such as .10000038 is rounding at epsilon
+.10, not an intentional larger attack budget.
 
 - Accuracy: proportion of correctly classified evaluated rows.
 - Macro-F1: arithmetic mean of all 27 per-class F1 values, zero_division=0.
@@ -136,6 +139,8 @@ Model parameters are unchanged during evaluation; input gradients are enabled.
 - MCC: sklearn multiclass Matthews correlation.
 - Untargeted ASR (%): 100 × newly incorrect examples among clean-correct examples
   divided by the number of clean-correct examples. Empty denominator → null.
+  A wrong attack-family prediction counts; this is not a targeted
+  malicious-to-benign evasion rate.
 - Upstream `pave_audit._asr` is saved separately; its nonempty formula agrees,
   while its empty-denominator fallback returns zero. Prediction-change rate and
   total adversarial error are also separate diagnostics, not paper-equivalent ASR.
@@ -149,9 +154,9 @@ than two seeds cannot establish variability.
 
 | Condition | Seeds | Accuracy (%) | Macro-F1 (%) | Weighted-F1 (%) | MCC | ASR (%) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Clean | 1 | 66.033 (SD unavailable) | 61.289 (SD unavailable) | 61.295 (SD unavailable) | 0.653 (SD unavailable) | 0.000 (SD unavailable) |
-| FGSM | 1 | 43.400 (SD unavailable) | 41.218 (SD unavailable) | 41.215 (SD unavailable) | 0.414 (SD unavailable) | 34.276 (SD unavailable) |
-| PGD | 1 | 39.667 (SD unavailable) | 38.724 (SD unavailable) | 38.719 (SD unavailable) | 0.376 (SD unavailable) | 39.929 (SD unavailable) |
+| Clean | 4 | 65.808 ± 0.428 | 61.140 ± 0.423 | 61.148 ± 0.407 | 0.650 ± 0.004 | 0.000 ± 0.000 |
+| FGSM | 4 | 44.417 ± 2.119 | 42.850 ± 2.145 | 42.860 ± 2.157 | 0.424 ± 0.022 | 33.739 ± 4.616 |
+| PGD | 4 | 41.642 ± 2.967 | 40.372 ± 2.755 | 40.378 ± 2.773 | 0.396 ± 0.031 | 36.699 ± 4.942 |
 
 Only completed, verified full-budget seeds enter this table and the figure.
 `per_seed.csv` contains individual measurements; `summary.csv` contains unrounded
@@ -159,14 +164,25 @@ means and sample SD. Missing seeds are not filled with zeros or smoke results.
 
 ![Measured clean/FGSM/PGD results](results.png)
 
-Completed-seed training time: **1293.75 seconds**. Completed evaluation
-time: **94.99 seconds**. These are measured accumulated training and
+Completed-seed training time: **4397.54 seconds**. Completed evaluation
+time: **369.76 seconds**. These are measured accumulated training and
 evaluation durations, not estimates of uncompleted seeds; runtime records also
 include per-invocation loading time and sampled peak RSS. Epoch checkpoints retain
 progress if the session ends; `completion.json` lists outstanding work.
 Wall-clock span from initial run setup to the last completed seed is
-1402 seconds;
+4848 seconds;
 it includes loading, verification and any idle gaps between sequential launches.
+
+| Seed | Training (min) | Evaluation (min) | Peak process RSS (GiB) | Min system available (MiB) |
+| --- | --- | --- | --- | --- |
+| 1 | 21.56 | 1.58 | 1.45 | 58.7 |
+| 7 | 16.96 | 1.56 | 1.49 | 108.9 |
+| 13 | 17.57 | 1.55 | 1.44 | 186.0 |
+| 29 | 17.19 | 1.46 | 1.38 | 243.0 |
+
+Memory values are sampled, not exact allocation peaks. System-available memory
+includes the effect of other applications; it is distinct from this process's RSS.
+The run uses one training process, two CPU threads and evaluation batches of 32.
 
 ## Verification and failures
 
@@ -179,6 +195,9 @@ during attacks. Saved prediction coverage, confusion matrices, per-class support
 checkpoint identity and artifact checksums are verified. A process exit code alone
 is not accepted as completion. Raw logs and any unfinished checkpoint/status files
 remain available; incomplete work is visible in `completion.json`.
+No completed seed reported a training failure, failed attack sanity check or
+incomplete output check. A report-only pandas formatting warning was corrected;
+no change to the inherited training or attack algorithms was needed.
 
 No completed seed has PGD accuracy higher than FGSM accuracy. This ordering check alone does not establish a strongest-attack or worst-case robustness guarantee.
 
@@ -186,9 +205,9 @@ No completed seed has PGD accuracy higher than FGSM accuracy. This ordering chec
 
 | Condition | Paper accuracy (%) | Our accuracy (%) | Descriptive difference (pp) | Paper F1 (averaging unverified) | Paper ASR (denominator unverified) |
 | --- | --- | --- | --- | --- | --- |
-| Clean | 98.68 | 66.033 | -32.647 | 98.63 | — |
-| FGSM | 98.19 | 43.400 | -54.790 | 97.95 | 0.81 |
-| PGD | 98.19 | 39.667 | -58.523 | not reported | 0.81 |
+| Clean | 98.68 | 65.808 | -32.872 | 98.63 | — |
+| FGSM | 98.19 | 44.417 | -53.773 | 97.95 | 0.81 |
+| PGD | 98.19 | 41.642 | -56.548 | not reported | 0.81 |
 
 Accuracy differences above are **descriptive differences between potentially
 different experiments**, not reproduction-error estimates. Paper F1 is not labelled
@@ -235,13 +254,13 @@ This report does not launch Milestone 2 or claim literal exact paper reproductio
 | --- | --- | --- |
 | 1. Clone PAVE; read README and paper | Completed with evidence | Pinned e73911b, full local PDF and previous reference investigation |
 | 2. Environment and processed CICIoT data | Completed with documented limitation | Hashed released 27-class balanced subset, not the raw 33-attack dataset composition |
-| 3. Standard Transformer multiclass pipeline | Not completed for all required seeds | Verified full-budget seeds: [1] |
+| 3. Standard Transformer multiclass pipeline | Completed with evidence | Verified full-budget seeds: [1, 7, 13, 29] |
 | 4. Reproduce published clean results | Unresolved / not demonstrated | Numerical reproduction under matched conditions has NOT been established |
-| 5. Provided FGSM and PGD evaluation | Not completed for all required seeds | Same saved final checkpoint and row IDs; unchanged upstream attack functions |
+| 5. Provided FGSM and PGD evaluation | Completed with evidence | Same saved final checkpoint and row IDs; unchanged upstream attack functions |
 | 6. Compare with published results | Completed with documented limitation | Descriptive comparison only; potentially different experiments |
-| 7. Explain architecture, pipeline, attacks and validity | Completed with evidence | Explanations and executed configuration below |
+| 7. Explain architecture, pipeline, attacks and validity | Completed with evidence | Explanations and executed configuration in this report |
 
-The practical four-seed baseline package is NOT ready as a completed four-seed package; resume outstanding work.
+The practical four-seed baseline package is ready for review, with the published-result requirement explicitly unresolved.
 
 ## Exact local commands and excluded artifacts
 
@@ -250,7 +269,8 @@ Run from `C:\Users\loran\Documents\Codex\2026-10-17\files-pasted-by-the-user-you
 ```powershell
 .\.venv\Scripts\python.exe -B -m research.artifact_baseline --run-dir runs/milestone1-artifact-full --resume
 .\.venv\Scripts\python.exe -B -m research.artifact_baseline --run-dir runs/milestone1-artifact-full --verify-only
-.\.venv\Scripts\python.exe -B -m research.milestone1_report --run-dir runs/milestone1-artifact-full --output reports/milestone1-artifact --export ../outputs/milestone1-practical-review.zip
+$reviewZip = '..\outputs\milestone1-practical-review-' + (Get-Date -Format 'yyyyMMdd-HHmmss') + '.zip'
+.\.venv\Scripts\python.exe -B -m research.milestone1_report --run-dir runs/milestone1-artifact-full --output reports/milestone1-artifact --export $reviewZip
 ```
 
 The first command reuses verified completed seeds and resumes the last complete
@@ -258,6 +278,9 @@ epoch of incomplete seeds, restoring Adam/RNG state. It never reduces the full
 budget to smoke. For an independent rerun, use a new run directory with the same
 frozen config. The unchanged pinned checkout and hashed CSV are required; the
 existing setup instructions explain restoring those excluded dependencies.
+Alternatively, `.\.venv\Scripts\python.exe -B scripts/complete_milestone1.py`
+resumes outstanding work, validates all four seeds and creates a fresh review ZIP.
+Exports preserve existing ZIPs; the timestamp above avoids an output collision.
 
 Large data/checkpoints, environments and package caches are excluded from the
 review ZIP. Original checkpoint/preprocessing/evaluation files remain under
