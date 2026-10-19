@@ -49,6 +49,7 @@ def build(run, output):
     summary = pd.DataFrame(aggregate)
     summary.to_csv(output / "summary.csv", index=False)
     runtimes = {str(s): json.loads((run / f"seed-{s}/runtime.json").read_text()) for s in complete}
+    runtime_rows = [{"Seed": seed, "Training (min)": f"{r['training_seconds_accumulated']/60:.2f}", "Evaluation (min)": f"{sum(r['evaluation_seconds'].values())/60:.2f}", "Peak process RSS (GiB)": f"{r['peak_rss_sampled_bytes_this_invocation']/2**30:.2f}", "Min system available (MiB)": f"{r['minimum_system_available_bytes_this_invocation']/2**20:.1f}"} for seed,r in runtimes.items()]
     training = sum(r["training_seconds_accumulated"] for r in runtimes.values())
     evaluation = sum(sum(r["evaluation_seconds"].values()) for r in runtimes.values())
     environment = json.loads((run / "environment.json").read_text())
@@ -252,6 +253,12 @@ progress if the session ends; `completion.json` lists outstanding work.
 Wall-clock span from initial run setup to the last completed seed is
 {f'{wall_span:.0f} seconds' if wall_span is not None else 'not available before a seed completes'};
 it includes loading, verification and any idle gaps between sequential launches.
+
+{table(pd.DataFrame(runtime_rows)) if runtime_rows else 'No completed-seed runtime table yet.'}
+
+Memory values are sampled, not exact allocation peaks. System-available memory
+includes the effect of other applications; it is distinct from this process's RSS.
+The run uses one training process, two CPU threads and evaluation batches of 32.
 
 ## Verification and failures
 
