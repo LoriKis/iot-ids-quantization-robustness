@@ -1,5 +1,19 @@
 # PAVE Transformer robustness–efficiency study
 
+**Current execution (2026-10-20):** the full local released-artifact multiclass
+baseline is authorized despite unresolved Table 4 correspondence. Frozen settings
+are in `configs/milestone1_artifact_full.json`; execute or resume sequential seeds:
+
+```powershell
+.\.venv\Scripts\python.exe -B -m research.artifact_baseline --run-dir runs/milestone1-artifact-full --resume
+```
+
+This uses the full artifact dataset and 15-epoch budget, Standard Transformer
+only, with clean/FGSM/PGD evaluation. The claim is **Released-artifact multiclass
+baseline and documented paper-reproduction attempt.** The older blocked exact-
+paper/smoke entry point below is preserved; its block does not apply to this new
+authorized artifact runner. Milestone 2 remains outside the active scope.
+
 **Active scope: Milestone 1 only.** The full supplied paper has now been read.
 The Table 4 values are verified, but the exact multiclass reference remains
 unresolved. See [reference investigation](docs/MILESTONE1_REFERENCE.md) and

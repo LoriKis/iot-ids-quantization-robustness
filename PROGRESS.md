@@ -1,5 +1,35 @@
 # Local progress and resume
 
+## Active released-artifact baseline execution (2026-10-20)
+
+The user now authorizes the full local FP32 multiclass baseline for replication
+seeds 1, 7, 13, 29, overriding the earlier execution block and two-hour threshold.
+No professor/author clarification is a prerequisite for this artifact attempt.
+Exact Table 4 correspondence remains unresolved; the required claim is
+"Released-artifact multiclass baseline and documented paper-reproduction attempt."
+
+- No valid full-budget artifact runs existed at the start; all previous runs and
+  the untracked user file `IOT DL.zip` are preserved.
+- Frozen configuration: configs/milestone1_artifact_full.json. Full dataset,
+  upstream StandardScaler-before-80/20-split, seed-dependent partitions, synthetic
+  length-50 sequences with .01 training noise, ordinary 96/4/3/384 Transformer,
+  Adam .001 / zero weight decay, 15 epochs, batch 512, final checkpoint only.
+- Evaluation: same 3000 capped validation rows per seed, cap seed 42, clean/FGSM
+  .10/PGD .10 with alpha .01 and 10 clean-start steps, epsilon-box projection
+  without domain clipping. Upstream attack functions, evaluation batch 32.
+- Entry point: research.artifact_baseline. It instruments the upstream train_seq
+  only for epoch checkpoint/resume, with optimizer and torch RNG state. Corrected
+  research protocol and historical smoke/target gate are unchanged.
+- Run path: runs/milestone1-artifact-full. Completion requires each seed's saved
+  final checkpoint, 15 epochs / 705 optimizer steps, aligned predictions, finite
+  recomputed metrics, sanity checks and artifact manifest; a launch is not completion.
+- Exact continuation from the repository root:
+  `.\.venv\Scripts\python.exe -B -m research.artifact_baseline --run-dir runs/milestone1-artifact-full --resume`
+- No quantization, adversarial training, transfers, ablations or remote writes.
+
+The earlier execution-block entries below are historical and superseded by this
+authorization. The exact-paper scientific limitation is retained separately.
+
 ## Active Milestone 1 reference investigation (2026-10-18)
 
 - Scope is Milestone 1 only. No full reference seed, later-milestone study,
