@@ -269,6 +269,13 @@ def verify_seed(folder, cfg):
     training = json.loads((folder / "training_complete.json").read_text())
     if (training["epochs"], training["train_rows"], training["optimizer_steps"], training["configuration_hash"]) != (15, 23997, 705, config_hash(cfg)):
         raise ValueError("Full training budget not established")
+    epoch_files = sorted((folder / "epochs").glob("epoch-*.pt"))
+    if len(epoch_files) != 15:
+        raise ValueError("Expected all 15 recoverable epoch checkpoints")
+    final_training_state = torch.load(epoch_files[-1], map_location="cpu", weights_only=True)
+    steps = {int(value["step"].item()) for value in final_training_state["optimizer"]["state"].values() if "step" in value}
+    if final_training_state["epoch"] != 15 or steps != {705} or final_training_state["configuration_hash"] != config_hash(cfg):
+        raise ValueError("Actual saved optimizer state does not establish 705 updates")
     checks = json.loads((folder / "verification.json").read_text())
     if not checks.get("checkpoint_reload_logits_identical") or not checks["evaluation_weights_unchanged"]:
         raise ValueError("Checkpoint/evaluation verification missing")

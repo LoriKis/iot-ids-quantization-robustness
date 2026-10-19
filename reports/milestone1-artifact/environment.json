@@ -1,0 +1,18 @@
+{
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "executable": "C:\\Users\\loran\\Documents\\Codex\\2026-10-17\\files-pasted-by-the-user-you\\IOT-network-traffic-DL\\.venv\\Scripts\\python.exe",
+  "torch": "2.5.1+cpu",
+  "numpy": "1.26.4",
+  "pandas": "2.2.3",
+  "sklearn": "1.5.2",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "cpu": "Intel64 Family 6 Model 142 Stepping 12, GenuineIntel",
+  "physical_cores": 4,
+  "logical_cores": 8,
+  "ram_bytes": 8331935744,
+  "cuda_available": false,
+  "git_revision": "3412d417f2d583a075a44c0e060b22d0f5826e9f",
+  "git_status": "?? \"IOT DL.zip\"",
+  "executor_sha256": "962d1beecf7d2b7233716294e81f9331ca9ce6da23fbbf7b834e0deec2747588",
+  "started_utc": "2026-10-19T22:05:41Z"
+}

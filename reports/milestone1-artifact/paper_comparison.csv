@@ -1,0 +1,4 @@
+Condition,Paper accuracy (%),Our accuracy (%),Descriptive difference (pp),Paper F1 (averaging unverified),Paper ASR (denominator unverified)
+Clean,98.68,not completed,not available,98.63,—
+FGSM,98.19,not completed,not available,97.95,0.81
+PGD,98.19,not completed,not available,not reported,0.81

@@ -1,0 +1,11 @@
+{
+  "claim": "Released-artifact multiclass baseline and documented paper-reproduction attempt.",
+  "upstream_revision": "e73911bbdb241f3fb6c5de346139010c4aadefd4",
+  "dataset_sha256": "0d869e334cc9a2795c96996fbde8fb04a8acac61f5e67c5d46aee2b0717a53ed",
+  "seed_manifests": {},
+  "checkpoint_locations": {},
+  "checkpoint_sha256": {},
+  "configuration_sha256": "a243604addf13a2a0a4e72441da6fba0f65de70da5f57fa121ff03c1ebc26ddf",
+  "paper_source": "C:\\Users\\loran\\Documents\\Codex\\2026-10-17\\files-pasted-by-the-user-you\\outputs\\milestone1-reference-review\\evidence\\PAVE-source.pdf",
+  "paper_sha256": "be81c110fd12901c8be6455b217ba53ca942c1b0bb9c52bb5dda84bf655b6e90"
+}

@@ -1,0 +1,37 @@
+{
+  "claim": "Released-artifact multiclass baseline and documented paper-reproduction attempt.",
+  "expected_seeds": [
+    1,
+    7,
+    13,
+    29
+  ],
+  "verified_completed_seeds": [],
+  "incomplete": {
+    "1": {
+      "state": "training",
+      "seed": 1,
+      "epoch_completed": 2,
+      "epochs_required": 15,
+      "train_rows": 23997,
+      "training_seconds": 191.42992100003175,
+      "last_epoch_seconds": 84.28410710004391,
+      "rss_bytes": 1073766400,
+      "updated_utc": "2026-10-19T22:08:58Z"
+    },
+    "7": {
+      "state": "not completed; no epoch checkpoint status yet"
+    },
+    "13": {
+      "state": "not completed; no epoch checkpoint status yet"
+    },
+    "29": {
+      "state": "not completed; no epoch checkpoint status yet"
+    }
+  },
+  "four_seed_package_complete": false,
+  "training_seconds": 0,
+  "evaluation_seconds": 0,
+  "full_run_location": "C:\\Users\\loran\\Documents\\Codex\\2026-10-17\\files-pasted-by-the-user-you\\IOT-network-traffic-DL\\runs\\milestone1-artifact-full",
+  "summary_std": "sample SD, ddof=1; unavailable for fewer than two seeds"
+}

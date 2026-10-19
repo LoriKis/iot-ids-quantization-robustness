@@ -1,0 +1,16 @@
+condition,metric,n,mean,sample_std,units
+Clean,accuracy,0,,,fraction
+Clean,macro_f1,0,,,fraction
+Clean,weighted_f1,0,,,fraction
+Clean,mcc,0,,,fraction
+Clean,asr_percent,0,,,percent
+FGSM,accuracy,0,,,fraction
+FGSM,macro_f1,0,,,fraction
+FGSM,weighted_f1,0,,,fraction
+FGSM,mcc,0,,,fraction
+FGSM,asr_percent,0,,,percent
+PGD,accuracy,0,,,fraction
+PGD,macro_f1,0,,,fraction
+PGD,weighted_f1,0,,,fraction
+PGD,mcc,0,,,fraction
+PGD,asr_percent,0,,,percent
