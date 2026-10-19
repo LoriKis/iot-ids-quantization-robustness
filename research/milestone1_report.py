@@ -36,6 +36,9 @@ def build(run, output):
             incomplete[str(seed)] = json.loads(status.read_text()) if status.exists() else {"state": "not completed; no epoch checkpoint status yet"}
     output.mkdir(parents=True, exist_ok=True)
     df = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+    adapter_hashes = {str(s): sha(run / f"seed-{s}/training_adapter.py") for s in complete}
+    if len(set(adapter_hashes.values())) > 1:
+        raise ValueError("Training adapter source differs across completed seeds; inspect before aggregating")
     df.to_csv(output / "per_seed.csv", index=False)
     metrics = ["accuracy", "macro_f1", "weighted_f1", "mcc", "asr_percent"]
     aggregate = []
@@ -53,7 +56,7 @@ def build(run, output):
     atomic_json(output / "completion.json", {"claim": CLAIM, "expected_seeds": expected, "verified_completed_seeds": complete, "incomplete": incomplete, "four_seed_package_complete": complete == expected, "training_seconds": training, "evaluation_seconds": evaluation, "wall_span_seconds_to_last_completed_seed": wall_span, "full_run_location": str(run), "summary_std": "sample SD, ddof=1; unavailable for fewer than two seeds"})
     shutil.copy2(run / "configuration.json", output / "configuration.json")
     shutil.copy2(run / "environment.json", output / "environment.json")
-    atomic_json(output / "provenance.json", {"claim": CLAIM, "upstream_revision": cfg["upstream_revision"], "dataset_sha256": cfg["dataset"]["sha256"], "seed_manifests": {str(s): sha(run / f"seed-{s}/manifest.json") for s in complete}, "checkpoint_locations": {str(s): str(run / f"seed-{s}/checkpoint.pt") for s in complete}, "checkpoint_sha256": {str(s): sha(run / f"seed-{s}/checkpoint.pt") for s in complete}, "configuration_sha256": sha(run / "configuration.json"), "paper_source": str(ROOT.parent / "outputs/milestone1-reference-review/evidence/PAVE-source.pdf"), "paper_sha256": "be81c110fd12901c8be6455b217ba53ca942c1b0bb9c52bb5dda84bf655b6e90"})
+    atomic_json(output / "provenance.json", {"claim": CLAIM, "upstream_revision": cfg["upstream_revision"], "dataset_sha256": cfg["dataset"]["sha256"], "seed_manifests": {str(s): sha(run / f"seed-{s}/manifest.json") for s in complete}, "checkpoint_locations": {str(s): str(run / f"seed-{s}/checkpoint.pt") for s in complete}, "checkpoint_sha256": {str(s): sha(run / f"seed-{s}/checkpoint.pt") for s in complete}, "training_adapter_sha256": adapter_hashes, "initial_executor_snapshot_sha256": sha(run / "executor_snapshot.py"), "report_generator_sha256": sha(Path(__file__)), "configuration_sha256": sha(run / "configuration.json"), "paper_source": str(ROOT.parent / "outputs/milestone1-reference-review/evidence/PAVE-source.pdf"), "paper_sha256": "be81c110fd12901c8be6455b217ba53ca942c1b0bb9c52bb5dda84bf655b6e90"})
     display_rows = []
     for name in ["Clean", "FGSM", "PGD"]:
         row = {"Condition": name, "Seeds": len(complete)}
@@ -371,7 +374,7 @@ def export_package(run, output, destination):
             if not (source / name).is_file():
                 raise ValueError(f"Referenced project file missing from source export: {name}; stage/commit new source first")
         manifest = {p.relative_to(stage).as_posix(): sha(p) for p in sorted(stage.rglob("*")) if p.is_file()}
-        atomic_json(stage / "export_manifest.json", {"files_sha256": manifest, "referenced_project_files_checked": references, "excluded": {"dataset": "29997-row CSV; existing project path/hash in configuration.json", "checkpoints_and_evaluation_npz": "existing full run directory and regeneration command in REPORT.md/provenance.json", "environments_and_caches": "reuse existing .venv or follow source/docs/SETUP.md"}, "completion": json.loads((output / "completion.json").read_text())})
+        atomic_json(stage / "export_manifest.json", {"files_sha256": manifest, "local_git_revision_at_export": subprocess.check_output(["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip(), "local_dirty_status_at_export": subprocess.check_output(["git", "-C", str(ROOT), "status", "--porcelain"], text=True).strip(), "referenced_project_files_checked": references, "excluded": {"dataset": "29997-row CSV; existing project path/hash in configuration.json", "checkpoints_and_evaluation_npz": "existing full run directory and regeneration command in REPORT.md/provenance.json", "environments_and_caches": "reuse existing .venv or follow source/docs/SETUP.md"}, "completion": json.loads((output / "completion.json").read_text())})
         destination.parent.mkdir(parents=True, exist_ok=True)
         temp = destination.with_suffix(".building.zip")
         with zipfile.ZipFile(temp, "w", zipfile.ZIP_DEFLATED) as archive:
