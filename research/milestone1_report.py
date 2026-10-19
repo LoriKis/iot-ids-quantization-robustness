@@ -226,6 +226,8 @@ measured maximum. An observed maximum such as .10000038 is rounding at epsilon
 - MCC: sklearn multiclass Matthews correlation.
 - Untargeted ASR (%): 100 × newly incorrect examples among clean-correct examples
   divided by the number of clean-correct examples. Empty denominator → null.
+  A wrong attack-family prediction counts; this is not a targeted
+  malicious-to-benign evasion rate.
 - Upstream `pave_audit._asr` is saved separately; its nonempty formula agrees,
   while its empty-denominator fallback returns zero. Prediction-change rate and
   total adversarial error are also separate diagnostics, not paper-equivalent ASR.
