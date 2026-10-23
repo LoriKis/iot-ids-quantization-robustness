@@ -1,0 +1,22 @@
+{
+  "checkpoint.pt": "765a24088e0a05fe851a2b1cb4bf7e0b0b305e08746bfa61b7dde771a333d86e",
+  "confusion_matrices.npz": "34146eb51cb6fb8c3b9ea82d399e956668dfc0a8ee3883734a118cf3a702df7d",
+  "evaluations/Clean.json": "ed2598031176d99f25e853ae287c3078bb383c92ec639057be37c6e3e7394923",
+  "evaluations/Clean.npz": "cf52e6661f98733f25dbe88d3792499ec32463089ec753bf1e67144c1402729c",
+  "evaluations/FGSM.json": "db97d1c5761ccdc8e8b094fc9045e3344c42239aecb4ada3856ecd190a3ed78c",
+  "evaluations/FGSM.npz": "25a7142750e96449399f8daf1de2a9201a91f922f0b408ae38a0177b679244d6",
+  "evaluations/PGD.json": "9a3dd15dd1de7ff5759f749b86eb64b342b61ecf05ebd22f6385e4bf23e1a2ee",
+  "evaluations/PGD.npz": "0517ad15d21e82e16713bfd2bfedbe73acf87612fc1566bfc58884b259347b5f",
+  "metrics.csv": "0c415b8f1cf4380adc4695c52e773b817c34efc35696955e739104c5749aa8be",
+  "metrics.json": "47559726b5448775386dd17552f0c1acdb584fb9040ba250193f9667c95940ca",
+  "per_class.csv": "de674abf01a895bd92ffe219fed429d6305dc56b17221d318ab5f06ad5f88e8c",
+  "predictions.csv": "fac86c575bfdae7dc5e871917146641277e7df8d8366ef5534e6194abdb1855e",
+  "preprocessing.json": "30cf67c51bd34c14ed8dc881b7c3741ab36644cb9fdcf02236347a297f8be518",
+  "preprocessing.npz": "f5647a321507881730b7d48b0fe43c22580054fc976ca44a34b674c5b0cac790",
+  "raw.log": "7fbaadd052b242b9a1df9f479dcccd8df5e86926d970667a6b85c2a89827b55d",
+  "runtime.json": "24b955273b39abd0028edb551f5edea63dca7284e3f1ef1e418ee808d1a87b37",
+  "split_ids.json": "eccfd7f333dc750945002407500699dba1f0ca51270b0ffebfc6ceb2a9d1d58c",
+  "training_adapter.py": "c1c5752b7c2c572666470b445c7a6d485fc09842aeb5c959a98c80f9fb80ef68",
+  "training_complete.json": "24c82d97a68c07cdf8e216554a05e8e085097383327d659176524a0f4ed6f8ef",
+  "verification.json": "47d485bdd3d5b74f21189199084a489f6c029836e304ca1bc2b74befe3c3062c"
+}

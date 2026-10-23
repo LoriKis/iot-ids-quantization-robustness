@@ -1,0 +1,10 @@
+{
+  "epochs": 15,
+  "train_rows": 23997,
+  "samples_processed": 359955,
+  "optimizer_steps": 705,
+  "batch_size": 512,
+  "checkpoint_rule": "final epoch, no evaluation-based selection",
+  "configuration_hash": "b6e7b3f0267310d46a706517d02ab83077f1e967095882446e261c6ad5dedd8f",
+  "training_seconds": 1017.7464930000133
+}

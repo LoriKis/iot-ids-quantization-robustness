@@ -1,5 +1,8 @@
 # Corrected study protocol
 
+> **Status/context:** Separate later-study protocol. Much of its functionality was implemented/smoke-tested; its full research matrix remains pending. The completed Milestone 1 artifact attempt deliberately retains different preprocessing, partitions and attacks.
+> Current authoritative results: [Milestone 1 report](../reports/milestone1-artifact/REPORT.md).
+
 This studies feature-space robustness and CPU efficiency on PAVE's balanced
 CICIoT2023 subset. It does not establish realizable network evasion or natural
 class prevalence. Reproduction and corrected study results must never be pooled.

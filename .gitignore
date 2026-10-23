@@ -13,3 +13,36 @@ __pycache__/
 *.pth
 *.ckpt
 *.log
+
+# Local exports and OS/editor residue; evidence CSV/JSON stays eligible.
+*.zip
+*.7z
+*.tar.gz
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Credentials and machine-specific settings (never commit real secrets).
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
+*.local.json
+*.local.toml
+
+# Original machine records stay on disk; portable review_metadata.json is included.
+/docs/environment-windows.json
+/reports/milestone1-artifact/environment.json
+/reports/milestone1-artifact/completion.json
+/reports/milestone1-artifact/provenance.json

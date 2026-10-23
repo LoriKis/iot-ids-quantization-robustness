@@ -1,3 +1,7 @@
+HISTORICAL bootstrap snapshot (Python 3.10 environment), not the completed baseline.
+Current report: ../reports/milestone1-artifact/REPORT.md
+Current baseline used Python 3.11.9; see requirements-lock-windows.txt.
+
 ﻿PAVE Artifact - Environment Provenance
 =======================================
 

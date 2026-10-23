@@ -1,3 +1,6 @@
 * text=auto eol=lf
 *.png binary
 *.npz binary
+
+# Original measured evidence is checksummed byte-for-byte, including CRLF.
+reports/milestone1-artifact/evidence/seed-*/* -text whitespace=cr-at-eol

@@ -1,8 +1,11 @@
 # Verified local implementation and bounded experiments
 
+> **Status/context:** Historical corrected-pipeline smoke/pilot results (2026-10-17). These are bounded implementation checks, not the completed Milestone 1 artifact baseline or full later-stage research results. The paper-access failure and earlier baseline status below are historical; the full paper was subsequently inspected.
+> Current authoritative results: [Milestone 1 report](../reports/milestone1-artifact/REPORT.md).
+
 All changes and results remain local. Nothing was pushed, published, uploaded, or sent to remote CI.
 
-Project: `C:\Users\loran\Documents\Codex\2026-10-17\files-pasted-by-the-user-you\IOT-network-traffic-DL`
+Project: repository root (`IOT-network-traffic-DL/`).
 Branch: `local/research-pipeline-fixes`.
 Starting revision: c511dfe468036ad3bf92137b2ee809ce30bdc482 (clean main).
 PAVE: e73911bbdb241f3fb6c5de346139010c4aadefd4 (unmodified).
@@ -92,7 +95,7 @@ The full matrix was **not launched**. Full scientific results, four-seed uncerta
 After reviewing the estimate, explicitly start the lengthy full validation phase:
 
 ```powershell
-Set-Location -LiteralPath 'C:\Users\loran\Documents\Codex\2026-10-17\files-pasted-by-the-user-you\IOT-network-traffic-DL'
+# Run from your checkout root.
 .\.venv\Scripts\python.exe -m research.runner --config configs/full.json --run-dir runs/full-study --phase validation
 ```
 

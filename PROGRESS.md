@@ -1,5 +1,33 @@
 # Local progress and resume
 
+> **Current entry point:** [authoritative Milestone 1 report](reports/milestone1-artifact/REPORT.md).
+> This is a chronological status log. Earlier investigation, in-progress and
+> smoke/pilot statements below retain their original context; the completed
+> four-seed artifact baseline supersedes their baseline status. Later-stage code
+> was implemented/smoke-tested, but its full research experiments remain pending.
+
+## Local housekeeping for review (2026-10-20)
+
+- README now leads with the research question, 27-class task, four-seed results,
+  authoritative report and separate later-study scope.
+- Historical docs have status banners; setup and inclusion instructions are portable.
+- Compact evidence now has a review manifest and stdlib-only metric/link checker.
+  Full runs, checkpoints, datasets and historical exports remain untouched locally.
+- Original machine-specific JSON files were removed only from Git tracking;
+  their unchanged local files are represented by portable derived metadata/hashes.
+- PAVE's original MIT notice is included. A group-wide license is not yet chosen.
+- Only documentation/packaging checks were run in this pass; no training, attack
+  evaluation, Milestone 2 work, push, publication or history rewrite.
+- Lightweight recomputation passed for 4 seeds, 12 metric rows and 36,000
+  aligned predictions, including per-class scores, sample SD and runtime totals.
+  Local link and whitespace checks passed. An isolated Git preview/checkout
+  preserved all 48 per-seed files byte-for-byte and passed without excluded data.
+- Current-file and reachable-history credential-pattern scans found no hits;
+  no historical blob reached 1 MB. Historical machine paths remain disclosed.
+- All housekeeping changes are intentionally **uncommitted** for user review.
+  The Git-tracking removals appear as staged deletions; other changes remain unstaged.
+- Published clean-result reproduction under matched conditions remains unresolved.
+
 ## Verified practical Milestone 1 package (2026-10-20)
 
 **Released-artifact multiclass baseline and documented paper-reproduction attempt.**
@@ -37,7 +65,7 @@
 - No Milestone 2, quantization, QAT, adversarial training, transfers or ablations
   were started. The execution history below is retained for provenance.
 
-## Active released-artifact baseline execution (2026-10-20)
+## Historical execution-start status (2026-10-20; completed above)
 
 The user now authorizes the full local FP32 multiclass baseline for replication
 seeds 1, 7, 13, 29, overriding the earlier execution block and two-hour threshold.
@@ -133,7 +161,7 @@ authorization. The exact-paper scientific limitation is retained separately.
 
 The sections below record earlier work and are not a mandate to resume the full study.
 
-Project: C:\Users\loran\Documents\Codex\2026-10-17\files-pasted-by-the-user-you\IOT-network-traffic-DL
+Project: repository root (`IOT-network-traffic-DL/`).
 Branch: local/research-pipeline-fixes.
 Starting state: clean main, c511dfe468036ad3bf92137b2ee809ce30bdc482.
 Reference: e73911bbdb241f3fb6c5de346139010c4aadefd4, unchanged.
@@ -223,14 +251,14 @@ Pilot training: FP32 11.23 seconds; AT 74.35 seconds. Full tables are in the rep
   A full four-seed QAT comparison, full paper reproduction, Linux execution and
   isolated per-model peak memory remain unverified.
 
-## Remaining tasks
+## Historical later-study remaining tasks
 
 - User-initiated full four-seed study; no overnight/multi-day matrix launched.
 - Inspect full validation diagnostics/frozen settings, then execute final test.
 - Draw research conclusions only after full results and paired seed uncertainty.
 - Optional expanded QAT study and exact paper mapping when full text is available.
 
-## Next exact commands (PowerShell, from project root)
+## Historical later-study commands (not the active baseline task)
 
 The full study is lengthy. Review docs/VERIFIED_RESULTS.md before launching.
 

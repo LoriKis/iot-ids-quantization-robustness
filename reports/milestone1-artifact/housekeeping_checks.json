@@ -1,0 +1,69 @@
+{
+  "date_local": "2026-10-20",
+  "scope": "Documentation/Git housekeeping only; no training or adversarial evaluation",
+  "base_commit": "e7c41e6c20dda0461f4b7e609f490542b5db3a5f",
+  "state": "Changes intentionally uncommitted; four machine-record tracking removals are staged",
+  "lightweight_checker_sha256": "59cc099a2c5f66335b4222b149adfe098c455768fd0c5674f519e787cbfc1e74",
+  "metric_checks": {
+    "seeds": [
+      1,
+      7,
+      13,
+      29
+    ],
+    "condition_rows": 12,
+    "prediction_rows": 36000,
+    "passed": [
+      "original copied-file hashes",
+      "split coverage and disjointness",
+      "same row/label/checkpoint across conditions",
+      "per-class precision/recall/F1/support",
+      "accuracy/macro-F1/weighted-F1/MCC/ASR",
+      "four-seed means and sample SD",
+      "README/report rounded numbers",
+      "runtime totals"
+    ]
+  },
+  "focused_checker_failure_cases": [
+    "rejects nonfinite aggregate",
+    "rejects changed prediction evidence",
+    "rejects missing condition row"
+  ],
+  "report_generator_change": "AST identical to HEAD outside report prose",
+  "original_local_metadata_preserved": true,
+  "dataset_hash_verified": "0d869e334cc9a2795c96996fbde8fb04a8acac61f5e67c5d46aee2b0717a53ed",
+  "git_preview": {
+    "scope": "Candidate before this check record and final documentation notes",
+    "files": 117,
+    "bytes": 4988658,
+    "largest_file_bytes": 737765,
+    "per_seed_files_byte_preserved": 48,
+    "fresh_checkout_lightweight_check": "passed",
+    "whitespace": "passed"
+  },
+  "credential_pattern_hits_current": 0,
+  "credential_pattern_hits_reachable_history": 0,
+  "history_blobs_inventoried": 119,
+  "history_blobs_at_least_1MB": 0,
+  "history_machine_path_files": [
+    "PROGRESS.md",
+    "docs/MILESTONE1_REFERENCE.md",
+    "docs/VERIFIED_RESULTS.md",
+    "docs/environment-windows.json",
+    "notes/pave_reproduction_notes.md",
+    "reports/milestone1-artifact/REPORT.md",
+    "reports/milestone1-artifact/completion.json",
+    "reports/milestone1-artifact/environment.json",
+    "reports/milestone1-artifact/provenance.json"
+  ],
+  "machine_paths_intentionally_retained_in_historical_documents": [
+    "docs/MILESTONE1_REFERENCE.md",
+    "notes/pave_reproduction_notes.md"
+  ],
+  "limitations": [
+    "Pattern scans are not an exhaustive secret audit",
+    "Saved training/attack verification claims were not re-executed",
+    "No history rewrite; older machine-specific paths remain in earlier commits",
+    "Matched-condition published Table 4 reproduction remains unresolved"
+  ]
+}

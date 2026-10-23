@@ -1,0 +1,11 @@
+{
+  "epsilon_zero_fgsm_identity": true,
+  "epsilon_zero_pgd_identity": true,
+  "input_gradient_finite_nonzero": true,
+  "input_gradient_max_abs": 0.002355750650167465,
+  "evaluation_weights_unchanged": true,
+  "evaluation_mode": "eval",
+  "same_examples_all_conditions": true,
+  "checkpoint_sha256": "765a24088e0a05fe851a2b1cb4bf7e0b0b305e08746bfa61b7dde771a333d86e",
+  "checkpoint_reload_logits_identical": true
+}

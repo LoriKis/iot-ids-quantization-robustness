@@ -1,5 +1,8 @@
 # Clarification draft — not sent
 
+> **Status/context:** Historical, unsent clarification draft. Author clarification is not a prerequisite for the completed artifact baseline. It remains relevant only to unresolved Table 4 correspondence.
+> Current authoritative results: [Milestone 1 report](../reports/milestone1-artifact/REPORT.md).
+
 We are reproducing the CICIoT Standard Transformer baseline for Milestone 1.
 Table 4 reports clean accuracy/F1 98.68/98.63 and FGSM accuracy/F1/ASR
 98.19/97.95/0.81. The paper describes a binary setting, while our assignment asks

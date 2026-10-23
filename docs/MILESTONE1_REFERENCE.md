@@ -1,5 +1,8 @@
 # Milestone 1: PAVE reference investigation
 
+> **Status/context:** Historical reference investigation (2026-10-17–18). Its Table 4 uncertainties remain valid. Its execution block and incomplete-baseline status were superseded by the authorized four-seed artifact attempt; no exact paper match is claimed.
+> Current authoritative results: [Milestone 1 report](../reports/milestone1-artifact/REPORT.md).
+
 Investigation: 2026-10-17 to 2026-10-18, Europe/Budapest. LOCAL ONLY.
 
 ## Decision

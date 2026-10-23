@@ -1,0 +1,13 @@
+{
+  "data_seconds_this_invocation": 5.144463500007987,
+  "training_seconds_accumulated": 1031.6072652999428,
+  "evaluation_seconds": {
+    "Clean": 2.7182567000272684,
+    "FGSM": 10.496614400006365,
+    "PGD": 74.54433920001611
+  },
+  "invocation_seconds_after_imports": 1132.6017156000016,
+  "peak_rss_sampled_bytes_this_invocation": 1485164544,
+  "minimum_system_available_bytes_this_invocation": 254832640,
+  "completed_utc": "2026-10-19T23:26:29Z"
+}

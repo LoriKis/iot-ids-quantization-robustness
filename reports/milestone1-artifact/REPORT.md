@@ -7,7 +7,10 @@
 Run the ordinary FP32 PAVE Standard Transformer on released CICIoT data, evaluate
 clean (unperturbed), FGSM and PGD inputs, and document the attempted paper comparison.
 Clean includes unperturbed examples from **all 27 classes**, including malicious
-traffic. Clean does not mean benign.
+traffic. Clean does not mean benign. The ground-truth class label stays unchanged
+under FGSM and PGD: these attacks change the input, not its assigned label. This
+evaluation convention does not establish that a perturbed tensor represents a
+physically possible traffic example with that label.
 
 Four full seeds completed and verified.
 
@@ -23,13 +26,15 @@ layer ablation, remote write or external compute is part of this work.
   Benign_Final is 3.7037% of this subset. This balanced subset does not establish
   natural traffic prevalence or natural minority-class behavior.
 - Full feature order and alphabetical class mapping are frozen in `configuration.json`.
-- Interpreter, package versions, CPU, RAM and thread count: `environment.json`.
+- Interpreter, package versions, CPU, RAM and execution metadata:
+  [portable review metadata](review_metadata.json). The frozen config records threads.
   Local CPU only, two PyTorch threads; no concurrent training jobs.
 - Paper: supplied pre-proof, DOI https://doi.org/10.1016/j.hcc.2026.100426,
   Table 4 printed p.12 / PDF p.16. The seven values were rechecked against the
-  existing local extraction; the source PDF hash is recorded in `provenance.json`.
+  existing local extraction; the source PDF hash is recorded in `review_metadata.json`.
 - Source/called-function hashes: `configuration.json`; checkpoint and per-seed
-  manifest hashes/locations: `provenance.json`. Raw evidence remains in `C:\Users\loran\Documents\Codex\2026-10-17\files-pasted-by-the-user-you\IOT-network-traffic-DL\runs\milestone1-artifact-full`.
+  manifest hashes/relative locations: `review_metadata.json`. Raw evidence remains
+  in `runs/milestone1-artifact-full/` relative to the repository root.
 
 | ID | Label | CSV rows |
 | --- | --- | --- |
@@ -168,7 +173,7 @@ Completed-seed training time: **4397.54 seconds**. Completed evaluation
 time: **369.76 seconds**. These are measured accumulated training and
 evaluation durations, not estimates of uncompleted seeds; runtime records also
 include per-invocation loading time and sampled peak RSS. Epoch checkpoints retain
-progress if the session ends; `completion.json` lists outstanding work.
+progress if the session ends; `review_metadata.json` records completion.
 Wall-clock span from initial run setup to the last completed seed is
 4848 seconds;
 it includes loading, verification and any idle gaps between sequential launches.
@@ -194,7 +199,7 @@ gradient probe is finite/nonzero; state hashes establish no parameter updates
 during attacks. Saved prediction coverage, confusion matrices, per-class support,
 checkpoint identity and artifact checksums are verified. A process exit code alone
 is not accepted as completion. Raw logs and any unfinished checkpoint/status files
-remain available; incomplete work is visible in `completion.json`.
+remain available; completion status is preserved in `review_metadata.json`.
 No completed seed reported a training failure, failed attack sanity check or
 incomplete output check. A report-only pandas formatting warning was corrected;
 no change to the inherited training or attack algorithms was needed.
@@ -216,7 +221,8 @@ is presented as a matched metric comparison. Table 4 does not prove a multiclass
 target. Its binary context, mode ambiguity, metric definitions, seed aggregation,
 dataset/split provenance and checkpoint rule remain unresolved.
 
-Established differences (see `source/docs/MILESTONE1_REFERENCE.md` in the ZIP):
+Established differences (see the [reference investigation](../../docs/MILESTONE1_REFERENCE.md);
+inside the historical review ZIP it is under `source/docs/`):
 
 | Item | Paper | Executed released artifact |
 |---|---|---|
@@ -262,15 +268,28 @@ This report does not launch Milestone 2 or claim literal exact paper reproductio
 
 The practical four-seed baseline package is ready for review, with the published-result requirement explicitly unresolved.
 
+## Review evidence and exact local commands
+
+The [compact evidence index](evidence/README.md) links per-seed predictions,
+split assignments, per-class metrics, preprocessing and verification records.
+The [repository review guide](../../docs/REPOSITORY_REVIEW.md) distinguishes
+lightweight checks from checks requiring excluded datasets/checkpoints.
+Original machine-specific completion/environment/provenance JSON files remain
+locally unchanged and excluded from Git; `review_metadata.json` is an explicitly
+derived portable copy with their hashes. Historical exported packages remain
+unchanged. Report-generator prose was updated during housekeeping; this changes
+no measured results or original provenance hashes.
+
 ## Exact local commands and excluded artifacts
 
-Run from `C:\Users\loran\Documents\Codex\2026-10-17\files-pasted-by-the-user-you\IOT-network-traffic-DL` using its existing environment:
+Run from your repository root using the project environment:
 
 ```powershell
 .\.venv\Scripts\python.exe -B -m research.artifact_baseline --run-dir runs/milestone1-artifact-full --resume
 .\.venv\Scripts\python.exe -B -m research.artifact_baseline --run-dir runs/milestone1-artifact-full --verify-only
 $reviewZip = '..\outputs\milestone1-practical-review-' + (Get-Date -Format 'yyyyMMdd-HHmmss') + '.zip'
 .\.venv\Scripts\python.exe -B -m research.milestone1_report --run-dir runs/milestone1-artifact-full --output reports/milestone1-artifact --export $reviewZip
+.\.venv\Scripts\python.exe -B scripts/check_milestone1_review.py --collect
 ```
 
 The first command reuses verified completed seeds and resumes the last complete
@@ -284,7 +303,8 @@ Exports preserve existing ZIPs; the timestamp above avoids an output collision.
 
 Large data/checkpoints, environments and package caches are excluded from the
 review ZIP. Original checkpoint/preprocessing/evaluation files remain under
-`C:\Users\loran\Documents\Codex\2026-10-17\files-pasted-by-the-user-you\IOT-network-traffic-DL\runs\milestone1-artifact-full`; exact paths/hashes are in `provenance.json`. The ZIP includes source,
+`runs/milestone1-artifact-full/`; portable paths and hashes are in
+`review_metadata.json`. The ZIP includes source,
 frozen config, this report, summaries/figure, small per-seed evidence and an export
 manifest. `reference-source/` is an inspection copy of the upstream source, not a
 replacement Git checkout. Existing environments, runs and local commits are retained.

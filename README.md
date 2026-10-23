@@ -1,113 +1,96 @@
-# PAVE Transformer robustness–efficiency study
+# Transformer intrusion detection: robustness and efficiency
 
-**Practical Milestone 1 baseline completed (2026-10-20):** four full seeds
-1, 7, 13, 29 are verified. Read the [course report](reports/milestone1-artifact/REPORT.md),
-[per-seed results](reports/milestone1-artifact/per_seed.csv),
-[mean/sample-SD results](reports/milestone1-artifact/summary.csv), and
-[measured figure](reports/milestone1-artifact/results.png).
-Accuracy is 65.81 ± 0.43% clean, 44.42 ± 2.12% FGSM and 41.64 ± 2.97% PGD.
-The practical package is ready for review; matched Table 4 reproduction remains
-unresolved. Milestone 2 has not started.
+Research question: **How do INT8 quantization and adversarial training change the
+robustness–efficiency trade-off of a Transformer for IoT intrusion detection?**
 
-**Current execution (2026-10-20):** the full local released-artifact multiclass
-baseline is authorized despite unresolved Table 4 correspondence. Frozen settings
-are in `configs/milestone1_artifact_full.json`; execute or resume sequential seeds:
+**Released-artifact multiclass baseline completed across four seeds.
+Matched-condition reproduction of the published Table 4 results remains
+unresolved.**
 
-```powershell
-.\.venv\Scripts\python.exe -B -m research.artifact_baseline --run-dir runs/milestone1-artifact-full --resume
-```
+The PAVE Standard Transformer predicts one of **27 classes**: benign traffic or
+one of 26 attack labels in the released, balanced CICIoT subset. It receives a
+synthetic length-50 sequence made by repeating a row of 39 standardized features;
+these are not 50 chronological network flows.
 
-This uses the full artifact dataset and 15-epoch budget, Standard Transformer
-only, with clean/FGSM/PGD evaluation. The claim is **Released-artifact multiclass
-baseline and documented paper-reproduction attempt.** The older blocked exact-
-paper/smoke entry point below is preserved; its block does not apply to this new
-authorized artifact runner. Milestone 2 remains outside the active scope.
+## Start here
 
-**Active scope: Milestone 1 only.** The full supplied paper has now been read.
-The Table 4 values are verified, but the exact multiclass reference remains
-unresolved. See [reference investigation](docs/MILESTONE1_REFERENCE.md) and
-[unsent clarification draft](docs/MILESTONE1_CLARIFICATION.md).
-`research.milestone1 --route paper --dry-run` reports the target; paper training
-is gated. The dedicated artifact component smoke is separately labelled and is
-not scientific reproduction. The full-study commands below are retained as
-historical preparation and are outside the active scope.
+1. [Milestone 1 report](reports/milestone1-artifact/REPORT.md) — authoritative
+   methods, results, validity limits and official requirements checklist.
+2. [Setup and commands](docs/SETUP.md) — environment, dataset acquisition/hash,
+   baseline reproduction and report regeneration.
+3. [Frozen baseline configuration](configs/milestone1_artifact_full.json),
+   [per-seed metrics](reports/milestone1-artifact/per_seed.csv),
+   [aggregate metrics](reports/milestone1-artifact/summary.csv) and
+   [compact experimental evidence](reports/milestone1-artifact/evidence/README.md).
+4. [Repository inclusion and verification guide](docs/REPOSITORY_REVIEW.md) —
+   what belongs in Git, what stays local, and lightweight review checks.
 
-Local implementation for the MSc question: **What robustness–efficiency trade-off
-results from combining Transformer intrusion detection, INT8 quantization and
-adversarial training?**
+## What Milestone 1 executed
 
-The corrected pipeline uses PAVE's unchanged Standard Transformer and its
-processed balanced CICIoT2023 multiclass data. Full scientific results remain
-pending; smoke/pilot output establishes implementation and runtime only.
+The **released-artifact multiclass baseline and documented paper-reproduction
+attempt** used the entire 29,997-row processed CSV, ordinary FP32 Standard
+Transformer only, and seeds **1, 7, 13, 29**. Each seed completed 15 epochs,
+705 Adam updates, and evaluation of the same final checkpoint on 3,000 aligned
+validation examples under clean, FGSM and PGD conditions. Clean means unperturbed;
+the original class labels are retained under both attacks.
 
-Read [audit](docs/AUDIT.md), [protocol](docs/PROTOCOL.md),
-[setup and commands](docs/SETUP.md), [verified outcomes](docs/VERIFIED_RESULTS.md)
-and [progress/resume](PROGRESS.md).
+Mean ± **sample standard deviation across four seeds** (percentage points for
+accuracy and F1):
 
-## Windows PowerShell (the tested platform)
+| Condition | Accuracy (%) | Macro-F1 (%) | Weighted-F1 (%) |
+| --- | --- | --- | --- |
+| Clean | 65.81 ± 0.43 | 61.14 ± 0.42 | 61.15 ± 0.41 |
+| FGSM, ε = 0.10 | 44.42 ± 2.12 | 42.85 ± 2.15 | 42.86 ± 2.16 |
+| PGD, ε = 0.10 | 41.64 ± 2.97 | 40.37 ± 2.75 | 40.38 ± 2.77 |
 
-From this repository root, after setup:
+![Four-seed measured performance](reports/milestone1-artifact/results.png)
 
-```powershell
-.\.venv\Scripts\python.exe -m pytest -q
-.\.venv\Scripts\python.exe -m research.runner --config configs/smoke.json --run-dir runs/smoke-new --phase both
-.\.venv\Scripts\python.exe -m research.analyze runs/smoke-new --phase both --output artifacts/smoke-new
-```
+The report also contains MCC, clean-correct untargeted ASR, runtime and per-class
+evidence. PGD uses 10 steps, α = 0.01, clean initialization and epsilon-box
+projection; neither attack enforces protocol constraints. Training took 4,397.54 s
+and evaluation 369.76 s; the overall run span was 1 h 20 min 48 s on a local CPU.
 
-Use a new run/output directory for a new experiment. A compatible existing run
-supports `--resume` for completed units only. A failed/partial unit is preserved
-and requires a new run directory. Do not claim mid-training resume.
+These are capped **validation** results under inherited artifact choices:
+whole-file StandardScaler before splitting, stratified 80/20 partitions varying
+with seed, and possible duplicate leakage. They do not establish held-out test
+generalization, natural class prevalence or physically realizable network evasion.
 
-## Full study (explicitly launch after reviewing pilot estimates)
+The classification mode and generating configuration of the paper's Table 4 row
+have not been established. Its metric definitions and experiment provenance are
+also unresolved. Our baseline and the published row are potentially different
+experiments; numerical reproduction under matched conditions is **not demonstrated**.
+See the report and [bounded reference investigation](docs/MILESTONE1_REFERENCE.md).
 
-```powershell
-.\.venv\Scripts\python.exe -m research.runner --config configs/full.json --run-dir runs/full-study --phase validation
-.\.venv\Scripts\python.exe -m research.runner --config configs/full.json --run-dir runs/full-study --phase test --resume
-.\.venv\Scripts\python.exe -m research.analyze runs/full-study --phase test --output artifacts/full-study-test
-```
+## Code ownership and attribution
 
-Four training seeds: 1,7,13,29; split seed 2026. Validation selects checkpoints
-and freezes the attack budget before test. Main variants receive full curves;
-ablations and four transfer directions use the focused epsilon .1.
+- **Upstream PAVE:** the pinned, unmodified checkout at
+  `upstream/PAVE_artifact/` supplies the Standard Transformer, data loader,
+  training helper, cap/inference functions and FGSM/PGD implementations. It is
+  restored during setup and excluded from Git. Revision and source hashes are
+  recorded in the frozen configuration.
+- **Our group:** [artifact runner](research/artifact_baseline.py),
+  [report generator](research/milestone1_report.py), checkpoint/resume and
+  verification instrumentation, tests, configurations, reports and setup tools.
+  The separate corrected research pipeline is also in `research/`.
+- [PAVE attribution and license](NOTICE.md) identify the upstream authors and
+  retain the upstream MIT license. No license for the group's original code is
+  inferred from PAVE's license.
 
-Default quantization is **static PTQ of INT8 Linear islands**, including explicit
-attention Q/K/V/output projections. Attention matmuls, softmax and normalization
-remain floating point. INT8 attacks use actual target forward kernels and
-approximate BPDA gradients; they are not exact INT8 white-box attacks.
+`research.reproduce` is a legacy mixed-model artifact wrapper, and
+`research.milestone1` is the historical reference gate/component smoke.
+`experiments/milestone1/run_*.py` evaluate corrected-pipeline checkpoints.
+**The completed baseline uses `research.artifact_baseline`**, not these older paths.
 
-PAVE's sequences are repeated tabular rows, not recorded temporal traffic.
-Perturbations study normalized feature-space vulnerability, not realizable packet
-attacks. The dataset is balanced and does not establish natural class prevalence.
+## Later milestones
 
-## Separate artifact reproduction
+- **Milestone 2:** run the corrected protocol's full FP32/INT8 and adversarial
+  training comparisons, attack curves and efficiency measurements.
+- **Milestone 3:** complete the planned layer ablations, transfer/class-wise
+  analyses and final robustness–efficiency synthesis.
 
-```powershell
-.\.venv\Scripts\python.exe -m research.reproduce --out runs/reproduction-new --dry-run
-```
-
-Remove `--dry-run` to execute the original `exp_proj` in a separate local copy.
-This retains upstream limitations; no exact paper-table match is claimed.
-See the new reference investigation for the supplied full paper and the still
-unverified experiment correspondence; the earlier access failure is historical.
-
-## Evaluation-only Milestone 1 entry points
-
-The repaired wrappers require an existing run and never train:
-
-```powershell
-.\.venv\Scripts\python.exe experiments/milestone1/run_clean.py --run-dir runs/smoke-new --partition test
-.\.venv\Scripts\python.exe experiments/milestone1/run_fgsm.py --run-dir runs/smoke-new --partition test
-.\.venv\Scripts\python.exe experiments/milestone1/run_pgd.py --run-dir runs/smoke-new --partition test
-```
-
-All load the same ordinary baseline checkpoint per seed. They write unique
-manual evaluation directories; they do not invoke the upstream defense sweeps.
-
-## Local-only and attribution
-
-No code pushes, publishes, uploads data, opens PRs, or triggers remote CI.
-Datasets, environments, checkpoints, upstream clones, caches and runs are ignored.
-PAVE is attributed to its original authors; its upstream MIT license is preserved
-in the pinned, unmodified reference checkout. `provenance.json` pins both starting
-revisions and the processed data hash. Historical milestone notes describe the
-starting implementation and are superseded by the new audit/protocol.
+Much of that functionality was implemented and tested on bounded smoke/pilot
+runs; the full later-stage research experiments remain pending. Those tests are
+not Milestone 1 baseline results. Read the [corrected protocol](docs/PROTOCOL.md)
+and [historical implementation results](docs/VERIFIED_RESULTS.md) for context.
+[PROGRESS.md](PROGRESS.md) preserves the execution history. No later milestone is
+launched automatically.

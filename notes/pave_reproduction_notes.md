@@ -1,4 +1,7 @@
 # PAVE Artifact — Discovery Report
+
+> **Status/context:** Historical starting-checkout discovery snapshot. Preserve its original paths and experimental context; it is not the completed four-seed baseline report.
+> Current authoritative results: [Milestone 1 report](../reports/milestone1-artifact/REPORT.md).
 ## Generated: 2026-10-17T19:05:02.899958Z
 ## Upstream: C:\Users\Q4C\Desktop\Deep Project\upstream\PAVE_artifact
 

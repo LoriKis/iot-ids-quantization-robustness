@@ -1,5 +1,8 @@
 # Audit and requirements coverage
 
+> **Status/context:** Historical implementation audit (2026-10-17). Findings describe the corrected pipeline and its then-current state; paper access and baseline execution status have since changed.
+> Current authoritative results: [Milestone 1 report](../reports/milestone1-artifact/REPORT.md).
+
 Audit starting point: clean `main` at c511dfe468036ad3bf92137b2ee809ce30bdc482.
 Reference PAVE: e73911bbdb241f3fb6c5de346139010c4aadefd4. New local branch:
 `local/research-pipeline-fixes`. No applicable AGENTS.md found in the workspace
