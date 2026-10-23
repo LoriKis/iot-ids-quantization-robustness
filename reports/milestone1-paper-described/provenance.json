@@ -1,0 +1,26 @@
+{
+  "claim": "Paper-described configuration with documented assumptions; multiclass 27-class experiment; not a verified Table 4 reproduction.",
+  "upstream_revision": "e73911bbdb241f3fb6c5de346139010c4aadefd4",
+  "dataset_sha256": "0d869e334cc9a2795c96996fbde8fb04a8acac61f5e67c5d46aee2b0717a53ed",
+  "seed_manifests": {
+    "1": "68bcd851988434f46e2aa0d958e7c610b0e0625c27c5f5567965a791e901a6d4",
+    "7": "ddaa4e16843f826ca9f600d55e846a059f2605747c499f0444a96f760e7ad601",
+    "13": "867c5ba86d66ebe5691c6ed29f1da2f7644902a602c25d1fdf5cbb93efa43bf7",
+    "29": "693b521969c4f63ab87b7ad88a34e911329fc349a7afb709533333fa5e580d3d"
+  },
+  "checkpoint_locations": {
+    "1": "/Users/jamshid/Documents/uni/deeplearning/iot-ids-quantization-robustness/runs/milestone1-paper-described/seed-1/checkpoint.pt",
+    "7": "/Users/jamshid/Documents/uni/deeplearning/iot-ids-quantization-robustness/runs/milestone1-paper-described/seed-7/checkpoint.pt",
+    "13": "/Users/jamshid/Documents/uni/deeplearning/iot-ids-quantization-robustness/runs/milestone1-paper-described/seed-13/checkpoint.pt",
+    "29": "/Users/jamshid/Documents/uni/deeplearning/iot-ids-quantization-robustness/runs/milestone1-paper-described/seed-29/checkpoint.pt"
+  },
+  "checkpoint_sha256": {
+    "1": "89a1c80cc46ac8aa5dae46a5e3463705702745c8fc115eb4c6df09cf31008440",
+    "7": "117f10e773536a69c6d8b2987a2f84698402d2d1593a1d618128108bae5e0748",
+    "13": "c071832301abd80e36e7b743c574d541a58aa605515122b089d966b30d7a8740",
+    "29": "9a2cfc0a0ae01002a3f6de46bd5b94a1001929e5cec92d8309fcae13c772a73b"
+  },
+  "configuration_sha256": "ae3a5a25129c3809a1c052fb6061314f1a3a72fde64a48808cb3e9633237e620",
+  "paper_preproof_doi": "https://doi.org/10.1016/j.hcc.2026.100426",
+  "paper_sha256": "be81c110fd12901c8be6455b217ba53ca942c1b0bb9c52bb5dda84bf655b6e90"
+}

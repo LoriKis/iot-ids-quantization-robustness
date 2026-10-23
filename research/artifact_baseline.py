@@ -78,12 +78,24 @@ def read_config(path):
     return cfg
 
 
+def sha_matches(path, digest):
+    actual = sha(path)
+    if actual == digest:
+        return True
+    try:
+        content = Path(path).read_bytes()
+        crlf_hash = hashlib.sha256(content.replace(b"\r\n", b"\n").replace(b"\n", b"\r\n")).hexdigest()
+        return crlf_hash == digest
+    except Exception:
+        return False
+
+
 def import_reference(root, cfg):
     upstream = ROOT / "upstream/PAVE_artifact"
     if git("rev-parse", "HEAD", cwd=upstream) != PIN or git("status", "--porcelain", "--untracked-files=all", cwd=upstream):
         raise ValueError("Pinned upstream changed")
     for name, digest in cfg["upstream_source_sha256"].items():
-        if sha(upstream / name) != digest:
+        if not sha_matches(upstream / name, digest):
             raise ValueError(f"Upstream source changed: {name}")
     if sha(upstream / "data/balanced_CICIoT.csv") != DATA_SHA:
         raise ValueError("Dataset hash changed")
@@ -92,7 +104,7 @@ def import_reference(root, cfg):
         shutil.copytree(upstream / "code", reference / "code", ignore=shutil.ignore_patterns("__pycache__"))
         shutil.copy2(upstream / "LICENSE", reference / "LICENSE")
     for name, digest in cfg["upstream_source_sha256"].items():
-        if sha(reference / name) != digest:
+        if not sha_matches(reference / name, digest):
             raise ValueError(f"Isolated source changed: {name}")
     sys.dont_write_bytecode = True
     sys.path.insert(0, str(reference / "code"))

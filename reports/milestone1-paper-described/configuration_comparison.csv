@@ -1,0 +1,4 @@
+Condition,Released Baseline Accuracy (%),Paper-Described Accuracy (%),Released Baseline Macro-F1 (%),Paper-Described Macro-F1 (%),Released Baseline ASR (%),Paper-Described ASR (%)
+Clean,65.81 ± 0.43,63.96 ± 1.46,61.14 ± 0.42,58.76 ± 1.73,0.00 ± 0.00,0.00 ± 0.00
+FGSM,44.42 ± 2.12,12.08 ± 3.04,42.85 ± 2.15,10.80 ± 2.68,33.74 ± 4.62,84.01 ± 4.66
+PGD,41.64 ± 2.97,6.44 ± 1.76,40.37 ± 2.75,6.24 ± 1.52,36.70 ± 4.94,91.27 ± 2.87
