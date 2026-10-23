@@ -1,0 +1,12 @@
+{
+  "type": "MinMaxScaler",
+  "fit_scope": "training partition only",
+  "train_rows_seen": 20997,
+  "constant_features": 0,
+  "domain_policy": "scaler fit on training partition only; no clamping of held-out values; attacks use the intersection of the epsilon ball with [0,1] (see config attack.domain_policy)",
+  "split_row_counts": [
+    20997,
+    4500,
+    4500
+  ]
+}

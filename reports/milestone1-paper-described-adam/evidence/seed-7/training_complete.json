@@ -1,0 +1,83 @@
+{
+  "epochs": 25,
+  "train_rows": 20997,
+  "batch_size": 512,
+  "steps_per_epoch": 42,
+  "batch_sizes_epoch_1": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    5
+  ],
+  "total_optimizer_steps": 1050,
+  "optimizer_step_counts": [
+    1050
+  ],
+  "dropout": 0.1,
+  "optimizer": {
+    "class": "torch.optim.Adam",
+    "runtime_class": "torch.optim.adam.Adam",
+    "is_adamw": false,
+    "defaults": {
+      "lr": 0.001,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0.0001,
+      "amsgrad": false,
+      "maximize": false,
+      "foreach": null,
+      "capturable": false,
+      "differentiable": false,
+      "fused": null
+    }
+  },
+  "fresh_initialization": {
+    "initial_state_hash": "c568ea0ce75b21034c6e19783ff89d34100c27be7d19b1c6e76a43c9c6bbae7b",
+    "optimizer_state_entries": 0,
+    "source": "freshly constructed model; no smoke or other checkpoint loaded"
+  },
+  "checkpoint_rule": "final epoch 25; no validation or test based selection",
+  "fingerprint_sha256": "8f9f1805cc5f38b4c3002b42079325445d71ec3dabc5bea2a17c31770f241923",
+  "training_seconds": 1319.0910061000031
+}

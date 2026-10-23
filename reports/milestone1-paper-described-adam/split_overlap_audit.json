@@ -1,0 +1,14 @@
+{
+  "train_rows": 20997,
+  "val_rows": 4500,
+  "test_rows": 4500,
+  "unique_feature_patterns_total": 11953,
+  "test_rows_matching_train_features": 2804,
+  "test_rows_matching_train_features_percent": 62.31111111111111,
+  "test_rows_matching_train_labeled": 2757,
+  "test_rows_matching_train_labeled_percent": 61.266666666666666,
+  "val_rows_matching_train_features": 2793,
+  "val_rows_matching_train_features_percent": 62.06666666666667,
+  "test_rows_matching_validation_features": 2623,
+  "note": "Row IDs are disjoint by construction. Overlap is MEASURED; its origin is not established by this audit."
+}

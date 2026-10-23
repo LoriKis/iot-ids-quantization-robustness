@@ -1,0 +1,39 @@
+{
+  "components": {
+    "config": {
+      "sha256": "e40789ffe73b48b2763c7b845dcd4fe9c2509fb07b42b3a21194f0d745e10ec5"
+    },
+    "executed_source": {
+      "files": {
+        "research/paper_described_adam.py": "c7451a56c12d9f2a6c97af061d64b7785a0e87e5281274c17a5017c878449a97",
+        "research/adversarial_domain.py": "adf13ba55b871a9b9a54b476f4cd612b47099ac372b336c702b8685546011b29",
+        "research/provenance.py": "a182d04d4b4022fab8a5cf69a2962a884127bbf5ce69a0421fe7e78a5a7f2acf",
+        "research/milestone1.py": "f363aabf06bdbe81d3b661eb09819f9a7df025a70ab15bd3a8c20717e75e1058"
+      },
+      "sha256": "d8c8b86f4fdc782b4e15f77d6c07eedf425a0944101c89fdbb7a965574eb3062"
+    },
+    "upstream_source": {
+      "sha256": "db1a9d27ab95f2baf337f879d0abaca42bc7dba35518d54946af87fd8ecb1b97"
+    },
+    "data": {
+      "dataset_sha256": "0d869e334cc9a2795c96996fbde8fb04a8acac61f5e67c5d46aee2b0717a53ed",
+      "split_sha256": "f4624a70d02acdb0aa9aad20d9786b5881c3dd337c4f94c91932c4bba160514b",
+      "scaler_min_sha256": "8feed8284b4571b45f6d2ad8eb1d6d41deac43ea02e4c62a288a1f56beade671",
+      "scaler_scale_sha256": "5416a6a4bbbec4b3b3aac0dbcd32d3a5813b63ac5678e59a4c96856a0166cd3c",
+      "sha256": "bc67d6c5738fc588c285f90fd2728f1805049d22827d93fd34c2ea00b1806390"
+    },
+    "environment": {
+      "values": {
+        "python": "3.11.9",
+        "torch": "2.5.1+cpu",
+        "numpy": "1.26.4",
+        "pandas": "2.2.3",
+        "sklearn": "1.5.2",
+        "system": "Windows",
+        "machine": "AMD64"
+      },
+      "sha256": "b09624f08853190d468d00935fe18ecc087d1f76862d6b6b1fcc2133532a539c"
+    }
+  },
+  "combined_sha256": "8f9f1805cc5f38b4c3002b42079325445d71ec3dabc5bea2a17c31770f241923"
+}

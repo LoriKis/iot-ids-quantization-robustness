@@ -4,3 +4,5 @@
 
 # Original measured evidence is checksummed byte-for-byte, including CRLF.
 reports/milestone1-artifact/evidence/seed-*/* -text whitespace=cr-at-eol
+reports/milestone1-paper-described-adam/** -text
+configs/milestone1_paper_described_adam.json -text

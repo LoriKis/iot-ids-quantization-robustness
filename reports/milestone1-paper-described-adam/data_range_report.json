@@ -1,0 +1,27 @@
+{
+  "train": {
+    "rows": 20997,
+    "min": 0.0,
+    "max": 1.0,
+    "values_below_0": 0,
+    "values_above_1": 0,
+    "all_finite": true
+  },
+  "validation": {
+    "rows": 4500,
+    "min": 0.0,
+    "max": 2.0,
+    "values_below_0": 0,
+    "values_above_1": 2,
+    "all_finite": true
+  },
+  "test": {
+    "rows": 4500,
+    "min": 0.0,
+    "max": 1.0,
+    "values_below_0": 0,
+    "values_above_1": 0,
+    "all_finite": true
+  },
+  "constant_training_features": 0
+}

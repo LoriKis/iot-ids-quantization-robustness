@@ -1,0 +1,12 @@
+{
+  "verdict": "CHANGES_REQUESTED",
+  "findings": [
+    {"id": 1, "severity": "MEDIUM", "title": "Last batch is 5 rows (20997 = 41*512 + 5), not 389", "section": "4.3", "fix": "State 41 full batches plus a final batch of 5 rows, no drop_last, and assert batch_sizes[-1] == 5."},
+    {"id": 2, "severity": "MEDIUM", "title": "Items 10a-10e not specified; the provisional list is unverified against the user's text", "section": "9.4/9.4a/12", "fix": "Orchestrator supplies verbatim items 7-11 in docs/MILESTONE1_REQUEST_ITEMS_7_11.md; fill 9.4b one-to-one and remove 'provisional'."},
+    {"id": 3, "severity": "MEDIUM", "title": "Resume gate ordering and the data fingerprint need a read-only definition; missing-fingerprint exit code unspecified", "section": "3.4", "fix": "compute_fingerprint is read-only and in-memory; prepare_data_adam runs after check_resume; exit 3 for all gate refusals; add a no-writes spy test."},
+    {"id": 4, "severity": "NIT", "title": "Paper visual check method unspecified", "section": "4.1", "fix": "Record the extracted quote, page and AdamW match count (expected 0)."},
+    {"id": 5, "severity": "NIT", "title": "Mojibake examples garbled and inconsistent with the inventory", "section": "6", "fix": "Copy the sequences from the inventory or drop the examples."},
+    {"id": 6, "severity": "NIT", "title": "Smoke directory fingerprint/gate behavior unstated", "section": "5.2", "fix": "Smoke writes its own fingerprint.json and is subject to the same gate."}
+  ],
+  "reviewDoc": "c:\\Users\\loran\\Documents\\Codex\\2026-10-17\\files-pasted-by-the-user-you\\IOT-network-traffic-DL/docs/milestone1_repair_design_review.md"
+}

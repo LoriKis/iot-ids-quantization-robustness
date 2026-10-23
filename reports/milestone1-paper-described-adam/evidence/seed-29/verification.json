@@ -1,0 +1,19 @@
+{
+  "epsilon_zero_identity_tested": true,
+  "evaluation_mode": "eval",
+  "evaluation_weights_unchanged": true,
+  "same_examples_all_conditions": true,
+  "test_rows_evaluated": 4500,
+  "checkpoint_sha256": "21115b9f53af76c922c0df2618e67231c85b0ceaf518a81813e401d6c16f63da",
+  "checkpoint_reload": {
+    "rows_checked": 4500,
+    "rows_total_test": 4500,
+    "conditions_checked": [
+      "Clean"
+    ],
+    "comparison": "logits from a freshly constructed model loaded from checkpoint.pt vs logits of the evaluated model",
+    "max_abs_difference": 0.0,
+    "bitwise_equal": true,
+    "scope": "Clean logits on all 4,500 test rows; FGSM and PGD conditions are not reloaded."
+  }
+}

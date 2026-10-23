@@ -1,0 +1,35 @@
+{
+  "tool": "pypdf 5.1.0 text extraction (temporary install outside the repository, removed afterwards); no visual inspection of the PDF was performed",
+  "pdf_sha256": "be81c110fd12901c8be6455b217ba53ca942c1b0bb9c52bb5dda84bf655b6e90",
+  "pdf_pages": 31,
+  "adamw_case_insensitive_match_count": 1,
+  "adamw_case_sensitive_AdamW_count": 0,
+  "adamw_standalone_word_count": 0,
+  "adamw_match_explanation": "The single case-insensitive hit is a text-extraction artifact: spaces are missing in the extracted text, so 'Adam with learning rate' appears as 'Adamwithlearningrate'. It is not the token AdamW.",
+  "adamw_case_insensitive_hit_pages_and_context": [
+    {
+      "pdf_page": 13,
+      "context": " branch on the left. Three design choices distinguish Phase 1 from typical single-paperdefensereports. Matched training budget across architectures. The sharedoptimiserisAdamwithlearningrate10\u22123andweight Algorithm 1 PAVE:Protocol-Validity-AwareEvaluation Require:t rained IDS \ud835\udc53; test set \ud835\udc4b with protocol prove- nance;constraint spec\ud835\udc36;scaler \ud835\udc46;at"
+    }
+  ],
+  "decoupled_match_count": 0,
+  "optimizer_sentence_pdf_page_13": [
+    "esisingtheresulting5\u00d73\u00d712\u00d7 17 \u2248 3000 measurements with the statistical machinery of Section 3.7. The PAVE pipeline as instantiated here is sketched in Figure 2, with the Phase 1 branch on the left. Three design choices distinguish Phase 1 from typical single-paperdefensereports. Matched training budget across architectures. The sharedoptimiserisAdamwithlearningrate10\u22123andweight Algorithm 1 PAVE:Protocol-Validity-AwareEvaluation Require:t rained IDS \ud835\udc53; test set \ud835\udc4b with protocol prove- nance;constraint spec\ud835\udc36;scaler \ud835\udc46;attacks\ue22d; seeds\ue23f Ensure:v alidity-awaremetrics,audits,significance 1:\ud835\udc62 \u2190 |unique(\ud835\udc4b)|\u2215|\ud835\udc4b| \u22b3saturation/leakagecheck 2:f oreach seed \ud835\udc60\u2208\ue23f do 3:f oreach atta"
+  ],
+  "weight_decay_context_pdf_page_13": [
+    "\u22c6) \u22b3 majority-collapseflag 11:e nd for 12:e nd for 13:\ud835\udf0e \u2190 WILCOXON/BOOTSTRAP/COHEN({\ud835\udc40\ud835\udc4e}\ud835\udc60\u2208\ue23f) 14:r eturn {\ud835\udc40\ud835\udc4e,\ud835\udc63\ud835\udc4e,\ud835\udc54\ud835\udc4e}, \ud835\udc62, \ud835\udf0e decay10\u22124,thebatchsizeis512,andeverymodelistrained for25epochs.Hyperparametersspecifictoeacharchitecture (hidden dimension, n",
+    "majority-collapseflag 11:e nd for 12:e nd for 13:\ud835\udf0e \u2190 WILCOXON/BOOTSTRAP/COHEN({\ud835\udc40\ud835\udc4e}\ud835\udc60\u2208\ue23f) 14:r eturn {\ud835\udc40\ud835\udc4e,\ud835\udc63\ud835\udc4e,\ud835\udc54\ud835\udc4e}, \ud835\udc62, \ud835\udf0e decay10\u22124,thebatchsizeis512,andeverymodelistrained for25epochs.Hyperparametersspecifictoeacharchitecture (hidden dimension, numbe"
+  ],
+  "optimizer_repeat_pdf_page_19": [
+    " default of 3to characterisethedepth-versus-overfitting trade-off. All thirteen configurations use the same data pipeline, the same training budget (25 epochs, Adam at learning rate 10\u22123, batch size 512), and the same evaluation harness as Phase 1. Each configuration is evaluated against twelve attack scenarios. 7.2. Ablation results Table"
+  ],
+  "pgd_section_5_4_pdf_page_15": [
+    "ncoder, 3 lay- ers, 4 heads, \ud835\udc51model=96, \ud835\udc51ff=384 354k AGT StdTrans+adaptiveper-headgates + learned PE + anomaly head 411k five matching budgets (\ud835\udf0e \u2208 {0.01,0.05,0.10,0.15,0.20}), and PGD at \ud835\udf16 =0.10with seven inner steps (\ud835\udefc =\ud835\udf16\u22154, \ud835\udc3f\u221e ball, random start). The Gaussian column is included as a non-adversarial control: a defense that performs no better against FGSM than against Gaussian at matched magnitude isabsorbingran"
+  ],
+  "pgd_section_3_3_pdf_page_10": [
+    "projectsback into the\ud835\udf16-ballat each step,asin Eq. (4): \ud835\udc65\u2032 \ud835\udc61+1 =\u03a0\ud835\udc35\ud835\udf16(\ud835\udc65) (\ud835\udc65\u2032 \ud835\udc61 +\ud835\udefc\u22c5sign\u2207\ud835\udc65\u2032 \ud835\udc61 \ue238(\ud835\udc53\ud835\udf03(\ud835\udc65\u2032 \ud835\udc61),\ud835\udc66)),( 4) where \u03a0\ud835\udc35\ud835\udf16(\ud835\udc65) is projection back onto the \ud835\udf16-ball around the clean input \ud835\udc65 and \ud835\udefc = \ud835\udf16\u2215\ud835\udc3e is the per-step size. Madry et al. (2018) characterise PGD as the \u201cuniversal first-order adversary\u201d: robustness to PGD implies robustness to all weaker first-order attacks. We use \ud835\udc3e = 7 inner steps at \ud835\udf16=0.10. Squareattac"
+  ],
+  "pgd_section_3_6_pdf_page_11": [
+    "rsarialscore,asin Eq. (8): \ud835\udc60Maha(\ud835\udc65)=min\ud835\udc50 (\ud835\udf19(\ud835\udc65)\u2212\ud835\udf07\ud835\udc50)\u22a4\u03a3\u22121(\ud835\udf19(\ud835\udc65)\u2212\ud835\udf07\ud835\udc50). (8) V7 AT (PGD-TRADES, positive control). V7 is the adversarial-training positive control with PGD inner step \ud835\udc3e =7, step size \ud835\udefc =\ud835\udf16\u22154, and TRADES regulariser \ud835\udefd =6, asdefined in Section 3.4. 3.6. Evaluation metrics Werecordseventeenmetricsper(variant,dataset,attack) cell"
+  ]
+}

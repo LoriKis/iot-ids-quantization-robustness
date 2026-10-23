@@ -1,0 +1,44 @@
+{
+  "fingerprint_combined_sha256": "bcff0aac2c6e6d6a4974c563490b7ff19b9e9e8e6c3a99deac0105a3f73fc9ab",
+  "data_range": {
+    "train": {
+      "rows": 20997,
+      "min": 0.0,
+      "max": 1.0,
+      "values_below_0": 0,
+      "values_above_1": 0,
+      "all_finite": true
+    },
+    "validation": {
+      "rows": 4500,
+      "min": 0.0,
+      "max": 2.0,
+      "values_below_0": 0,
+      "values_above_1": 2,
+      "all_finite": true
+    },
+    "test": {
+      "rows": 4500,
+      "min": 0.0,
+      "max": 1.0,
+      "values_below_0": 0,
+      "values_above_1": 0,
+      "all_finite": true
+    },
+    "constant_training_features": 0
+  },
+  "domain_scan": {
+    "epsilon": 0.1,
+    "validation": {
+      "infeasible_rows": 2,
+      "row_ids": [
+        14554,
+        3420
+      ]
+    },
+    "test": {
+      "infeasible_rows": 0,
+      "row_ids": []
+    }
+  }
+}

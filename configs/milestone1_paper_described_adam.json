@@ -1,0 +1,209 @@
+{
+  "schema_version": 2,
+  "claim": "Corrected paper-described Adam experiment (variant C); multiclass 27-class; paper-described settings with documented assumptions; not an exact reproduction of Table 4.",
+  "frozen_date_local": "2026-10-23",
+  "upstream_revision": "e73911bbdb241f3fb6c5de346139010c4aadefd4",
+  "base_commit_note": "Written on top of HEAD da89a2ce70c6ddbbe31b8421da8ff7866e51a277 with an uncommitted working tree (repair files uncommitted).",
+  "supersedes_nothing": "Historical AdamW config configs/milestone1_paper_described.json (variant B) is unchanged and remains a separately labelled historical variant.",
+  "dataset": {
+    "path": "upstream/PAVE_artifact/data/balanced_CICIoT.csv",
+    "sha256": "0d869e334cc9a2795c96996fbde8fb04a8acac61f5e67c5d46aee2b0717a53ed",
+    "rows": 29997,
+    "features": 39,
+    "classes": 27,
+    "feature_names": [
+      "Header_Length",
+      "Protocol Type",
+      "Time_To_Live",
+      "Rate",
+      "fin_flag_number",
+      "syn_flag_number",
+      "rst_flag_number",
+      "psh_flag_number",
+      "ack_flag_number",
+      "ece_flag_number",
+      "cwr_flag_number",
+      "ack_count",
+      "syn_count",
+      "fin_count",
+      "rst_count",
+      "HTTP",
+      "HTTPS",
+      "DNS",
+      "Telnet",
+      "SMTP",
+      "SSH",
+      "IRC",
+      "TCP",
+      "UDP",
+      "DHCP",
+      "ARP",
+      "ICMP",
+      "IGMP",
+      "IPv",
+      "LLC",
+      "Tot sum",
+      "Min",
+      "Max",
+      "AVG",
+      "Std",
+      "Tot size",
+      "IAT",
+      "Number",
+      "Variance"
+    ],
+    "class_names": [
+      "Benign_Final",
+      "DDoS-ACK_Fragmentation",
+      "DDoS-HTTP_Flood",
+      "DDoS-ICMP_Flood",
+      "DDoS-ICMP_Fragmentation",
+      "DDoS-PSHACK_Flood",
+      "DDoS-RSTFINFlood",
+      "DDoS-SYN_Flood",
+      "DDoS-SlowLoris",
+      "DDoS-SynonymousIP_Flood",
+      "DDoS-TCP_Flood",
+      "DDoS-UDP_Flood",
+      "DDoS-UDP_Fragmentation",
+      "DNS_Spoofing",
+      "DoS-HTTP_Flood",
+      "DoS-SYN_Flood",
+      "DoS-TCP_Flood",
+      "DoS-UDP_Flood",
+      "MITM-ArpSpoofing",
+      "Mirai-greeth_flood",
+      "Mirai-greip_flood",
+      "Mirai-udpplain",
+      "Recon-HostDiscovery",
+      "Recon-OSScan",
+      "Recon-PingSweep",
+      "Recon-PortScan",
+      "VulnerabilityScan"
+    ]
+  },
+  "seeds": [
+    1,
+    7,
+    13,
+    29
+  ],
+  "split": {
+    "source": "reports/milestone1-paper-described/split_ids.json",
+    "sha256": "f4624a70d02acdb0aa9aad20d9786b5881c3dd337c4f94c91932c4bba160514b",
+    "split_seed": 2025,
+    "mode": "load_saved",
+    "train_rows": 20997,
+    "validation_rows": 4500,
+    "test_rows": 4500,
+    "note": "Shared saved split reused from variant B. The test partition was previously exposed to the old smoke check (see docs/MILESTONE1_SMOKE_EXPOSURE.md) and previously evaluated in A/B; it is NOT a fresh untouched test set. A confirmatory study would be separate."
+  },
+  "preprocessing": {
+    "scaler": "MinMaxScaler",
+    "fit_on": "training partition only",
+    "clamping": "none; finite held-out values outside [0,1] are kept",
+    "non_finite_raw_values": "fatal; no imputation"
+  },
+  "architecture": {
+    "input_dim": 39,
+    "d_model": 96,
+    "n_heads": 4,
+    "n_layers": 3,
+    "d_ff": 384,
+    "n_classes": 27,
+    "max_seq_len": 50,
+    "dropout": 0.1
+  },
+  "sequence": {
+    "length": 50,
+    "train_noise_std": 0.01,
+    "construction": "repeat scaled row 50 times; training-only Gaussian noise std 0.01; evaluation noise-free"
+  },
+  "training": {
+    "precision": "FP32",
+    "optimizer": "torch.optim.Adam",
+    "optimizer_kwargs": {
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "maximize": false
+    },
+    "decoupled_weight_decay": false,
+    "optimizer_defaults_note": "foreach, fused, capturable, differentiable left at torch defaults (not passed); effective optimizer.defaults are recorded in training_complete.json. If the installed torch exposes a decoupled_weight_decay argument it is passed False; torch 2.5.1 has none.",
+    "optimizer_type_evidence": "Paper Section 5.1 (PDF p.13) names 'Adam' with learning rate 1e-3 and weight decay 1e-4. The paper does not state whether the decay is L2-in-gradient or decoupled. torch.optim.Adam(weight_decay=...) is the direct reading. AdamW is a different procedure and is NOT claimed equivalent or more correct.",
+    "epochs": 25,
+    "batch_size": 512,
+    "loss": "cross_entropy, no label weights",
+    "drop_last": false,
+    "steps_per_epoch": 42,
+    "final_batch_rows": 5,
+    "optimizer_steps_total": 1050,
+    "gradient_clipping": null,
+    "schedule": null,
+    "checkpoint_rule": "final epoch 25; no validation or test based selection",
+    "rng_policy": "global seed once before model construction; shuffle and noise from local generators derived from sha256(seed, epoch, batch)"
+  },
+  "attack": {
+    "attack_batch_size": 64,
+    "perturbation_space": "normalized sequence tensors (batch, 50, 39)",
+    "domain_policy": {
+      "epsilon_budget": "L-infinity around the original normalized input",
+      "feasible_set_eps_gt_0": "lower=maximum(x-eps,0), upper=minimum(x+eps,1); initialization and every update projected onto it",
+      "infeasible": "lower>upper raises InfeasibleConstraintError (exit 6); no epsilon enlargement, no input modification, no dropped examples",
+      "eps_zero": "exact unchanged copy; no perturbation or domain correction performed",
+      "clean_evaluation": "finite values outside [0,1] accepted; never clamped"
+    },
+    "fgsm": {
+      "epsilon": 0.1,
+      "loss": "true-label cross entropy (sum reduction)",
+      "targeted": false
+    },
+    "pgd": {
+      "epsilon": 0.1,
+      "iterations": 7,
+      "alpha": 0.025,
+      "random_start": true,
+      "targeted": false,
+      "step_size_primary_choice": "Section 5.4 (experiment-specific: eps 0.10, 7 steps, alpha 0.025 = eps/4, random start) chosen before any run over Section 3.3 generic formula alpha=eps/K=0.10/7=0.0142857, which is documented, conflicts, and is NOT run."
+    },
+    "random_start_seed_policy": "local torch.Generator seeded from sha256('pgd-random-start|<training_seed>|<batch_index>'); global RNG untouched",
+    "final_iterate_evaluation": true,
+    "protocol_validity": "perturbations are not guaranteed to be valid network traffic or preserve flow semantics"
+  },
+  "evaluation": {
+    "population": "full saved test partition, 4500 rows per seed",
+    "model_mode": "eval",
+    "test_rows": 4500,
+    "no_optimizer_updates": true
+  },
+  "smoke_policy": {
+    "train_ids": "first 10 per class (ascending) from saved TRAIN partition only",
+    "validation_ids": "first 5 per class (ascending) from saved VALIDATION partition only",
+    "assert_disjoint_from_saved_test": true,
+    "save_selected_ids": true,
+    "full_run_uses_fresh_weights": true
+  },
+  "metrics": {
+    "accuracy": "all evaluated rows; unrounded fraction",
+    "macro_f1": "unweighted mean of 27 per-class F1 values, zero_division=0",
+    "weighted_f1": "class-support weighted F1, zero_division=0",
+    "mcc": "sklearn multiclass Matthews correlation",
+    "per_class": "precision, recall, F1, support for all 27 labels",
+    "untargeted_asr_percent": "100*count(clean_prediction==label AND adversarial_prediction!=label)/count(clean_prediction==label); null if denominator zero",
+    "std": "sample standard deviation ddof=1 over completed seeds; n<2 -> unavailable",
+    "paper_f1_note": "Table 4 F1 averaging not established; we report both macro and weighted; neither is asserted to match Table 4",
+    "paper_asr_note": "Table 4 ASR denominator not established; our ASR uses clean-correct denominator"
+  },
+  "resources": {
+    "device": "cpu",
+    "torch_threads": 2,
+    "concurrent_training_jobs": 1,
+    "epoch_checkpoints": true
+  },
+  "paper_table4_correspondence": "unresolved; Table 4 is context only. Lower or higher accuracy does not prove Table 4 used a different classification task."
+}
