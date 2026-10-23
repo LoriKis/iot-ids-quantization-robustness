@@ -1,27 +1,41 @@
 # PAVE Transformer robustness–efficiency study
 
-**Practical Milestone 1 baseline completed (2026-10-20):** four full seeds
-1, 7, 13, 29 are verified. Read the [course report](reports/milestone1-artifact/REPORT.md),
-[per-seed results](reports/milestone1-artifact/per_seed.csv),
-[mean/sample-SD results](reports/milestone1-artifact/summary.csv), and
-[measured figure](reports/milestone1-artifact/results.png).
-Accuracy is 65.81 ± 0.43% clean, 44.42 ± 2.12% FGSM and 41.64 ± 2.97% PGD.
-The practical package is ready for review; matched Table 4 reproduction remains
-unresolved. Milestone 2 has not started.
+## Milestone 1 Experiments
 
-**Current execution (2026-10-20):** the full local released-artifact multiclass
-baseline is authorized despite unresolved Table 4 correspondence. Frozen settings
-are in `configs/milestone1_artifact_full.json`; execute or resume sequential seeds:
+This project includes two completed and verified Milestone 1 experiments for the Standard Transformer on the balanced CICIoT2023 multiclass dataset across seeds 1, 7, 13, and 29:
 
-```powershell
-.\.venv\Scripts\python.exe -B -m research.artifact_baseline --run-dir runs/milestone1-artifact-full --resume
-```
+### Experiment 1: Released-Code Baseline (Completed 2026-10-20)
+- **Settings**: StandardScaler fitted on whole CSV, 80/20 train/val partition, 15 epochs, Adam lr=0.001 with zero weight decay, evaluation on capped 3,000 validation rows, clean-start PGD (10 steps, alpha=0.01).
+- **Navigation**:
+  - [Course report](reports/milestone1-artifact/REPORT.md)
+  - [Per-seed results](reports/milestone1-artifact/per_seed.csv)
+  - [Summary mean ± sample SD](reports/milestone1-artifact/summary.csv)
+  - [Results figure](reports/milestone1-artifact/results.png)
+  - Frozen configuration: `configs/milestone1_artifact_full.json`
+- **Measured Results**: Clean **65.81 ± 0.43%**, FGSM $\epsilon=0.10$ **44.42 ± 2.12%**, PGD $\epsilon=0.10$ **41.64 ± 2.97%**.
+- **Execution Command**:
+  ```bash
+  PYTHONPATH=. .venv/bin/python -B -m research.artifact_baseline --run-dir runs/milestone1-artifact-full --resume
+  ```
 
-This uses the full artifact dataset and 15-epoch budget, Standard Transformer
-only, with clean/FGSM/PGD evaluation. The claim is **Released-artifact multiclass
-baseline and documented paper-reproduction attempt.** The older blocked exact-
-paper/smoke entry point below is preserved; its block does not apply to this new
-authorized artifact runner. Milestone 2 remains outside the active scope.
+### Experiment 2: Paper-Described Configuration (Completed 2026-10-23)
+- **Settings**: MinMaxScaler fitted on **training data only** (Sec 5.2), stratified 70/15/15 train/val/test split (Sec 5.1, split seed 2025), 25 epochs (Sec 5.1), AdamW lr=0.001, weight decay=0.0001 (Sec 5.1), batch size 512, evaluation on full 4,500 held-out test rows, FGSM $\epsilon=0.10$ with normalized domain clipping, PGD $\epsilon=0.10$ (7 steps, alpha=0.025, random start, domain clipping [0, 1], Sec 5.4).
+- **Navigation**:
+  - [Course report](reports/milestone1-paper-described/REPORT.md)
+  - [Cross-experiment comparison](reports/milestone1-paper-described/COMPARISON.md) (also available at [reports/milestone1-comparison.md](reports/milestone1-comparison.md))
+  - [Protocol document](docs/MILESTONE1_PAPER_DESCRIBED_PROTOCOL.md)
+  - [Per-seed results](reports/milestone1-paper-described/per_seed.csv)
+  - [Summary mean ± sample SD](reports/milestone1-paper-described/summary.csv)
+  - [Results figure](reports/milestone1-paper-described/results.png)
+  - Frozen configuration: `configs/milestone1_paper_described.json`
+- **Measured Results**: Clean **63.96 ± 1.46%**, FGSM $\epsilon=0.10$ **12.08 ± 3.04%** (ASR: 84.01%), PGD $\epsilon=0.10$ **6.44 ± 1.76%** (ASR: 91.27%).
+- **Execution Command**:
+  ```bash
+  PYTHONPATH=. .venv/bin/python -B -m research.paper_described_baseline --config configs/milestone1_paper_described.json --run-dir runs/milestone1-paper-described --resume
+  ```
+
+> [!NOTE]
+> As documented in [COMPARISON.md](reports/milestone1-paper-described/COMPARISON.md), these two experiments represent a **configuration comparison** changing multiple settings simultaneously (scaling space, split, evaluation population, epochs, weight decay, and attack dynamics). Epsilon 0.10 in MinMaxScaler space represents 10% of each feature's entire range, whereas in StandardScaler space it represents 0.10 standard deviations. Published Table 4 numbers are provided as separate context; exact Table 4 reproduction remains unestablished. Milestone 2 has not started.
 
 **Active scope: Milestone 1 only.** The full supplied paper has now been read.
 The Table 4 values are verified, but the exact multiclass reference remains

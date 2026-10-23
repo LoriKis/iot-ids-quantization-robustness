@@ -1,0 +1,18 @@
+{
+  "python": "3.11.0 (main, Aug  3 2026, 10:30:25) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "executable": "/Users/jamshid/Documents/uni/deeplearning/iot-ids-quantization-robustness/.venv/bin/python",
+  "torch": "2.14.1",
+  "numpy": "1.26.4",
+  "pandas": "2.2.3",
+  "sklearn": "1.5.2",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "cpu": "arm",
+  "physical_cores": 10,
+  "logical_cores": 10,
+  "ram_bytes": 17179869184,
+  "cuda_available": false,
+  "git_revision": "e7c41e6c20dda0461f4b7e609f490542b5db3a5f",
+  "git_status": "M requirements.txt\n M research/artifact_baseline.py\n?? configs/milestone1_paper_described.json\n?? docs/MILESTONE1_PAPER_DESCRIBED_PROTOCOL.md\n?? research/paper_described_baseline.py\n?? research/paper_described_report.py\n?? tests/test_paper_described_baseline.py",
+  "executor_sha256": "619ad2f42eb399c3d65b679d4389e141cd524ad5278da7af04276f9d3d37726f",
+  "started_utc": "2026-10-23T16:33:51Z"
+}

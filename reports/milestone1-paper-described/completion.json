@@ -1,0 +1,22 @@
+{
+  "claim": "Paper-described configuration with documented assumptions; multiclass 27-class experiment; not a verified Table 4 reproduction.",
+  "expected_seeds": [
+    1,
+    7,
+    13,
+    29
+  ],
+  "verified_completed_seeds": [
+    1,
+    7,
+    13,
+    29
+  ],
+  "incomplete": {},
+  "four_seed_package_complete": true,
+  "training_seconds": 1295.9273879160173,
+  "evaluation_seconds": 59.35531937505584,
+  "wall_span_seconds_to_last_completed_seed": 1455.0,
+  "full_run_location": "/Users/jamshid/Documents/uni/deeplearning/iot-ids-quantization-robustness/runs/milestone1-paper-described",
+  "summary_std": "sample SD, ddof=1; unavailable for fewer than two seeds"
+}

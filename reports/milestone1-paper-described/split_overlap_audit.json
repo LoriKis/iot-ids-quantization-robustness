@@ -1,0 +1,16 @@
+{
+  "train_rows": 20997,
+  "val_rows": 4500,
+  "test_rows": 4500,
+  "unique_feature_patterns_total": 11953,
+  "unique_feature_patterns_train": 8610,
+  "unique_feature_patterns_val": 1988,
+  "unique_feature_patterns_test": 1997,
+  "test_rows_matching_train_features": 2804,
+  "test_rows_matching_train_features_percent": 62.31111111111111,
+  "test_rows_matching_train_labeled": 2757,
+  "test_rows_matching_train_labeled_percent": 61.266666666666666,
+  "val_rows_matching_train_features": 2793,
+  "val_rows_matching_train_features_percent": 62.06666666666667,
+  "note": "Row IDs disjoint by construction; overlap reflects duplicate records present in source CSV"
+}
