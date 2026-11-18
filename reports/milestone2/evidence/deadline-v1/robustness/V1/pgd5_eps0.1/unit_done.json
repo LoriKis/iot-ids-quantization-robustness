@@ -1,0 +1,19 @@
+{
+  "accuracy": 0.044444444444444446,
+  "attack": "pgd5",
+  "attack_seconds": 7.1406843373551965,
+  "epsilon": 0.1,
+  "files": {
+    "arrays.npz": "3dd71af221c1afdb178d25ba8d70b487b5f2a2777a527a1a87fdf974591856bf",
+    "attack_checks.json": "5e5cba9f7a9b5459a8630d5404f877add9748231c60194fc7a40ca2ffb0fdae1",
+    "attack_result.json": "c436f9de08a6e21d0861b7b33b9a70f87cc3c61dbc915180ab47b2222b495772"
+  },
+  "ids_sha256": "2ca2619321ba903a900904e1e4a13bf875d0fcbc7072a71005dac925e1900a2d",
+  "macro_f1": 0.04287317620650954,
+  "model_id": "V1",
+  "n": 270,
+  "robust_accuracy": 0.04444444552063942,
+  "source": "fp32_direct",
+  "unit_id": "pgd5_eps0.1",
+  "valid": true
+}

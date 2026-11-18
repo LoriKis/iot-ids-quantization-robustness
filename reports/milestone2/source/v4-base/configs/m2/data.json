@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "frozen_date_local": "2026-11-10",
+  "claim": "Milestone 2A frozen data protocol: one deterministic group-disjoint train/validation/test partition of the verified processed CICIoT CSV, with a train-only MinMaxScaler. This is a new group-disjoint evaluation partition within a previously examined dataset, not a completely untouched external benchmark.",
+  "dataset": {
+    "path": "upstream/PAVE_artifact/data/balanced_CICIoT.csv",
+    "sha256": "0d869e334cc9a2795c96996fbde8fb04a8acac61f5e67c5d46aee2b0717a53ed",
+    "rows": 29997,
+    "features": 39,
+    "classes": 27,
+    "feature_names": [
+      "Header_Length",
+      "Protocol Type",
+      "Time_To_Live",
+      "Rate",
+      "fin_flag_number",
+      "syn_flag_number",
+      "rst_flag_number",
+      "psh_flag_number",
+      "ack_flag_number",
+      "ece_flag_number",
+      "cwr_flag_number",
+      "ack_count",
+      "syn_count",
+      "fin_count",
+      "rst_count",
+      "HTTP",
+      "HTTPS",
+      "DNS",
+      "Telnet",
+      "SMTP",
+      "SSH",
+      "IRC",
+      "TCP",
+      "UDP",
+      "DHCP",
+      "ARP",
+      "ICMP",
+      "IGMP",
+      "IPv",
+      "LLC",
+      "Tot sum",
+      "Min",
+      "Max",
+      "AVG",
+      "Std",
+      "Tot size",
+      "IAT",
+      "Number",
+      "Variance"
+    ],
+    "class_names": [
+      "Benign_Final",
+      "DDoS-ACK_Fragmentation",
+      "DDoS-HTTP_Flood",
+      "DDoS-ICMP_Flood",
+      "DDoS-ICMP_Fragmentation",
+      "DDoS-PSHACK_Flood",
+      "DDoS-RSTFINFlood",
+      "DDoS-SYN_Flood",
+      "DDoS-SlowLoris",
+      "DDoS-SynonymousIP_Flood",
+      "DDoS-TCP_Flood",
+      "DDoS-UDP_Flood",
+      "DDoS-UDP_Fragmentation",
+      "DNS_Spoofing",
+      "DoS-HTTP_Flood",
+      "DoS-SYN_Flood",
+      "DoS-TCP_Flood",
+      "DoS-UDP_Flood",
+      "MITM-ArpSpoofing",
+      "Mirai-greeth_flood",
+      "Mirai-greip_flood",
+      "Mirai-udpplain",
+      "Recon-HostDiscovery",
+      "Recon-OSScan",
+      "Recon-PingSweep",
+      "Recon-PortScan",
+      "VulnerabilityScan"
+    ],
+    "class_names_source": "configs/milestone1_paper_described_adam.json"
+  },
+  "split": {
+    "algorithm": "lexicographic-VJ-local-search",
+    "algorithm_version": 1,
+    "seeds": [
+      20260,
+      20261,
+      20262
+    ],
+    "targets": {
+      "train": 0.7,
+      "validation": 0.15,
+      "test": 0.15
+    },
+    "hard_minima": {
+      "train": 200,
+      "validation": 20,
+      "test": 20
+    },
+    "acceptance_band": {
+      "train": [
+        0.68,
+        0.78
+      ],
+      "validation": [
+        0.1,
+        0.17
+      ],
+      "test": [
+        0.1,
+        0.17
+      ]
+    },
+    "feature_variability": {
+      "min_distinct_train_values": 2,
+      "at_risk_max_minority_groups": 50
+    },
+    "proposals": 200000,
+    "patience": 20000,
+    "output_dir": "reports/milestone2a/split"
+  },
+  "grouping": {
+    "rule": "group id = SHA-256 of the row's 39 features as little-endian float64 bytes (row.astype('<f8').tobytes()); the label is excluded; all rows of a group go to one partition regardless of label",
+    "hash": "sha256",
+    "dtype": "<f8",
+    "label_excluded": true
+  },
+  "scaler": {
+    "kind": "MinMaxScaler",
+    "feature_range": [
+      0,
+      1
+    ],
+    "clip": false,
+    "fit_partition": "train"
+  },
+  "range_audit": {
+    "epsilon_grid": [
+      0,
+      0.01,
+      0.025,
+      0.05,
+      0.1
+    ]
+  }
+}

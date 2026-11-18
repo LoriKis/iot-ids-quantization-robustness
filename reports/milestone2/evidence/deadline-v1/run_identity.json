@@ -1,0 +1,19 @@
+{
+  "config_sha256": "4f12845e86270944be7c9abd885c9af6c9cfb98282ae3a5f4581c0c0fd1c888a",
+  "created_utc": "2026-11-17T12:31:52Z",
+  "epochs": 25,
+  "kind": "deadline-real",
+  "lock_sha256": "1b1ced84ab3a68569c2ace4654b468c6679926dc7546bf7752da4fcfd72f6ccb",
+  "protocol_sha256": "62adf121b39054f8109fd7c89a2c3577a4303f9f1610d60742521fd7dcf47b36",
+  "run_id": "m2-deadline-v1",
+  "source_sha256": {
+    "m2_attacks.py": "d5f04c77a9c0ea0bee060891d0e1fe9cd4dfa562ecb6ca0367cb36c5c2818956",
+    "m2_efficiency.py": "219b83989b032a3ee57c51f83c5f1632dee1be4056f02c425c83f9830647ffbd",
+    "m2_quant.py": "b62ad18dc1726d3b671c43c5b583486b302443f27244109b3dae268dc7636958",
+    "m2_split.py": "bcbc99eec380c160c67c461af4621c63aa7c264fe5869ed853319282cbb6c3ff",
+    "m2_training.py": "5fe4fa1d03a82906826ab48328f2ff64f1fe3b0f290bb856a87d9360135a43a6",
+    "m2b_exec.py": "e7524f06356dc4ab750f8efdee0748221e6a31267a0d4abb96a0f31156e09e24",
+    "quantization.py": "5f52c3cc009ac530fe4fb98fe599f52d1ca83ff32bdb8f5569d048565634dc85"
+  },
+  "v4_manifest_sha256": "5f49c93af30704a181ea77d3c09c23e99062accee40efc6c93ec9365e8a88d99"
+}

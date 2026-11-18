@@ -1,0 +1,15 @@
+{
+  "config_sha256": "4f12845e86270944be7c9abd885c9af6c9cfb98282ae3a5f4581c0c0fd1c888a",
+  "epochs": 25,
+  "finished_utc": "2026-11-17T15:38:06Z",
+  "lock_sha256": "1b1ced84ab3a68569c2ace4654b468c6679926dc7546bf7752da4fcfd72f6ccb",
+  "outputs": {
+    "efficiency/efficiency.json": "6a614000675dd2ffeb45a5914a7f80864a043f293b77e1be10b2688d93fc400a",
+    "efficiency/fixed_rows.json": "c04e03e798c2f99f3394fe10e711ce24a5ec345cd69e8aecba13a61b9010c02a"
+  },
+  "protocol_sha256": "62adf121b39054f8109fd7c89a2c3577a4303f9f1610d60742521fd7dcf47b36",
+  "run_id": "m2-deadline-v1",
+  "seconds": 216.6570249395445,
+  "stage": "efficiency",
+  "started_utc": "2026-11-17T15:34:29Z"
+}

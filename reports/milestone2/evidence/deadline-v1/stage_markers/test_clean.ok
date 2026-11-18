@@ -1,0 +1,16 @@
+{
+  "config_sha256": "4f12845e86270944be7c9abd885c9af6c9cfb98282ae3a5f4581c0c0fd1c888a",
+  "epochs": 25,
+  "finished_utc": "2026-11-17T15:32:48Z",
+  "lock_sha256": "1b1ced84ab3a68569c2ace4654b468c6679926dc7546bf7752da4fcfd72f6ccb",
+  "outputs": {
+    "test/clean_results.json": "dc586912c8bc203a73540d1f8a08c000963c219945f7dec8b23ebc70fddd0a00",
+    "test/predictions_full_test.csv": "b5f2a97a6ebef9605e27d923be56219145a49e58d6b5bbf799ee28af404f44a4",
+    "test/robustness_subset_rows.npz": "e41fdb5809c85c5674b55ac86ea53a54139bd8e2b91be39e21999395477fccd6"
+  },
+  "protocol_sha256": "62adf121b39054f8109fd7c89a2c3577a4303f9f1610d60742521fd7dcf47b36",
+  "run_id": "m2-deadline-v1",
+  "seconds": 16.597550619393587,
+  "stage": "test_clean",
+  "started_utc": "2026-11-17T15:32:32Z"
+}

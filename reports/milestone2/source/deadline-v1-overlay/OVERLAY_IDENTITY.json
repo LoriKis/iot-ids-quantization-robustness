@@ -1,0 +1,7 @@
+{
+  "config_path": "configs/m2_deadline_v1.json",
+  "config_sha256": "4f12845e86270944be7c9abd885c9af6c9cfb98282ae3a5f4581c0c0fd1c888a",
+  "expects_v4_manifest_sha256": "5f49c93af30704a181ea77d3c09c23e99062accee40efc6c93ec9365e8a88d99",
+  "kind": "m2-deadline-overlay",
+  "schema": 1
+}

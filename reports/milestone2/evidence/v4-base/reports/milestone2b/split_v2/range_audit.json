@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "claim": "This is a new group-disjoint evaluation partition within a previously examined dataset, not a completely untouched external benchmark. The dataset was seen by Milestone 1; the earlier test partition was evaluated; identical feature vectors with conflicting labels remain in the data.",
+  "policy": "clean inputs are never clipped, dropped or skipped; the feasible interval is [max(x-eps, min(0, x)), min(x+eps, max(1, x))] and always contains x",
+  "epsilon_grid": [
+    0.0,
+    0.01,
+    0.025,
+    0.05,
+    0.1
+  ],
+  "partitions": {
+    "train": {
+      "rows": 22412,
+      "rows_with_value_outside_unit_range": 0,
+      "coordinates_outside_unit_range": 0,
+      "row_ids_outside_unit_range": [],
+      "max_excursion_above_1": 0.0,
+      "max_excursion_below_0": 0.0,
+      "per_epsilon": {
+        "0.0": {
+          "empty_intervals": 0,
+          "one_sided_out_of_range_coordinates": 0
+        },
+        "0.01": {
+          "empty_intervals": 0,
+          "one_sided_out_of_range_coordinates": 0
+        },
+        "0.025": {
+          "empty_intervals": 0,
+          "one_sided_out_of_range_coordinates": 0
+        },
+        "0.05": {
+          "empty_intervals": 0,
+          "one_sided_out_of_range_coordinates": 0
+        },
+        "0.1": {
+          "empty_intervals": 0,
+          "one_sided_out_of_range_coordinates": 0
+        }
+      }
+    },
+    "validation": {
+      "rows": 3821,
+      "rows_with_value_outside_unit_range": 5,
+      "coordinates_outside_unit_range": 12,
+      "row_ids_outside_unit_range": [
+        7906,
+        11916,
+        12979,
+        17043,
+        17493
+      ],
+      "max_excursion_above_1": 0.29198479652404785,
+      "max_excursion_below_0": 0.0008852168684825301,
+      "per_epsilon": {
+        "0.0": {
+          "empty_intervals": 0,
+          "one_sided_out_of_range_coordinates": 12
+        },
+        "0.01": {
+          "empty_intervals": 0,
+          "one_sided_out_of_range_coordinates": 12
+        },
+        "0.025": {
+          "empty_intervals": 0,
+          "one_sided_out_of_range_coordinates": 12
+        },
+        "0.05": {
+          "empty_intervals": 0,
+          "one_sided_out_of_range_coordinates": 12
+        },
+        "0.1": {
+          "empty_intervals": 0,
+          "one_sided_out_of_range_coordinates": 12
+        }
+      }
+    },
+    "test": {
+      "rows": 3764,
+      "rows_with_value_outside_unit_range": 6,
+      "coordinates_outside_unit_range": 7,
+      "row_ids_outside_unit_range": [
+        12178,
+        15160,
+        18009,
+        27693,
+        28061,
+        29510
+      ],
+      "max_excursion_above_1": 1.6813774108886719,
+      "max_excursion_below_0": 5.0,
+      "per_epsilon": {
+        "0.0": {
+          "empty_intervals": 0,
+          "one_sided_out_of_range_coordinates": 7
+        },
+        "0.01": {
+          "empty_intervals": 0,
+          "one_sided_out_of_range_coordinates": 7
+        },
+        "0.025": {
+          "empty_intervals": 0,
+          "one_sided_out_of_range_coordinates": 7
+        },
+        "0.05": {
+          "empty_intervals": 0,
+          "one_sided_out_of_range_coordinates": 7
+        },
+        "0.1": {
+          "empty_intervals": 0,
+          "one_sided_out_of_range_coordinates": 7
+        }
+      }
+    }
+  },
+  "feature_space_only": "features and labels only; no model was constructed or called"
+}

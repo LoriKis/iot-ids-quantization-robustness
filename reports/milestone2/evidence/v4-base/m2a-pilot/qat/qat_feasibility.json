@@ -1,0 +1,250 @@
+{
+  "status": "supported",
+  "error": null,
+  "module": null,
+  "stage": "inference",
+  "where": null,
+  "packed_dtypes": {
+    "weight_dtype": {
+      "torch.qint8": 23
+    },
+    "weight_qscheme": {
+      "torch.per_channel_affine": 23
+    },
+    "per_island": [
+      {
+        "name": "embedding",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          96,
+          39
+        ]
+      },
+      {
+        "name": "blocks.0.attn.W_q",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          96,
+          96
+        ]
+      },
+      {
+        "name": "blocks.0.attn.W_k",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          96,
+          96
+        ]
+      },
+      {
+        "name": "blocks.0.attn.W_v",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          96,
+          96
+        ]
+      },
+      {
+        "name": "blocks.0.attn.W_o",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          96,
+          96
+        ]
+      },
+      {
+        "name": "blocks.0.ff.0",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          384,
+          96
+        ]
+      },
+      {
+        "name": "blocks.0.ff.3",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          96,
+          384
+        ]
+      },
+      {
+        "name": "blocks.1.attn.W_q",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          96,
+          96
+        ]
+      },
+      {
+        "name": "blocks.1.attn.W_k",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          96,
+          96
+        ]
+      },
+      {
+        "name": "blocks.1.attn.W_v",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          96,
+          96
+        ]
+      },
+      {
+        "name": "blocks.1.attn.W_o",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          96,
+          96
+        ]
+      },
+      {
+        "name": "blocks.1.ff.0",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          384,
+          96
+        ]
+      },
+      {
+        "name": "blocks.1.ff.3",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          96,
+          384
+        ]
+      },
+      {
+        "name": "blocks.2.attn.W_q",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          96,
+          96
+        ]
+      },
+      {
+        "name": "blocks.2.attn.W_k",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          96,
+          96
+        ]
+      },
+      {
+        "name": "blocks.2.attn.W_v",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          96,
+          96
+        ]
+      },
+      {
+        "name": "blocks.2.attn.W_o",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          96,
+          96
+        ]
+      },
+      {
+        "name": "blocks.2.ff.0",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          384,
+          96
+        ]
+      },
+      {
+        "name": "blocks.2.ff.3",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          96,
+          384
+        ]
+      },
+      {
+        "name": "classification_head.0",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          48,
+          96
+        ]
+      },
+      {
+        "name": "classification_head.3",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          27,
+          48
+        ]
+      },
+      {
+        "name": "anomaly_scorer.0",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          64,
+          96
+        ]
+      },
+      {
+        "name": "anomaly_scorer.2",
+        "weight_dtype": "torch.qint8",
+        "weight_qscheme": "torch.per_channel_affine",
+        "weight_shape": [
+          1,
+          64
+        ]
+      }
+    ]
+  },
+  "epochs": 1,
+  "train_rows": 2700,
+  "learning_rate": 0.0001,
+  "claim": "bounded feasibility check only; not a QAT result and not comparable with PTQ without the matched FP32-FT controls",
+  "backend": "fbgemm",
+  "calibration_id_sha256": "1ceef169151c888f4819da61ab6847f787e3135226d17e80369222d7e1b86514",
+  "epoch_losses": [
+    2.990444743544967
+  ],
+  "quantized_ops_profiled": {
+    "operators": {
+      "aten::_empty_affine_quantized": 23,
+      "aten::dequantize": 23,
+      "aten::quantize_per_tensor": 23,
+      "quantized::linear": 23
+    },
+    "quantized_linear_calls": 23
+  },
+  "int8_inference": {
+    "rows": 540,
+    "logits_finite": true,
+    "argmax_agreement_with_fp32_parent": 0.894444465637207,
+    "accuracy_on_eval_rows": 0.1796296238899231
+  },
+  "serialized": true,
+  "seconds": 34.63339879992418
+}

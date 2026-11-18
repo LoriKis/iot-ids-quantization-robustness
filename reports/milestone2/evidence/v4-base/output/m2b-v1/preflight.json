@@ -1,0 +1,208 @@
+{
+  "schema": 1,
+  "created_utc": "20261116T230722Z",
+  "status": "PASS",
+  "kind": "preflight",
+  "verified_on": "crysys-ubuntu-24-04-server-template",
+  "note": "no model was trained and no real-data inference ran",
+  "cores": 8,
+  "ram_gb": 33.65,
+  "recommended_workers": 4,
+  "checks": [
+    {
+      "name": "platform.os",
+      "status": "PASS",
+      "detail": "Linux x86_64; supported: Linux x86_64"
+    },
+    {
+      "name": "platform.arch",
+      "status": "PASS",
+      "detail": "x86_64"
+    },
+    {
+      "name": "platform.python",
+      "status": "PASS",
+      "detail": "Python 3.11.16; the pinned stack is Python 3.11.x"
+    },
+    {
+      "name": "platform.avx2",
+      "status": "PASS",
+      "detail": "avx2 present"
+    },
+    {
+      "name": "platform.avx512",
+      "status": "PASS",
+      "detail": "avx512 present"
+    },
+    {
+      "name": "platform.glibc",
+      "status": "PASS",
+      "detail": "2.39"
+    },
+    {
+      "name": "import.torch",
+      "status": "PASS",
+      "detail": "2.5.1+cpu"
+    },
+    {
+      "name": "import.numpy",
+      "status": "PASS",
+      "detail": "1.26.4"
+    },
+    {
+      "name": "import.pandas",
+      "status": "PASS",
+      "detail": "2.2.3"
+    },
+    {
+      "name": "import.scipy",
+      "status": "PASS",
+      "detail": "1.14.1"
+    },
+    {
+      "name": "import.scikit-learn",
+      "status": "PASS",
+      "detail": "1.5.2"
+    },
+    {
+      "name": "import.matplotlib",
+      "status": "PASS",
+      "detail": "3.9.4"
+    },
+    {
+      "name": "import.psutil",
+      "status": "PASS",
+      "detail": "6.1.1"
+    },
+    {
+      "name": "import.pytest",
+      "status": "PASS",
+      "detail": "8.3.4"
+    },
+    {
+      "name": "int8.fbgemm",
+      "status": "PASS",
+      "detail": "supported engines ['qnnpack', 'none', 'onednn', 'x86', 'fbgemm']; engine set to fbgemm"
+    },
+    {
+      "name": "int8.ptq_linear",
+      "status": "PASS",
+      "detail": "random 8x8 Linear: PTQ converted, finite output, quantized::linear in the profiler trace"
+    },
+    {
+      "name": "int8.qat_convert",
+      "status": "PASS",
+      "detail": "tiny QAT prepare + convert works (no optimizer steps)"
+    },
+    {
+      "name": "data.size",
+      "status": "PASS",
+      "detail": "5444531 bytes (expected 5444531)"
+    },
+    {
+      "name": "data.sha256",
+      "status": "PASS",
+      "detail": "0d869e334cc9a2795c96996fbde8fb04a8acac61f5e67c5d46aee2b0717a53ed (frozen 0d869e334cc9a2795c96996fbde8fb04a8acac61f5e67c5d46aee2b0717a53ed)"
+    },
+    {
+      "name": "data.header",
+      "status": "PASS",
+      "detail": "header equals the 39 feature names plus Label"
+    },
+    {
+      "name": "data.rows",
+      "status": "PASS",
+      "detail": "29997 rows (expected 29997)"
+    },
+    {
+      "name": "pave.identity",
+      "status": "PASS",
+      "detail": "PAVE tree id and file hashes equal PACKAGE_IDENTITY.json"
+    },
+    {
+      "name": "pave.model_file",
+      "status": "PASS",
+      "detail": "standard_transformer.py sha256 b046d0f68da063dcf972ecc80ea3385e83c32e33322ec3a70617ddc4e157fdb1"
+    },
+    {
+      "name": "split.audit",
+      "status": "PASS",
+      "detail": "split_v2 audited read-only: manifest 842cbb882f5062946bdcab097f1370ddd796ff47439ad3581c493eec917b5d62, rows {'train': 22412, 'validation': 3821, 'test': 3764}, 0 shared groups, all classes in every partition"
+    },
+    {
+      "name": "split.freeze",
+      "status": "PASS",
+      "detail": "split_freeze.json: 9 artifact hashes verified"
+    },
+    {
+      "name": "split.original_present",
+      "status": "PASS",
+      "detail": "original M2A split artifacts present"
+    },
+    {
+      "name": "config.siblings",
+      "status": "PASS",
+      "detail": "campaign_v2.json valid; 5 sibling hashes match"
+    },
+    {
+      "name": "config.training",
+      "status": "PASS",
+      "detail": "training.json is the unchanged M2 recipe (25 epochs, batch 512)"
+    },
+    {
+      "name": "fingerprints.compute",
+      "status": "PASS",
+      "detail": "components: source_train=54c024d7, source_quant=8a440780, source_attack=8a440780, source_eff=a809b85d, config=6a903f6c, data=3435e322, split=cc496950, env=683a35e7"
+    },
+    {
+      "name": "fingerprints.state",
+      "status": "PASS",
+      "detail": "no campaign state yet (fresh run)"
+    },
+    {
+      "name": "resources.disk",
+      "status": "PASS",
+      "detail": "28.1 GB free (need 5 GB)"
+    },
+    {
+      "name": "resources.ram",
+      "status": "PASS",
+      "detail": "33.7 GB total (need 8 GB for 1 worker(s))"
+    },
+    {
+      "name": "resources.cores",
+      "status": "PASS",
+      "detail": "8 cores for 1 worker(s) x 2 thread(s)"
+    },
+    {
+      "name": "resources.load",
+      "status": "PASS",
+      "detail": "1/5/15-minute load ['0.70', '0.29', '0.10']"
+    },
+    {
+      "name": "writable.m2b-v1",
+      "status": "PASS",
+      "detail": "/home/crysys/IOT-network-traffic-DL-M2-VM-v4/output/m2b-v1: create, fsync, atomic rename and delete work"
+    },
+    {
+      "name": "writable.logs",
+      "status": "PASS",
+      "detail": "/home/crysys/IOT-network-traffic-DL-M2-VM-v4/output/m2b-v1/logs: create, fsync, atomic rename and delete work"
+    },
+    {
+      "name": "writable..mplconfig",
+      "status": "PASS",
+      "detail": "/home/crysys/IOT-network-traffic-DL-M2-VM-v4/output/.mplconfig: create, fsync, atomic rename and delete work"
+    },
+    {
+      "name": "scripts.bash_n",
+      "status": "PASS",
+      "detail": "bash -n passed for 13 script(s)"
+    },
+    {
+      "name": "threads.smt",
+      "status": "PASS",
+      "detail": "nproc 8, physical cores 8, torch default threads 8"
+    }
+  ]
+}

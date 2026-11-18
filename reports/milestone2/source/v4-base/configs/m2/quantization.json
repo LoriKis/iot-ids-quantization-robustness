@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "frozen_date_local": "2026-11-10",
+  "claim": "Milestone 2A frozen INT8 post-training quantization workflow: PyTorch eager-mode static PTQ on the 23 nn.Linear islands of the unchanged PAVE Standard Transformer. The converted model is hybrid (INT8 Linear, FP32 everything else), not integer-only. Pilot results are non-scientific development checks (1 seed, 2 epochs, small subsets, validation data only) and carry no accuracy or robustness conclusion.",
+  "ptq": {
+    "workflow": "torch.ao.quantization eager-mode static PTQ (torch 2.5.1, fbgemm CPU backend); FX graph mode and PT2E fail on the unchanged model and are not used",
+    "entry_point": "research.quantization.ptq",
+    "scope": "all_linear",
+    "mode": "static",
+    "backend": "fbgemm",
+    "weight_dtype": "qint8",
+    "weight_qscheme": "per_channel_affine",
+    "activation_dtype": "quint8",
+    "qconfig": "torch.ao.quantization.get_default_qconfig('fbgemm'): HistogramObserver (quint8, reduce_range) for activations, PerChannelMinMaxObserver (qint8) for weights",
+    "expected_quantized_linear": 23,
+    "calibration_per_class": 20,
+    "calibration_partition": "train",
+    "calibration_seed_name": "calibration",
+    "calibration_seed_rule": "derived_seed('calibration', split_seed)",
+    "calibration_batch_size": 32,
+    "calibration_input": "noise-free repeated 50-position sequences, rows in ascending row-ID order",
+    "shared_by": ["V2", "V4", "qat_feasibility", "surrogate_fakequant"],
+    "fp32_remaining_operations": [
+      "attention QK^T matmul",
+      "attention softmax",
+      "attention AV matmul",
+      "LayerNorm",
+      "residual adds",
+      "ReLU",
+      "sinusoidal positional-encoding add",
+      "mean pooling over the 50 positions",
+      "anomaly-scorer sigmoid",
+      "dropout (inactive in eval)",
+      "inter-island activations (each island quantizes its input and dequantizes its output)",
+      "Linear biases (kept in FP32 inside the packed parameters)"
+    ],
+    "anomaly_scorer_note": "the two anomaly_scorer linears are quantized although they do not feed the classification logits; they are counted separately from the classification path"
+  },
+  "serialization": {
+    "writer": "research.runner.save_quantized",
+    "reader": "research.quantization.load_int8",
+    "logits_check": "bitwise equal (torch.equal) on every evaluated row",
+    "argmax_check": "identical on every evaluated row",
+    "identity_wrapper_check": "island wrapper reproduces the FP32 logits with atol=0 before observers run",
+    "structure_checks": [
+      "all islands are torch.ao.nn.quantized.Linear with qint8 per_channel_affine packed weights",
+      "no FakeQuantize, observer or float nn.Linear module remains",
+      "torch.profiler shows quantized::linear on a real forward pass"
+    ]
+  },
+  "qat_feasibility": {
+    "status": "optional V5; bounded feasibility check only, never blocks V1-V4",
+    "entry_point": "research.m2_quant.qat_feasibility",
+    "prepare": "research.quantization.prepare_static(qat=True)",
+    "scope": "all_linear",
+    "backend": "fbgemm",
+    "epochs": 1,
+    "optimizer": "torch.optim.Adam",
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0001,
+    "batch_size": 512,
+    "training_noise": "same Gaussian std 0.01 policy and derived_seed('shuffle'|'noise') streams as train_unit",
+    "training_data": "pilot training subset (train partition only)",
+    "freeze": "model.eval(); model.apply(disable_observer); torch.ao.quantization.convert",
+    "inference_check": "real INT8 inference on pilot validation rows with finite logits",
+    "output": "qat_feasibility.json {status, error, module, stage, packed_dtypes}"
+  },
+  "campaign_qat": {
+    "status": "optional; specified here, not run in M2A",
+    "finetune_epochs_k": 3,
+    "learning_rate": 0.0001,
+    "optimizer": "torch.optim.Adam",
+    "weight_decay": 0.0001,
+    "noise_and_shuffle": "same derived_seed('noise') and derived_seed('shuffle') streams as the base training",
+    "arms": ["QAT-FT", "FP32-FT", "FP32-FT->PTQ"],
+    "controls": {
+      "FP32-FT": "same k epochs, same learning rate, same data order and noise, no fake quantization",
+      "FP32-FT->PTQ": "FP32-FT checkpoint followed by the same PTQ workflow and calibration IDs"
+    },
+    "attribution_rule": "any QAT benefit is attributed only relative to FP32-FT->PTQ, never relative to V2, because QAT receives extra fine-tuning epochs"
+  }
+}

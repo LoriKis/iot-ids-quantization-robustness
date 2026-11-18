@@ -1,0 +1,19 @@
+{
+  "accuracy": 0.4925925925925926,
+  "attack": "fgsm",
+  "attack_seconds": 4.3440280966460705,
+  "epsilon": 0.05,
+  "files": {
+    "arrays.npz": "4d00bac12073e72d3ca38a94ca24218772b604524e9a6c32c81ae5f820d80898",
+    "attack_checks.json": "1e94c790f6dbb33ebc9ad579a95a567289eb20f5a32ecff84990168e4c237f63",
+    "attack_result.json": "f0fd8c1b36bde068444c3896e1761d4643b6ab21f13c80628f83bc4a62d5622e"
+  },
+  "ids_sha256": "2ca2619321ba903a900904e1e4a13bf875d0fcbc7072a71005dac925e1900a2d",
+  "macro_f1": 0.4431944161630788,
+  "model_id": "V4",
+  "n": 270,
+  "robust_accuracy": 0.49259260296821594,
+  "source": "bpda_int8",
+  "unit_id": "fgsm_eps0.05",
+  "valid": true
+}

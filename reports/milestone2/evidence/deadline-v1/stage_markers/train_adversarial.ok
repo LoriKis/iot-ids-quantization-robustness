@@ -1,0 +1,16 @@
+{
+  "config_sha256": "4f12845e86270944be7c9abd885c9af6c9cfb98282ae3a5f4581c0c0fd1c888a",
+  "epochs": 25,
+  "finished_utc": "2026-11-17T15:31:56Z",
+  "lock_sha256": "1b1ced84ab3a68569c2ace4654b468c6679926dc7546bf7752da4fcfd72f6ccb",
+  "outputs": {
+    "models/V3/checkpoint.pt": "0714d90f5ffe2d0f18744289f80c9eb9ff0be8e6b492babca561cb31010a9380",
+    "models/V3/deadline_meta.json": "d1f6f6fb2c02a347469748f9b8ad1a750b9df732d52d1ee6f9c26b9b1dfbad30",
+    "models/V3/train_log.json": "7f04f1d2b71d557fc7546c34f13ade3e5ab9bb937cee8b1a584df80d6a26d2b9"
+  },
+  "protocol_sha256": "62adf121b39054f8109fd7c89a2c3577a4303f9f1610d60742521fd7dcf47b36",
+  "run_id": "m2-deadline-v1",
+  "seconds": 9267.055480102077,
+  "stage": "train_adversarial",
+  "started_utc": "2026-11-17T12:57:29Z"
+}

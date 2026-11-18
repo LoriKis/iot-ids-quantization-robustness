@@ -1,0 +1,22 @@
+{
+  "attack_source": "bpda_int8",
+  "target": "V4",
+  "model_id": "V4",
+  "attack": "fgsm",
+  "epsilon": 0.1,
+  "n": 270,
+  "clean_accuracy": 0.6000000238418579,
+  "accuracy_under_attack": 0.37037035822868347,
+  "robust_accuracy": 0.37037035822868347,
+  "attack_success_rate": 0.38271604938271603,
+  "max_linf": 0.10000002384185791,
+  "attack_seconds": 4.444629070349038,
+  "example_id_sha256": "2ca2619321ba903a900904e1e4a13bf875d0fcbc7072a71005dac925e1900a2d",
+  "label_sha256": "a6ac90984dd02372222b0ae7f554ec933ad76acfc4c996f358878de16e11e732",
+  "valid": true,
+  "note": "approximate backward pass: the forward is the real INT8 model, the backward uses dequantized weights (BPDA)",
+  "extra_notes": [
+    "APPROXIMATE INT8 GRADIENT (BPDA)"
+  ],
+  "framing": "Feature-space attacks; no guarantee that perturbed vectors correspond to valid network traffic. Perturbations are tied to the original feature row (one 39-d delta broadcast to all 50 synthetic positions)."
+}

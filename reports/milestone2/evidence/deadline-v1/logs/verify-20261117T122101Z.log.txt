@@ -1,0 +1,5 @@
+overlay: 40 listed, PASS
+V4 manifest hash: PASS
+V4 files: PASS
+V4 verify_package --manifest-only: PASS
+OK

@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "frozen_date_local": "2026-11-10",
+  "claim": "Milestone 2A frozen campaign specification for the four-seed comparison of INT8 post-training quantization and PGD adversarial training in the PAVE Standard Transformer. Specified here and NOT run in M2A. This is a new group-disjoint evaluation partition within a previously examined dataset, not a completely untouched external benchmark.",
+  "status": "specified_not_run",
+  "siblings": {
+    "data": {
+      "path": "configs/m2/data.json",
+      "sha256": "15bb457b2f4313cc64fa3fe3fd4e289a7194abf03ba51369e71b7a9915104ad0"
+    },
+    "training": {
+      "path": "configs/m2/training.json",
+      "sha256": "7be76132a32999f980e0a0e2474a4852439f0622f2f222a6e15d74b81167aaed"
+    },
+    "quantization": {
+      "path": "configs/m2/quantization.json",
+      "sha256": "6bb20f37e56a1a0e627f3741b8a616e37983a1c93d92b42b414d240129c655fe"
+    },
+    "attacks": {
+      "path": "configs/m2/attacks.json",
+      "sha256": "7ff7b518cc76b393a71a09574d1ec4a3f024a998edb4d81842b319a37d5fc8a4"
+    },
+    "efficiency": {
+      "path": "configs/m2/efficiency.json",
+      "sha256": "c3357b941f154c813054ac0cddc76ae343b98503f919b4ca218493fd8d69f4db"
+    },
+    "pilot": {
+      "path": "configs/m2/pilot.json",
+      "sha256": "36fe9028e6b535ff82d2941e57714734fccd92529dc7a73e87111a0464ad9ce3"
+    }
+  },
+  "seeds": [
+    1,
+    7,
+    13,
+    29
+  ],
+  "epochs": 25,
+  "batch_size": 512,
+  "epsilon_grid": [
+    0,
+    0.01,
+    0.025,
+    0.05,
+    0.1
+  ],
+  "step0": {
+    "blocking": true,
+    "description": "Budget-adequacy step that must finish before any other campaign unit runs.",
+    "steps": [
+      "train seed-1 V1 and V3 for 25 epochs on the full M2 train partition",
+      "derive V2 and V4 by INT8 PTQ with the frozen calibration rows",
+      "run the E4 comparison pgd20 vs pgd50x5 in 12 paired cells (V1 and V3 with fp32_direct, V2 and V4 with bpda_int8, epsilon 0.025, 0.05, 0.10) on the validation E4 subset",
+      "stop and ask the user if the E4 subset has fewer than 1000 rows",
+      "freeze the attack budget in configs/m2/attacks.json (status frozen) and record its SHA-256 in a new campaign.json revision",
+      "only then run seeds 7, 13 and 29 and all attack cells"
+    ],
+    "budget_rule": "pgd20 is adequate if n_extra <= ceil(0.01 * n_subset) in every one of the 12 cells; otherwise pgd50x5 is used for every model, source and epsilon",
+    "freeze": "attacks.json hash is not part of this revision; after step 0 a new campaign.json revision stores the frozen attacks.json hash and --confirm-freeze must match that revision"
+  },
+  "matrix": {
+    "models": [
+      "V1",
+      "V2",
+      "V3",
+      "V4"
+    ],
+    "derivation": {
+      "V1": "ordinary FP32",
+      "V2": "INT8 PTQ of V1",
+      "V3": "PGD adversarial training, fresh initialisation, same seed",
+      "V4": "INT8 PTQ of V3"
+    },
+    "required_units": {
+      "trainings": 8,
+      "ptq": 8,
+      "total": 16
+    },
+    "attacks": [
+      "clean",
+      "fgsm",
+      "pgd20 (or pgd50x5 per step 0)"
+    ],
+    "sources_by_target": {
+      "fp32": [
+        "fp32_direct"
+      ],
+      "int8": [
+        "bpda_int8",
+        "transfer_fp32_to_int8",
+        "transfer_fp32_to_int8_targetsel",
+        "surrogate_fakequant",
+        "surrogate_fakequant_targetsel"
+      ]
+    },
+    "diagnostics": [
+      "direct_int8_grad once per INT8 model",
+      "per-example union row over INT8 sources, separately labelled"
+    ],
+    "optional_v5_arms": {
+      "arms": [
+        "QAT-FT",
+        "FP32-FT",
+        "FP32-FT->PTQ"
+      ],
+      "finetune_epochs_k": 3,
+      "learning_rate": 0.0001,
+      "units": 12,
+      "status": "optional; not run in M2A; QAT benefit is attributed only relative to FP32-FT->PTQ"
+    },
+    "aggregation": "mean and standard deviation over the four seeds with per-seed values kept; paired differences V3 vs V1 and V4 vs V2 per seed; no significance claim beyond the spread",
+    "perturbation_structure": "row-tied (primary); per-position mode only as a labelled sensitivity check on seed 1"
+  },
+  "phases": {
+    "m2a": "bounded pilot (research.m2_pilot); train and validation data only",
+    "m2b_validation": "campaign on train and validation data only; not implemented in M2A",
+    "m2b_test": "single test evaluation after all configs are frozen and hashed; needs --confirm-freeze equal to the SHA-256 of this file; belongs to a later milestone"
+  },
+  "post_step0_note": "pgd20 stays provisional until step 0 decides the budget"
+}

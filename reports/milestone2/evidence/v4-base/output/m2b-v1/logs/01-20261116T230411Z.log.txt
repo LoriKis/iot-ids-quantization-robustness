@@ -1,0 +1,13 @@
+[01] log: output/m2b-v1/logs/01-20261116T230411Z.log
+== sha256sum -c MANIFEST.sha256
+== package checks (file set, symlinks, line endings, dataset, PAVE tree)
+manifest: 679 listed, 679 present, 0 missing, 0 mismatched, 0 unlisted, 0 symlinks
+line endings (LF): PASS
+dataset identity: PASS
+PAVE source hashes: PASS
+PAVE tree id: PASS
+runbook table: skipped (project imports unavailable: numpy)
+RESULT: PASS
+== bash -n scripts/vm/*.sh
+Stage 01 passed.
+[01] marker written: output/.stage_markers/01.ok

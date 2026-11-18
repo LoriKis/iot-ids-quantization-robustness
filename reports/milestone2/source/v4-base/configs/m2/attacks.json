@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "frozen_date_local": "2026-11-10",
+  "claim": "Milestone 2A frozen adversarial-evaluation protocol: untargeted cross-entropy FGSM and PGD in MinMax-scaled feature space. These are feature-space attacks; there is no guarantee that perturbed vectors correspond to valid network traffic. Pilot results are non-scientific development checks (1 seed, 2 epochs, small subsets, validation data only) and carry no accuracy or robustness conclusion.",
+  "epsilon_grid": [0, 0.01, 0.025, 0.05, 0.10],
+  "space": "MinMax-scaled feature space (fraction of each feature's training range), L-infinity",
+  "row_tied": true,
+  "perturbation_structure": "one 39-d delta per example broadcast to all 50 synthetic positions (RowTiedModel); the inherited per-position mode is a labelled sensitivity check only",
+  "feasible_set_policy": "lower = max(x - eps, min(0, x)); upper = min(x + eps, max(1, x)); clean inputs are never clipped, dropped or skipped and epsilon is never enlarged; out-of-range coordinates may only move toward the interior within [x - eps, x] (or [x, x + eps])",
+  "budget_tolerance": 2e-06,
+  "attacks": {
+    "fgsm": {"kind": "fgsm", "steps": 1, "restarts": 1, "random_start": false, "status": "frozen"},
+    "pgd20": {"kind": "pgd", "steps": 20, "alpha_fraction": 0.25, "restarts": 3, "random_start": true, "status": "provisional"},
+    "pgd50x5": {"kind": "pgd", "steps": 50, "alpha_fraction": 0.1, "restarts": 5, "random_start": true, "status": "reference"}
+  },
+  "expected_selector_calls_per_batch": {
+    "pgd20": {"selector_calls": 65, "candidates": 64},
+    "pgd50x5": {"selector_calls": 257, "candidates": 256},
+    "fgsm": {"selector_calls": 4, "candidates": 3},
+    "epsilon_0": {"selector_calls": 0, "candidates": 0}
+  },
+  "e4": {
+    "reference_budget": "pgd50x5",
+    "candidate_budget": "pgd20",
+    "per_class_cap": 70,
+    "min_subset": 1000,
+    "all_rows_threshold": 2500,
+    "seed_name": "e4-subset",
+    "epsilons": [0.025, 0.05, 0.10],
+    "models": ["V1", "V2", "V3", "V4"],
+    "max_extra_fraction": 0.01,
+    "rule": "n_extra <= ceil(0.01 * n_subset) in every one of the 12 paired cells",
+    "m2a_scope": "plumbing only; adequacy is decided in campaign step 0"
+  },
+  "sources": {
+    "fp32_direct": "gradient from the FP32 model, evaluated on the same FP32 model (white-box)",
+    "transfer_fp32_to_int8": "pure transfer: FP32 parent ranks and retains candidates (selector None); the retained x_adv is evaluated once on the real INT8 target",
+    "transfer_fp32_to_int8_targetsel": "gradient from the FP32 parent; candidates selected by queries to the real INT8 target (query-assisted, not a pure transfer)",
+    "bpda_int8": "forward through the real INT8 target, backward through dequantized weights (approximate gradient, disclosed); selector is CheckedPair",
+    "surrogate_fakequant": "gradient from a fake-quantized surrogate of the parent; surrogate retains candidates; retained x_adv evaluated once on the real INT8 target",
+    "surrogate_fakequant_targetsel": "same surrogate; the real INT8 target selects candidates (query-assisted)",
+    "direct_int8_grad": "diagnostic only: autograd through the converted quantized modules; never reported as robustness"
+  },
+  "surrogate": {
+    "construction": "prepare_static(qat=True); eval(); enable_observer + enable_fake_quant; calibration rows in saved order under no_grad; disable_observer; no fine-tuning",
+    "calibration_batch_size": 32,
+    "calibration_rows": 540
+  },
+  "seed_name": "atk-eval",
+  "seed_rule": "derived_seed('atk-eval', train_seed, model_id, source, epsilon, batch_index)",
+  "evaluation": {
+    "batch_size": 64,
+    "evaluation_partition": "validation",
+    "clean_predictions": "one explicit selector (or target) call per batch outside attack()"
+  },
+  "bpda_forward_tolerance": 0.0
+}

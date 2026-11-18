@@ -1,0 +1,1400 @@
+{
+  "schema_version": 1,
+  "old_dir": "reports/milestone2a/split",
+  "new_dir": "reports/milestone2b/split_v2",
+  "uses": "feature vectors and labels only; no model was constructed or run",
+  "old_manifest_sha256": "7275ede47c840d8820d6d5892ff6886af8ab23de9373f868a3e2d1c62c969cd2",
+  "new_manifest_sha256": "842cbb882f5062946bdcab097f1370ddd796ff47439ad3581c493eec917b5d62",
+  "chosen_rung": 1,
+  "new_split_seed": 20270,
+  "weak_evidence_threshold_distinct_vectors": 10,
+  "totals": {
+    "old": {
+      "train": {
+        "rows": 21925,
+        "groups": 5330
+      },
+      "validation": {
+        "rows": 4036,
+        "groups": 3327
+      },
+      "test": {
+        "rows": 4036,
+        "groups": 3296
+      }
+    },
+    "new": {
+      "train": {
+        "rows": 22412,
+        "groups": 7023
+      },
+      "validation": {
+        "rows": 3821,
+        "groups": 2467
+      },
+      "test": {
+        "rows": 3764,
+        "groups": 2463
+      }
+    }
+  },
+  "classes_with_one_distinct_train_vector": {
+    "old": [
+      "DDoS-ACK_Fragmentation",
+      "DDoS-ICMP_Flood",
+      "DDoS-ICMP_Fragmentation",
+      "DDoS-PSHACK_Flood",
+      "DDoS-RSTFINFlood",
+      "DDoS-SYN_Flood",
+      "DDoS-TCP_Flood",
+      "DDoS-UDP_Flood",
+      "DDoS-UDP_Fragmentation",
+      "DoS-SYN_Flood",
+      "DoS-TCP_Flood",
+      "DoS-UDP_Flood",
+      "Mirai-greeth_flood",
+      "Mirai-greip_flood",
+      "Mirai-udpplain"
+    ],
+    "new": []
+  },
+  "classes_with_weak_evidence_new": [],
+  "classes": [
+    {
+      "class_id": 0,
+      "name": "Benign_Final",
+      "old": {
+        "train": {
+          "rows": 641,
+          "groups": 552,
+          "max_group_share": 0.031201248049921998,
+          "effective_vectors": 242.12197996464343
+        },
+        "validation": {
+          "rows": 235,
+          "groups": 235,
+          "max_group_share": 0.00425531914893617,
+          "effective_vectors": 235.00000000000006
+        },
+        "test": {
+          "rows": 235,
+          "groups": 235,
+          "max_group_share": 0.00425531914893617,
+          "effective_vectors": 235.00000000000006
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 607,
+          "groups": 607,
+          "max_group_share": 0.0016474464579901153,
+          "effective_vectors": 606.9999999999999,
+          "floor": 340
+        },
+        "validation": {
+          "rows": 255,
+          "groups": 205,
+          "max_group_share": 0.0784313725490196,
+          "effective_vectors": 75.3476245654693,
+          "floor": 205
+        },
+        "test": {
+          "rows": 249,
+          "groups": 210,
+          "max_group_share": 0.08032128514056225,
+          "effective_vectors": 88.95408895265425,
+          "floor": 205
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 1,
+      "name": "DDoS-ACK_Fragmentation",
+      "old": {
+        "train": {
+          "rows": 656,
+          "groups": 1,
+          "max_group_share": 1.0,
+          "effective_vectors": 1.0
+        },
+        "validation": {
+          "rows": 228,
+          "groups": 159,
+          "max_group_share": 0.08771929824561403,
+          "effective_vectors": 63.08737864077669
+        },
+        "test": {
+          "rows": 227,
+          "groups": 163,
+          "max_group_share": 0.05726872246696035,
+          "effective_vectors": 79.39753466872111
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 818,
+          "groups": 163,
+          "max_group_share": 0.8019559902200489,
+          "effective_vectors": 1.5543022267234692,
+          "floor": 107
+        },
+        "validation": {
+          "rows": 141,
+          "groups": 80,
+          "max_group_share": 0.14184397163120568,
+          "effective_vectors": 28.36091298145507,
+          "floor": 65
+        },
+        "test": {
+          "rows": 152,
+          "groups": 80,
+          "max_group_share": 0.08552631578947369,
+          "effective_vectors": 37.87540983606558,
+          "floor": 65
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 2,
+      "name": "DDoS-HTTP_Flood",
+      "old": {
+        "train": {
+          "rows": 640,
+          "groups": 412,
+          "max_group_share": 0.309375,
+          "effective_vectors": 10.304921002314583
+        },
+        "validation": {
+          "rows": 235,
+          "groups": 206,
+          "max_group_share": 0.1276595744680851,
+          "effective_vectors": 49.977375565610835
+        },
+        "test": {
+          "rows": 236,
+          "groups": 216,
+          "max_group_share": 0.08898305084745763,
+          "effective_vectors": 84.90243902439023
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 647,
+          "groups": 450,
+          "max_group_share": 0.30602782071097373,
+          "effective_vectors": 10.556805285854782,
+          "floor": 278
+        },
+        "validation": {
+          "rows": 229,
+          "groups": 191,
+          "max_group_share": 0.13100436681222707,
+          "effective_vectors": 46.53149955634426,
+          "floor": 167
+        },
+        "test": {
+          "rows": 235,
+          "groups": 193,
+          "max_group_share": 0.08936170212765958,
+          "effective_vectors": 75.7544581618656,
+          "floor": 167
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 3,
+      "name": "DDoS-ICMP_Flood",
+      "old": {
+        "train": {
+          "rows": 1024,
+          "groups": 1,
+          "max_group_share": 1.0,
+          "effective_vectors": 1.0
+        },
+        "validation": {
+          "rows": 43,
+          "groups": 35,
+          "max_group_share": 0.11627906976744186,
+          "effective_vectors": 24.012987012987015
+        },
+        "test": {
+          "rows": 44,
+          "groups": 39,
+          "max_group_share": 0.06818181818181818,
+          "effective_vectors": 33.379310344827594
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 1067,
+          "groups": 44,
+          "max_group_share": 0.9597000937207123,
+          "effective_vectors": 1.0857031962991324,
+          "floor": 25
+        },
+        "validation": {
+          "rows": 24,
+          "groups": 15,
+          "max_group_share": 0.20833333333333334,
+          "effective_vectors": 9.931034482758621,
+          "floor": 15
+        },
+        "test": {
+          "rows": 20,
+          "groups": 16,
+          "max_group_share": 0.2,
+          "effective_vectors": 11.764705882352938,
+          "floor": 15
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 4,
+      "name": "DDoS-ICMP_Fragmentation",
+      "old": {
+        "train": {
+          "rows": 814,
+          "groups": 1,
+          "max_group_share": 1.0,
+          "effective_vectors": 1.0
+        },
+        "validation": {
+          "rows": 148,
+          "groups": 107,
+          "max_group_share": 0.07432432432432433,
+          "effective_vectors": 49.33333333333333
+        },
+        "test": {
+          "rows": 149,
+          "groups": 109,
+          "max_group_share": 0.0738255033557047,
+          "effective_vectors": 53.23980815347721
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 924,
+          "groups": 111,
+          "max_group_share": 0.8809523809523809,
+          "effective_vectors": 1.2883178966238413,
+          "floor": 72
+        },
+        "validation": {
+          "rows": 88,
+          "groups": 53,
+          "max_group_share": 0.125,
+          "effective_vectors": 22.000000000000004,
+          "floor": 44
+        },
+        "test": {
+          "rows": 99,
+          "groups": 53,
+          "max_group_share": 0.1111111111111111,
+          "effective_vectors": 24.56390977443608,
+          "floor": 44
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 5,
+      "name": "DDoS-PSHACK_Flood",
+      "old": {
+        "train": {
+          "rows": 990,
+          "groups": 1,
+          "max_group_share": 1.0,
+          "effective_vectors": 1.0
+        },
+        "validation": {
+          "rows": 61,
+          "groups": 41,
+          "max_group_share": 0.11475409836065574,
+          "effective_vectors": 23.402515723270437
+        },
+        "test": {
+          "rows": 60,
+          "groups": 39,
+          "max_group_share": 0.2,
+          "effective_vectors": 16.21621621621621
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 1036,
+          "groups": 47,
+          "max_group_share": 0.9555984555984556,
+          "effective_vectors": 1.0950368618552742,
+          "floor": 27
+        },
+        "validation": {
+          "rows": 37,
+          "groups": 17,
+          "max_group_share": 0.1891891891891892,
+          "effective_vectors": 9.992700729927007,
+          "floor": 17
+        },
+        "test": {
+          "rows": 38,
+          "groups": 17,
+          "max_group_share": 0.3157894736842105,
+          "effective_vectors": 7.292929292929293,
+          "floor": 17
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 6,
+      "name": "DDoS-RSTFINFlood",
+      "old": {
+        "train": {
+          "rows": 997,
+          "groups": 1,
+          "max_group_share": 1.0,
+          "effective_vectors": 1.0
+        },
+        "validation": {
+          "rows": 57,
+          "groups": 43,
+          "max_group_share": 0.10526315789473684,
+          "effective_vectors": 26.851239669421492
+        },
+        "test": {
+          "rows": 57,
+          "groups": 45,
+          "max_group_share": 0.10526315789473684,
+          "effective_vectors": 30.36448598130842
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 1049,
+          "groups": 53,
+          "max_group_share": 0.9504289799809342,
+          "effective_vectors": 1.106975326463869,
+          "floor": 29
+        },
+        "validation": {
+          "rows": 32,
+          "groups": 18,
+          "max_group_share": 0.1875,
+          "effective_vectors": 10.666666666666666,
+          "floor": 18
+        },
+        "test": {
+          "rows": 30,
+          "groups": 18,
+          "max_group_share": 0.2,
+          "effective_vectors": 11.249999999999998,
+          "floor": 18
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 7,
+      "name": "DDoS-SYN_Flood",
+      "old": {
+        "train": {
+          "rows": 1020,
+          "groups": 1,
+          "max_group_share": 1.0,
+          "effective_vectors": 1.0
+        },
+        "validation": {
+          "rows": 45,
+          "groups": 27,
+          "max_group_share": 0.17777777777777778,
+          "effective_vectors": 14.361702127659573
+        },
+        "test": {
+          "rows": 46,
+          "groups": 31,
+          "max_group_share": 0.10869565217391304,
+          "effective_vectors": 20.346153846153854
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 1054,
+          "groups": 35,
+          "max_group_share": 0.967741935483871,
+          "effective_vectors": 1.0677428842194698,
+          "floor": 19
+        },
+        "validation": {
+          "rows": 29,
+          "groups": 12,
+          "max_group_share": 0.27586206896551724,
+          "effective_vectors": 6.837398373983741,
+          "floor": 12
+        },
+        "test": {
+          "rows": 28,
+          "groups": 12,
+          "max_group_share": 0.17857142857142858,
+          "effective_vectors": 8.909090909090908,
+          "floor": 12
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 8,
+      "name": "DDoS-SlowLoris",
+      "old": {
+        "train": {
+          "rows": 641,
+          "groups": 515,
+          "max_group_share": 0.0109204368174727,
+          "effective_vectors": 367.1858802502234
+        },
+        "validation": {
+          "rows": 235,
+          "groups": 228,
+          "max_group_share": 0.00851063829787234,
+          "effective_vectors": 221.78714859437753
+        },
+        "test": {
+          "rows": 235,
+          "groups": 228,
+          "max_group_share": 0.00851063829787234,
+          "effective_vectors": 221.78714859437753
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 583,
+          "groups": 581,
+          "max_group_share": 0.003430531732418525,
+          "effective_vectors": 579.0272572402046,
+          "floor": 323
+        },
+        "validation": {
+          "rows": 259,
+          "groups": 195,
+          "max_group_share": 0.023166023166023165,
+          "effective_vectors": 135.5171717171717,
+          "floor": 195
+        },
+        "test": {
+          "rows": 269,
+          "groups": 195,
+          "max_group_share": 0.026022304832713755,
+          "effective_vectors": 135.25420560747662,
+          "floor": 195
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 9,
+      "name": "DDoS-SynonymousIP_Flood",
+      "old": {
+        "train": {
+          "rows": 1031,
+          "groups": 2,
+          "max_group_share": 0.9990300678952473,
+          "effective_vectors": 1.0019417457425341
+        },
+        "validation": {
+          "rows": 40,
+          "groups": 33,
+          "max_group_share": 0.05,
+          "effective_vectors": 29.629629629629626
+        },
+        "test": {
+          "rows": 40,
+          "groups": 25,
+          "max_group_share": 0.375,
+          "effective_vectors": 6.349206349206351
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 1064,
+          "groups": 35,
+          "max_group_share": 0.9680451127819549,
+          "effective_vectors": 1.0670748604531477,
+          "floor": 20
+        },
+        "validation": {
+          "rows": 20,
+          "groups": 13,
+          "max_group_share": 0.1,
+          "effective_vectors": 11.764705882352938,
+          "floor": 12
+        },
+        "test": {
+          "rows": 27,
+          "groups": 12,
+          "max_group_share": 0.5555555555555556,
+          "effective_vectors": 3.0502092050209195,
+          "floor": 12
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 10,
+      "name": "DDoS-TCP_Flood",
+      "old": {
+        "train": {
+          "rows": 985,
+          "groups": 1,
+          "max_group_share": 1.0,
+          "effective_vectors": 1.0
+        },
+        "validation": {
+          "rows": 63,
+          "groups": 35,
+          "max_group_share": 0.23809523809523808,
+          "effective_vectors": 12.442006269592477
+        },
+        "test": {
+          "rows": 63,
+          "groups": 36,
+          "max_group_share": 0.14285714285714285,
+          "effective_vectors": 18.123287671232877
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 1026,
+          "groups": 42,
+          "max_group_share": 0.9600389863547758,
+          "effective_vectors": 1.0849354713037456,
+          "floor": 24
+        },
+        "validation": {
+          "rows": 42,
+          "groups": 15,
+          "max_group_share": 0.35714285714285715,
+          "effective_vectors": 6.082758620689654,
+          "floor": 15
+        },
+        "test": {
+          "rows": 43,
+          "groups": 15,
+          "max_group_share": 0.20930232558139536,
+          "effective_vectors": 8.932367149758454,
+          "floor": 15
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 11,
+      "name": "DDoS-UDP_Flood",
+      "old": {
+        "train": {
+          "rows": 1008,
+          "groups": 1,
+          "max_group_share": 1.0,
+          "effective_vectors": 1.0
+        },
+        "validation": {
+          "rows": 52,
+          "groups": 31,
+          "max_group_share": 0.15384615384615385,
+          "effective_vectors": 15.54022988505747
+        },
+        "test": {
+          "rows": 51,
+          "groups": 33,
+          "max_group_share": 0.11764705882352941,
+          "effective_vectors": 20.162790697674417
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 1046,
+          "groups": 39,
+          "max_group_share": 0.9636711281070746,
+          "effective_vectors": 1.0767777250709087,
+          "floor": 21
+        },
+        "validation": {
+          "rows": 29,
+          "groups": 13,
+          "max_group_share": 0.2413793103448276,
+          "effective_vectors": 8.00952380952381,
+          "floor": 13
+        },
+        "test": {
+          "rows": 36,
+          "groups": 13,
+          "max_group_share": 0.2222222222222222,
+          "effective_vectors": 8.1,
+          "floor": 13
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 12,
+      "name": "DDoS-UDP_Fragmentation",
+      "old": {
+        "train": {
+          "rows": 727,
+          "groups": 1,
+          "max_group_share": 1.0,
+          "effective_vectors": 1.0
+        },
+        "validation": {
+          "rows": 192,
+          "groups": 143,
+          "max_group_share": 0.057291666666666664,
+          "effective_vectors": 78.76923076923077
+        },
+        "test": {
+          "rows": 192,
+          "groups": 130,
+          "max_group_share": 0.046875,
+          "effective_vectors": 67.27007299270073
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 864,
+          "groups": 138,
+          "max_group_share": 0.8414351851851852,
+          "effective_vectors": 1.4120370895801886,
+          "floor": 91
+        },
+        "validation": {
+          "rows": 117,
+          "groups": 68,
+          "max_group_share": 0.09401709401709402,
+          "effective_vectors": 32.209411764705884,
+          "floor": 55
+        },
+        "test": {
+          "rows": 130,
+          "groups": 68,
+          "max_group_share": 0.06923076923076923,
+          "effective_vectors": 37.22466960352423,
+          "floor": 55
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 13,
+      "name": "DNS_Spoofing",
+      "old": {
+        "train": {
+          "rows": 641,
+          "groups": 618,
+          "max_group_share": 0.0093603744149766,
+          "effective_vectors": 571.4617524339359
+        },
+        "validation": {
+          "rows": 235,
+          "groups": 228,
+          "max_group_share": 0.03404255319148936,
+          "effective_vectors": 189.77663230240555
+        },
+        "test": {
+          "rows": 235,
+          "groups": 232,
+          "max_group_share": 0.01702127659574468,
+          "effective_vectors": 223.58299595141702
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 618,
+          "groups": 614,
+          "max_group_share": 0.0048543689320388345,
+          "effective_vectors": 606.2285714285714,
+          "floor": 359
+        },
+        "validation": {
+          "rows": 242,
+          "groups": 231,
+          "max_group_share": 0.03305785123966942,
+          "effective_vectors": 191.3856209150327,
+          "floor": 216
+        },
+        "test": {
+          "rows": 251,
+          "groups": 233,
+          "max_group_share": 0.02390438247011952,
+          "effective_vectors": 196.2647975077882,
+          "floor": 216
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 14,
+      "name": "DoS-HTTP_Flood",
+      "old": {
+        "train": {
+          "rows": 640,
+          "groups": 511,
+          "max_group_share": 0.0625,
+          "effective_vectors": 159.2534992223949
+        },
+        "validation": {
+          "rows": 236,
+          "groups": 227,
+          "max_group_share": 0.025423728813559324,
+          "effective_vectors": 203.27007299270073
+        },
+        "test": {
+          "rows": 235,
+          "groups": 224,
+          "max_group_share": 0.05106382978723404,
+          "effective_vectors": 150.47683923705725
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 587,
+          "groups": 576,
+          "max_group_share": 0.020442930153321975,
+          "effective_vectors": 479.23365785813627,
+          "floor": 320
+        },
+        "validation": {
+          "rows": 274,
+          "groups": 193,
+          "max_group_share": 0.145985401459854,
+          "effective_vectors": 37.80261832829809,
+          "floor": 193
+        },
+        "test": {
+          "rows": 250,
+          "groups": 193,
+          "max_group_share": 0.048,
+          "effective_vectors": 123.03149606299213,
+          "floor": 193
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 15,
+      "name": "DoS-SYN_Flood",
+      "old": {
+        "train": {
+          "rows": 930,
+          "groups": 1,
+          "max_group_share": 1.0,
+          "effective_vectors": 1.0
+        },
+        "validation": {
+          "rows": 91,
+          "groups": 45,
+          "max_group_share": 0.27472527472527475,
+          "effective_vectors": 10.796610169491526
+        },
+        "test": {
+          "rows": 90,
+          "groups": 43,
+          "max_group_share": 0.13333333333333333,
+          "effective_vectors": 17.920353982300885
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 983,
+          "groups": 53,
+          "max_group_share": 0.9460834181078331,
+          "effective_vectors": 1.1171552277286105,
+          "floor": 29
+        },
+        "validation": {
+          "rows": 66,
+          "groups": 18,
+          "max_group_share": 0.3787878787878788,
+          "effective_vectors": 5.627906976744185,
+          "floor": 18
+        },
+        "test": {
+          "rows": 62,
+          "groups": 18,
+          "max_group_share": 0.1935483870967742,
+          "effective_vectors": 9.856410256410255,
+          "floor": 18
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 16,
+      "name": "DoS-TCP_Flood",
+      "old": {
+        "train": {
+          "rows": 1035,
+          "groups": 1,
+          "max_group_share": 1.0,
+          "effective_vectors": 1.0
+        },
+        "validation": {
+          "rows": 38,
+          "groups": 23,
+          "max_group_share": 0.2631578947368421,
+          "effective_vectors": 9.025000000000004
+        },
+        "test": {
+          "rows": 38,
+          "groups": 23,
+          "max_group_share": 0.21052631578947367,
+          "effective_vectors": 11.645161290322589
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 1061,
+          "groups": 27,
+          "max_group_share": 0.9754948162111216,
+          "effective_vectors": 1.0508470937249998,
+          "floor": 15
+        },
+        "validation": {
+          "rows": 25,
+          "groups": 10,
+          "max_group_share": 0.4,
+          "effective_vectors": 4.2517006802721085,
+          "floor": 10
+        },
+        "test": {
+          "rows": 25,
+          "groups": 10,
+          "max_group_share": 0.32,
+          "effective_vectors": 5.630630630630631,
+          "floor": 10
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 17,
+      "name": "DoS-UDP_Flood",
+      "old": {
+        "train": {
+          "rows": 803,
+          "groups": 1,
+          "max_group_share": 1.0,
+          "effective_vectors": 1.0
+        },
+        "validation": {
+          "rows": 154,
+          "groups": 68,
+          "max_group_share": 0.22727272727272727,
+          "effective_vectors": 12.973741794310722
+        },
+        "test": {
+          "rows": 154,
+          "groups": 52,
+          "max_group_share": 0.34415584415584416,
+          "effective_vectors": 6.818861414606095
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 873,
+          "groups": 71,
+          "max_group_share": 0.9198167239404352,
+          "effective_vectors": 1.181817054052001,
+          "floor": 40
+        },
+        "validation": {
+          "rows": 114,
+          "groups": 25,
+          "max_group_share": 0.30701754385964913,
+          "effective_vectors": 6.517552657973923,
+          "floor": 25
+        },
+        "test": {
+          "rows": 124,
+          "groups": 25,
+          "max_group_share": 0.4274193548387097,
+          "effective_vectors": 4.7427513880320795,
+          "floor": 25
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 18,
+      "name": "MITM-ArpSpoofing",
+      "old": {
+        "train": {
+          "rows": 641,
+          "groups": 218,
+          "max_group_share": 0.21528861154446177,
+          "effective_vectors": 13.251233592414616
+        },
+        "validation": {
+          "rows": 235,
+          "groups": 186,
+          "max_group_share": 0.2127659574468085,
+          "effective_vectors": 20.567970204841718
+        },
+        "test": {
+          "rows": 235,
+          "groups": 164,
+          "max_group_share": 0.3021276595744681,
+          "effective_vectors": 10.605915114269253
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 531,
+          "groups": 340,
+          "max_group_share": 0.17325800376647835,
+          "effective_vectors": 30.00542726402044,
+          "floor": 189
+        },
+        "validation": {
+          "rows": 305,
+          "groups": 114,
+          "max_group_share": 0.4524590163934426,
+          "effective_vectors": 4.292603017857966,
+          "floor": 114
+        },
+        "test": {
+          "rows": 275,
+          "groups": 114,
+          "max_group_share": 0.2581818181818182,
+          "effective_vectors": 9.657131911633256,
+          "floor": 114
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 19,
+      "name": "Mirai-greeth_flood",
+      "old": {
+        "train": {
+          "rows": 947,
+          "groups": 1,
+          "max_group_share": 1.0,
+          "effective_vectors": 1.0
+        },
+        "validation": {
+          "rows": 82,
+          "groups": 41,
+          "max_group_share": 0.3780487804878049,
+          "effective_vectors": 6.428298279158699
+        },
+        "test": {
+          "rows": 82,
+          "groups": 44,
+          "max_group_share": 0.23170731707317074,
+          "effective_vectors": 13.132812499999995
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 996,
+          "groups": 50,
+          "max_group_share": 0.9508032128514057,
+          "effective_vectors": 1.1061015233180722,
+          "floor": 28
+        },
+        "validation": {
+          "rows": 59,
+          "groups": 18,
+          "max_group_share": 0.5254237288135594,
+          "effective_vectors": 3.4027370478983374,
+          "floor": 18
+        },
+        "test": {
+          "rows": 56,
+          "groups": 18,
+          "max_group_share": 0.3392857142857143,
+          "effective_vectors": 6.452674897119341,
+          "floor": 18
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 20,
+      "name": "Mirai-greip_flood",
+      "old": {
+        "train": {
+          "rows": 975,
+          "groups": 1,
+          "max_group_share": 1.0,
+          "effective_vectors": 1.0
+        },
+        "validation": {
+          "rows": 68,
+          "groups": 41,
+          "max_group_share": 0.10294117647058823,
+          "effective_vectors": 25.130434782608695
+        },
+        "test": {
+          "rows": 68,
+          "groups": 33,
+          "max_group_share": 0.5147058823529411,
+          "effective_vectors": 3.6698412698412706
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 1019,
+          "groups": 45,
+          "max_group_share": 0.956820412168793,
+          "effective_vectors": 1.092242410344715,
+          "floor": 25
+        },
+        "validation": {
+          "rows": 39,
+          "groups": 15,
+          "max_group_share": 0.1794871794871795,
+          "effective_vectors": 10.636363636363638,
+          "floor": 15
+        },
+        "test": {
+          "rows": 53,
+          "groups": 15,
+          "max_group_share": 0.660377358490566,
+          "effective_vectors": 2.234685759745426,
+          "floor": 15
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 21,
+      "name": "Mirai-udpplain",
+      "old": {
+        "train": {
+          "rows": 937,
+          "groups": 1,
+          "max_group_share": 1.0,
+          "effective_vectors": 1.0
+        },
+        "validation": {
+          "rows": 87,
+          "groups": 42,
+          "max_group_share": 0.20689655172413793,
+          "effective_vectors": 13.34920634920635
+        },
+        "test": {
+          "rows": 87,
+          "groups": 44,
+          "max_group_share": 0.21839080459770116,
+          "effective_vectors": 14.254237288135597
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 987,
+          "groups": 51,
+          "max_group_share": 0.9493414387031408,
+          "effective_vectors": 1.1095078808089578,
+          "floor": 29
+        },
+        "validation": {
+          "rows": 57,
+          "groups": 18,
+          "max_group_share": 0.3157894736842105,
+          "effective_vectors": 6.212237093690249,
+          "floor": 18
+        },
+        "test": {
+          "rows": 67,
+          "groups": 18,
+          "max_group_share": 0.2835820895522388,
+          "effective_vectors": 8.550476190476191,
+          "floor": 18
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 22,
+      "name": "Recon-HostDiscovery",
+      "old": {
+        "train": {
+          "rows": 641,
+          "groups": 587,
+          "max_group_share": 0.0062402496099844,
+          "effective_vectors": 534.3055916775032
+        },
+        "validation": {
+          "rows": 235,
+          "groups": 235,
+          "max_group_share": 0.00425531914893617,
+          "effective_vectors": 235.00000000000006
+        },
+        "test": {
+          "rows": 235,
+          "groups": 234,
+          "max_group_share": 0.00851063829787234,
+          "effective_vectors": 233.01687763713082
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 614,
+          "groups": 614,
+          "max_group_share": 0.0016286644951140066,
+          "effective_vectors": 613.9999999999999,
+          "floor": 352
+        },
+        "validation": {
+          "rows": 245,
+          "groups": 221,
+          "max_group_share": 0.0163265306122449,
+          "effective_vectors": 198.10231023102304,
+          "floor": 212
+        },
+        "test": {
+          "rows": 252,
+          "groups": 221,
+          "max_group_share": 0.015873015873015872,
+          "effective_vectors": 196.00000000000006,
+          "floor": 212
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 23,
+      "name": "Recon-OSScan",
+      "old": {
+        "train": {
+          "rows": 641,
+          "groups": 508,
+          "max_group_share": 0.10764430577223089,
+          "effective_vectors": 73.20167468376981
+        },
+        "validation": {
+          "rows": 235,
+          "groups": 230,
+          "max_group_share": 0.00851063829787234,
+          "effective_vectors": 225.40816326530614
+        },
+        "test": {
+          "rows": 235,
+          "groups": 228,
+          "max_group_share": 0.00851063829787234,
+          "effective_vectors": 221.7871485943775
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 581,
+          "groups": 578,
+          "max_group_share": 0.0034423407917383822,
+          "effective_vectors": 575.0613287904599,
+          "floor": 322
+        },
+        "validation": {
+          "rows": 292,
+          "groups": 194,
+          "max_group_share": 0.2363013698630137,
+          "effective_vectors": 16.504839334107622,
+          "floor": 194
+        },
+        "test": {
+          "rows": 238,
+          "groups": 194,
+          "max_group_share": 0.01680672268907563,
+          "effective_vectors": 160.01129943502826,
+          "floor": 194
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 24,
+      "name": "Recon-PingSweep",
+      "old": {
+        "train": {
+          "rows": 640,
+          "groups": 602,
+          "max_group_share": 0.034375,
+          "effective_vectors": 359.298245614035
+        },
+        "validation": {
+          "rows": 235,
+          "groups": 235,
+          "max_group_share": 0.00425531914893617,
+          "effective_vectors": 235.00000000000006
+        },
+        "test": {
+          "rows": 236,
+          "groups": 235,
+          "max_group_share": 0.00847457627118644,
+          "effective_vectors": 234.016806722689
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 616,
+          "groups": 616,
+          "max_group_share": 0.0016233766233766235,
+          "effective_vectors": 616.0,
+          "floor": 357
+        },
+        "validation": {
+          "rows": 245,
+          "groups": 222,
+          "max_group_share": 0.08979591836734693,
+          "effective_vectors": 84.42334739803098,
+          "floor": 215
+        },
+        "test": {
+          "rows": 250,
+          "groups": 234,
+          "max_group_share": 0.012,
+          "effective_vectors": 218.53146853146853,
+          "floor": 215
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 25,
+      "name": "Recon-PortScan",
+      "old": {
+        "train": {
+          "rows": 640,
+          "groups": 459,
+          "max_group_share": 0.1,
+          "effective_vectors": 78.89060092449921
+        },
+        "validation": {
+          "rows": 236,
+          "groups": 220,
+          "max_group_share": 0.07203389830508475,
+          "effective_vectors": 109.63779527559053
+        },
+        "test": {
+          "rows": 235,
+          "groups": 225,
+          "max_group_share": 0.01276595744680851,
+          "effective_vectors": 211.5900383141762
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 558,
+          "groups": 542,
+          "max_group_share": 0.007168458781362007,
+          "effective_vectors": 518.94,
+          "floor": 301
+        },
+        "validation": {
+          "rows": 290,
+          "groups": 181,
+          "max_group_share": 0.2206896551724138,
+          "effective_vectors": 17.81779661016949,
+          "floor": 181
+        },
+        "test": {
+          "rows": 263,
+          "groups": 181,
+          "max_group_share": 0.04182509505703422,
+          "effective_vectors": 107.90795631825272,
+          "floor": 181
+        }
+      },
+      "new_weak_evidence": false
+    },
+    {
+      "class_id": 26,
+      "name": "VulnerabilityScan",
+      "old": {
+        "train": {
+          "rows": 640,
+          "groups": 556,
+          "max_group_share": 0.078125,
+          "effective_vectors": 128.40125391849529
+        },
+        "validation": {
+          "rows": 235,
+          "groups": 232,
+          "max_group_share": 0.01276595744680851,
+          "effective_vectors": 227.2633744855967
+        },
+        "test": {
+          "rows": 236,
+          "groups": 235,
+          "max_group_share": 0.00847457627118644,
+          "effective_vectors": 234.016806722689
+        }
+      },
+      "new": {
+        "train": {
+          "rows": 603,
+          "groups": 603,
+          "max_group_share": 0.001658374792703151,
+          "effective_vectors": 603.0000000000001,
+          "floor": 341
+        },
+        "validation": {
+          "rows": 266,
+          "groups": 205,
+          "max_group_share": 0.18796992481203006,
+          "effective_vectors": 25.729454545454544,
+          "floor": 205
+        },
+        "test": {
+          "rows": 242,
+          "groups": 215,
+          "max_group_share": 0.01652892561983471,
+          "effective_vectors": 184.16352201257854,
+          "floor": 205
+        }
+      },
+      "new_weak_evidence": false
+    }
+  ],
+  "shared_groups": {
+    "old": {
+      "train/validation": 0,
+      "train/test": 0,
+      "validation/test": 0
+    },
+    "new": {
+      "train/validation": 0,
+      "train/test": 0,
+      "validation/test": 0
+    }
+  },
+  "rows_preserved": true,
+  "labels_sha256": {
+    "before": "ec0dacdd849ac4d9422ba3a135934c32feb58c876e438ffd5cdc86261a8cf043",
+    "after": "ec0dacdd849ac4d9422ba3a135934c32feb58c876e438ffd5cdc86261a8cf043"
+  },
+  "labels_unchanged": true,
+  "all_classes_in_every_partition": true,
+  "old_artifact_sha256": {
+    "split_attempts.json": "b75be2beb40099b183ed69d0c62f22ed81eca90b4266250c151abe70c06927ec",
+    "group_manifest.json": "cc013e46c50268226e46a5e1807ed65f986af8d9e39e41c763dec97d37dbfabb",
+    "conflicting_labels.json": "a6a3b656e4c9c4edbe500becb7cdd1e0fa40da59919fe67d6db6d61203a5b673",
+    "scaler_minmax.json": "1e18be556342bcaf26cad38205d426996a503553c03724ec4d83ce29cd5cfb61",
+    "range_audit.json": "c2c6758a534a58173ed472f7c2d6b2f0d521a38d75dbb7e1c5a15de51208a679",
+    "split_report.md": "dff905917a2ac4acfa28a0bb2c0765f942268c1b7fd15a0f03442ec5d32021a1",
+    "split_m2.json": "28842289737d4aac7597ac93a70a777d5892ef4539a38e5e83a592a97f3004b3"
+  },
+  "old_artifacts_equal_before_snapshot": {
+    "matches": true,
+    "recorded": {
+      "split_attempts.json": "b75be2beb40099b183ed69d0c62f22ed81eca90b4266250c151abe70c06927ec",
+      "group_manifest.json": "cc013e46c50268226e46a5e1807ed65f986af8d9e39e41c763dec97d37dbfabb",
+      "conflicting_labels.json": "a6a3b656e4c9c4edbe500becb7cdd1e0fa40da59919fe67d6db6d61203a5b673",
+      "scaler_minmax.json": "1e18be556342bcaf26cad38205d426996a503553c03724ec4d83ce29cd5cfb61",
+      "range_audit.json": "c2c6758a534a58173ed472f7c2d6b2f0d521a38d75dbb7e1c5a15de51208a679",
+      "split_report.md": "dff905917a2ac4acfa28a0bb2c0765f942268c1b7fd15a0f03442ec5d32021a1",
+      "split_m2.json": "28842289737d4aac7597ac93a70a777d5892ef4539a38e5e83a592a97f3004b3"
+    }
+  }
+}

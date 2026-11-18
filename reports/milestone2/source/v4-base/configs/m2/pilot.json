@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "frozen_date_local": "2026-11-10",
+  "claim": "Milestone 2A bounded pilot: one seed, two epochs, small train and validation subsets, no test-partition access. Pilot results are non-scientific development checks (1 seed, 2 epochs, small subsets, validation data only) and carry no accuracy or robustness conclusion.",
+  "phase": "m2a",
+  "seeds": [1],
+  "epochs": 2,
+  "batch_size": 512,
+  "allow_partitions": ["train", "validation"],
+  "output_dir": "artifacts/m2a-pilot",
+  "inputs": {
+    "split": "reports/milestone2a/split/split_m2.json",
+    "scaler": "reports/milestone2a/split/scaler_minmax.json",
+    "integrity_before": "artifacts/m2a-integrity/before.json"
+  },
+  "siblings": {
+    "data": "configs/m2/data.json",
+    "training": "configs/m2/training.json",
+    "quantization": "configs/m2/quantization.json",
+    "attacks": "configs/m2/attacks.json",
+    "efficiency": "configs/m2/efficiency.json"
+  },
+  "subsets": {
+    "seed_name": "pilot-subset",
+    "seed_rule": "derived_seed('pilot-subset', split_seed, <subset name>) with split_seed read from split_m2.json",
+    "train_per_class": 100,
+    "validation_per_class": 20,
+    "attack_per_class": 10,
+    "calibration_per_class": 20,
+    "expected_rows": {"train": 2700, "validation": 540, "attack": 270, "calibration": 540}
+  },
+  "attack": {
+    "budgets": ["fgsm", "pgd20"],
+    "epsilon_grid": [0, 0.01, 0.025, 0.05, 0.10],
+    "sources": ["fp32_direct", "transfer_fp32_to_int8", "transfer_fp32_to_int8_targetsel", "bpda_int8",
+                "surrogate_fakequant", "surrogate_fakequant_targetsel"],
+    "diagnostic": "direct_int8_grad"
+  },
+  "e4_plumbing": {
+    "enabled": true,
+    "subset": "stratified subset of the 270-row attack subset",
+    "per_class": 2,
+    "expected_rows": 54,
+    "candidate_budget": "pgd20",
+    "reference_budget": "pgd50x5",
+    "reason": "bounds pilot run time (pgd50x5 costs about 4x pgd20 per row on this CPU); the pilot E4 run checks the code path and measures cost only and decides nothing about budget adequacy"
+  },
+  "efficiency": {"enabled": true, "mode": "pilot"},
+  "qat_feasibility": {"enabled": true},
+  "threads": {"training": 2, "attack_and_evaluation": 1},
+  "banner": "Pilot results are non-scientific development checks (1 seed, 2 epochs, small subsets, validation data only) and carry no accuracy or robustness conclusion."
+}

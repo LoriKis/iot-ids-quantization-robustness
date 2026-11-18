@@ -1,0 +1,21 @@
+{
+  "config_sha256": "4f12845e86270944be7c9abd885c9af6c9cfb98282ae3a5f4581c0c0fd1c888a",
+  "epochs": 25,
+  "finished_utc": "2026-11-17T15:32:10Z",
+  "lock_sha256": "1b1ced84ab3a68569c2ace4654b468c6679926dc7546bf7752da4fcfd72f6ccb",
+  "outputs": {
+    "calibration/calibration_ids.json": "de11d3a7090edd8e25b4697e31d761279dc224e58c38e53fed736ee5a14400b8",
+    "calibration/calibration_x.pt": "ceb7c616306b1645969ec08fdb1015a12fb2b5a292421cc9a2c55e35b3d2c024",
+    "models/V2/conversion.json": "f4bcc23844cc6c3813c70722fd22753085748996f9e7a72da486a4cfff21d4cd",
+    "models/V2/deadline_meta.json": "3d2433c153d77c7dac34e928b44ae97c1bbc43f43da908352b23a4e829a318e2",
+    "models/V2/state.pt": "4a43b9917f995188e19ccd5db8f1dc9dcda2eec1ab2f44cd3f909d58d12b61fd",
+    "models/V4/conversion.json": "97a457e8c48de067e66c90e90e6a73b9f67a35da4f1918609a430f4c11b35884",
+    "models/V4/deadline_meta.json": "16176dbad8875c19e5693cc4a1ac0c393a53c6716a7e4d889f512764276df859",
+    "models/V4/state.pt": "bf6a091b2723e194743d5dbb03839df0f1874762e831443260a39f13701128b4"
+  },
+  "protocol_sha256": "62adf121b39054f8109fd7c89a2c3577a4303f9f1610d60742521fd7dcf47b36",
+  "run_id": "m2-deadline-v1",
+  "seconds": 13.205073171295226,
+  "stage": "ptq",
+  "started_utc": "2026-11-17T15:31:57Z"
+}

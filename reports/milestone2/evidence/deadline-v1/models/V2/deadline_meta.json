@@ -1,0 +1,16 @@
+{
+  "adversarial": false,
+  "checkpoint_file": "state.pt",
+  "checkpoint_sha256": "4a43b9917f995188e19ccd5db8f1dc9dcda2eec1ab2f44cd3f909d58d12b61fd",
+  "config_sha256": "4f12845e86270944be7c9abd885c9af6c9cfb98282ae3a5f4581c0c0fd1c888a",
+  "created_utc": "2026-11-17T15:32:04Z",
+  "epochs": 25,
+  "extra": {
+    "calibration_id_sha256": "e403fd4e30c68d85d39ddc3871d8f62c54571c037c6fce74780ad5fb5f929d4a",
+    "parent": "V1",
+    "parent_checkpoint_sha256": "2333a20bb80d0ac4ad66764a9d86b4bf4ccbf90e544ac75967d86e3ed9119ecf"
+  },
+  "kind": "deadline-real",
+  "model_id": "V2",
+  "run_id": "m2-deadline-v1"
+}

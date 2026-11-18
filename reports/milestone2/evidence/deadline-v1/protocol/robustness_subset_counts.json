@@ -1,0 +1,147 @@
+{
+  "classes_missing": [],
+  "classes_present": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26
+  ],
+  "counts": {
+    "0": {
+      "available": 249,
+      "selected": 10
+    },
+    "1": {
+      "available": 152,
+      "selected": 10
+    },
+    "10": {
+      "available": 43,
+      "selected": 10
+    },
+    "11": {
+      "available": 36,
+      "selected": 10
+    },
+    "12": {
+      "available": 130,
+      "selected": 10
+    },
+    "13": {
+      "available": 251,
+      "selected": 10
+    },
+    "14": {
+      "available": 250,
+      "selected": 10
+    },
+    "15": {
+      "available": 62,
+      "selected": 10
+    },
+    "16": {
+      "available": 25,
+      "selected": 10
+    },
+    "17": {
+      "available": 124,
+      "selected": 10
+    },
+    "18": {
+      "available": 275,
+      "selected": 10
+    },
+    "19": {
+      "available": 56,
+      "selected": 10
+    },
+    "2": {
+      "available": 235,
+      "selected": 10
+    },
+    "20": {
+      "available": 53,
+      "selected": 10
+    },
+    "21": {
+      "available": 67,
+      "selected": 10
+    },
+    "22": {
+      "available": 252,
+      "selected": 10
+    },
+    "23": {
+      "available": 238,
+      "selected": 10
+    },
+    "24": {
+      "available": 250,
+      "selected": 10
+    },
+    "25": {
+      "available": 263,
+      "selected": 10
+    },
+    "26": {
+      "available": 242,
+      "selected": 10
+    },
+    "3": {
+      "available": 20,
+      "selected": 10
+    },
+    "4": {
+      "available": 99,
+      "selected": 10
+    },
+    "5": {
+      "available": 38,
+      "selected": 10
+    },
+    "6": {
+      "available": 30,
+      "selected": 10
+    },
+    "7": {
+      "available": 28,
+      "selected": 10
+    },
+    "8": {
+      "available": 269,
+      "selected": 10
+    },
+    "9": {
+      "available": 27,
+      "selected": 10
+    }
+  },
+  "n_actual": 270,
+  "per_class_target": 10,
+  "seed_name": "m2-deadline-robust-subset",
+  "split_seed": 20270,
+  "subset_ids_sha256": "2ca2619321ba903a900904e1e4a13bf875d0fcbc7072a71005dac925e1900a2d"
+}

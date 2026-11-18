@@ -1,0 +1,15 @@
+{
+  "cap_hours": 9.0,
+  "config_sha256": "4f12845e86270944be7c9abd885c9af6c9cfb98282ae3a5f4581c0c0fd1c888a",
+  "epochs": 25,
+  "estimate_sha256": "52d0b29d97e26397d29d29e5a2b4eb63b57c2a45bd9feb8c277b60f2d694c549",
+  "hours_remaining_at_timing": 12.0,
+  "kind": "m2_deadline_budget_lock",
+  "locked_utc": "2026-11-17T12:29:08Z",
+  "per_class_target": 10,
+  "performance_inspected": false,
+  "planned_hours": 3.8199281987254703,
+  "run_id": "m2-deadline-v1",
+  "schema": 1,
+  "selection_basis": "runtime only"
+}

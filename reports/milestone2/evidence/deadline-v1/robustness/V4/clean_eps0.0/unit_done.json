@@ -1,0 +1,26 @@
+{
+  "accuracy": 0.6,
+  "attack": "clean",
+  "attack_seconds": 0.9432974467054009,
+  "eps0_consistency": {
+    "behaviour": "record_only",
+    "eps0_max_abs_logit_diff": null,
+    "eps0_vs_full_test_mismatches": 0,
+    "n_compared": 270,
+    "n_missing_ids": 0
+  },
+  "epsilon": 0.0,
+  "files": {
+    "arrays.npz": "108ad61b1f700a7cd4eb3517e655bbdc308d13155d9501a27b1fc3964e2df671",
+    "attack_checks.json": "55023a8147ebcd28444e7bf736f32febeba81439f3fdcb1abd8a801ed441df28",
+    "attack_result.json": "ace39edb0282ec7138afa41d92fa563f9fdffff01b8bb838fb8ba9d4abecd1ac"
+  },
+  "ids_sha256": "2ca2619321ba903a900904e1e4a13bf875d0fcbc7072a71005dac925e1900a2d",
+  "macro_f1": 0.5397237735287987,
+  "model_id": "V4",
+  "n": 270,
+  "robust_accuracy": 0.6000000238418579,
+  "source": "bpda_int8",
+  "unit_id": "clean_eps0.0",
+  "valid": true
+}

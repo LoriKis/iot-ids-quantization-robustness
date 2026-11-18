@@ -1,0 +1,28 @@
+{
+  "banner": "Pilot results are non-scientific development checks (1 seed, 2 epochs, small subsets, validation data only) and carry no accuracy or robustness conclusion.",
+  "framing": "This is a new group-disjoint evaluation partition within a previously examined dataset, not a completely untouched external benchmark. The dataset was seen by Milestone 1; the earlier test partition was evaluated; identical feature vectors with conflicting labels remain in the data.",
+  "partition": "validation (pilot subset)",
+  "n_rows": 540,
+  "models": {
+    "V1": {
+      "accuracy": 0.14259259402751923,
+      "n": 540
+    },
+    "V3": {
+      "accuracy": 0.10555555671453476,
+      "n": 540
+    },
+    "V2": {
+      "accuracy": 0.14629629254341125,
+      "n": 540
+    },
+    "V4": {
+      "accuracy": 0.10555555671453476,
+      "n": 540
+    }
+  },
+  "int8_agreement": {
+    "V2_vs_V1": 0.9907407164573669,
+    "V4_vs_V3": 0.9962962865829468
+  }
+}

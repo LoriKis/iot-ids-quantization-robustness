@@ -1,0 +1,116 @@
+[04] log: output/m2b-v1/logs/04-20261116T230921Z.log
+== pytest (all tests; every skip reason is printed)
+........................................................................ [ 15%]
+........................................................................ [ 30%]
+........................................................................ [ 45%]
+........................................................................ [ 60%]
+........................................................................ [ 75%]
+........................................................................ [ 90%]
+..............................................                           [100%]
+=============================== warnings summary ===============================
+tests/test_m2_attacks.py: 5 warnings
+tests/test_m2_efficiency.py: 2 warnings
+tests/test_m2_quant.py: 13 warnings
+tests/test_m2b_vm_only.py: 3 warnings
+tests/test_pipeline.py: 6 warnings
+  /home/crysys/IOT-network-traffic-DL-M2-VM-v4/research/quantization.py:57: UserWarning: Static INT8 kernels are narrowly exempted from PyTorch's unsupported determinism guard; float operations retain the requested policy.
+    warnings.warn("Static INT8 kernels are narrowly exempted from PyTorch's unsupported determinism guard; float operations retain the requested policy.", UserWarning)
+
+tests/test_m2_efficiency.py::test_child_measure_fp32_and_int8_fields
+  /home/crysys/IOT-network-traffic-DL-M2-VM-v4/.venv/lib/python3.11/site-packages/torch/_utils.py:413: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+    device=storage.device,
+
+tests/test_m2b_io.py::test_durable_write_leaves_no_tmp_and_roundtrips
+  /home/crysys/IOT-network-traffic-DL-M2-VM-v4/tests/test_m2b_io.py:19: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+    assert torch.load(tmp_path / "a" / "t.pt")["w"].tolist() == [1.0, 1.0]
+
+tests/test_m2b_report.py::test_single_seed_prints_na
+  /home/crysys/IOT-network-traffic-DL-M2-VM-v4/.venv/lib/python3.11/site-packages/matplotlib/_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+
+tests/test_m2b_report.py::test_single_seed_prints_na
+tests/test_m2b_report.py::test_single_seed_prints_na
+tests/test_m2b_report.py::test_single_seed_prints_na
+tests/test_m2b_report.py::test_single_seed_prints_na
+tests/test_m2b_report.py::test_single_seed_prints_na
+tests/test_m2b_report.py::test_single_seed_prints_na
+  /home/crysys/IOT-network-traffic-DL-M2-VM-v4/.venv/lib/python3.11/site-packages/matplotlib/_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+tests/test_m2b_report.py::test_single_seed_prints_na
+tests/test_m2b_report.py::test_single_seed_prints_na
+tests/test_m2b_report.py::test_single_seed_prints_na
+tests/test_m2b_report.py::test_single_seed_prints_na
+tests/test_m2b_report.py::test_single_seed_prints_na
+tests/test_m2b_report.py::test_single_seed_prints_na
+  /home/crysys/IOT-network-traffic-DL-M2-VM-v4/.venv/lib/python3.11/site-packages/matplotlib/_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+tests/test_m2b_report.py::test_single_seed_prints_na
+  /home/crysys/IOT-network-traffic-DL-M2-VM-v4/.venv/lib/python3.11/site-packages/matplotlib/_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    ParserElement.enablePackrat()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+478 passed, 45 warnings in 350.35s (0:05:50)
+== package file set must be unchanged by the tests
+manifest: 679 listed, 679 present, 0 missing, 0 mismatched, 0 unlisted, 0 symlinks
+RESULT: PASS (manifest only)
+== bounded smoke
+2026-11-16 23:15:18,450 INFO 154146 unit s1.val.calib: start (calib, 1 thread(s))
+2026-11-16 23:15:19,059 INFO 154146 unit s1.val.calib: completed in 0.6 s
+2026-11-16 23:15:19,126 INFO 154146 unit s1.val.train.V1: start (train, 2 thread(s))
+2026-11-16 23:15:34,751 INFO 154146 unit s1.val.train.V1: completed in 15.6 s
+2026-11-16 23:15:34,819 INFO 154146 unit s1.val.train.V3: start (train, 2 thread(s))
+2026-11-16 23:17:09,870 INFO 154146 unit s1.val.train.V3: completed in 95.0 s
+2026-11-16 23:17:09,934 INFO 154146 unit s1.val.paircheck: start (paircheck, 1 thread(s))
+2026-11-16 23:17:10,037 INFO 154146 unit s1.val.paircheck: completed in 0.1 s
+2026-11-16 23:17:10,103 INFO 154146 unit s1.val.ptq.V2: start (ptq, 1 thread(s))
+/home/crysys/IOT-network-traffic-DL-M2-VM-v4/research/quantization.py:57: UserWarning: Static INT8 kernels are narrowly exempted from PyTorch's unsupported determinism guard; float operations retain the requested policy.
+  warnings.warn("Static INT8 kernels are narrowly exempted from PyTorch's unsupported determinism guard; float operations retain the requested policy.", UserWarning)
+/home/crysys/IOT-network-traffic-DL-M2-VM-v4/.venv/lib/python3.11/site-packages/torch/ao/quantization/observer.py:229: UserWarning: Please use quant_min and quant_max to specify the range for observers.                     reduce_range will be deprecated in a future release of PyTorch.
+  warnings.warn(
+/home/crysys/IOT-network-traffic-DL-M2-VM-v4/.venv/lib/python3.11/site-packages/torch/_utils.py:413: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  device=storage.device,
+2026-11-16 23:17:19,067 INFO 154146 unit s1.val.ptq.V2: completed in 9.0 s
+2026-11-16 23:17:19,139 INFO 154146 unit s1.val.ptq.V4: start (ptq, 1 thread(s))
+2026-11-16 23:17:27,989 INFO 154146 unit s1.val.ptq.V4: completed in 8.8 s
+2026-11-16 23:17:28,062 INFO 154146 unit s1.val.clean.V1: start (clean, 1 thread(s))
+2026-11-16 23:17:28,827 INFO 154146 unit s1.val.clean.V1: completed in 0.8 s
+2026-11-16 23:17:28,891 INFO 154146 unit s1.val.clean.V2: start (clean, 1 thread(s))
+/home/crysys/IOT-network-traffic-DL-M2-VM-v4/research/quantization.py:57: UserWarning: Static INT8 kernels are narrowly exempted from PyTorch's unsupported determinism guard; float operations retain the requested policy.
+  warnings.warn("Static INT8 kernels are narrowly exempted from PyTorch's unsupported determinism guard; float operations retain the requested policy.", UserWarning)
+/home/crysys/IOT-network-traffic-DL-M2-VM-v4/.venv/lib/python3.11/site-packages/torch/ao/quantization/observer.py:229: UserWarning: Please use quant_min and quant_max to specify the range for observers.                     reduce_range will be deprecated in a future release of PyTorch.
+  warnings.warn(
+2026-11-16 23:17:32,722 INFO 154146 unit s1.val.clean.V2: completed in 3.8 s
+2026-11-16 23:17:32,799 INFO 154146 unit s1.val.clean.V3: start (clean, 1 thread(s))
+2026-11-16 23:17:33,654 INFO 154146 unit s1.val.clean.V3: completed in 0.8 s
+2026-11-16 23:17:33,810 INFO 154146 unit s1.val.clean.V4: start (clean, 1 thread(s))
+/home/crysys/IOT-network-traffic-DL-M2-VM-v4/research/quantization.py:57: UserWarning: Static INT8 kernels are narrowly exempted from PyTorch's unsupported determinism guard; float operations retain the requested policy.
+  warnings.warn("Static INT8 kernels are narrowly exempted from PyTorch's unsupported determinism guard; float operations retain the requested policy.", UserWarning)
+/home/crysys/IOT-network-traffic-DL-M2-VM-v4/.venv/lib/python3.11/site-packages/torch/ao/quantization/observer.py:229: UserWarning: Please use quant_min and quant_max to specify the range for observers.                     reduce_range will be deprecated in a future release of PyTorch.
+  warnings.warn(
+2026-11-16 23:17:37,636 INFO 154146 unit s1.val.clean.V4: completed in 3.8 s
+2026-11-16 23:17:37,707 INFO 154146 unit s1.val.diag.V2: start (diag, 1 thread(s))
+/home/crysys/IOT-network-traffic-DL-M2-VM-v4/research/quantization.py:57: UserWarning: Static INT8 kernels are narrowly exempted from PyTorch's unsupported determinism guard; float operations retain the requested policy.
+  warnings.warn("Static INT8 kernels are narrowly exempted from PyTorch's unsupported determinism guard; float operations retain the requested policy.", UserWarning)
+/home/crysys/IOT-network-traffic-DL-M2-VM-v4/.venv/lib/python3.11/site-packages/torch/ao/quantization/observer.py:229: UserWarning: Please use quant_min and quant_max to specify the range for observers.                     reduce_range will be deprecated in a future release of PyTorch.
+  warnings.warn(
+2026-11-16 23:17:41,503 INFO 154146 unit s1.val.diag.V2: completed in 3.8 s
+2026-11-16 23:17:41,570 INFO 154146 unit s1.val.diag.V4: start (diag, 1 thread(s))
+2026-11-16 23:17:45,290 INFO 154146 unit s1.val.diag.V4: completed in 3.7 s
+2026-11-16 23:17:45,393 INFO 154146 unit s1.val.e4.V1.fp32_direct.eps0.05: start (e4, 1 thread(s))
+2026-11-16 23:28:08,765 INFO 154146 unit s1.val.e4.V1.fp32_direct.eps0.05: completed in 623.4 s
+2026-11-16 23:28:08,843 INFO 154146 unit s1.val.e4.V2.bpda_int8.eps0.05: start (e4, 1 thread(s))
+2026-11-16 23:40:32,455 INFO 154146 unit s1.val.e4.V2.bpda_int8.eps0.05: completed in 743.6 s
+2026-11-16 23:40:32,530 INFO 154146 unit s1.val.e4.V3.fp32_direct.eps0.05: start (e4, 1 thread(s))
+2026-11-16 23:50:58,629 INFO 154146 unit s1.val.e4.V3.fp32_direct.eps0.05: completed in 626.1 s
+2026-11-16 23:50:58,700 INFO 154146 unit s1.val.e4.V4.bpda_int8.eps0.05: start (e4, 1 thread(s))
+2026-11-17 00:03:16,267 INFO 154146 unit s1.val.e4.V4.bpda_int8.eps0.05: completed in 737.6 s
+PASS  smoke.scope              53 units; train 100/class, validation 20/class, attack rows 10/class; test partition not loaded
+FAIL  smoke.time               exceeded --max-minutes 45
+PASS  smoke.test_partition     only train and validation subsets were loaded
+FAIL  restart.resume           the smoke V1 training unit did not complete; the restart check was skipped
+PASS  fingerprint.refusal      altered component 'source_train' refused: fingerprint mismatch (nothing was written):
+source_train: recorded 00000000000000000000000000000000000000000000000000000
+PASS  report.build             report generated from smoke predictions (4 rows recomputed and cross-checked)
+smoke FAIL in 48.0 min; written /home/crysys/IOT-network-traffic-DL-M2-VM-v4/output/m2b-v1-smoke/smoke_report.json
