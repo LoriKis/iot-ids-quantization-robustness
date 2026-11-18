@@ -1,0 +1,211 @@
+=== a. Models, parents, epochs, seed (confirmed from config/log files; no checkpoint loaded)
+PASS [a.V1.epochs] V1 train_log: epochs=25, 25 epoch_losses entries, 1100 optimizer updates (25 x 44 steps/epoch)
+PASS [a.V1.updates] V1 optimizer updates = 25 x steps/epoch
+PASS [a.V1.seed] V1 train_log seed = 1
+PASS [a.V1.latest] V1 ckpt/latest.json points to epoch 25 (final-epoch rule)
+PASS [a.V1.meta] V1 deadline_meta and stage marker both say 25 epochs
+PASS [a.V1.adv_flag] V1 adversarial flag = False
+PASS [a.V1.optim] V1: torch.optim.Adam, batch size 512
+PASS [a.V3.epochs] V3 train_log: epochs=25, 25 epoch_losses entries, 1100 optimizer updates (25 x 44 steps/epoch)
+PASS [a.V3.updates] V3 optimizer updates = 25 x steps/epoch
+PASS [a.V3.seed] V3 train_log seed = 1
+PASS [a.V3.latest] V3 ckpt/latest.json points to epoch 25 (final-epoch rule)
+PASS [a.V3.meta] V3 deadline_meta and stage marker both say 25 epochs
+PASS [a.V3.adv_flag] V3 adversarial flag = True
+PASS [a.V3.optim] V3: torch.optim.Adam, batch size 512
+PASS [a.init] V1 and V3 start from the same initial state hash (5ad55216f5ed...)
+PASS [a.final_differs] V1 and V3 final state hashes differ (different training objective)
+PASS [a.v3_adv] V3 trained with PGD (eps 0.05, 5 steps, alpha 0.025, random start); V1 has no adversarial config
+PASS [a.V2.parent] V2 deadline_meta parent = V1
+PASS [a.V2.float_hash] V2 conversion.json float_state_hash equals V1 final_state_hash (a65289c05b8e...): converted from the finished parent
+PASS [a.V2.parent_ckpt] V2 records parent checkpoint sha256 = V1 checkpoint sha256
+PASS [a.V2.no_train_log] V2 has no train_log.json in the evidence (no training run recorded for the INT8 copy)
+PASS [a.V2.ptq] V2: static PTQ, 23 Linear layers converted, scope all_linear
+PASS [a.V2.calib] V2 calibration: 540 training rows (20 per class)
+PASS [a.V2.reload] V2 reload check on 3821 validation rows: logits bit-identical
+NOTE [a.V2.epochs_field] V2 deadline_meta.epochs=25 is the PARENT's epoch count carried over; the INT8 copy received 0 additional training epochs (PTQ only).
+PASS [a.V4.parent] V4 deadline_meta parent = V3
+PASS [a.V4.float_hash] V4 conversion.json float_state_hash equals V3 final_state_hash (1de5c6995ba5...): converted from the finished parent
+PASS [a.V4.parent_ckpt] V4 records parent checkpoint sha256 = V3 checkpoint sha256
+PASS [a.V4.no_train_log] V4 has no train_log.json in the evidence (no training run recorded for the INT8 copy)
+PASS [a.V4.ptq] V4: static PTQ, 23 Linear layers converted, scope all_linear
+PASS [a.V4.calib] V4 calibration: 540 training rows (20 per class)
+PASS [a.V4.reload] V4 reload check on 3821 validation rows: logits bit-identical
+NOTE [a.V4.epochs_field] V4 deadline_meta.epochs=25 is the PARENT's epoch count carried over; the INT8 copy received 0 additional training epochs (PTQ only).
+=== b. Split, scaler, calibration, hashes
+PASS [b.sizes] split sizes {'train': 22412, 'validation': 3821, 'test': 3764}
+PASS [b.sizes_protocol] protocol.json sizes agree
+PASS [b.disjoint] train/validation/test row-ID sets are pairwise disjoint
+PASS [b.cover] partitions cover exactly 29997 distinct rows
+PASS [b.idhash.train] recomputed id hash of train ids equals split_m2.json id_sha256 (809f5a587ddb...)
+PASS [b.idhash.validation] recomputed id hash of validation ids equals split_m2.json id_sha256 (802f4b499adf...)
+PASS [b.idhash.test] recomputed id hash of test ids equals split_m2.json id_sha256 (884f3d385c0d...)
+PASS [b.test_hash_protocol] protocol test_partition_id_sha256 equals split test id hash
+PASS [b.split_sha] sha256(split_m2.json) = protocol split_m2_sha256 (7b8da874b36c...)
+PASS [b.scaler_sha] sha256(scaler_minmax.json) = protocol scaler_sha256 (de41d50dba0e...)
+PASS [b.scaler_train_only] scaler_minmax.json: fitted on training rows only, n_samples_seen=22412, train_ids_sha256 equals the training id hash (confirmed from file; refit not possible here because the dataset CSV is not in the evidence)
+PASS [b.scaler_cfg] split_m2.json scaler: MinMax [0,1], fit_partition=train, clip=false
+PASS [b.calib_subset] 540 unique calibration ids, all inside the training partition
+PASS [b.calib_hash] calibration id hash matches calibration_ids.json and V2 conversion.json
+PASS [b.calib_no_eval] no calibration id is a validation or test id
+NOTE [b.calib_perclass] calibration per-class balance (20 per class) is confirmed from calibration_ids.json/conversion.json per_class_counts, not recomputed (labels of training rows are not in the compact evidence). per_class_counts=[20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
+PASS [b.classes] 27 class names: Benign_Final + 26 attack/recon types
+=== c. Clean accuracy / macro-F1 on all 3,764 test IDs (recomputed from predictions_full_test.csv)
+PASS [c.rows] 3764 rows, 3764 unique example_id
+PASS [c.ids_equal_split] example_ids equal the split's test ids exactly
+PASS [c.same_ids_all_models] one prediction per model on the SAME rows (one shared id/label column; every model has a prediction on every id)
+PASS [c.pred_range] all predictions are in 0..26
+PASS [c.all_labels_present] all 27 labels occur in the test labels (no absent-class case in the full test)
+PASS [c.test_counts] per-class test label counts equal split_m2.json per_class_counts.test
+PASS [c.V1.vs_clean_results] V1 FP32-ordinary recomputed acc=0.619553666 f1=0.567975670 vs clean_results.json acc=0.619553666 f1=0.567975670 (|diff| 0.0e+00 / 0.0e+00)
+PASS [c.V1.vs_model_comparison] V1 matches results/model_comparison.csv
+PASS [c.V1.sklearn] V1 macro-F1 equals sklearn f1_score(labels=range(27), average='macro', zero_division=0): 0.567975669635
+NOTE [c.V1.absent_pred] V1 never predicts class(es) [10]; those classes contribute F1=0 to the 27-class average (zero_division=0)
+PASS [c.V2.vs_clean_results] V2 INT8-PTQ-ordinary recomputed acc=0.617693943 f1=0.568866205 vs clean_results.json acc=0.617693943 f1=0.568866205 (|diff| 0.0e+00 / 0.0e+00)
+PASS [c.V2.vs_model_comparison] V2 matches results/model_comparison.csv
+PASS [c.V2.sklearn] V2 macro-F1 equals sklearn f1_score(labels=range(27), average='macro', zero_division=0): 0.568866204683
+NOTE [c.V2.absent_pred] V2 never predicts class(es) [10]; those classes contribute F1=0 to the 27-class average (zero_division=0)
+PASS [c.V3.vs_clean_results] V3 FP32-adversarial recomputed acc=0.538522848 f1=0.498963755 vs clean_results.json acc=0.538522848 f1=0.498963755 (|diff| 0.0e+00 / 0.0e+00)
+PASS [c.V3.vs_model_comparison] V3 matches results/model_comparison.csv
+PASS [c.V3.sklearn] V3 macro-F1 equals sklearn f1_score(labels=range(27), average='macro', zero_division=0): 0.498963755066
+NOTE [c.V3.absent_pred] V3 never predicts class(es) [10, 20]; those classes contribute F1=0 to the 27-class average (zero_division=0)
+PASS [c.V4.vs_clean_results] V4 INT8-PTQ-adversarial recomputed acc=0.539319872 f1=0.499425097 vs clean_results.json acc=0.539319872 f1=0.499425097 (|diff| 0.0e+00 / 0.0e+00)
+PASS [c.V4.vs_model_comparison] V4 matches results/model_comparison.csv
+PASS [c.V4.sklearn] V4 macro-F1 equals sklearn f1_score(labels=range(27), average='macro', zero_division=0): 0.499425097424
+NOTE [c.V4.absent_pred] V4 never predicts class(es) [10, 20]; those classes contribute F1=0 to the 27-class average (zero_division=0)
+NOTE [c.V2.parent_agreement] V2 predicts the same class as parent V1 on 3524 of 3764 test rows (93.62%)
+NOTE [c.V4.parent_agreement] V4 predicts the same class as parent V3 on 3319 of 3764 test rows (88.18%)
+PASS [c.xcheck] cross-check 'clean V1 acc %': recomputed 61.9554 -> displays 61.96 vs previously reported 61.96
+PASS [c.xcheck] cross-check 'clean V2 acc %': recomputed 61.7694 -> displays 61.77 vs previously reported 61.77
+PASS [c.xcheck] cross-check 'clean V3 acc %': recomputed 53.8523 -> displays 53.85 vs previously reported 53.85
+PASS [c.xcheck] cross-check 'clean V4 acc %': recomputed 53.9320 -> displays 53.93 vs previously reported 53.93
+=== d. Robustness subset identity (270 ids, 10 per class, same for every model/condition)
+PASS [d.n] robustness_subset_ids.csv: 270 rows, 270 unique ids
+PASS [d.in_test] all subset ids are test ids
+PASS [d.per_class] 10 rows per class over 27 classes
+PASS [d.labels_equal_full] subset labels equal the original full-test labels for the same ids
+PASS [d.flag] in_robust_subset=true rows of the full test are exactly the 270 subset ids
+PASS [d.ids_hash] recomputed subset id hash equals protocol subset_ids_sha256 (2ca2619321ba...)
+PASS [d.labels_hash] label hash equals protocol subset_label_sha256 (file order or sorted-id order)
+PASS [d.ids_file_sha] sha256(robustness_subset_ids.csv) = protocol subset_ids_file_sha256
+PASS [d.counts_sha] sha256(robustness_subset_counts.json) = protocol counts_sha256
+PASS [d.groups] predictions_subset.csv has exactly the 20 (model, attack, epsilon) groups = 4 models x {clean 0, fgsm .05/.1, pgd5 .05/.1}
+PASS [d.same_ids] every one of the 20 groups holds the same 270 distinct ids
+PASS [d.same_labels] every prediction row carries the original full-test label of its id
+=== e. Robustness tables recomputed from predictions_subset.csv (n=270)
+PASS [e.V1.clean_eps0.0] V1 clean_eps0.0 acc=68.52% f1=64.54% vs robustness_results.json acc=68.52% f1=64.54%
+PASS [e.V1.clean_eps0.0.sk] V1 clean_eps0.0 macro-F1 equals sklearn
+PASS [e.V1.fgsm_eps0.05] V1 fgsm_eps0.05 acc=26.30% f1=23.71% vs robustness_results.json acc=26.30% f1=23.71%
+PASS [e.V1.fgsm_eps0.05.sk] V1 fgsm_eps0.05 macro-F1 equals sklearn
+PASS [e.V1.fgsm_eps0.1] V1 fgsm_eps0.1 acc=6.67% f1=6.27% vs robustness_results.json acc=6.67% f1=6.27%
+PASS [e.V1.fgsm_eps0.1.sk] V1 fgsm_eps0.1 macro-F1 equals sklearn
+PASS [e.V1.pgd5_eps0.05] V1 pgd5_eps0.05 acc=20.74% f1=17.38% vs robustness_results.json acc=20.74% f1=17.38%
+PASS [e.V1.pgd5_eps0.05.sk] V1 pgd5_eps0.05 macro-F1 equals sklearn
+PASS [e.V1.pgd5_eps0.1] V1 pgd5_eps0.1 acc=4.44% f1=4.29% vs robustness_results.json acc=4.44% f1=4.29%
+PASS [e.V1.pgd5_eps0.1.sk] V1 pgd5_eps0.1 macro-F1 equals sklearn
+PASS [e.V2.clean_eps0.0] V2 clean_eps0.0 acc=66.67% f1=62.38% vs robustness_results.json acc=66.67% f1=62.38%
+PASS [e.V2.clean_eps0.0.sk] V2 clean_eps0.0 macro-F1 equals sklearn
+PASS [e.V2.fgsm_eps0.05] V2 fgsm_eps0.05 acc=28.52% f1=26.14% vs robustness_results.json acc=28.52% f1=26.14%
+PASS [e.V2.fgsm_eps0.05.sk] V2 fgsm_eps0.05 macro-F1 equals sklearn
+PASS [e.V2.fgsm_eps0.1] V2 fgsm_eps0.1 acc=7.41% f1=7.17% vs robustness_results.json acc=7.41% f1=7.17%
+PASS [e.V2.fgsm_eps0.1.sk] V2 fgsm_eps0.1 macro-F1 equals sklearn
+PASS [e.V2.pgd5_eps0.05] V2 pgd5_eps0.05 acc=18.52% f1=16.09% vs robustness_results.json acc=18.52% f1=16.09%
+PASS [e.V2.pgd5_eps0.05.sk] V2 pgd5_eps0.05 macro-F1 equals sklearn
+PASS [e.V2.pgd5_eps0.1] V2 pgd5_eps0.1 acc=4.81% f1=4.37% vs robustness_results.json acc=4.81% f1=4.37%
+PASS [e.V2.pgd5_eps0.1.sk] V2 pgd5_eps0.1 macro-F1 equals sklearn
+PASS [e.V3.clean_eps0.0] V3 clean_eps0.0 acc=60.74% f1=54.78% vs robustness_results.json acc=60.74% f1=54.78%
+PASS [e.V3.clean_eps0.0.sk] V3 clean_eps0.0 macro-F1 equals sklearn
+PASS [e.V3.fgsm_eps0.05] V3 fgsm_eps0.05 acc=48.52% f1=43.63% vs robustness_results.json acc=48.52% f1=43.63%
+PASS [e.V3.fgsm_eps0.05.sk] V3 fgsm_eps0.05 macro-F1 equals sklearn
+PASS [e.V3.fgsm_eps0.1] V3 fgsm_eps0.1 acc=35.93% f1=32.12% vs robustness_results.json acc=35.93% f1=32.12%
+PASS [e.V3.fgsm_eps0.1.sk] V3 fgsm_eps0.1 macro-F1 equals sklearn
+PASS [e.V3.pgd5_eps0.05] V3 pgd5_eps0.05 acc=48.52% f1=43.63% vs robustness_results.json acc=48.52% f1=43.63%
+PASS [e.V3.pgd5_eps0.05.sk] V3 pgd5_eps0.05 macro-F1 equals sklearn
+PASS [e.V3.pgd5_eps0.1] V3 pgd5_eps0.1 acc=31.85% f1=27.88% vs robustness_results.json acc=31.85% f1=27.88%
+PASS [e.V3.pgd5_eps0.1.sk] V3 pgd5_eps0.1 macro-F1 equals sklearn
+PASS [e.V4.clean_eps0.0] V4 clean_eps0.0 acc=60.00% f1=53.97% vs robustness_results.json acc=60.00% f1=53.97%
+PASS [e.V4.clean_eps0.0.sk] V4 clean_eps0.0 macro-F1 equals sklearn
+PASS [e.V4.fgsm_eps0.05] V4 fgsm_eps0.05 acc=49.26% f1=44.32% vs robustness_results.json acc=49.26% f1=44.32%
+PASS [e.V4.fgsm_eps0.05.sk] V4 fgsm_eps0.05 macro-F1 equals sklearn
+PASS [e.V4.fgsm_eps0.1] V4 fgsm_eps0.1 acc=37.04% f1=32.65% vs robustness_results.json acc=37.04% f1=32.65%
+PASS [e.V4.fgsm_eps0.1.sk] V4 fgsm_eps0.1 macro-F1 equals sklearn
+PASS [e.V4.pgd5_eps0.05] V4 pgd5_eps0.05 acc=48.89% f1=43.60% vs robustness_results.json acc=48.89% f1=43.60%
+PASS [e.V4.pgd5_eps0.05.sk] V4 pgd5_eps0.05 macro-F1 equals sklearn
+PASS [e.V4.pgd5_eps0.1] V4 pgd5_eps0.1 acc=32.96% f1=28.63% vs robustness_results.json acc=32.96% f1=28.63%
+PASS [e.V4.pgd5_eps0.1.sk] V4 pgd5_eps0.1 macro-F1 equals sklearn
+NOTE [e.float32] robust_accuracy (float32 field in robustness_results.json / curves CSV) differs from accuracy (float64) by at most 2.38e-08: float32 rounding, not a data difference
+PASS [e.curves_csv] results/robustness_curves.csv (24 rows) equals the recomputed values
+PASS [e.pp_differences] all 36 percentage-point differences in pp_differences.json (V2-V1, V4-V3, V4-V2 ...) equal the recomputed values
+PASS [e.xcheck] cross-check 'PGD-5 eps0.10 V2 acc %': recomputed 4.8148 -> displays 4.81 vs previously reported 4.81 (13/270 correct)
+PASS [e.xcheck] cross-check 'PGD-5 eps0.10 V4 acc %': recomputed 32.9630 -> displays 32.96 vs previously reported 32.96 (89/270 correct)
+NOTE [e.npz_keys] arrays.npz keys: ['ids', 'linf', 'pred_adv', 'pred_clean', 'robust_correct', 'y']
+PASS [e.npz] per-unit arrays.npz id/prediction arrays (where present) agree with predictions_subset.csv
+=== f. eps-0 subset predictions vs the same ids in the full clean test
+PASS [f.V1.eps0] V1: 270 of 270 eps-0 predictions agree with the full-test predictions of the same ids (recomputed mismatches=0; stored mismatches=0)
+PASS [f.V1.curve_start] V1: both curves start at the SUBSET clean accuracy 68.52% (full-test accuracy is 61.96%)
+PASS [f.V2.eps0] V2: 270 of 270 eps-0 predictions agree with the full-test predictions of the same ids (recomputed mismatches=0; stored mismatches=0)
+PASS [f.V2.curve_start] V2: both curves start at the SUBSET clean accuracy 66.67% (full-test accuracy is 61.77%)
+PASS [f.V3.eps0] V3: 270 of 270 eps-0 predictions agree with the full-test predictions of the same ids (recomputed mismatches=0; stored mismatches=0)
+PASS [f.V3.curve_start] V3: both curves start at the SUBSET clean accuracy 60.74% (full-test accuracy is 53.85%)
+PASS [f.V4.eps0] V4: 270 of 270 eps-0 predictions agree with the full-test predictions of the same ids (recomputed mismatches=0; stored mismatches=0)
+PASS [f.V4.curve_start] V4: both curves start at the SUBSET clean accuracy 60.00% (full-test accuracy is 53.93%)
+NOTE [f.logit_diff] eps0_max_abs_logit_diff is null (not recorded) in robustness_results.json for all models; only predicted classes were compared
+=== g. Figures: recomputed series vs the series the original report.py plots; regenerated PNGs (post-run)
+PASS [g.eps] figure x-axis ticks = protocol epsilons [0.0, 0.05, 0.1]
+PASS [g.fgsm] FGSM: 8 series x 3 points recomputed from predictions equal the stored per-unit values the original script plots; PNG written to verification/figures/fgsm_recomputed.png
+PASS [g.pgd5] PGD-5: 8 series x 3 points recomputed from predictions equal the stored per-unit values the original script plots; PNG written to verification/figures/pgd5_recomputed.png
+NOTE [g.original_png] The original PNGs were NOT recomputed pixel by pixel; they were inspected visually (see figure_review.md) and their plotted series are those of results/robustness_results.json, which the recomputation above reproduces.
+=== h. Efficiency: raw per-process JSONs vs efficiency.json and model_comparison.csv
+PASS [h.order] 12 fresh child processes, interleaved V1,V2,V3,V4 x 3 repetitions: 123412341234
+PASS [h.map] results/NN.json and specs/NN.json variants follow that order
+PASS [h.flags] efficiency.json: 3 repetitions, 1 thread, no retry, no failure
+PASS [h.settings] every process: 1 torch thread, 200 timed batch-1 calls, 30 timed batch-256 calls, 256 fixed rows
+NOTE [h.engine] quantized_engine recorded in result JSONs: [('V1', 'x86'), ('V2', 'fbgemm'), ('V3', 'x86'), ('V4', 'fbgemm')]; spec backend for INT8: ['fbgemm']; efficiency.json protocol says: fbgemm
+PASS [h.V1.vs_efficiency_json] V1 median-of-3 batch-1 median 2.8759 ms and batch-256 median 317.854 ms equal efficiency.json summary
+PASS [h.V1.vs_csv] V1 recomputed row equals results/model_comparison.csv (size, b1 median/p95, b256 per example, VmHWM, VmHWM-baseline, sampled delta)
+PASS [h.V1.raw_samples] V1: per-process medians recomputed from the raw samples_ms equal the stored medians
+PASS [h.V2.vs_efficiency_json] V2 median-of-3 batch-1 median 5.3579 ms and batch-256 median 269.540 ms equal efficiency.json summary
+PASS [h.V2.vs_csv] V2 recomputed row equals results/model_comparison.csv (size, b1 median/p95, b256 per example, VmHWM, VmHWM-baseline, sampled delta)
+PASS [h.V2.raw_samples] V2: per-process medians recomputed from the raw samples_ms equal the stored medians
+PASS [h.V3.vs_efficiency_json] V3 median-of-3 batch-1 median 2.9001 ms and batch-256 median 319.166 ms equal efficiency.json summary
+PASS [h.V3.vs_csv] V3 recomputed row equals results/model_comparison.csv (size, b1 median/p95, b256 per example, VmHWM, VmHWM-baseline, sampled delta)
+PASS [h.V3.raw_samples] V3: per-process medians recomputed from the raw samples_ms equal the stored medians
+PASS [h.V4.vs_efficiency_json] V4 median-of-3 batch-1 median 5.3973 ms and batch-256 median 277.409 ms equal efficiency.json summary
+PASS [h.V4.vs_csv] V4 recomputed row equals results/model_comparison.csv (size, b1 median/p95, b256 per example, VmHWM, VmHWM-baseline, sampled delta)
+PASS [h.V4.raw_samples] V4: per-process medians recomputed from the raw samples_ms equal the stored medians
+NOTE [h.ratio.V2_vs_V1] INT8 V2 vs FP32 parent V1: serialized size ratio 0.3434 (497448 vs 1448741 bytes); batch-1 median latency ratio 1.863 (5.358 vs 2.876 ms); batch-256 time per example ratio 0.848 (1.0529 vs 1.2416 ms/example); process peak (VmHWM) ratio 1.066; peak-above-baseline ratio 1.113
+NOTE [h.ratio.V4_vs_V3] INT8 V4 vs FP32 parent V3: serialized size ratio 0.3434 (497448 vs 1448741 bytes); batch-1 median latency ratio 1.861 (5.397 vs 2.900 ms); batch-256 time per example ratio 0.869 (1.0836 vs 1.2467 ms/example); process peak (VmHWM) ratio 1.057; peak-above-baseline ratio 1.079
+PASS [h.b1_slower] descriptive: INT8 batch-1 median latency is HIGHER (slower) than its FP32 parent for both pairs on this machine
+PASS [h.b256_faster] descriptive: INT8 batch-256 time per example is LOWER than its FP32 parent for both pairs on this machine
+PASS [h.mem_not_lower] descriptive: INT8 process peak memory (VmHWM) is NOT lower than its FP32 parent
+NOTE [h.spread] batch-256 median per repetition (ms) min..max: {'V1': '314.6..319.0', 'V2': '244.6..299.5', 'V3': '319.1..321.8', 'V4': '272.1..295.4'} (INT8 spread is wide: V2 244.6..299.5, V4 272.1..295.4 vs FP32 about 315-322)
+NOTE [h.three_reps] The 3 efficiency repetitions are 3 timing processes of the SAME trained models; they are not 3 training runs.
+NOTE [h.sizes_three_things] serialized state_dict bytes (torch.save of state_dict; V1/V3=1448741, V2/V4=497448) is a different quantity from the on-disk checkpoint files (V1/V3 checkpoint.pt = 1450583 B; V2/V4 state.pt = 499961 B, from the setup manifest) and from process memory (VmHWM ~446-476 MB, which includes the Python/torch runtime). Peak minus baseline is inference-time working memory only.
+NOTE [h.rows_sha_value] fixed_rows.npy shape=(256, 39) dtype=float32; sha256(.npy file)=0adb2960b5c29a18c3811107d439bf73c60910cd151de0c85ec2b97f7cc405df; sha256(array bytes)=20d537420a786911f4e2cf748396ea48d9e03331d06ee7d241214e2e6cf01fae; efficiency.json fixed_rows.x_sha256=20d537420a786911f4e2cf748396ea48d9e03331d06ee7d241214e2e6cf01fae -> array-bytes hash matches
+=== i. Provenance: markers, identity, hashes
+NOTE [i.preflight_marker] preflight.ok has protocol_sha256=None (the protocol is frozen later, in the freeze stage)
+PASS [i.markers_consistent] 10 stage markers; config/lock hashes all equal run_identity.json; protocol hash equal in 9 (null in preflight, before the protocol exists)
+PASS [i.protocol_ids] protocol.json config/lock hashes equal run_identity.json
+PASS [i.protocol_sha] sha256(protocol.json) = run_identity protocol_sha256 = protocol.frozen.json = protocol.json.sha256 (62adf121b390...)
+PASS [i.config_sha] sha256(configs/m2_deadline_v1.json) = config_sha256 (4f12845e8627...)
+PASS [i.budget_lock] budget_lock.json: epochs 25, same config hash, performance_inspected=false (chosen from runtime only)
+PASS [i.marker_outputs] 49 marker output hashes match the copied evidence files exactly
+PASS [i.marker_vm_files] 5 marker hashes for NOT-copied VM files (checkpoints, calibration_x.pt) equal the sha256 recorded in the setup manifest (['calibration/calibration_x.pt', 'models/V1/checkpoint.pt', 'models/V2/state.pt', 'models/V3/checkpoint.pt', 'models/V4/state.pt']) - the files themselves were not re-hashed here, not loaded
+NOTE [i.marker_unverified] marker outputs not independently checkable here (file not in evidence copy): ['report/figures/fgsm_curves.png', 'report/figures/pgd5_curves.png', 'report/m2_deadline_report.md']
+PASS [i.source.m2_attacks.py] run_identity source_sha256[m2_attacks.py] equals sha256 of source/v4-base/research/m2_attacks.py
+PASS [i.source.m2_efficiency.py] run_identity source_sha256[m2_efficiency.py] equals sha256 of source/v4-base/research/m2_efficiency.py
+PASS [i.source.m2_quant.py] run_identity source_sha256[m2_quant.py] equals sha256 of source/v4-base/research/m2_quant.py
+PASS [i.source.m2_split.py] run_identity source_sha256[m2_split.py] equals sha256 of source/v4-base/research/m2_split.py
+PASS [i.source.m2_training.py] run_identity source_sha256[m2_training.py] equals sha256 of source/v4-base/research/m2_training.py
+PASS [i.source.m2b_exec.py] run_identity source_sha256[m2b_exec.py] equals sha256 of source/v4-base/research/m2b_exec.py
+PASS [i.source.quantization.py] run_identity source_sha256[quantization.py] equals sha256 of the TRACKED M1-repo file research/quantization.py (same bytes as the VM; not duplicated under source/)
+PASS [i.v4_manifest] sha256(V4 MANIFEST.sha256) equals run_identity v4_manifest_sha256 and the overlay's expected value
+PASS [i.overlay_manifest] 40 files listed in OVERLAY_MANIFEST.sha256 match the copies under source/deadline-v1-overlay
+PASS [i.v4_manifest_files] 81 copied V4 source files match their entries in V4 MANIFEST.sha256
+=== j. Extra facts read from evidence files (used by REPORT.md)
+NOTE [j.original_epochs_column] original report Table 1 'Epochs' column prints 25 for the INT8 rows (V2, V4); that is the parent's count carried over. INT8 copies had 0 training epochs.
+NOTE [j.original_qat_text] original report QAT section cites 'artifacts/m2a-pilot/qat/qat_feasibility.json' (status supported, 23 layers, 1 epoch, 2,700 rows)
+PASS [j.qat_pilot] qat_feasibility.json: status=supported, serialized=True, epochs=1, train_rows=2700, accuracy_on_eval_rows=0.180; its own claim: 'bounded feasibility check only; not a QAT result and not comparable with PTQ without the matched FP32-FT controls'
+NOTE [j.qat_pilot_calib] QAT pilot calibration_id_sha256=1ceef169151c888f4819da61ab6847f787e3135226d17e80369222d7e1b86514 differs from the final campaign's calibration id hash e403fd4e30c68d85d39ddc3871d8f62c54571c037c6fce74780ad5fb5f929d4a: the pilot calibration set is different from this campaign's. The pilot report (evidence/v4-base/m2a-pilot/pilot_report.md) lists split seed 20260 and split manifest sha256 7275ede47c84... for the pilot; this campaign used split seed 20270 (split_m2.json sha256 7b8da874b36c...)
+=== summary
+PASS=174 FAIL=0 NOTE=25

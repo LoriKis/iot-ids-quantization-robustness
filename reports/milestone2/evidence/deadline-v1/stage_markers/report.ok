@@ -1,0 +1,20 @@
+{
+  "config_sha256": "4f12845e86270944be7c9abd885c9af6c9cfb98282ae3a5f4581c0c0fd1c888a",
+  "epochs": 25,
+  "finished_utc": "2026-11-17T15:38:08Z",
+  "lock_sha256": "1b1ced84ab3a68569c2ace4654b468c6679926dc7546bf7752da4fcfd72f6ccb",
+  "outputs": {
+    "report/figures/fgsm_curves.png": "6bf20f1dce242fab5944595e23e698a2579bfbf56b6a6a56ef554a778edd3680",
+    "report/figures/pgd5_curves.png": "7b6aa1e7af427bd504c18cc0b85668f799e576fee0f0a4a4eed5916e5dc86752",
+    "report/m2_deadline_report.md": "5b9cb0a0bfd1a43623310eee7e497e0f5774387c3bef6b1c0faa77ba4a71ae88",
+    "results/model_comparison.csv": "4aa374adfc2ae0008cb72d89c12b91e4596e67a60884fa0545831380c3c9baf2",
+    "results/model_comparison.md": "e05821a0f0f5ff2869e89a81fd3580cf5e2a4fbe3acd7605ce199d0080f926c1",
+    "results/pp_differences.json": "151931a1262eb595fedae9f1a9fb82dc68bedeb4c9424ad1fcdfc5ca10c057f9",
+    "results/robustness_curves.csv": "eb1a583f25c51d82af0e6cb5ae03fbb28c8930556f006c7917280baca2d93405"
+  },
+  "protocol_sha256": "62adf121b39054f8109fd7c89a2c3577a4303f9f1610d60742521fd7dcf47b36",
+  "run_id": "m2-deadline-v1",
+  "seconds": 1.7904237732291222,
+  "stage": "report",
+  "started_utc": "2026-11-17T15:38:06Z"
+}

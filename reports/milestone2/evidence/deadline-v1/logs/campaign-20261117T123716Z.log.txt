@@ -1,0 +1,45 @@
+2026-11-17T12:37:16Z INFO resume check: remaining 3.82 h <= limit 8.00 h
+2026-11-17T12:37:16Z INFO resume: epochs=25 per_class=10 hours_remaining=11.00 out=/home/crysys/IOT-network-traffic-DL-M2-VM-deadline-v1/artifacts/m2-deadline-v1 log=/home/crysys/IOT-network-traffic-DL-M2-VM-deadline-v1/artifacts/m2-deadline-v1/logs/campaign-20261117T123716Z.log
+2026-11-17T12:37:16Z INFO stage train_ordinary: start
+2026-11-17T12:57:29Z INFO stage train_ordinary: marker written after 1213.4 s
+2026-11-17T12:57:29Z INFO stage train_adversarial: start
+2026-11-17T15:31:57Z INFO stage train_adversarial: marker written after 9267.1 s
+2026-11-17T15:31:57Z INFO stage ptq: start
+2026-11-17T15:32:04Z INFO V2: ptq_unit 5.5 s
+2026-11-17T15:32:10Z INFO V4: ptq_unit 5.8 s
+2026-11-17T15:32:10Z INFO stage ptq: marker written after 13.2 s
+2026-11-17T15:32:10Z INFO stage val_check: start
+2026-11-17T15:32:32Z INFO stage val_check: marker written after 21.9 s
+2026-11-17T15:32:32Z INFO stage test_clean: start
+2026-11-17T15:32:36Z INFO test_clean: V1 predicted 3764 rows in 4.4 s
+2026-11-17T15:32:40Z INFO test_clean: V2 predicted 3764 rows in 3.7 s
+2026-11-17T15:32:45Z INFO test_clean: V3 predicted 3764 rows in 4.4 s
+2026-11-17T15:32:48Z INFO test_clean: V4 predicted 3764 rows in 3.7 s
+2026-11-17T15:32:48Z INFO stage test_clean: marker written after 16.6 s
+2026-11-17T15:32:48Z INFO stage robustness: start
+2026-11-17T15:32:49Z INFO robustness: V1/clean_eps0.0 done in 0.7 s
+2026-11-17T15:32:53Z INFO robustness: V1/fgsm_eps0.05 done in 3.3 s
+2026-11-17T15:32:56Z INFO robustness: V1/fgsm_eps0.1 done in 3.4 s
+2026-11-17T15:33:03Z INFO robustness: V1/pgd5_eps0.05 done in 7.2 s
+2026-11-17T15:33:10Z INFO robustness: V1/pgd5_eps0.1 done in 7.2 s
+2026-11-17T15:33:12Z INFO robustness: V2/clean_eps0.0 done in 1.0 s
+2026-11-17T15:33:16Z INFO robustness: V2/fgsm_eps0.05 done in 4.5 s
+2026-11-17T15:33:21Z INFO robustness: V2/fgsm_eps0.1 done in 4.5 s
+2026-11-17T15:33:30Z INFO robustness: V2/pgd5_eps0.05 done in 9.0 s
+2026-11-17T15:33:39Z INFO robustness: V2/pgd5_eps0.1 done in 9.0 s
+2026-11-17T15:33:40Z INFO robustness: V3/clean_eps0.0 done in 0.7 s
+2026-11-17T15:33:43Z INFO robustness: V3/fgsm_eps0.05 done in 3.3 s
+2026-11-17T15:33:46Z INFO robustness: V3/fgsm_eps0.1 done in 3.3 s
+2026-11-17T15:33:54Z INFO robustness: V3/pgd5_eps0.05 done in 7.2 s
+2026-11-17T15:34:01Z INFO robustness: V3/pgd5_eps0.1 done in 7.3 s
+2026-11-17T15:34:02Z INFO robustness: V4/clean_eps0.0 done in 1.0 s
+2026-11-17T15:34:07Z INFO robustness: V4/fgsm_eps0.05 done in 4.4 s
+2026-11-17T15:34:11Z INFO robustness: V4/fgsm_eps0.1 done in 4.5 s
+2026-11-17T15:34:20Z INFO robustness: V4/pgd5_eps0.05 done in 9.0 s
+2026-11-17T15:34:29Z INFO robustness: V4/pgd5_eps0.1 done in 9.0 s
+2026-11-17T15:34:29Z INFO robustness: all units finished in 100.9 s
+2026-11-17T15:34:29Z INFO stage robustness: marker written after 101.0 s
+2026-11-17T15:34:29Z INFO stage efficiency: start
+2026-11-17T15:38:06Z INFO stage efficiency: marker written after 216.7 s
+2026-11-17T15:38:06Z INFO stage report: start
+2026-11-17T15:38:08Z INFO stage report: marker written after 1.8 s

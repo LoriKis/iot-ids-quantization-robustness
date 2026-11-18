@@ -1,0 +1,324 @@
+{
+  "builder_version": 1,
+  "config_sha256": {
+    "configs/m2/attacks.json": "7ff7b518cc76b393a71a09574d1ec4a3f024a998edb4d81842b319a37d5fc8a4",
+    "configs/m2/data.json": "15bb457b2f4313cc64fa3fe3fd4e289a7194abf03ba51369e71b7a9915104ad0",
+    "configs/m2/quantization.json": "6bb20f37e56a1a0e627f3741b8a616e37983a1c93d92b42b414d240129c655fe",
+    "configs/m2/training.json": "7be76132a32999f980e0a0e2474a4852439f0622f2f222a6e15d74b81167aaed",
+    "configs/m2b/campaign_v2.json": "c882f7ff8374440b2c01dd75eb206e4c8a05af0c13697a3e918cb918965ebb7d",
+    "configs/m2b/data_v2.json": "fe2c49cd8cd2f36c8f7682d63e9b6a4c62c0c370b161e80030f24256071baa3f",
+    "configs/m2b/efficiency_v2.json": "11fe82a10878c4ad49f183e550ec524bc4c6629d33b4552fe5e38ad2e1efe8f7"
+  },
+  "created_utc": "20261116T224744Z",
+  "dataset": {
+    "frozen_sha256": "0d869e334cc9a2795c96996fbde8fb04a8acac61f5e67c5d46aee2b0717a53ed",
+    "frozen_size": 5444531,
+    "observed_sha256_in_source": "0d869e334cc9a2795c96996fbde8fb04a8acac61f5e67c5d46aee2b0717a53ed",
+    "observed_size_in_source": 5444531,
+    "path": "upstream/PAVE_artifact/data/balanced_CICIoT.csv"
+  },
+  "historical_windows_path_matches": [
+    "artifacts/m2a-pilot/efficiency/specs/01.json",
+    "artifacts/m2a-pilot/efficiency/specs/02.json",
+    "artifacts/m2a-pilot/efficiency/specs/03.json",
+    "artifacts/m2a-pilot/efficiency/specs/04.json",
+    "artifacts/m2a-pilot/efficiency/specs/05.json",
+    "artifacts/m2a-pilot/efficiency/specs/06.json",
+    "artifacts/m2a-pilot/efficiency/specs/07.json",
+    "artifacts/m2a-pilot/efficiency/specs/08.json",
+    "artifacts/m2a-pilot/pilot_runtime.json",
+    "docs/.m2a/design-review.json",
+    "docs/MILESTONE1_REFERENCE.md",
+    "docs/MILESTONE1_REPAIR_DESIGN.md",
+    "docs/MILESTONE1_REPAIR_PLAN.md",
+    "docs/MILESTONE2A_HANDOFF.md",
+    "docs/MILESTONE2_HANDOFF.md",
+    "docs/MILESTONE2_IMPLEMENTATION_AUDIT.md",
+    "docs/MILESTONE2_PROTOCOL.md",
+    "docs/SETUP.md",
+    "docs/milestone1_pre_repair_inventory.json",
+    "docs/milestone1_repair_design_review.json",
+    "notes/pave_reproduction_notes.md",
+    "reports/milestone1-artifact/completion.json",
+    "reports/milestone1-artifact/environment.json",
+    "reports/milestone1-artifact/provenance.json",
+    "reports/milestone1-paper-described-adam/environment_actual.json",
+    "reports/milestone1-paper-described-adam/provenance/environment_actual.json"
+  ],
+  "note": "Trained weights are generated on the VM by the M2 training stages; none are packaged and none are missing downloads. The model architecture/source is upstream/PAVE_artifact/code/models/standard_transformer.py.",
+  "pave": {
+    "commit": "e73911bbdb241f3fb6c5de346139010c4aadefd4",
+    "files": {
+      "LICENSE": {
+        "git_blob_id": "5f351bea9f26be93e2126cedc01fba475e108d94",
+        "mode": "100644",
+        "sha256": "2d9ec1c8c2e70c3026d5aedd90b6df40c38b066d3a333b2451d89f9d6fef9303"
+      },
+      "README.md": {
+        "git_blob_id": "41ecd7b47b5ffcd29fdcdf74a256caf3fc1657cd",
+        "mode": "100644",
+        "sha256": "4c4a272b554018c59338325e8b62c6b000c0356e4957f3b5f972c59419444d1b"
+      },
+      "code/attacks/__init__.py": {
+        "git_blob_id": "1b0e1dcd9b62f643e818dea223daf2633eabb657",
+        "mode": "100644",
+        "sha256": "c2177bc7d470da8bc37263166cb8fe2bd2b0c8f36d830b4b2d30d78541c8d034"
+      },
+      "code/attacks/adversarial.py": {
+        "git_blob_id": "2fc0a6b775f7c386ff168a04e60c3b6595b88c9c",
+        "mode": "100644",
+        "sha256": "8ec37d34d570ce44ae95f021c7b69becd0e03c84781967af8da8a8e55ab35bd7"
+      },
+      "code/attacks/constraints.py": {
+        "git_blob_id": "87f6727324c1fadf94d73991be8ea29e8715f6b0",
+        "mode": "100644",
+        "sha256": "190131d4ed2705ebc2f4e802980a76dae4369b3111d59c324dcb0fea16d920fa"
+      },
+      "code/config.py": {
+        "git_blob_id": "9364ce88e1f8ba48533ded7e93876723caddcdd5",
+        "mode": "100644",
+        "sha256": "9b6f8f6282fff1e86a065bcbafff04015c7ef149b9c039569687d63c16e60ebb"
+      },
+      "code/data_loader.py": {
+        "git_blob_id": "8fcd0cb43042a5687b9b75a45937c8d4928c6e51",
+        "mode": "100644",
+        "sha256": "fc9207f63fff756c4e14080e670b19a27a6f959febc2db2757c855ce37039813"
+      },
+      "code/defense_benchmark.py": {
+        "git_blob_id": "a51cca873a4f9186a884692e833164a14ad6af1f",
+        "mode": "100644",
+        "sha256": "da1ff78214781bdef833a758a934f69542c454cbd0a2d3883fb1a709732f5b85"
+      },
+      "code/gate_detector.py": {
+        "git_blob_id": "ff04f710471684fb3338d55a832c7e4046e4177b",
+        "mode": "100644",
+        "sha256": "e00b8a22a222081fdb75b05ef202ea17c1730108b233233b85e3f8b31289d747"
+      },
+      "code/models/__init__.py": {
+        "git_blob_id": "0e371b5e4d02d87ddf3c8ec623b4ee48a92b7df0",
+        "mode": "100644",
+        "sha256": "7f728f501a0d96d1033330c4bdc14d2d5c0afd30fa3c4a9cf2245b1a10baa629"
+      },
+      "code/models/agt.py": {
+        "git_blob_id": "20430963857ee9e6dfd471784fc6e9ecd115f456",
+        "mode": "100644",
+        "sha256": "58fe1ee61a6dff06fa1a12f7dac26b4dbef45a013b3b975503bc4a91915083d8"
+      },
+      "code/models/baselines.py": {
+        "git_blob_id": "d8f2c8990431d4600c6ebb9b7fa8172dcff28a57",
+        "mode": "100644",
+        "sha256": "970493a9e0f0ce22a01fe7b9a5fdde0e9aa86e4263d08f07cd7e1be36e829d47"
+      },
+      "code/models/ema.py": {
+        "git_blob_id": "8fe361f1848bd7ef81c4ba03a532e867b27e6106",
+        "mode": "100644",
+        "sha256": "ff66dc2971ece08ef771954de1c97c8b9ff28fe5776abadff6526ddf7782da57"
+      },
+      "code/models/robust_eval.py": {
+        "git_blob_id": "a94a5f76dc5aaedd79739133e111a632cb84788f",
+        "mode": "100644",
+        "sha256": "b35a7fa2cd223d5229cad277b4d20f9a87bc4d8abee16397e424291aa8633d18"
+      },
+      "code/models/robust_transformer.py": {
+        "git_blob_id": "0ee9fc7dab309fae97c98198186c80ca78297466",
+        "mode": "100644",
+        "sha256": "8bd2fa0a5a431f4fe4d8166e49823e1dc8420565f67102907dde0948dfdcb197"
+      },
+      "code/models/smoothing.py": {
+        "git_blob_id": "180cde3b2e9128294c9cbe6efd8fde30b358b7aa",
+        "mode": "100644",
+        "sha256": "8e98f4d6213c3d2dfdff5f4cb1732a5e39c14830c7c11a203fd8d5dd1f52df9f"
+      },
+      "code/models/standard_transformer.py": {
+        "git_blob_id": "750e5770c8469a1d0f7f16d5337af7c656d8b8a8",
+        "mode": "100644",
+        "sha256": "b046d0f68da063dcf972ecc80ea3385e83c32e33322ec3a70617ddc4e157fdb1"
+      },
+      "code/pave_audit.py": {
+        "git_blob_id": "9b33b73fcf97c4c3c04252dfcdaed092a97cad7c",
+        "mode": "100644",
+        "sha256": "3d1806b321805fb623be176aea96f4cb3e0fc8a424bb35969b7ef592a8622d9c"
+      },
+      "code/revision_experiments.py": {
+        "git_blob_id": "bd0457507746dacf8ca3d0517ea9d4925546a3f1",
+        "mode": "100644",
+        "sha256": "330ba9a97b22ef81a2fb55b7885f826e55842fdf3f0937377eb8276d91463bfa"
+      },
+      "code/sota_compare.py": {
+        "git_blob_id": "9375eae1275262c6a7ca6484de41081064cee9b6",
+        "mode": "100644",
+        "sha256": "c9602188e89808997e083abcb4ead8f6ed55d02e913a1ed8a0c365a043bb952d"
+      },
+      "code/summarize_revision.py": {
+        "git_blob_id": "31d7a6bbc2eab57d6de748cbf07f96434f7db366",
+        "mode": "100644",
+        "sha256": "c62e32972f9c363d8ce3e39a394b1d762cb88f4101c240941c33339fc8f72d1b"
+      },
+      "data/balanced_CICIoMT.csv": {
+        "git_blob_id": "703066707857636e1d0ee03ecdf0ba14452d52b1",
+        "mode": "100644",
+        "sha256": "28865b8ba895da22f9852d8fff7d19cd12b379c5b40bdf47fa28566814293619"
+      },
+      "data/balanced_CICIoT.csv": {
+        "git_blob_id": "c92a2844e57439342525853b3737f0634fa383aa",
+        "mode": "100644",
+        "sha256": "0d869e334cc9a2795c96996fbde8fb04a8acac61f5e67c5d46aee2b0717a53ed"
+      },
+      "data/balanced_CICIoV.csv": {
+        "git_blob_id": "a0174f49573855f86db4116420c74a36ec0d4085",
+        "mode": "100644",
+        "sha256": "bcf036a6113e924f283f1fda59f6eead6c4a84d28fc6e5f4d6c59be660bfedfd"
+      }
+    },
+    "forbidden_name_exempt": [],
+    "tree_id": "bca1181d7c09deb08f8016816556acc38e0185c2"
+  },
+  "schema": 1,
+  "source": {
+    "branch": "local/research-pipeline-fixes",
+    "head": "466faf724aaab5507d5cf12f74281c5f2a62ae28",
+    "modified_or_untracked_at_packaging": {
+      ".agents/tasks/m2-vm-prep/PLAN.md": "4dd44cb5bc662059b13f7af5f7ceb95a17d95f5b39582f8684334caf8e4d14ef",
+      ".agents/tasks/m2-vm-prep/build/FINAL_REPORT.md": "485201bbcc99ab5fbbb7ccb6d99a40de3f5747d18399aa699d55e6472090dbc0",
+      ".agents/tasks/m2-vm-prep/build/package_result.json": "6893a7d5e9080232a4df07e3e915994bfc346958cc130e9f45e28312956d1705",
+      ".agents/tasks/m2-vm-prep/build/review.json": "98f954712bc3146058be272a95ebffd10aba57d354b3ebf1c347c340364cae02",
+      ".agents/tasks/m2-vm-prep/context.json": "ced381e98a7874dd89a7f19c0cce3edddebb6f1b2f459575ecc56a08a519a0ea",
+      ".agents/tasks/m2-vm-prep/design/DESIGN.md": "b39220d0b017fc15c7ee8babab513de39856539ac6ab2b7ca500ff57764f1ae9",
+      ".agents/tasks/m2-vm-prep/design/design-review.json": "46d76c5c6dbb8dfd77a877aba332eccc4a355bc446f4dbcc4ecd454154902e13",
+      ".agents/tasks/m2-vm-prep/design/design-review.md": "889cea442ebbe0997768b2aefd8daaa7aabe5c56f00e6735e90ad21ded611119",
+      ".agents/tasks/m2-vm-prep/features/FEAT-001.json": "5f6e754a814d66de83d4444dbcf99644354568ecd973871e82a2cd03b5df7c14",
+      ".agents/tasks/m2-vm-prep/features/FEAT-002.json": "eb1784edb8190c059b4c1a7a03999fb4bce95e521a46c02317e64b77d618c51b",
+      ".agents/tasks/m2-vm-prep/features/FEAT-003.json": "a87cf7d9b26a60f6ed90eb44298dfac30518660393b75e4703aff9f0121a97dd",
+      ".agents/tasks/m2-vm-prep/features/FEAT-004.json": "9f01236f2b3e5dea67e4a1e5865865f530da310e47ddcea11078d5bac6312405",
+      ".agents/tasks/m2-vm-prep/features/FEAT-005.json": "375b54f6e7d1834daae3020c5de534836ff9f5591a5040f0899ba8dd0e4df477",
+      ".agents/tasks/m2-vm-prep/task.json": "99d2b217eab92fbe4584f1c3ec4091862188d83e466610c099a1df635ff54c4d",
+      ".agents/tasks/m2-vm-v4/baseline_hashes.txt": "643fc34c7d4ab9b549c2575eae41e1b358694000bb09ad86f5abe59997b4d022",
+      ".agents/tasks/m2-vm-v4/git_status_before.txt": "4319560faa5b58ec9e2e393ace171e46390d9364300880c77bac5da75cb44594",
+      ".agents/tasks/m2-vm-v4/original_model_state_hash.py.txt": "09c0a8c6969617cf662c515cf182095f926fa89d9c236342028777f4819e6214",
+      ".agents/tasks/m2-vm-v4/plan.md": "df8ac072989e54207f20b1d6aeca15951601c035be2303442c44b2b6ce2fae66",
+      ".agents/tasks/m2-vm-v4/protected_before.json": "6f435fdc7fd3b209a0a27467d6c0cdc7f7d3cc45c42854bdf644b1f5c37e038f",
+      "check_shell.py": "0594f81ce83912e6c8709908154b8d641d89b46f85cd810e8e6f3365ad1a800f",
+      "configs/m2/attacks.json": "7ff7b518cc76b393a71a09574d1ec4a3f024a998edb4d81842b319a37d5fc8a4",
+      "configs/m2/campaign.json": "18d853b5135c856fdb8197f11b14bdc47addc0f0cbfb53c80524289dd0e650cd",
+      "configs/m2/data.json": "15bb457b2f4313cc64fa3fe3fd4e289a7194abf03ba51369e71b7a9915104ad0",
+      "configs/m2/efficiency.json": "c3357b941f154c813054ac0cddc76ae343b98503f919b4ca218493fd8d69f4db",
+      "configs/m2/pilot.json": "36fe9028e6b535ff82d2941e57714734fccd92529dc7a73e87111a0464ad9ce3",
+      "configs/m2/quantization.json": "6bb20f37e56a1a0e627f3741b8a616e37983a1c93d92b42b414d240129c655fe",
+      "configs/m2/training.json": "7be76132a32999f980e0a0e2474a4852439f0622f2f222a6e15d74b81167aaed",
+      "configs/m2b/campaign_v2.json": "c882f7ff8374440b2c01dd75eb206e4c8a05af0c13697a3e918cb918965ebb7d",
+      "configs/m2b/data_v2.json": "fe2c49cd8cd2f36c8f7682d63e9b6a4c62c0c370b161e80030f24256071baa3f",
+      "configs/m2b/efficiency_v2.json": "11fe82a10878c4ad49f183e550ec524bc4c6629d33b4552fe5e38ad2e1efe8f7",
+      "docs/.m2a/build-review.json": "3c545363d4fef7586fbebbda05b6c8e1ed978a27c37070c068add2b1f23a185b",
+      "docs/.m2a/build-review.md": "1ad134c0ad7200a40fc76c2f2314271c7e81c9eb7a0b9bb3a686454dfc97d14d",
+      "docs/.m2a/design-review.json": "f0759c09c79b51775c63e285732ed61619d96487ef39cec83f03c3a59b8b76be",
+      "docs/.m2a/design-review.md": "f00ecae23d6077cc9f3bf6a7eb777a4255c6c213f4178cf7c1cbafa9aa43ae2f",
+      "docs/.m2a/plan.md": "011de72744157d37b76ecb922b7de6cfc3a838fd4942e4cd89ff984258b5e0f5",
+      "docs/.m2a/task-m2a-foundation/context.json": "80944d436a9613be139a4707514eaf5f23d12e217e082ce782ceb51718794181",
+      "docs/.m2a/task-m2a-foundation/features/FEAT-001.json": "41d1512b6473edf0c20ea8037330701a3ed935a8c7d9ac95e60675130faae538",
+      "docs/.m2a/task-m2a-foundation/features/FEAT-002.json": "73aa85c9e6308b976e928abf2d8f957bca92e8de4c75003c9d5ff51566ee3062",
+      "docs/.m2a/task-m2a-foundation/features/FEAT-003.json": "6ecd659afbe3135082d46821821c7ee41df08010daf637e2177e84fb0e82e352",
+      "docs/.m2a/task-m2a-foundation/features/FEAT-004.json": "6c6b709fd9b2bcd776bd572b2cccdc8a962bf111efd2eb724c700c67d3b3332e",
+      "docs/.m2a/task-m2a-foundation/task.json": "57116bc3888725fbca7205d94c2b859347f2a1341ed80b70ab336959486d4a78",
+      "docs/M2B_VM_HANDOFF.md": "ce1c6ee4ad7deb2ae715640480d3ee50fff4149e02567d2b8f19623866816c50",
+      "docs/MILESTONE2A_HANDOFF.md": "f6c44a31a660f2725b08c9ea4bed13a2cba38dc2fb085e9c842d35e1bf99bf33",
+      "docs/MILESTONE2_HANDOFF.md": "f6c44a31a660f2725b08c9ea4bed13a2cba38dc2fb085e9c842d35e1bf99bf33",
+      "docs/MILESTONE2_IMPLEMENTATION_AUDIT.md": "0efd7878e5d2a0886fe0040a38957cb0c2b1f72d3ad3796cd4327c382e445d6e",
+      "docs/MILESTONE2_PROTOCOL.md": "70bcce18decf7b111602077af64c541673a33ecba927a9a7b21cd9709853b034",
+      "docs/VM_RUNBOOK.md": "412bb2756125212fffd2004169ec248fb95f6a4da159ba991f46a31a02500abc",
+      "reports/milestone2a/split/conflicting_labels.json": "a6a3b656e4c9c4edbe500becb7cdd1e0fa40da59919fe67d6db6d61203a5b673",
+      "reports/milestone2a/split/group_manifest.json": "cc013e46c50268226e46a5e1807ed65f986af8d9e39e41c763dec97d37dbfabb",
+      "reports/milestone2a/split/range_audit.json": "c2c6758a534a58173ed472f7c2d6b2f0d521a38d75dbb7e1c5a15de51208a679",
+      "reports/milestone2a/split/scaler_minmax.json": "1e18be556342bcaf26cad38205d426996a503553c03724ec4d83ce29cd5cfb61",
+      "reports/milestone2a/split/split_attempts.json": "b75be2beb40099b183ed69d0c62f22ed81eca90b4266250c151abe70c06927ec",
+      "reports/milestone2a/split/split_attempts_infeasible_rev0.json": "97669ade72edb2a3cb54049e3b2a099e3a6032951f1a1afacc0e3b914da8ccc3",
+      "reports/milestone2a/split/split_m2.json": "28842289737d4aac7597ac93a70a777d5892ef4539a38e5e83a592a97f3004b3",
+      "reports/milestone2a/split/split_report.md": "dff905917a2ac4acfa28a0bb2c0765f942268c1b7fd15a0f03442ec5d32021a1",
+      "reports/milestone2b/package_test_dependencies.md": "55b930ef52eb4df05662bac6ae5e47c9b54b903c8184ad12a928d1f02dedb9d7",
+      "reports/milestone2b/split_v2/conflicting_labels.json": "8858e72a1f2ab23ab14f0ed8c1b0caee50de9d0fa47b5fbf889d0191ee2599b3",
+      "reports/milestone2b/split_v2/group_manifest.json": "12fbb4f607b24686adbc60c6b41a4d831596edfc6963583cbbf87b7c568605f9",
+      "reports/milestone2b/split_v2/range_audit.json": "3921bbfba779437eff5a848420fe19a6dbe6c623c1ea5b15cba000c5a811e3dc",
+      "reports/milestone2b/split_v2/scaler_minmax.json": "de41d50dba0e7e4cfdb839d2e18f59683248a29b530ad04414b3f6cc1ea584a7",
+      "reports/milestone2b/split_v2/split_attempts.json": "d3657aaf69798d49c8dcbcfd9e75e659f76f84cc01f61ab4f46b39e90d7d8e5a",
+      "reports/milestone2b/split_v2/split_comparison_v1_v2.json": "9375d6e616bdc4c8b6186868df99c3a7e11ffbc938ece2e7c72c8350d44dd625",
+      "reports/milestone2b/split_v2/split_comparison_v1_v2.md": "8aa8fddbd51cf1c4fa00ef76f4ae08315932b1679e4f268deb1aa9fdd0954190",
+      "reports/milestone2b/split_v2/split_freeze.json": "17a7f6218c2876ad9829dc9fbaf5f7dbbc228b386d18fc95e65e3a29b3302210",
+      "reports/milestone2b/split_v2/split_m2.json": "7b8da874b36cc5b7c967490388e87b050173427f0447322b3c2b2fe064b7e06e",
+      "reports/milestone2b/split_v2/split_report.md": "c9f988c3c3b69db7497b923d9c75897b94e7f605e1519b708f650c76d0d944de",
+      "requirements-linux-cpu.txt": "3a2c5d8f4ec29ccd3630e314ba8153ea5d2640cf271575e1021c874757310982",
+      "research/attacks.py": "94e24e2a725a5ea96d11395a4a367ffb96c125b785b21ebbd0a5190124e2fb22",
+      "research/common.py": "8234978f1e9e4195023431c531ae713f83aa28482c199817e4ecc02281b2300a",
+      "research/m2_attacks.py": "d5f04c77a9c0ea0bee060891d0e1fe9cd4dfa562ecb6ca0367cb36c5c2818956",
+      "research/m2_campaign.py": "bb63517abb581659d878dfc0a5d4b6875e1b7de4b36c5fc2c5f576e41851617f",
+      "research/m2_efficiency.py": "219b83989b032a3ee57c51f83c5f1632dee1be4056f02c425c83f9830647ffbd",
+      "research/m2_estimate.py": "8e0e59151dbd7eea918b2ed16c674e16d8d70e8b809b03cf6fad207ff6c5b5f3",
+      "research/m2_pilot.py": "ed8fc51132099f9ac4049144971fad11fa8cb93fbee1641371bb75c3cb51d68a",
+      "research/m2_quant.py": "b62ad18dc1726d3b671c43c5b583486b302443f27244109b3dae268dc7636958",
+      "research/m2_report.py": "507e91a9c24e90ce040b071153c29c313b6a14fb0e6579423c0a8e5a7da7b931",
+      "research/m2_split.py": "bcbc99eec380c160c67c461af4621c63aa7c264fe5869ed853319282cbb6c3ff",
+      "research/m2_training.py": "5fe4fa1d03a82906826ab48328f2ff64f1fe3b0f290bb856a87d9360135a43a6",
+      "research/m2b_campaign.py": "5aecd9d06e56d23aaceab355616bacebda5cf6552b64e37bd2a6b0543c9fdcff",
+      "research/m2b_exec.py": "e7524f06356dc4ab750f8efdee0748221e6a31267a0d4abb96a0f31156e09e24",
+      "research/m2b_io.py": "894fc5d26cf99be2fb5fa49abedb592f093e6191dfe47e5e2697af3940979018",
+      "research/m2b_plan.py": "3892081435b2aa1774341a202264d1750825b2bacf246a58f4064b36e4a506ff",
+      "research/m2b_preflight.py": "46aca17653a5b94e8560ea3de6d25cec82f0d8c28bc8c84ec1a5ad7d69c16ab7",
+      "research/m2b_report.py": "e7c8df8f03c19cf8ca98f95eb46eabb20e4cce985d3f575cebc090b8da00fedd",
+      "research/m2b_splitreport.py": "741172233b430002e40267ce195e1f46eae691ef3954dc63903d5d16feebd5d4",
+      "research/m2b_state.py": "d378b1df532e2d396f55675031db3bd03f7e318fc8d31e0c289dadcd3ee8775c",
+      "scan_test_dependencies.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scripts/check_m2_integrity.py": "2a68da4c288073d83f6877af65af52a300e54b3d9105845f605b814b9848667f",
+      "scripts/check_m2b_integrity.py": "149ea8599c88e73e5da718cacdfb02dcd64348ea30fe98802d874bdd6c0c6918",
+      "scripts/package_m2_vm.py": "6d1db8ded41f3bad453e20addfb4e17c634432a6f0696375842db7e2c2f6aa3f",
+      "scripts/vm/01_verify_transfer.sh": "782b66597c980ead85c9aeb11273a251ab931c5c67ddee5f6587a6ca9e8e4c7e",
+      "scripts/vm/02_setup_env.sh": "33629d30d84f8a321189c46b208f8f522c51cca506f10a9136c574f66d7c328d",
+      "scripts/vm/03_preflight.sh": "b42c349078ebe9201a56851b61bdb389bcbb451cba5c2df3c5182f9d16874ea1",
+      "scripts/vm/04_tests_and_smoke.sh": "5482254eec6b7e123c3db8192eef57ba910e173aa52ba188041dd61528230d2a",
+      "scripts/vm/05_seed1_validation.sh": "a7c46b316175d12633eb9f585bbdafdd9869d9e7baf52c31026c7f9223edb442",
+      "scripts/vm/06_resume_remaining.sh": "0594f81ce83912e6c8709908154b8d641d89b46f85cd810e8e6f3365ad1a800f",
+      "scripts/vm/07_qat_optional.sh": "ea3dc77b58f12407c6a03e78176df847d84afb4d34a02f6c454dcbbb346df7a9",
+      "scripts/vm/08a_freeze_eval.sh": "3ed1add29c4a16bb94ebadd976d3604e6deca6a33f92b6cadf808ab96c1f69eb",
+      "scripts/vm/08b_run_final_test.sh": "e261cbdf325569bc2ff2b487899c23d87b1c7df83bf85e8f53e4a5c0ae575269",
+      "scripts/vm/09a_efficiency.sh": "99a5e8a77f6682f4057f9fc6b49a1d2cb1336452cd1467b15645da76563a9bd8",
+      "scripts/vm/09b_report.sh": "43036615eb7054e8bdd928378f83f10e8cc8282366a59c14bdab66931317c348",
+      "scripts/vm/_common.sh": "b10e0eec1bb4de52326d71b236947036191d0e2873088cdf0bb2125c193a6ec4",
+      "scripts/vm/check_runbook_commands.py": "fdc302fb1fe5babfc7c690d8bef30089426f85c2bf94eb44f55a17d58e012a0f",
+      "scripts/vm/check_shell.py": "b5f584aa31f419c0398649cfa90c8f7d23e73996ccb9f3221feda8f01206e5a9",
+      "scripts/vm/scan_test_dependencies.py": "4930149bf8f30d8ea32ee9e9e72565aa18eb90889ee4e4f0d6fa8c99b6e99839",
+      "scripts/vm/status.sh": "9b7ca4bd8fc624ff3fb5b38026636ba153e7876831aaa0ca9bd3d84c698df648",
+      "scripts/vm/verify_package.py": "ad531477829d9055ed2fefcb6fc03ece692d37073f3a1cb3df57d0bbebc3c7b0",
+      "tests/conftest.py": "3138d25cdec22a565a2df75adde02bffe33331ab35949d24a83d60d1839bddbf",
+      "tests/m2_guard_support.py": "37293c308216c9da0daa7fad720efefeb699e3439f1fd5043392c7846d210501",
+      "tests/m2_helpers.py": "3c8261076a0f66334657ad781b75477854530305a418b3cf4d81d572437c1e9b",
+      "tests/m2b_stub_support.py": "b1ea81395341396c23a6243ab45617022edaf1ac7cc7483962d4f32128a1292b",
+      "tests/test_m2_attacks.py": "5bb5004e4ba272e1d0c0e59a5fc698e60b7ce23243b47cdbd3b4757c9dcaecf4",
+      "tests/test_m2_efficiency.py": "9b0d7cb1eada6f1a47ce0e28ee03b5ba00f1ecd409485433859335ac45ec306c",
+      "tests/test_m2_guard.py": "529eff69f3d9ecf907313900d1bc1038b80aec6420708ac2c24e7619e1b56274",
+      "tests/test_m2_pilot.py": "1b2b61c0927ebc80aa28b15feeb742e82615782f7e1f91904e7172ec5c813c80",
+      "tests/test_m2_quant.py": "bf47f03135b8d31e2a93475464b2cd0efb39b6c4294a4ee69affe588e702baea",
+      "tests/test_m2_split.py": "f49097fcda331ee527e5964164a68b221899e318597472ab182f2356b4da509f",
+      "tests/test_m2_training.py": "243639eb96dcb3ffdc61c59fc3fffc7d795b5e62daebc22f5df8d62dcba87c9b",
+      "tests/test_m2b_checkpoint.py": "76f386791fc6f05dc5e3271b1b38b6d55a441fcedc3aaf23bfd996dca9bc135e",
+      "tests/test_m2b_exec_stub.py": "f6c5a70030c6bc70e83800582f31a762f4dbea3094373b2428ce9f8b7c0e84de",
+      "tests/test_m2b_gating.py": "6dde551cce2df379780808476af7ddcdf78fb10e23993a8119887d38be84270c",
+      "tests/test_m2b_guard_local.py": "bd4c50554269c0c2643c93fcca5684880dff832f6cf07ec28b063b1650aecd81",
+      "tests/test_m2b_io.py": "3f02bfc4728bd9c6a02b46edd94c1015580633b1218f48a37fb3f356f548e9f5",
+      "tests/test_m2b_package.py": "1bb6cab1ce4849c395eb3830a9b382362dc74154f758006a7bc24f559b77eed6",
+      "tests/test_m2b_plan.py": "3f9b48f124c554feb3d6593c765fcd0664eb0f304dc476c71ff3e78e3ac8f91e",
+      "tests/test_m2b_preflight.py": "b4eb21af5163824affce98b59691fcfdcff2afc2e807f6eb8eab08c5641ccc15",
+      "tests/test_m2b_report.py": "83f7c0ca1a2475d41a700f433c2783369d230af204d87336e9a7f9aea4cddf12",
+      "tests/test_m2b_split_v2.py": "d7d0df354815a70c1cfab51631cb72cb0d6477bd4fb3748dfb4468fd98955b3c",
+      "tests/test_m2b_state.py": "169ff4ad756f6f99772d1081057833794b2e678125b0801bad2c37233fbe0b15",
+      "tests/test_m2b_vm_only.py": "0c49a6e843ce57c986f1a3db1d10ce1c485bf2afdffbb5b2bfdff8acbf7d0d1c",
+      "ytest.ini": null
+    }
+  },
+  "split_v2": {
+    "id_sha256": {
+      "test": "884f3d385c0d4adbd00f12648c061fed536c2eefcfd69c844cfb34beabf74691",
+      "train": "809f5a587ddbd281526df7eb5f87cb184e821f3bede97dd5d4c9d55f66c6eac3",
+      "validation": "802f4b499adf4bef0825afc3015f306bc69ed067d4f76bf7c2759c8e9c0e3fcd"
+    },
+    "manifest_sha256": "842cbb882f5062946bdcab097f1370ddd796ff47439ad3581c493eec917b5d62",
+    "split_freeze_json_sha256": "17a7f6218c2876ad9829dc9fbaf5f7dbbc228b386d18fc95e65e3a29b3302210",
+    "split_m2_json_sha256": "7b8da874b36cc5b7c967490388e87b050173427f0447322b3c2b2fe064b7e06e"
+  }
+}

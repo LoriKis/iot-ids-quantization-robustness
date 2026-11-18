@@ -1,0 +1,16 @@
+{
+  "adversarial": true,
+  "checkpoint_file": "checkpoint.pt",
+  "checkpoint_sha256": "0714d90f5ffe2d0f18744289f80c9eb9ff0be8e6b492babca561cb31010a9380",
+  "config_sha256": "4f12845e86270944be7c9abd885c9af6c9cfb98282ae3a5f4581c0c0fd1c888a",
+  "created_utc": "2026-11-17T15:31:56Z",
+  "epochs": 25,
+  "extra": {
+    "final_state_hash": "1de5c6995ba5364fc3b0bbc4badf05f6a301f7e9d3cfbcc11af9a2a0f166a1db",
+    "init_state_hash": "5ad55216f5edd1d4bcdc5f88ae18c14c7e055746ad46694d38f49d54f730b8cc",
+    "optimizer_updates": 1100
+  },
+  "kind": "deadline-real",
+  "model_id": "V3",
+  "run_id": "m2-deadline-v1"
+}

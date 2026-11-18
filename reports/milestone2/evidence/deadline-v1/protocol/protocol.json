@@ -1,0 +1,110 @@
+{
+  "checkpoint_rule": "final epoch; no validation-based selection",
+  "config_sha256": "4f12845e86270944be7c9abd885c9af6c9cfb98282ae3a5f4581c0c0fd1c888a",
+  "efficiency": {
+    "batch1": {
+      "timed": 200,
+      "warmup": 20
+    },
+    "batch256": {
+      "timed": 30,
+      "warmup": 5
+    },
+    "interleaved": "V1,V2,V3,V4 x repetitions, fresh child process each",
+    "memory_metric": "peak_rss_bytes = Linux VmHWM of a fresh child process after the timed runs; peak_rss_delta_bytes = VmHWM minus RSS right after model load (the baseline includes the loaded weights and the torch footprint, so the delta is inference-time working memory); peak_rss_sampled_delta_bytes = 10 ms sampler cross-check; weight memory = state_dict_bytes",
+    "repetitions": 3,
+    "rows": 256,
+    "rows_partition": "validation",
+    "threads": 1
+  },
+  "epochs": 25,
+  "eps0_consistency": {
+    "behaviour": "record_only",
+    "curves_use": "attack-path eps-0 predictions",
+    "fields": [
+      "eps0_vs_full_test_mismatches",
+      "eps0_max_abs_logit_diff"
+    ],
+    "never_fails_run": true
+  },
+  "frozen_before": "training start and any test-set model inference",
+  "frozen_not_chosen_by_performance": true,
+  "full_test": {
+    "batch_size": 64,
+    "batch_size_reason": "equal to the attack batch size so eps-0 subset predictions are exactly comparable",
+    "macro_f1_labels": "labels=range(27), zero_division=0 (same for full test and subset)",
+    "metrics": [
+      "accuracy",
+      "macro_f1"
+    ]
+  },
+  "kind": "m2_deadline_protocol",
+  "lock_sha256": "1b1ced84ab3a68569c2ace4654b468c6679926dc7546bf7752da4fcfd72f6ccb",
+  "robustness": {
+    "attacks": {
+      "fgsm": {
+        "random_start": false,
+        "restarts": 1,
+        "steps": 1
+      },
+      "pgd5": {
+        "alpha_at_eps": {
+          "0.05": 0.0125,
+          "0.1": 0.025
+        },
+        "alpha_fraction": 0.25,
+        "random_start": true,
+        "restarts": 1,
+        "steps": 5
+      }
+    },
+    "batch_size": 64,
+    "counts_file": "robustness_subset_counts.json",
+    "counts_sha256": "ed6a07f4e3449ea4a94182a55bc96e7032a890e10d7f629803843996670235fb",
+    "eps0_computed_once_shared_by_both_curves": true,
+    "epsilons": [
+      0.0,
+      0.05,
+      0.1
+    ],
+    "methods": {
+      "fp32": {
+        "description": "white-box gradient of the FP32 model, scored on the same model",
+        "source": "fp32_direct"
+      },
+      "int8": {
+        "description": "forward pass is the real INT8 model (asserted bit-equal logits); backward pass goes through each of the 23 INT8 Linear layers using their dequantized weights and ignores activation quantization; softmax, LayerNorm and residuals differentiate normally; candidates are scored by the real INT8 model. Not a straight-through estimator on fake-quant and not an FP32 shadow. Robustness of INT8 models may be over-estimated if this gradient is weak.",
+        "label": "APPROXIMATE INT8 GRADIENT (BPDA)",
+        "source": "bpda_int8"
+      }
+    },
+    "n_actual": 270,
+    "not_run": [
+      "transfer_fp32_to_int8",
+      "transfer_fp32_to_int8_targetsel",
+      "surrogate_fakequant",
+      "surrogate_fakequant_targetsel",
+      "pgd20",
+      "pgd50x5",
+      "direct_int8_grad"
+    ],
+    "per_class_target": 10,
+    "seed_rule": "derived_seed('atk-eval', 1, model_id, source, epsilon, batch_index)",
+    "subset_ids_file": "robustness_subset_ids.csv",
+    "subset_ids_file_sha256": "dbafdd5afa486e08fa48b8f211eedcc193bb17238ec50dbea4ead4f17cf6f919",
+    "subset_ids_sha256": "2ca2619321ba903a900904e1e4a13bf875d0fcbc7072a71005dac925e1900a2d",
+    "subset_label_sha256": "a6ac90984dd02372222b0ae7f554ec933ad76acfc4c996f358878de16e11e732",
+    "subset_rule": "sampling.stratified_subset v1: sorted IDs per class, seed=sha256(name|split_seed|class)[:8], min(k,available)"
+  },
+  "run_id": "m2-deadline-v1",
+  "schema": 1,
+  "seed": 1,
+  "split": {
+    "n_test": 3764,
+    "n_train": 22412,
+    "n_val": 3821,
+    "scaler_sha256": "de41d50dba0e7e4cfdb839d2e18f59683248a29b530ad04414b3f6cc1ea584a7",
+    "split_m2_sha256": "7b8da874b36cc5b7c967490388e87b050173427f0447322b3c2b2fe064b7e06e"
+  },
+  "test_partition_id_sha256": "884f3d385c0d4adbd00f12648c061fed536c2eefcfd69c844cfb34beabf74691"
+}

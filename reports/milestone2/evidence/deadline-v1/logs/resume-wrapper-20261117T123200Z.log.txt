@@ -1,0 +1,3 @@
+2026-11-17T12:32:00Z INFO resume check: remaining 3.82 h <= limit 8.00 h
+2026-11-17T12:32:00Z INFO resume: epochs=25 per_class=10 hours_remaining=11.00 out=/home/crysys/IOT-network-traffic-DL-M2-VM-deadline-v1/artifacts/m2-deadline-v1 log=/home/crysys/IOT-network-traffic-DL-M2-VM-deadline-v1/artifacts/m2-deadline-v1/logs/campaign-20261117T123200Z.log
+2026-11-17T12:32:00Z INFO stage freeze is already valid; nothing to run before the stop point

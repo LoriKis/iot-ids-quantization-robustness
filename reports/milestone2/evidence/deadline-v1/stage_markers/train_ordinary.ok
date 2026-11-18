@@ -1,0 +1,16 @@
+{
+  "config_sha256": "4f12845e86270944be7c9abd885c9af6c9cfb98282ae3a5f4581c0c0fd1c888a",
+  "epochs": 25,
+  "finished_utc": "2026-11-17T12:57:29Z",
+  "lock_sha256": "1b1ced84ab3a68569c2ace4654b468c6679926dc7546bf7752da4fcfd72f6ccb",
+  "outputs": {
+    "models/V1/checkpoint.pt": "2333a20bb80d0ac4ad66764a9d86b4bf4ccbf90e544ac75967d86e3ed9119ecf",
+    "models/V1/deadline_meta.json": "b7aa46c59bb909156ac80a0fd05c68a8c3ec198d1ac07e1dd54b4c895708a06c",
+    "models/V1/train_log.json": "b44957afb258ea2b2366864a9dbfd06ef764eb79e195420206fa8d201e71ac37"
+  },
+  "protocol_sha256": "62adf121b39054f8109fd7c89a2c3577a4303f9f1610d60742521fd7dcf47b36",
+  "run_id": "m2-deadline-v1",
+  "seconds": 1213.357069797814,
+  "stage": "train_ordinary",
+  "started_utc": "2026-11-17T12:37:16Z"
+}

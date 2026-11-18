@@ -1,0 +1,134 @@
+{
+  "schema_version": 2,
+  "claim": "Milestone 2B campaign specification (VM execution): four-seed comparison of FP32 and INT8 PTQ Standard Transformers, ordinary and PGD adversarially trained, on the revised group-disjoint split (split_v2). Supersedes configs/m2/campaign.json for execution; configs/m2/* stay frozen and unmodified. This is a new group-disjoint evaluation partition within a previously examined dataset, not a completely untouched external benchmark.",
+  "supersedes": {
+    "path": "configs/m2/campaign.json",
+    "sha256": "18d853b5135c856fdb8197f11b14bdc47addc0f0cbfb53c80524289dd0e650cd"
+  },
+  "seeds": [
+    1,
+    7,
+    13,
+    29
+  ],
+  "epochs": 25,
+  "batch_size": 512,
+  "epsilon_grid": [
+    0,
+    0.01,
+    0.025,
+    0.05,
+    0.1
+  ],
+  "threads": {
+    "training": 2,
+    "attack_and_evaluation": 1
+  },
+  "checkpointing": {
+    "every_epochs": 1,
+    "keep_last": 2
+  },
+  "attack_row_policy": {
+    "validation": "all",
+    "test": "all"
+  },
+  "matrix": {
+    "models": [
+      "V1",
+      "V2",
+      "V3",
+      "V4"
+    ],
+    "derivation": {
+      "V1": "ordinary FP32",
+      "V2": "INT8 PTQ of V1",
+      "V3": "PGD adversarial training, fresh initialisation, same seed",
+      "V4": "INT8 PTQ of V3"
+    },
+    "sources_by_target": {
+      "fp32": [
+        "fp32_direct"
+      ],
+      "int8": [
+        "bpda_int8",
+        "transfer_fp32_to_int8",
+        "transfer_fp32_to_int8_targetsel",
+        "surrogate_fakequant",
+        "surrogate_fakequant_targetsel"
+      ]
+    },
+    "attacks": [
+      "fgsm",
+      "pgd20 (or pgd50x5 per step 0)"
+    ],
+    "aggregation": "mean and standard deviation over the four seeds with per-seed values kept; paired differences V3 vs V1 and V4 vs V2 per seed; no significance claim beyond the spread",
+    "perturbation_structure": "row-tied (primary); per-position mode only as a labelled sensitivity check on seed 1"
+  },
+  "e4": {
+    "epsilons": [
+      0.025,
+      0.05,
+      0.1
+    ],
+    "attacks": [
+      "pgd20",
+      "pgd50x5"
+    ],
+    "min_subset": 1000
+  },
+  "qat": {
+    "enabled": false,
+    "parent": "V1",
+    "arms": [
+      "FP32-FT",
+      "FP32-FT-PTQ",
+      "QAT-FT"
+    ],
+    "k": 3,
+    "lr": 0.0001,
+    "note": "opt-in only (run --opt-in qat and M2_ENABLE_QAT=yes); QAT benefit is attributed only relative to FP32-FT->PTQ"
+  },
+  "step0": {
+    "blocking": true,
+    "description": "Budget-adequacy step that must finish before any other campaign unit runs.",
+    "steps": [
+      "train seed-1 V1 and V3 for 25 epochs on the full M2 train partition",
+      "derive V2 and V4 by INT8 PTQ with the frozen calibration rows",
+      "run the E4 comparison pgd20 vs pgd50x5 in 12 paired cells (V1 and V3 with fp32_direct, V2 and V4 with bpda_int8, epsilon 0.025, 0.05, 0.10) on the validation E4 subset",
+      "stop and ask the user if the E4 subset has fewer than 1000 rows",
+      "freeze the attack budget in configs/m2/attacks.json (status frozen) and record its SHA-256 in a new campaign.json revision",
+      "only then run seeds 7, 13 and 29 and all attack cells"
+    ],
+    "budget_rule": "pgd20 is adequate if n_extra <= ceil(0.01 * n_subset) in every one of the 12 cells; otherwise pgd50x5 is used for every model, source and epsilon",
+    "freeze": "attacks.json hash is not part of this revision; after step 0 a new campaign.json revision stores the frozen attacks.json hash and --confirm-freeze must match that revision"
+  },
+  "outputs": {
+    "root": "output",
+    "state": "state",
+    "step0_decision": "step0/budget_decision.json",
+    "freezes": "freezes",
+    "reports": "reports"
+  },
+  "siblings": {
+    "data_v2": {
+      "path": "configs/m2b/data_v2.json",
+      "sha256": "fe2c49cd8cd2f36c8f7682d63e9b6a4c62c0c370b161e80030f24256071baa3f"
+    },
+    "training": {
+      "path": "configs/m2/training.json",
+      "sha256": "7be76132a32999f980e0a0e2474a4852439f0622f2f222a6e15d74b81167aaed"
+    },
+    "quantization": {
+      "path": "configs/m2/quantization.json",
+      "sha256": "6bb20f37e56a1a0e627f3741b8a616e37983a1c93d92b42b414d240129c655fe"
+    },
+    "attacks": {
+      "path": "configs/m2/attacks.json",
+      "sha256": "7ff7b518cc76b393a71a09574d1ec4a3f024a998edb4d81842b319a37d5fc8a4"
+    },
+    "efficiency_v2": {
+      "path": "configs/m2b/efficiency_v2.json",
+      "sha256": "11fe82a10878c4ad49f183e550ec524bc4c6629d33b4552fe5e38ad2e1efe8f7"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "frozen_date_local": "2026-11-10",
+  "claim": "Milestone 2A frozen efficiency protocol: artifact size, single-thread CPU latency and throughput, and process memory for V1-V4 on one machine. Outcomes are reported as measured with their spread; no speed or memory claim is assumed. Pilot results are non-scientific development checks (1 seed, 2 epochs, small subsets, validation data only) and carry no accuracy or robustness conclusion.",
+  "threads": {
+    "primary": 1,
+    "secondary": 4,
+    "secondary_scope": "full campaign only; not run in M2A"
+  },
+  "inference": {
+    "mode": "torch.inference_mode",
+    "model_mode": "eval",
+    "quantized_engine": "fbgemm",
+    "matched_environment_variables": ["OMP_NUM_THREADS", "MKL_NUM_THREADS"]
+  },
+  "fixed_inputs": {
+    "count": 256,
+    "partition": "validation",
+    "seed_name": "efficiency-rows",
+    "rule": "np.random.default_rng(derived_seed('efficiency-rows', split_seed)).choice without replacement from the supplied validation rows, sorted by position; IDs and a hash of the scaled rows are saved"
+  },
+  "batch1": {"warmup": 20, "timed": 200, "pilot_warmup": 10, "pilot_timed": 50},
+  "batch256": {"batch_size": 256, "warmup": 5, "timed": 30, "pilot_warmup": 2, "pilot_timed": 10},
+  "repetitions": {"full": 3, "pilot": 2},
+  "variants": ["V1", "V2", "V3", "V4"],
+  "schedule": "interleaved: repetition 1 runs V1, V2, V3, V4, repetition 2 runs V1, V2, V3, V4, and so on; retried processes are appended at the end and flagged; the executed order is never re-sorted",
+  "child": {
+    "command": "py -B -m research.m2_efficiency --child --spec <spec.json> --out <result.json>",
+    "timeout_seconds": 300,
+    "max_retries": 1
+  },
+  "timed_region": "input row tensor -> repeat to 50 positions -> model forward -> argmax",
+  "excluded_from_timing": "CSV reading, MinMax scaling (a fixed affine operation identical for all models), attack generation, calibration, model loading, process start-up",
+  "memory": {
+    "baseline": "process RSS after imports and model/checkpoint load, before the first inference",
+    "peak": "psutil Process.memory_info().peak_wset (Windows peak working set, process lifetime) after the timed runs",
+    "cross_check": "provenance.MemoryMonitor with a 10 ms sampling interval, run in a separate untimed pass after the timed runs so that the sampling thread does not disturb latency",
+    "caveat": "process-wide RSS is coarse and includes allocator slack and the imported Python packages (identical for every variant)"
+  },
+  "statistics": ["median", "p95", "min", "raw samples"],
+  "artifact_size": "bytes of torch.save(model.state_dict()); no optimizer, calibration tensors or logs"
+}

@@ -1,0 +1,12 @@
+{
+  "status": "completed",
+  "identity": {
+    "phase": "m2a",
+    "seeds": [
+      1
+    ],
+    "epochs": 2,
+    "config_sha256": "36fe9028e6b535ff82d2941e57714734fccd92529dc7a73e87111a0464ad9ce3"
+  },
+  "elapsed_seconds": 8812.205564022064
+}

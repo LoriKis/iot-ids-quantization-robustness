@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "frozen_date_local": "2026-11-10",
+  "claim": "Milestone 2A frozen training recipe: Experiment C (conventional Adam, paper-described) hyper-parameters on the new M2 group-disjoint split; V1 ordinary FP32 and V3 PGD adversarial training run through one loop. Not an exact reproduction of Table 4. Pilot results are non-scientific development checks (1 seed, 2 epochs, small subsets, validation data only) and carry no accuracy or robustness conclusion.",
+  "source_experiment": {
+    "config": "configs/milestone1_paper_described_adam.json",
+    "sha256": "e90cf9420cbc9bacce0890e628c90658cdb4b222992896f267ec6cd4a9523284",
+    "note": "Values below are copied from Experiment C. The only deliberate difference is the number of optimizer updates (the M2 training partition has a different row count)."
+  },
+  "upstream_revision": "e73911bbdb241f3fb6c5de346139010c4aadefd4",
+  "seeds": [1, 7, 13, 29],
+  "architecture": {
+    "input_dim": 39,
+    "d_model": 96,
+    "n_heads": 4,
+    "n_layers": 3,
+    "d_ff": 384,
+    "n_classes": 27,
+    "max_seq_len": 50,
+    "dropout": 0.1
+  },
+  "sequence": {
+    "length": 50,
+    "train_noise_std": 0.01,
+    "construction": "repeat scaled row 50 times (synthetic, not chronological traffic); training-only Gaussian noise std 0.01 added after repetition, independent per position, fresh each batch and epoch; evaluation noise-free"
+  },
+  "training": {
+    "precision": "FP32",
+    "optimizer": "torch.optim.Adam",
+    "optimizer_kwargs": {
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "betas": [0.9, 0.999],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "maximize": false
+    },
+    "decoupled_weight_decay": false,
+    "epochs": 25,
+    "batch_size": 512,
+    "drop_last": false,
+    "loss": "cross_entropy, no label weights",
+    "gradient_clipping": null,
+    "schedule": null,
+    "checkpoint_rule": "final epoch only; no validation or test based selection",
+    "rng_policy": "global seed once before model construction (paper_described_adam.seed_everything); shuffle, noise and attack streams from local generators derived with paper_described_adam.derived_seed",
+    "determinism": "torch.use_deterministic_algorithms is not enabled (as in Experiment C); run-to-run bit-exactness is not claimed"
+  },
+  "resources": {
+    "device": "cpu",
+    "torch_threads": 2
+  },
+  "derived_seed_names": {
+    "shuffle": ["shuffle", "seed", "epoch"],
+    "noise": ["noise", "seed", "epoch", "batch"],
+    "attack_train": ["atk-train", "seed", "epoch", "batch"]
+  },
+  "adversarial": {
+    "space": "MinMax-scaled feature space, L-infinity",
+    "kind": "pgd",
+    "epsilon": 0.05,
+    "steps": 5,
+    "alpha": 0.025,
+    "random_start": true,
+    "restarts": 1,
+    "retention": "attacks.attack strongest-candidate rule over {FGSM candidate, random start, each iterate}",
+    "clean_weight": 0.5,
+    "adversarial_weight": 0.5,
+    "attack_model_mode": "eval",
+    "attacked_model": "current weights at the step",
+    "perturbation_structure": "row_tied",
+    "feasible_set": "lower = max(x - eps, min(0, x)), upper = min(x + eps, max(1, x)) (protocol E2)",
+    "noise_policy": "the same noise tensor is added to the clean and the adversarial sequence of a step; the attack sees the noise-free sequence",
+    "initialisation": "fresh, same seed initialisation as V1"
+  }
+}

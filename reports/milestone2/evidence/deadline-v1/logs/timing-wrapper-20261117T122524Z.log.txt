@@ -1,0 +1,35 @@
+2026-11-17T12:25:24Z INFO timing: hours_remaining=12.00 out=/home/crysys/IOT-network-traffic-DL-M2-VM-deadline-v1/artifacts/m2-deadline-v1 v4=/home/crysys/IOT-network-traffic-DL-M2-VM-v4
+2026-11-17T12:25:39Z INFO probe ordinary: mean 1.078 s, p90 1.092 s, cv 0.02
+2026-11-17T12:27:24Z INFO probe adversarial: mean 8.455 s, p90 8.504 s, cv 0.01
+/home/crysys/IOT-network-traffic-DL-M2-VM-v4/research/quantization.py:57: UserWarning: Static INT8 kernels are narrowly exempted from PyTorch's unsupported determinism guard; float operations retain the requested policy.
+  warnings.warn("Static INT8 kernels are narrowly exempted from PyTorch's unsupported determinism guard; float operations retain the requested policy.", UserWarning)
+/home/crysys/IOT-network-traffic-DL-M2-VM-v4/.venv/lib/python3.11/site-packages/torch/ao/quantization/observer.py:229: UserWarning: Please use quant_min and quant_max to specify the range for observers.                     reduce_range will be deprecated in a future release of PyTorch.
+  warnings.warn(
+/home/crysys/IOT-network-traffic-DL-M2-VM-v4/.venv/lib/python3.11/site-packages/torch/_utils.py:413: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  device=storage.device,
+
+M2 deadline timing estimate (runtime only; no accuracy or F1 inspected)
+plan: 25 epochs, 10 test rows per class
+
+component                 seconds
+train_ordinary               1191
+train_adversarial            9307
+ptq                            12
+validation                     16
+test                           16
+robustness                    105
+efficiency                    223
+report                        120
+overhead                       10
+raw total                   11001
+
+safety multiplier    1.25
+planned hours        3.82
+cap hours            9.00  = min(9.0, 12.00 - 3.0)
+decision             feasible
+
+budget lock written: /home/crysys/IOT-network-traffic-DL-M2-VM-deadline-v1/artifacts/m2-deadline-v1/timing/budget_lock.json
+launch (separate command): python -m m2_deadline.campaign launch --hours-remaining <HOURS_NOW> --out /home/crysys/IOT-network-traffic-DL-M2-VM-deadline-v1/artifacts/m2-deadline-v1 --v4-root /home/crysys/IOT-network-traffic-DL-M2-VM-v4
+  or: bash scripts/vm_deadline/launch.sh <HOURS_NOW>
+
+estimate written: /home/crysys/IOT-network-traffic-DL-M2-VM-deadline-v1/artifacts/m2-deadline-v1/timing/timing_estimate.json (log: /home/crysys/IOT-network-traffic-DL-M2-VM-deadline-v1/artifacts/m2-deadline-v1/logs/timing-20261117T122524Z.log)

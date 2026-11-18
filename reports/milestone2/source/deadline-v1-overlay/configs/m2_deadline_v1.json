@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "run_id": "m2-deadline-v1",
+  "claim": "One seed (1); matched ordinary/adversarial FP32 pair trained for the locked epoch count; INT8 by post-training quantization only; feature-space attacks; approximate (BPDA) INT8 gradients; QAT feasibility only, no QAT performance claim.",
+  "seed": 1,
+  "split_dir": "reports/milestone2b/split_v2",
+  "siblings": {
+    "training": "configs/m2/training.json",
+    "quantization": "configs/m2/quantization.json",
+    "attacks": "configs/m2/attacks.json",
+    "efficiency": "configs/m2b/efficiency_v2.json",
+    "data": "configs/m2b/data_v2.json"
+  },
+  "training": {
+    "epoch_candidates": [25, 10, 5],
+    "threads": 2,
+    "keep_last": 2,
+    "batch_size_expected": 512,
+    "checkpoint_rule": "final epoch; no validation-based selection"
+  },
+  "budget": {
+    "hard_cap_hours": 9.0,
+    "reserve_hours": 3.0,
+    "safety_multiplier": 1.25,
+    "per_class_candidates": [10, 5],
+    "n_classes": 27,
+    "report_allowance_seconds": 120,
+    "stage_overhead_seconds": 10,
+    "n_stage_processes": 1,
+    "max_probe_minutes": 25
+  },
+  "sources": {
+    "split_seed": "split_m2.json[\"split_seed\"] (20270 in split_v2; read, never configured here)",
+    "calibration_per_class": "configs/m2/quantization.json ptq.calibration_per_class (asserted == 20)"
+  },
+  "timing_probe": {
+    "train_steps_ordinary": 8,
+    "train_steps_adversarial": 12,
+    "warmup_steps_dropped": 2,
+    "p90_weight": 0.9,
+    "max_step_cv": 0.5,
+    "attack_probe_per_class": 3,
+    "contention_cpu_percent": 40.0
+  },
+  "robustness": {
+    "split_partition": "test",
+    "per_class_candidates": [10, 5],
+    "subset_seed_name": "m2-deadline-robust-subset",
+    "epsilons": [0.0, 0.05, 0.1],
+    "batch_size": 64,
+    "attacks": {
+      "fgsm": {"source_cfg_name": "fgsm"},
+      "pgd5": {"kind": "pgd", "steps": 5, "alpha_fraction": 0.25, "restarts": 1, "random_start": true}
+    },
+    "methods": {"fp32": "fp32_direct", "int8": "bpda_int8"}
+  },
+  "efficiency": {
+    "threads": 1,
+    "rows_partition": "validation"
+  },
+  "val_check": {
+    "blocking": ["finite_logits", "pred_range_0_26", "ptq_reload_bitexact", "n_quantized_linears_23"],
+    "informational": ["int8_parent_argmax_agreement"]
+  },
+  "report": {
+    "score_pp_tolerance": 0.5,
+    "ratio_tolerance": 0.05,
+    "qat_artifact": "artifacts/m2a-pilot/qat/qat_feasibility.json"
+  }
+}

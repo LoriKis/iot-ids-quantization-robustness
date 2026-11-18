@@ -1,0 +1,26 @@
+{
+  "accuracy": 0.6074074074074074,
+  "attack": "clean",
+  "attack_seconds": 0.7088788216933608,
+  "eps0_consistency": {
+    "behaviour": "record_only",
+    "eps0_max_abs_logit_diff": null,
+    "eps0_vs_full_test_mismatches": 0,
+    "n_compared": 270,
+    "n_missing_ids": 0
+  },
+  "epsilon": 0.0,
+  "files": {
+    "arrays.npz": "2d39a9decdce9f3ab1bdee0cac421244b68261b462fca08ff798bc8aa46c3e52",
+    "attack_checks.json": "4dd33c35273674009c2d92447cd365d94c3ea76e146f1cbad6581745ab204ce9",
+    "attack_result.json": "d49e2caa33344f8d3fd4abeabb3e939476bdc46d963db9b3bea22d2ad85cce0b"
+  },
+  "ids_sha256": "2ca2619321ba903a900904e1e4a13bf875d0fcbc7072a71005dac925e1900a2d",
+  "macro_f1": 0.5477837643580615,
+  "model_id": "V3",
+  "n": 270,
+  "robust_accuracy": 0.6074073910713196,
+  "source": "fp32_direct",
+  "unit_id": "clean_eps0.0",
+  "valid": true
+}

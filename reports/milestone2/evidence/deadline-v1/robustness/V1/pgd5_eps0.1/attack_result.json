@@ -1,0 +1,20 @@
+{
+  "attack_source": "fp32_direct",
+  "target": "V1",
+  "model_id": "V1",
+  "attack": "pgd5",
+  "epsilon": 0.1,
+  "n": 270,
+  "clean_accuracy": 0.6851851940155029,
+  "accuracy_under_attack": 0.04444444552063942,
+  "robust_accuracy": 0.04444444552063942,
+  "attack_success_rate": 0.9351351351351351,
+  "max_linf": 0.10000002384185791,
+  "attack_seconds": 7.1406843373551965,
+  "example_id_sha256": "2ca2619321ba903a900904e1e4a13bf875d0fcbc7072a71005dac925e1900a2d",
+  "label_sha256": "a6ac90984dd02372222b0ae7f554ec933ad76acfc4c996f358878de16e11e732",
+  "valid": true,
+  "note": "white-box attack on the FP32 model",
+  "extra_notes": [],
+  "framing": "Feature-space attacks; no guarantee that perturbed vectors correspond to valid network traffic. Perturbations are tied to the original feature row (one 39-d delta broadcast to all 50 synthetic positions)."
+}

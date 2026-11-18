@@ -1,5 +1,17 @@
 # Transformer intrusion detection: robustness and efficiency
 
+<!-- M2-NAV-BEGIN -->
+> **Milestone navigation (added after the Milestone 1 submission).**
+> The original README text below records the Milestone 1 submission and describes
+> Milestone 1 as the active result; any wording below such as "Later milestones"
+> or "pending" is Milestone 1-era text. Milestone 2 was added afterwards in
+> `reports/milestone2/`.
+>
+> - Milestone 1: [report](reports/milestone1-artifact/REPORT.md) (submitted, unchanged).
+> - Milestone 2: [entry point](reports/milestone2/README.md) (four-model PTQ and
+>   adversarial-training comparison; its verification files and reader-facing
+>   reports are post-run additions; QAT comparison deferred; Milestone 3 pending).
+<!-- M2-NAV-END -->
 Research question: **How do INT8 quantization and adversarial training change the
 robustness–efficiency trade-off of a Transformer for IoT intrusion detection?**
 

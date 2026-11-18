@@ -1,0 +1,2191 @@
+{
+  "schema_version": 1,
+  "claim": "This is a new group-disjoint evaluation partition within a previously examined dataset, not a completely untouched external benchmark. The dataset was seen by Milestone 1; the earlier test partition was evaluated; identical feature vectors with conflicting labels remain in the data.",
+  "policy": "reported only; labels are neither changed nor removed",
+  "conflict_groups": 229,
+  "conflict_rows": 8697,
+  "per_partition": {
+    "train": {
+      "rows": 22412,
+      "groups": 7023,
+      "conflict_groups": 83,
+      "conflict_rows": 7344,
+      "unavoidable_error_rows": 3858,
+      "bayes_style_accuracy_ceiling": 0.8278600749598429
+    },
+    "validation": {
+      "rows": 3821,
+      "groups": 2467,
+      "conflict_groups": 61,
+      "conflict_rows": 723,
+      "unavoidable_error_rows": 308,
+      "bayes_style_accuracy_ceiling": 0.9193928291023292
+    },
+    "test": {
+      "rows": 3764,
+      "groups": 2463,
+      "conflict_groups": 85,
+      "conflict_rows": 630,
+      "unavoidable_error_rows": 228,
+      "bayes_style_accuracy_ceiling": 0.9394261424017003
+    }
+  },
+  "ceiling_note": "Rows of a group beyond its majority label are unavoidable errors for any classifier that sees only the features.",
+  "groups": [
+    {
+      "group": "0097711e504a7d9068c96c844ea2e462caa942443331b83f8d36bfa3cc31655c",
+      "partition": "test",
+      "rows": 6,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 4
+      }
+    },
+    {
+      "group": "03856078511178c4d11cc4e397ca1b035de10190ba8b256f20fd13abc12f1fec",
+      "partition": "validation",
+      "rows": 36,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 30,
+        "DoS-HTTP_Flood": 6
+      }
+    },
+    {
+      "group": "0496756b56e4fea50a65d17dc7c726a3f1c823dfa4619feef4ab6207058bea80",
+      "partition": "train",
+      "rows": 210,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 198,
+        "DoS-HTTP_Flood": 12
+      }
+    },
+    {
+      "group": "04ad1ee579e2e26dcb0a6bc58fb916fc753f460d478b59cfe763fa6ecff8c270",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "05761a34eb01f3d990525e8dae09a5122fcaa9b0184b17ac0a0c4c8bd33a3777",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DNS_Spoofing": 1,
+        "MITM-ArpSpoofing": 1
+      }
+    },
+    {
+      "group": "0783ecb952db7196571fbcab9dc58c4014ace0fb5cac80fa05aece07eb9b3f80",
+      "partition": "validation",
+      "rows": 4,
+      "label_counts": {
+        "DDoS-SYN_Flood": 1,
+        "DDoS-SynonymousIP_Flood": 2,
+        "DoS-SYN_Flood": 1
+      }
+    },
+    {
+      "group": "08531fdb613728c4a155b68c75e80f0072489b71d22f25456335480199a78212",
+      "partition": "validation",
+      "rows": 3,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "086b1b53c42636a0c077634252105141a088f4da74658f6f87abcc4ce35eb6b0",
+      "partition": "validation",
+      "rows": 11,
+      "label_counts": {
+        "DDoS-SYN_Flood": 8,
+        "DoS-SYN_Flood": 3
+      }
+    },
+    {
+      "group": "0a27a79fd6b59843a2568cd1db53e89614dc44cff4a8961d4f00c1214efc7e6f",
+      "partition": "test",
+      "rows": 6,
+      "label_counts": {
+        "DDoS-SYN_Flood": 1,
+        "DoS-SYN_Flood": 5
+      }
+    },
+    {
+      "group": "0a6e421e0b2067b41b388b968b8b1944b346486fe37018a5218eec53cf5ed208",
+      "partition": "test",
+      "rows": 3,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 2
+      }
+    },
+    {
+      "group": "0b9fc27d0b3e47c1568816228413c1758542093948530bd9cb766d093db9c325",
+      "partition": "train",
+      "rows": 3,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "0bcbdd54956dd3ab71807567ca12c342ef983911f848f779ccf7f23bacd086ec",
+      "partition": "test",
+      "rows": 3,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 2
+      }
+    },
+    {
+      "group": "1086b4d30cea60e59eb67552a6339df8040b14a47a59a7bdad12a995739dcce9",
+      "partition": "validation",
+      "rows": 25,
+      "label_counts": {
+        "DDoS-TCP_Flood": 15,
+        "DoS-TCP_Flood": 10
+      }
+    },
+    {
+      "group": "10bfabbcc658fbdd28c170d3f149dd3f30ebad55e260d670629a289ed2c54c0f",
+      "partition": "train",
+      "rows": 1814,
+      "label_counts": {
+        "Benign_Final": 1,
+        "DDoS-UDP_Flood": 1008,
+        "DoS-UDP_Flood": 803,
+        "Recon-OSScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "11d048a8c2cdc48bedf37a8b686a16c2b26730e8b26d6cf6797cf00a01a3ab9f",
+      "partition": "test",
+      "rows": 4,
+      "label_counts": {
+        "DDoS-SlowLoris": 1,
+        "Recon-OSScan": 3
+      }
+    },
+    {
+      "group": "12dcebb128d70b8a316548bdac1e967ee567bd3352babaa7b26d36e59f28f720",
+      "partition": "test",
+      "rows": 4,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "VulnerabilityScan": 2
+      }
+    },
+    {
+      "group": "1392ba9bb2f2ecbd0e7574a5c77cc926bd50ddc6b0214346350a5ac842d03994",
+      "partition": "test",
+      "rows": 3,
+      "label_counts": {
+        "Benign_Final": 1,
+        "Recon-OSScan": 2
+      }
+    },
+    {
+      "group": "1433568b216b2302fd7144187165bf85b9abcf21ab41e9ce0dd9f8468a76850a",
+      "partition": "test",
+      "rows": 14,
+      "label_counts": {
+        "Recon-OSScan": 3,
+        "Recon-PortScan": 11
+      }
+    },
+    {
+      "group": "1536fa0a814812986a5028ec059f780ea70d2be0670e044ca8775173fdd730a4",
+      "partition": "test",
+      "rows": 4,
+      "label_counts": {
+        "Recon-HostDiscovery": 1,
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 2
+      }
+    },
+    {
+      "group": "154eebfe7e95a4db6837aba629846c312c4abe9fc5a443b5459ace4bd2b8780b",
+      "partition": "validation",
+      "rows": 183,
+      "label_counts": {
+        "Recon-OSScan": 69,
+        "Recon-PortScan": 64,
+        "VulnerabilityScan": 50
+      }
+    },
+    {
+      "group": "16f2ef59f4efb6d4deb796fc26051401a613a74f0b26fa517995c57e6b562d58",
+      "partition": "validation",
+      "rows": 7,
+      "label_counts": {
+        "Benign_Final": 2,
+        "DDoS-SlowLoris": 2,
+        "Recon-OSScan": 2,
+        "Recon-PingSweep": 1
+      }
+    },
+    {
+      "group": "187eca6e05081d07cda44cbd64991b2b9457f5d49395e8db65430b424fcd7dd0",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "18a0e4926a66211c7718ca7f0a79ccd7bc21a1ac181153485f5094684a751960",
+      "partition": "test",
+      "rows": 5,
+      "label_counts": {
+        "Recon-PortScan": 4,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "195929fe623256e51c1078af0bd9ef171a07fcae47274fc24a1bc77a4c3c6d5f",
+      "partition": "test",
+      "rows": 6,
+      "label_counts": {
+        "Benign_Final": 2,
+        "DDoS-SlowLoris": 2,
+        "Recon-OSScan": 1,
+        "Recon-PingSweep": 1
+      }
+    },
+    {
+      "group": "19d3e83a7d0931d908533ac971a675e8d7cb3fe4fcf361814b4a5e9d1f1ef793",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "1aba25c2db92c10189b84bda41c074bc933a3668b97edd784d94a1374abdb6ac",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Benign_Final": 1,
+        "Recon-OSScan": 1
+      }
+    },
+    {
+      "group": "1b08034069a42999fe633b414aad65bc6842d934946f3261adc786c994d41d01",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 1
+      }
+    },
+    {
+      "group": "1bbf7e005763b23c3a60d5c4f4128e0d3cdce93aab1f49591051d979e792dbfb",
+      "partition": "test",
+      "rows": 4,
+      "label_counts": {
+        "MITM-ArpSpoofing": 2,
+        "Recon-PortScan": 2
+      }
+    },
+    {
+      "group": "1c2bdc8126bb230a40309a21e05221c44ded1ad45c0cda936c297d3f2aeab3f6",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-SlowLoris": 1,
+        "Recon-OSScan": 1
+      }
+    },
+    {
+      "group": "1cecf700207e2e2c98b708896355276a06ac5c4305af44181dace7cd09fa279b",
+      "partition": "test",
+      "rows": 12,
+      "label_counts": {
+        "DDoS-TCP_Flood": 9,
+        "DoS-TCP_Flood": 3
+      }
+    },
+    {
+      "group": "1d122901c08babf3bd0ccc1468da6c2972f2a21e846b026ba14ea3175879875d",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "Recon-PingSweep": 1
+      }
+    },
+    {
+      "group": "1e3a238d3f26c963e6db73fd2a88a2326fba80a07354ae92074f3368adac52b9",
+      "partition": "train",
+      "rows": 8,
+      "label_counts": {
+        "DNS_Spoofing": 1,
+        "MITM-ArpSpoofing": 6,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "1ebf29d4700a518dc2cad0358f466392e8b56cc2c870595677d9ce53489304aa",
+      "partition": "validation",
+      "rows": 6,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 2,
+        "VulnerabilityScan": 3
+      }
+    },
+    {
+      "group": "1f79c506570e0109919f1a891fd1e5db299915bf22d4baac7a3e4bb936a24827",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 1
+      }
+    },
+    {
+      "group": "1f8ab53195a1f2b5f35a93509e2e17faff5d92ca653c3b29f2df6aa010a09fe5",
+      "partition": "test",
+      "rows": 5,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 2,
+        "VulnerabilityScan": 2
+      }
+    },
+    {
+      "group": "20406ca0cb678b9ef8a8dd9c4be08d5e0278c7ffe95e5e6d639152b0570fcf65",
+      "partition": "test",
+      "rows": 4,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 2,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "206c15e3af7ed9a2b9fc1434c9b1b77d144a27e2ca756ceb34a0aa334180a24b",
+      "partition": "test",
+      "rows": 8,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 5,
+        "VulnerabilityScan": 2
+      }
+    },
+    {
+      "group": "21168fc0a4e26fc3e70708ad5601d4a5dc7bf2e46057aeeaa50434792acceb9d",
+      "partition": "validation",
+      "rows": 5,
+      "label_counts": {
+        "DDoS-UDP_Flood": 4,
+        "DoS-UDP_Flood": 1
+      }
+    },
+    {
+      "group": "211fa06064cfef67bad7bc0d0d5d63d00665c934b9e4993cb34d1b5e1d0dc614",
+      "partition": "test",
+      "rows": 3,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "212f30c9f3087638bb76e84239a7a1d01f7070429221a59313565d046733548a",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "MITM-ArpSpoofing": 1,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "2271773bae91833a71134526c4516f548c0be7c3ef524af4c538c5439a144794",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Benign_Final": 1,
+        "Recon-PingSweep": 1
+      }
+    },
+    {
+      "group": "244d42a493f3c5d0088be4c6aa49281d6b1b0ed950b5b2ca70f07e8715c6e40b",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-ACK_Fragmentation": 1,
+        "Recon-HostDiscovery": 1
+      }
+    },
+    {
+      "group": "256845d88eea9504b6e6c6bda6e5160624d21840495c8eaa7d97df652f9bcde8",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Benign_Final": 1,
+        "Recon-OSScan": 1
+      }
+    },
+    {
+      "group": "25c8c8ab61f00f8ec1bf1d3f3aa2afa8c4ded150eed2c113956a2ba548f786d2",
+      "partition": "validation",
+      "rows": 10,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 4,
+        "VulnerabilityScan": 4
+      }
+    },
+    {
+      "group": "28cfbba0b0e9cf6238e5db9ae0bb07ca7cac95e0b988898cae5677b4b6a5da73",
+      "partition": "test",
+      "rows": 5,
+      "label_counts": {
+        "DDoS-SYN_Flood": 2,
+        "DoS-SYN_Flood": 3
+      }
+    },
+    {
+      "group": "2a3908a98156953f30de2fa58dcd1616a4fac5c0e6f694e708e834b117b20892",
+      "partition": "train",
+      "rows": 3,
+      "label_counts": {
+        "DDoS-SYN_Flood": 1,
+        "DoS-SYN_Flood": 2
+      }
+    },
+    {
+      "group": "2be060774725ddaf2d1fa64514c2eb6b9c5291a3eceba4475bc9f4cff1b80c21",
+      "partition": "train",
+      "rows": 3,
+      "label_counts": {
+        "Recon-HostDiscovery": 1,
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "2e6f824bf43c3b2e98b5cd258940707d00beded03ca1435fa0eef50667641a26",
+      "partition": "validation",
+      "rows": 2,
+      "label_counts": {
+        "Benign_Final": 1,
+        "Recon-OSScan": 1
+      }
+    },
+    {
+      "group": "2eb29d219cc32bfc6acf15bc10d77fc1cc60ac390eb8db31200f90202e43ba7c",
+      "partition": "train",
+      "rows": 9,
+      "label_counts": {
+        "DNS_Spoofing": 3,
+        "MITM-ArpSpoofing": 6
+      }
+    },
+    {
+      "group": "30158731b861a11e699870835c13dd87bb1a4ed9ccf9f170b20cb9563a2a9743",
+      "partition": "test",
+      "rows": 5,
+      "label_counts": {
+        "Benign_Final": 2,
+        "DDoS-SlowLoris": 2,
+        "Recon-OSScan": 1
+      }
+    },
+    {
+      "group": "3119ecd6dd87c07a2755f1858785a27b5773edd30c0198ac5ca38f16d4f442b8",
+      "partition": "test",
+      "rows": 3,
+      "label_counts": {
+        "DDoS-SYN_Flood": 1,
+        "DDoS-SynonymousIP_Flood": 1,
+        "DoS-SYN_Flood": 1
+      }
+    },
+    {
+      "group": "3427f28e1d26dc8bf671dd6c5ef148389e36802f586a6b2af8a7980fbf29e3e5",
+      "partition": "train",
+      "rows": 7,
+      "label_counts": {
+        "MITM-ArpSpoofing": 6,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "36959d65e0af8fb6f9f6e8cd54dd0bd5d41e5f4f4228f7b52ee4206383302c4c",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DNS_Spoofing": 1,
+        "MITM-ArpSpoofing": 1
+      }
+    },
+    {
+      "group": "3696e98b20046d88a20848feec1cdcc62fc4cc4e9e9236d4797094b66efd2132",
+      "partition": "test",
+      "rows": 40,
+      "label_counts": {
+        "DNS_Spoofing": 3,
+        "MITM-ArpSpoofing": 37
+      }
+    },
+    {
+      "group": "37a26e50ecfbe5127d460289b774867e7565a074866f9caee3b8575974eeffe1",
+      "partition": "test",
+      "rows": 9,
+      "label_counts": {
+        "Benign_Final": 5,
+        "DDoS-SlowLoris": 2,
+        "Recon-OSScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "38580f4959f8111c98ce1ee05b15149de18798c1d8ea612b79a526ee0812ca74",
+      "partition": "test",
+      "rows": 4,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "3acf3658e8b2970a6924f55be9809a777c9e756070c11a5108131d885e6349e0",
+      "partition": "test",
+      "rows": 3,
+      "label_counts": {
+        "DDoS-UDP_Flood": 2,
+        "DoS-UDP_Flood": 1
+      }
+    },
+    {
+      "group": "3ff3d33c2aa57a5bc0ec6bda8ef3c8ea3456bc7e41d1f6b0ce8497d6b907ef2a",
+      "partition": "validation",
+      "rows": 3,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 2
+      }
+    },
+    {
+      "group": "40b606296dc22e2f9ce9caf3c4b60f04fd1cdd123e5f577283f57e16af4e57e8",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 1
+      }
+    },
+    {
+      "group": "412264b458fcac3a18f140562bc4505d41eeb27506e372d857199064cea10efd",
+      "partition": "train",
+      "rows": 3,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "41c459da57d30234077fb14634d4559b94e095ccfb65cb15e6cab875ee36a98e",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-SlowLoris": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "43c1300cc25ffc20ba15f4a49aab6c45b2ad0dcc4be84eec80190525ea89df7e",
+      "partition": "validation",
+      "rows": 3,
+      "label_counts": {
+        "Recon-HostDiscovery": 2,
+        "Recon-OSScan": 1
+      }
+    },
+    {
+      "group": "44a1e3adb95bf730b5ac89cfcb90901e98f058c72788b7dcf5a10faa22b2209c",
+      "partition": "test",
+      "rows": 4,
+      "label_counts": {
+        "Recon-PortScan": 2,
+        "VulnerabilityScan": 2
+      }
+    },
+    {
+      "group": "44df9442bc91271e0f797eac7b7aec9e71f45d3ae48dc758e97c9a0ad5704f51",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-UDP_Flood": 1,
+        "DoS-UDP_Flood": 1
+      }
+    },
+    {
+      "group": "4617d46f5bf999324ba6eba280c04fb7513dfc47cbdf1c2c13d1ef19f61d4d98",
+      "partition": "test",
+      "rows": 7,
+      "label_counts": {
+        "DDoS-UDP_Flood": 5,
+        "DoS-UDP_Flood": 2
+      }
+    },
+    {
+      "group": "46ee73ed931bfbd2b12e4b14ad2c7c3f2fd2bf7e3d4f4a6b7ec54ad632185ea4",
+      "partition": "validation",
+      "rows": 3,
+      "label_counts": {
+        "DDoS-SynonymousIP_Flood": 2,
+        "DoS-SYN_Flood": 1
+      }
+    },
+    {
+      "group": "47e8f910ed52a4646a8a770f2cafdaa3e15119ad8582e196595a7cd7da8487c9",
+      "partition": "test",
+      "rows": 5,
+      "label_counts": {
+        "Recon-PortScan": 4,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "492b9ce3a7fe123d55416697715997d4a518524f4860cc8861acf8ed4f3e0595",
+      "partition": "validation",
+      "rows": 8,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 4,
+        "VulnerabilityScan": 2
+      }
+    },
+    {
+      "group": "4bb7e88ddff6fa6543340fb4a626696f877aaf1e49c9a82bd0b5de1cdcd90175",
+      "partition": "test",
+      "rows": 12,
+      "label_counts": {
+        "DDoS-SYN_Flood": 1,
+        "DoS-SYN_Flood": 11
+      }
+    },
+    {
+      "group": "4ce1795858b5d264f1a2639f81322e98b5ab0044f35d4b823b97942aed6e9cc7",
+      "partition": "validation",
+      "rows": 2,
+      "label_counts": {
+        "Recon-HostDiscovery": 1,
+        "Recon-OSScan": 1
+      }
+    },
+    {
+      "group": "4cfd51232599587044632fdc0bb045089cca0044dbd2bfc40f6b081b59189298",
+      "partition": "test",
+      "rows": 4,
+      "label_counts": {
+        "Benign_Final": 1,
+        "DDoS-SlowLoris": 1,
+        "Recon-OSScan": 2
+      }
+    },
+    {
+      "group": "4fb555c6c84755708c8b7bfb7e09364195092070420f9b5a2cfdea256f4497d8",
+      "partition": "train",
+      "rows": 5,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 2,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "5036c06c025db749dd7a7c908a01c0d7c278c8137eed6808511de8d92814ca2a",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 1
+      }
+    },
+    {
+      "group": "530c790a695fb92d41164b036272c4eb9df908ee23ece518ccf8bfcf589e410a",
+      "partition": "test",
+      "rows": 7,
+      "label_counts": {
+        "Recon-OSScan": 4,
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 2
+      }
+    },
+    {
+      "group": "547ed8c1112a8dbbe4e1b2e4dfc6e5d859b7483b2cd78ac1e56720fd4dc51523",
+      "partition": "validation",
+      "rows": 3,
+      "label_counts": {
+        "MITM-ArpSpoofing": 2,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "54c5d2128c0b855e1d16787c4604ef8ab2d6e50c097af9bdd1f8a16b6dc22caa",
+      "partition": "validation",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-SynonymousIP_Flood": 1,
+        "DoS-SYN_Flood": 1
+      }
+    },
+    {
+      "group": "559ea05f65da4b9ae3cbb8a09726a2467dba1d1ae66badc721da194cb2ff1962",
+      "partition": "validation",
+      "rows": 76,
+      "label_counts": {
+        "DNS_Spoofing": 8,
+        "MITM-ArpSpoofing": 50,
+        "Recon-PingSweep": 1,
+        "Recon-PortScan": 17
+      }
+    },
+    {
+      "group": "55b51913af7d53e1d08b1c9128230b5ad2b9384a61a4ba11bf4a4c8b4bb40db4",
+      "partition": "test",
+      "rows": 13,
+      "label_counts": {
+        "DDoS-UDP_Flood": 8,
+        "DoS-UDP_Flood": 5
+      }
+    },
+    {
+      "group": "561a6abeb0c7bc4530870ffd4dde4b45627169e7512c5e947a3ad277294acc5e",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-UDP_Flood": 1,
+        "DoS-UDP_Flood": 1
+      }
+    },
+    {
+      "group": "57b91086c19a6e55300fc2aeeb0f0d7ffe311814d975c1016244244161605ad6",
+      "partition": "test",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 1
+      }
+    },
+    {
+      "group": "57d5ebbbff13e824174bae74eca7d2bfc9acaa32c5b2e73370ca79d02e01d213",
+      "partition": "test",
+      "rows": 36,
+      "label_counts": {
+        "DNS_Spoofing": 1,
+        "MITM-ArpSpoofing": 35
+      }
+    },
+    {
+      "group": "58871db52c78d6b9f3d09006c6fad45ef04d5c3ab6ba3818eab324d9899dedd6",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "MITM-ArpSpoofing": 1,
+        "Recon-PingSweep": 1
+      }
+    },
+    {
+      "group": "58f7d227158567022c7cd0107678ba63e7a4021b94504a673b5a0f1eefc00fcb",
+      "partition": "test",
+      "rows": 4,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "Recon-PingSweep": 2,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "599a830fe68212d4899b2d7a52f4c4a9d21e40e122488a4a8c312f13e5d7ebc2",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DNS_Spoofing": 1,
+        "MITM-ArpSpoofing": 1
+      }
+    },
+    {
+      "group": "59eeac48e0e3eca9649400880e7dfd773ff36a8f39b75188a51b8e87359b88b4",
+      "partition": "test",
+      "rows": 6,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 3,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "5ba2fbd6db0c87f723b077afce3e7c61ce887b3fea5cc50b4cc86cb361a5eb83",
+      "partition": "test",
+      "rows": 4,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 2,
+        "DoS-HTTP_Flood": 2
+      }
+    },
+    {
+      "group": "5c7b6bf9ff63e9c5dff9919f02ed09548848f7a311755e25c91f0a29a160130d",
+      "partition": "test",
+      "rows": 21,
+      "label_counts": {
+        "DDoS-SYN_Flood": 5,
+        "DDoS-SynonymousIP_Flood": 15,
+        "DoS-SYN_Flood": 1
+      }
+    },
+    {
+      "group": "5d9a83c642976e0047a83ae681d69a0e095dc56a9df0c2b2d874fb601e3d8d12",
+      "partition": "test",
+      "rows": 6,
+      "label_counts": {
+        "Recon-OSScan": 3,
+        "Recon-PortScan": 2,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "5dc19db3a2dbb626922ccaee13b1fb4503e51239b89aa15ae35486d27a7e0d01",
+      "partition": "validation",
+      "rows": 5,
+      "label_counts": {
+        "Recon-HostDiscovery": 1,
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 2,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "5e3e740fd93ef4aa687716f470fec577fd4f7f41912584eba8a3c5c5945b1999",
+      "partition": "validation",
+      "rows": 5,
+      "label_counts": {
+        "Recon-OSScan": 3,
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "604555ad7b46b208156dedda4203eb59e713e3dd24924a337f4514e7d0037d45",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 1
+      }
+    },
+    {
+      "group": "6183f8a632e8123385860e244338e800c845185f511f660dc6c17e12b48dc264",
+      "partition": "train",
+      "rows": 3,
+      "label_counts": {
+        "Recon-HostDiscovery": 1,
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "61b70e40e589c3465f4d674717e98e867804c2c33bf85b1af7a99e7e782aad37",
+      "partition": "test",
+      "rows": 10,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 4,
+        "DoS-HTTP_Flood": 6
+      }
+    },
+    {
+      "group": "63fcf11e37a0e130064a583ad409d7c55b6519b47246826e014d2d119e915188",
+      "partition": "train",
+      "rows": 10,
+      "label_counts": {
+        "MITM-ArpSpoofing": 9,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "64172845d0acb29610ecbcda54bb28de85c056b817a926a725f5759c7726e0b0",
+      "partition": "validation",
+      "rows": 2,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "64b5779f38ad075f46bd00cd7ef4bd36416bf4e6a717b31b2ee5f7f92a2c349a",
+      "partition": "test",
+      "rows": 4,
+      "label_counts": {
+        "Recon-PortScan": 3,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "65d3dedbfbf0b63dcf75f399c2f7feb112aca8b4b22ca066fc85a9ea4bd39272",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 1
+      }
+    },
+    {
+      "group": "65dbd0e677738c5ca602b0ca648bf39179c5e46dcc8257cc096f42bd00710a7c",
+      "partition": "validation",
+      "rows": 3,
+      "label_counts": {
+        "DDoS-SYN_Flood": 1,
+        "DoS-SYN_Flood": 2
+      }
+    },
+    {
+      "group": "6725997ee690e8fe97fa4309a7e9f2fe15ca36814360d2766c899010bc011c36",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-UDP_Flood": 1,
+        "DoS-UDP_Flood": 1
+      }
+    },
+    {
+      "group": "67a6abbd993027a4277757b6b22b9212d9c33fd9f0ebb6e05e7e2cd8d4f56b67",
+      "partition": "validation",
+      "rows": 5,
+      "label_counts": {
+        "Benign_Final": 2,
+        "DDoS-SlowLoris": 2,
+        "Recon-OSScan": 1
+      }
+    },
+    {
+      "group": "6b6ca271110ca0d81ed0d00a975a3fa09610fe6afcfb69e180c0c9cbac6b5f7c",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-SlowLoris": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "6ce99a188b31133ab54a3341d1ca13ac503438bf6c8aaa0443acef416bc904be",
+      "partition": "validation",
+      "rows": 5,
+      "label_counts": {
+        "Benign_Final": 2,
+        "DDoS-SlowLoris": 1,
+        "Recon-OSScan": 1,
+        "Recon-PingSweep": 1
+      }
+    },
+    {
+      "group": "6e4c882e94162fdc62ebd93b1d33de47af581e5eb540c2f69583606d0c37f35b",
+      "partition": "validation",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-TCP_Flood": 1,
+        "DoS-TCP_Flood": 1
+      }
+    },
+    {
+      "group": "6ec3e5bc00e13ba2eab5155b4e19f018e390590bc78c845ae9eda66809d1e5c9",
+      "partition": "test",
+      "rows": 6,
+      "label_counts": {
+        "Recon-HostDiscovery": 1,
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 3,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "710d710dda6645aada64f2c6a5aab2f1bf46c27a59e60c9109022a5851ea63f7",
+      "partition": "validation",
+      "rows": 3,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "724300bf2bea1567657fe459ffc85045da66c87d1b23446900645be4531d0da2",
+      "partition": "test",
+      "rows": 9,
+      "label_counts": {
+        "Recon-HostDiscovery": 3,
+        "Recon-OSScan": 3,
+        "Recon-PortScan": 3
+      }
+    },
+    {
+      "group": "72e74b5d280a138dcdacc943cc9f3f706f40f3c9a92382b9e3135f11c2b22e3a",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Benign_Final": 1,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "73843bdd89fdb3b9f5f691f050f87dcc1051bbecdc64179e282968b1b05b13d7",
+      "partition": "validation",
+      "rows": 2,
+      "label_counts": {
+        "Recon-HostDiscovery": 1,
+        "Recon-OSScan": 1
+      }
+    },
+    {
+      "group": "73ae18e0e8becd6478fc7218ccd0828a6758a1d932fb29fb318c15f5de5f04a5",
+      "partition": "train",
+      "rows": 2020,
+      "label_counts": {
+        "DDoS-TCP_Flood": 985,
+        "DoS-TCP_Flood": 1035
+      }
+    },
+    {
+      "group": "79d3f93721fe75639643bb03dfb7c09d80d997895b75417c27af6a8286e4fa2f",
+      "partition": "validation",
+      "rows": 36,
+      "label_counts": {
+        "Benign_Final": 20,
+        "DDoS-SlowLoris": 6,
+        "Recon-OSScan": 10
+      }
+    },
+    {
+      "group": "79d831d59e092c05650bad8be9c068c4183d2f9fb91691ca0a857fa4bf14d302",
+      "partition": "validation",
+      "rows": 3,
+      "label_counts": {
+        "DDoS-TCP_Flood": 2,
+        "DoS-TCP_Flood": 1
+      }
+    },
+    {
+      "group": "7ab4043808c738f6bdf11b49127e36869d8cf88eeb56450cf79c81ed23e61c0e",
+      "partition": "validation",
+      "rows": 2,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "7b8477efc20f4c7a429f6b2243e43f6d593f2324926a564b48e27923514cd929",
+      "partition": "test",
+      "rows": 6,
+      "label_counts": {
+        "Recon-PortScan": 4,
+        "VulnerabilityScan": 2
+      }
+    },
+    {
+      "group": "7c820ebcf5727b54149488d86bf72636c2659556cb674402cf0a832654f3e537",
+      "partition": "test",
+      "rows": 5,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 3,
+        "DoS-HTTP_Flood": 2
+      }
+    },
+    {
+      "group": "7d8d94447e0e9d2f7f35137db85ce4930ca14f4028b71ff824c38f56c91ce996",
+      "partition": "validation",
+      "rows": 3,
+      "label_counts": {
+        "DDoS-SYN_Flood": 2,
+        "DoS-SYN_Flood": 1
+      }
+    },
+    {
+      "group": "7e6315154e5a7796a510e5b4932f58e02c832b5c6bd41a4be04aa8255a6ebb16",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "MITM-ArpSpoofing": 1,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "7f832c513f2640bc1d979c44e2bae89fe12ee759794f29e152cd9f88528590f9",
+      "partition": "train",
+      "rows": 98,
+      "label_counts": {
+        "DNS_Spoofing": 3,
+        "MITM-ArpSpoofing": 92,
+        "Recon-PortScan": 3
+      }
+    },
+    {
+      "group": "7fc2ced1c12883195c318d8aa1a055a62e3e69d58135bae9daaec32fc8471262",
+      "partition": "test",
+      "rows": 8,
+      "label_counts": {
+        "Recon-OSScan": 4,
+        "Recon-PingSweep": 3,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "809853166601c9c54f98a661e86fff54f79844dbb2d855e3d8bcb55df89948e4",
+      "partition": "test",
+      "rows": 2,
+      "label_counts": {
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "81babc4e1407abffdbe2d4cd3a75b7957cc0be48680c5f5455bd9e77f7592379",
+      "partition": "test",
+      "rows": 6,
+      "label_counts": {
+        "DDoS-SYN_Flood": 3,
+        "DoS-SYN_Flood": 3
+      }
+    },
+    {
+      "group": "8365c24783edd548fc4f63cdd181d5fef841a94770242ea82b306a3ab79d9c1a",
+      "partition": "train",
+      "rows": 3,
+      "label_counts": {
+        "Recon-HostDiscovery": 1,
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "86739a73fff1a9d70d0ceabde2629e30a9597923516984d48cc4c2e1c0ec4dcb",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-UDP_Flood": 1,
+        "DoS-UDP_Flood": 1
+      }
+    },
+    {
+      "group": "877a4e4736e36e1efc4f5d35135c48226eb5467ccf6f537401d557402f522908",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "8834862ff87ced82250b102d6f6ecb2df6434b91d00f18c1f49e04f6c62dc126",
+      "partition": "test",
+      "rows": 8,
+      "label_counts": {
+        "Benign_Final": 4,
+        "DDoS-SlowLoris": 1,
+        "Recon-HostDiscovery": 1,
+        "Recon-OSScan": 2
+      }
+    },
+    {
+      "group": "8913460b65b96229af1ddf0daebc47cf5994d9c0cbc5d03ac1d4236e452b39da",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-TCP_Flood": 1,
+        "DoS-TCP_Flood": 1
+      }
+    },
+    {
+      "group": "8a0085f72481266ae17d2dd4bab4b1fc8919a2a116d2bd7b52668cd8da080e2c",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-UDP_Flood": 1,
+        "DoS-UDP_Flood": 1
+      }
+    },
+    {
+      "group": "8c236fc485f3838fc125075bc3ca140dc453f2effbdc50a214406fa9076c7ee8",
+      "partition": "test",
+      "rows": 5,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 2
+      }
+    },
+    {
+      "group": "8d18b027a6d201f296e6057955e524dae9a322de891a4040c0c8ec3b39a61c63",
+      "partition": "validation",
+      "rows": 8,
+      "label_counts": {
+        "DDoS-SYN_Flood": 4,
+        "DDoS-SynonymousIP_Flood": 2,
+        "DoS-SYN_Flood": 2
+      }
+    },
+    {
+      "group": "8d91eb1183b96bc2f8c1f6ea813c68f8a4cb5d1bfe5f1955dd74f3594e8b339b",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "8e144220866d8ecd561e4ab22f59043ff3015677d69c0efd0cace09a5338e34a",
+      "partition": "validation",
+      "rows": 3,
+      "label_counts": {
+        "Recon-HostDiscovery": 1,
+        "Recon-PortScan": 2
+      }
+    },
+    {
+      "group": "8ec27866dc3701d8e28a1cdebc255283b97c5295910a11bce481ba2d6ac3d388",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Recon-PingSweep": 1,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "8fafa98ddaf0735eea539958a6c6dfd617635bbf744e3abe698677a0f889e303",
+      "partition": "test",
+      "rows": 7,
+      "label_counts": {
+        "DDoS-TCP_Flood": 3,
+        "DoS-TCP_Flood": 4
+      }
+    },
+    {
+      "group": "924b4767f43924f0853a5cce7255db52bf0128b7c202b0841a8559c7c0423d1b",
+      "partition": "validation",
+      "rows": 2,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "93f120f757d13132c25dbd87cd408c42670e2034a96c714ef4457977f403f777",
+      "partition": "validation",
+      "rows": 4,
+      "label_counts": {
+        "DDoS-UDP_Flood": 1,
+        "DoS-UDP_Flood": 3
+      }
+    },
+    {
+      "group": "94c07236f7180dda2a6f412a332bd803fcc5125f1be4d14c3178d7547b690921",
+      "partition": "test",
+      "rows": 33,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 21,
+        "DoS-HTTP_Flood": 12
+      }
+    },
+    {
+      "group": "955b6c8e102272b22b5c82d0ff40802654ea5948560f47458ff324fcf9188a0f",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Benign_Final": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "95ca3bca3fa28f6ed5a0efc49583f2091040418c681a3a5a6c71525b7580b5e3",
+      "partition": "train",
+      "rows": 4,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 2,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "977e9d90496a3f807f8f0cf3f8c3a8557b2e843da223e9d9a4bf5bc523d7de07",
+      "partition": "train",
+      "rows": 2980,
+      "label_counts": {
+        "DDoS-SYN_Flood": 1020,
+        "DDoS-SynonymousIP_Flood": 1030,
+        "DoS-SYN_Flood": 930
+      }
+    },
+    {
+      "group": "9af943582e1efbc1d602d9127cf04feb53b15f41fc66197b4b7a21b2f633a315",
+      "partition": "test",
+      "rows": 3,
+      "label_counts": {
+        "DDoS-UDP_Flood": 1,
+        "DoS-UDP_Flood": 2
+      }
+    },
+    {
+      "group": "9bebc6f35845ac659198a598502f7998bab2dea7f1b43a5771177af2770aa966",
+      "partition": "test",
+      "rows": 10,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 5,
+        "VulnerabilityScan": 3
+      }
+    },
+    {
+      "group": "9d1e8e0ddd6d9f16992e7969cd380ce250807ab98802f5413f2955fbf97a0a0a",
+      "partition": "test",
+      "rows": 16,
+      "label_counts": {
+        "DDoS-TCP_Flood": 8,
+        "DoS-TCP_Flood": 8
+      }
+    },
+    {
+      "group": "9f72cfa6908883ac45c45c8fb0c154f82cd14a20d4a8ca6b92d0c187f9b256d5",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DNS_Spoofing": 1,
+        "MITM-ArpSpoofing": 1
+      }
+    },
+    {
+      "group": "9f73ac822ae9e531c5d041a8175a3c93cc10323937c6c2b8f1d4fed5d5153294",
+      "partition": "test",
+      "rows": 6,
+      "label_counts": {
+        "Recon-HostDiscovery": 1,
+        "Recon-PortScan": 2,
+        "VulnerabilityScan": 3
+      }
+    },
+    {
+      "group": "a02a136c6acbc524dc5054aaea4ee258a09d880d681f2a22b510fbc184dfb14f",
+      "partition": "validation",
+      "rows": 8,
+      "label_counts": {
+        "Recon-OSScan": 4,
+        "Recon-PortScan": 2,
+        "VulnerabilityScan": 2
+      }
+    },
+    {
+      "group": "a0730c3d5d6ab7695cd0b0f0a7f4d09cddd4130bf504a20edec9aaedd6524b4a",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-TCP_Flood": 1,
+        "DoS-TCP_Flood": 1
+      }
+    },
+    {
+      "group": "a1fa9a08578ab76f34ac9573d20d0aa04e35bd73ae27ae379ab7885e018917c8",
+      "partition": "validation",
+      "rows": 8,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 4,
+        "DoS-HTTP_Flood": 4
+      }
+    },
+    {
+      "group": "a458ca7269df36ee14fcfcd2109714b40db99123edeb4861c30965c07802c981",
+      "partition": "test",
+      "rows": 25,
+      "label_counts": {
+        "DDoS-ACK_Fragmentation": 1,
+        "DDoS-PSHACK_Flood": 12,
+        "DoS-SYN_Flood": 12
+      }
+    },
+    {
+      "group": "a642ea9285d763956aea932644a54dce63a933ae4d8bbeb6a0289426781531b4",
+      "partition": "validation",
+      "rows": 9,
+      "label_counts": {
+        "Recon-HostDiscovery": 2,
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 3,
+        "VulnerabilityScan": 2
+      }
+    },
+    {
+      "group": "a73d8fbad68f167eb9fae09c05424e9c21de08eb82dd1f61cebdf9b8fced8f87",
+      "partition": "validation",
+      "rows": 2,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "a75b2a19428f54a44f485b45ed40e70857ab5b2146c5fbd9026d526c61d14ba6",
+      "partition": "test",
+      "rows": 2,
+      "label_counts": {
+        "Benign_Final": 1,
+        "DDoS-SlowLoris": 1
+      }
+    },
+    {
+      "group": "a8e4bd082f7117c9fceef4bd0338e954026c9fecd9d5644907c696e42b6931c3",
+      "partition": "test",
+      "rows": 5,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 3
+      }
+    },
+    {
+      "group": "a8f7762f662f72f8e8033e860528b934b8bb95bf11f8f06e10ec9f40ac78bea0",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 1
+      }
+    },
+    {
+      "group": "a9176f4e0dcf4c9fb426f6b5405a00864a03f14b07bf8e70d600569cb67c1698",
+      "partition": "test",
+      "rows": 5,
+      "label_counts": {
+        "DDoS-UDP_Flood": 1,
+        "DoS-UDP_Flood": 2,
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "a986107eeec549e7982093ddf4b683a1478d7f5132b8d7c20d0a63b7ee376980",
+      "partition": "test",
+      "rows": 3,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 2
+      }
+    },
+    {
+      "group": "aa65d182fe60ff63f0c8a4500e469aa4417a1d86e4ed307555318e288bdff7a9",
+      "partition": "test",
+      "rows": 3,
+      "label_counts": {
+        "Benign_Final": 2,
+        "Recon-OSScan": 1
+      }
+    },
+    {
+      "group": "acca46d68ed5041624f7bb00b87aa800c4971c6cb0fdab8c780c8af25c118116",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Benign_Final": 1,
+        "DDoS-SlowLoris": 1
+      }
+    },
+    {
+      "group": "ad4e8e9af5092a94d566140c70d3c3ece50a00b4eb00c90b4479231ca19afa37",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 1
+      }
+    },
+    {
+      "group": "ad7df6a52062595434c8af4d3f16c32daad46c6672496ace0c0a68cecc3406a8",
+      "partition": "train",
+      "rows": 8,
+      "label_counts": {
+        "MITM-ArpSpoofing": 6,
+        "Recon-PortScan": 2
+      }
+    },
+    {
+      "group": "b33414ff3f5df244a62f45b29da7065eac6ec329c862de8c5605a55d6fef88d8",
+      "partition": "validation",
+      "rows": 5,
+      "label_counts": {
+        "DDoS-UDP_Flood": 1,
+        "DoS-UDP_Flood": 4
+      }
+    },
+    {
+      "group": "b344fc3624afe3a48da5d328a5613d22804413e23a861eb1fe7ef4a713410e78",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Recon-HostDiscovery": 1,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "b435e7e2318fb8fd20e5fb767c16580ae8e9b21ec2fa8dedbce20171ad0feb4a",
+      "partition": "train",
+      "rows": 3,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "b4abb9cdd997dbd527224921ca8b13f83e3d4004ee6174aa3cef5ba11d19d337",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "b6ea3ccf6b275519c3284465237042181e1bfb61ecd61c227f9805a4c8f45f79",
+      "partition": "train",
+      "rows": 6,
+      "label_counts": {
+        "Recon-HostDiscovery": 1,
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 2,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "b8881dc51559113a32ba881c2a2281071208f2efe8c6f0263a94e3f9016f68ee",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "b8a97683fa7bc535e4533cd633d2acb5b468e0a5f7971eb2387eb3153e0a6cea",
+      "partition": "validation",
+      "rows": 5,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 2
+      }
+    },
+    {
+      "group": "b8cb6bf76eab981495ce509868eb8d4c2a32f6e1b37a221e60d4d3ae249ef585",
+      "partition": "validation",
+      "rows": 4,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 2,
+        "DoS-HTTP_Flood": 2
+      }
+    },
+    {
+      "group": "b909bf79cd6a0ebfe405bc5a49e2ff4519c27688ea6b4b75bc175d63c858fcd7",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 1
+      }
+    },
+    {
+      "group": "b9e425a21eaf92254dc0bbc30e8dc8a988a794d09fd4d27de0f9cbc5c227457e",
+      "partition": "validation",
+      "rows": 9,
+      "label_counts": {
+        "Recon-HostDiscovery": 1,
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 5,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "ba6b7d398896aee6251073623b08ee08c01e7ddfced544f3d002857fbae20595",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 1
+      }
+    },
+    {
+      "group": "baa8feaf82037e8b7386c019128d945d8da85230edb67611fa095d430c88286d",
+      "partition": "test",
+      "rows": 8,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 3,
+        "VulnerabilityScan": 3
+      }
+    },
+    {
+      "group": "bb8688d565ae18cd2fe6e9c766d378b048bb97afc016d9ea455c05824a040ff7",
+      "partition": "validation",
+      "rows": 7,
+      "label_counts": {
+        "DDoS-SYN_Flood": 5,
+        "DDoS-SynonymousIP_Flood": 1,
+        "DoS-SYN_Flood": 1
+      }
+    },
+    {
+      "group": "bb8f99e2d6e77bf21af83d2770c18ec7dd70a7f1fa989ea118c9ac3963cdaf20",
+      "partition": "test",
+      "rows": 9,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 7,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "bd0e735dcc33d5a9a9fdc9a5b6fa2918f7005ec100bb43dde57e6c34411f5cb8",
+      "partition": "validation",
+      "rows": 3,
+      "label_counts": {
+        "DDoS-SlowLoris": 1,
+        "Recon-PingSweep": 2
+      }
+    },
+    {
+      "group": "bd36dde381266708f081bd900798efcff2342d3f259e6909ca04937602c8ef22",
+      "partition": "test",
+      "rows": 10,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 5,
+        "VulnerabilityScan": 4
+      }
+    },
+    {
+      "group": "bdb31b3fb9529483855f432507899be5083d8a9c605ad36e052566df888e57f9",
+      "partition": "validation",
+      "rows": 6,
+      "label_counts": {
+        "DDoS-SYN_Flood": 2,
+        "DDoS-SynonymousIP_Flood": 2,
+        "DoS-SYN_Flood": 2
+      }
+    },
+    {
+      "group": "bef3304ea898dba66a77340cbc7cc24896661bec7d6bf0a2994a792407f053d6",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 1
+      }
+    },
+    {
+      "group": "bf1d82d0b5f56fe5aae624b6ca183b35364234570dd5d636e9daaf7fcb69b2f7",
+      "partition": "validation",
+      "rows": 39,
+      "label_counts": {
+        "DDoS-UDP_Flood": 4,
+        "DoS-UDP_Flood": 35
+      }
+    },
+    {
+      "group": "bfafaaf91fb1d220d5f727f622fff86e80404c45edecdbb30659f0045c6722c4",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Recon-HostDiscovery": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "bfe3a5285efcdf340c2796e6667b78c95a062ff150dc9838460a3a7d6e3b43f9",
+      "partition": "validation",
+      "rows": 25,
+      "label_counts": {
+        "DDoS-UDP_Flood": 7,
+        "DoS-UDP_Flood": 18
+      }
+    },
+    {
+      "group": "c109cc893d66a56aedf4e5b22ae08f2795b13b6ff1136a0b8533abf325f8bfe1",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "MITM-ArpSpoofing": 1,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "c10d5c58fb91e461a159c098cff0b2a79124bae535209638601974f907b84aae",
+      "partition": "validation",
+      "rows": 8,
+      "label_counts": {
+        "DDoS-UDP_Flood": 2,
+        "DoS-UDP_Flood": 6
+      }
+    },
+    {
+      "group": "c349702ff23f72d995189ad8689c0135eae96728ea040919192336b5e4f0d931",
+      "partition": "test",
+      "rows": 10,
+      "label_counts": {
+        "Recon-HostDiscovery": 1,
+        "Recon-OSScan": 4,
+        "Recon-PortScan": 3,
+        "VulnerabilityScan": 2
+      }
+    },
+    {
+      "group": "c4fef149e72a47555918466528665f9ca84239e2caa3a82e518358f1c92fac59",
+      "partition": "test",
+      "rows": 6,
+      "label_counts": {
+        "DDoS-ICMP_Flood": 1,
+        "DNS_Spoofing": 4,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "c58db37817217ea6955308d1ceb9faa87aa152df6bdc28916fbd0cbc97adc45a",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Benign_Final": 1,
+        "Recon-PingSweep": 1
+      }
+    },
+    {
+      "group": "c66bf6915efcdf7cf3577425b2a31a4737f9fe68e92275944efca8df1b82a8b9",
+      "partition": "test",
+      "rows": 5,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 2,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "c714ce8564bc569c3f8ef612bdfefec532aaf0187420efa65c9e850414272865",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 1
+      }
+    },
+    {
+      "group": "c7d7d437e7844a5ff41aee41111175c36fae4069e5fd5e274f532905f38f0e72",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Recon-HostDiscovery": 1,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "cae343c9a6f13ee4a28c2e208cd9032c88d536665f8b9aae780b41d385952c44",
+      "partition": "validation",
+      "rows": 8,
+      "label_counts": {
+        "Benign_Final": 6,
+        "Recon-OSScan": 1,
+        "Recon-PingSweep": 1
+      }
+    },
+    {
+      "group": "cb610e35df5a01200fcb1b9e0db8a8b70780658235de35e9a76b857d9c5472d0",
+      "partition": "test",
+      "rows": 3,
+      "label_counts": {
+        "DDoS-SYN_Flood": 2,
+        "DoS-SYN_Flood": 1
+      }
+    },
+    {
+      "group": "cb804928289d06cf903cf04b5d540661411990da1d348dfd0eed21598c70f522",
+      "partition": "test",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-SynonymousIP_Flood": 1,
+        "DoS-SYN_Flood": 1
+      }
+    },
+    {
+      "group": "cbd0de297125db18a3c9bc286a4d1cd7e7c3913d7a7a181d54411dfe4ceaa0a8",
+      "partition": "validation",
+      "rows": 3,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 2
+      }
+    },
+    {
+      "group": "cc2d6efbae108e9634889f6db528e2f96389e8d8183193fa6fca3eddd32bcc63",
+      "partition": "test",
+      "rows": 3,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 2
+      }
+    },
+    {
+      "group": "cc4c1da9cbf3271555fd29ddaf9e465c223e6b8b5b24678b945505c08ad23a87",
+      "partition": "validation",
+      "rows": 5,
+      "label_counts": {
+        "Benign_Final": 2,
+        "DDoS-SlowLoris": 2,
+        "Recon-PingSweep": 1
+      }
+    },
+    {
+      "group": "cdfe92d04cfb1844629b6636efcb93f72950cd3e8b277e85e36fb8168587d58f",
+      "partition": "train",
+      "rows": 6,
+      "label_counts": {
+        "MITM-ArpSpoofing": 2,
+        "Recon-PortScan": 4
+      }
+    },
+    {
+      "group": "cf0f04224c58d1161fabed73e373b2318efdd57b90a5f5bcd1a2a7ae3a7787b1",
+      "partition": "test",
+      "rows": 5,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 3
+      }
+    },
+    {
+      "group": "d0311fae995a0434fb38e00a1db3b957b2d0556c51b34073cdf0c904b46425e9",
+      "partition": "test",
+      "rows": 3,
+      "label_counts": {
+        "DDoS-TCP_Flood": 2,
+        "DoS-TCP_Flood": 1
+      }
+    },
+    {
+      "group": "d2763715ddd9a0bf2701ae4d802d59441fc1fba01e9f79aa9e13a74e132f5b1f",
+      "partition": "train",
+      "rows": 3,
+      "label_counts": {
+        "Recon-HostDiscovery": 1,
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "d3343676af39faf0851fafb7e2888b8ae8b530008835aa1c2c2f9aa462988b01",
+      "partition": "test",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-SlowLoris": 1,
+        "Recon-OSScan": 1
+      }
+    },
+    {
+      "group": "d399a56e6a4bd918d8c03950b0314fc25e9bdf990f14c132766c25b0643a3d77",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "MITM-ArpSpoofing": 1,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "d6b9bfe4e463a2d27f2842f8ee33ef66e70479e1437cb86ae24a602d37ebf464",
+      "partition": "validation",
+      "rows": 24,
+      "label_counts": {
+        "Benign_Final": 13,
+        "DDoS-HTTP_Flood": 1,
+        "DDoS-SlowLoris": 1,
+        "Recon-OSScan": 8,
+        "Recon-PingSweep": 1
+      }
+    },
+    {
+      "group": "d8fc4b09cd95c756dc4603ad7e1c6fe16c9765348ea72aee4c5a61d66b8c84d3",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-SlowLoris": 1,
+        "Recon-OSScan": 1
+      }
+    },
+    {
+      "group": "dcc7bc5cb6f0fdc0abacb7ca3c744a0c816b5d901b22811ba3c3661d58191e73",
+      "partition": "test",
+      "rows": 21,
+      "label_counts": {
+        "Benign_Final": 20,
+        "Recon-OSScan": 1
+      }
+    },
+    {
+      "group": "dd5074e74b1c9b41c470a241a55a1e57563be3e7763be3727f61909cce8f8476",
+      "partition": "test",
+      "rows": 4,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "dd99701ec6b02d42408fd87cbcf31dddfda22e1ec45e694f7d4a5cd48514fcee",
+      "partition": "validation",
+      "rows": 5,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 3
+      }
+    },
+    {
+      "group": "ddfa8baf04479d557076b17dcb210522d9b659c5fd035da9c8ed13e25005da06",
+      "partition": "train",
+      "rows": 3,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "dee8d091467c4d14fa83c21c0a98f1508b05bb1a4418491fe717199ebfb8922c",
+      "partition": "validation",
+      "rows": 10,
+      "label_counts": {
+        "DDoS-TCP_Flood": 4,
+        "DoS-TCP_Flood": 6
+      }
+    },
+    {
+      "group": "e17f6562b04ee0bec151e02a8e65d0569fe917a39802894295e78166125e14c7",
+      "partition": "test",
+      "rows": 11,
+      "label_counts": {
+        "DDoS-UDP_Flood": 6,
+        "DoS-UDP_Flood": 5
+      }
+    },
+    {
+      "group": "e2f03ca5374bbb2d39cd7e0b84b92c38fcef4b55cb5ac8920379e173d82fc8e9",
+      "partition": "validation",
+      "rows": 2,
+      "label_counts": {
+        "Recon-OSScan": 1,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "e4669a1b0e32842c60a143eea6e3f8a9a20c89d591c281ace0b66b4ea43786ee",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "MITM-ArpSpoofing": 1,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "e96f81b461ccb140759f2d79b389a35ce8ed6433e186987def5a9a9f3ec52153",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Recon-PortScan": 1,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "e9739e7f633da73d0f92bd486394f1b0dc1041abd73f89f5e65aa28da0815217",
+      "partition": "test",
+      "rows": 7,
+      "label_counts": {
+        "Recon-OSScan": 3,
+        "Recon-PortScan": 3,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "ea7376cdb848a4d172cd55cf89bf6c1c1881faa850357f75f5d718210c0177a4",
+      "partition": "validation",
+      "rows": 7,
+      "label_counts": {
+        "Recon-HostDiscovery": 1,
+        "Recon-PortScan": 6
+      }
+    },
+    {
+      "group": "eb021b6e8103da5b4e892fe8d7e0bb610dad39fde3fcf009c862684f90263e8f",
+      "partition": "test",
+      "rows": 4,
+      "label_counts": {
+        "DDoS-SYN_Flood": 1,
+        "DDoS-SynonymousIP_Flood": 1,
+        "DoS-SYN_Flood": 2
+      }
+    },
+    {
+      "group": "ec6efbf07ad168b93c417eb594163c714acb41e600e1088f1058a39cefd2bfbf",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Benign_Final": 1,
+        "Recon-PingSweep": 1
+      }
+    },
+    {
+      "group": "ed6283b6fb337c0221ba5ef7589bcd4f5ebcb0aedf4e1b0df704ffec8c92f003",
+      "partition": "train",
+      "rows": 9,
+      "label_counts": {
+        "MITM-ArpSpoofing": 8,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "eeaaa0dddefb9733ae493e00461a79d84345d7ca08bc5b56be72dd0b8ddf6080",
+      "partition": "test",
+      "rows": 6,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 5,
+        "DoS-HTTP_Flood": 1
+      }
+    },
+    {
+      "group": "ef24aeee8157172d2012e0222ada1bd048ccc1ed76d04ae565f90c95580c9b15",
+      "partition": "test",
+      "rows": 4,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 3
+      }
+    },
+    {
+      "group": "efdc343a6ebdebd88de2e2bd8d8d39b11dd34bab8b160ca0f9c273ff12cc8c9c",
+      "partition": "train",
+      "rows": 3,
+      "label_counts": {
+        "MITM-ArpSpoofing": 2,
+        "Recon-PortScan": 1
+      }
+    },
+    {
+      "group": "f1f081347a10eadd6217438b10726de6175f1ecfd33597af1d5aec153f82d7d5",
+      "partition": "validation",
+      "rows": 5,
+      "label_counts": {
+        "DDoS-TCP_Flood": 4,
+        "DoS-TCP_Flood": 1
+      }
+    },
+    {
+      "group": "f22f8e6013d72c39580c7752b94c4b260b7854e441d127cb6c6fc39716dd782f",
+      "partition": "validation",
+      "rows": 28,
+      "label_counts": {
+        "Benign_Final": 2,
+        "Recon-HostDiscovery": 4,
+        "Recon-PingSweep": 22
+      }
+    },
+    {
+      "group": "f4d4db56457902e689ff8042db1a8021d59c4daa9d292cdd835a5e3813806f1f",
+      "partition": "test",
+      "rows": 11,
+      "label_counts": {
+        "Recon-HostDiscovery": 1,
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 5,
+        "VulnerabilityScan": 3
+      }
+    },
+    {
+      "group": "f6d40b5e53aca22272e68e7cb54c9ee658a8e2720881c32d628c5c09b59989dc",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "Benign_Final": 1,
+        "DNS_Spoofing": 1
+      }
+    },
+    {
+      "group": "f72a8fe7671e4008ad604a3deb9e0cbd9b73201fd9b35db7acda0a33dfcbf09b",
+      "partition": "train",
+      "rows": 2,
+      "label_counts": {
+        "DDoS-HTTP_Flood": 1,
+        "DoS-HTTP_Flood": 1
+      }
+    },
+    {
+      "group": "f7430bfe3ca8274f2ec5665c992c279fc24b9f616da887044cddf5427d8f1025",
+      "partition": "validation",
+      "rows": 3,
+      "label_counts": {
+        "DDoS-SYN_Flood": 1,
+        "DoS-SYN_Flood": 2
+      }
+    },
+    {
+      "group": "f8acb914e305743e691b16f359e7eed37c4416a8ab243895aef45b69e002371b",
+      "partition": "train",
+      "rows": 6,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 3,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "f99f25a3a4b5e18dd14b279d99e910702a17b951ef4d11410da6bf7d75c35629",
+      "partition": "test",
+      "rows": 2,
+      "label_counts": {
+        "Benign_Final": 1,
+        "DDoS-SlowLoris": 1
+      }
+    },
+    {
+      "group": "fb828607c80efb4efff4f38b23c65eb003a854ad9e2a1b23b4f3048f651e9c36",
+      "partition": "test",
+      "rows": 4,
+      "label_counts": {
+        "Recon-PingSweep": 1,
+        "Recon-PortScan": 3
+      }
+    },
+    {
+      "group": "ff21a46b492b218dfc9e29ddb4cf7112fc2b33e9cd509350425a2ce5ce3de759",
+      "partition": "test",
+      "rows": 6,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "Recon-PortScan": 3,
+        "VulnerabilityScan": 1
+      }
+    },
+    {
+      "group": "ffad6d15fa4974d58b061b7d97dfcfb6f06bebafd87c9cb0e490398cd099873c",
+      "partition": "test",
+      "rows": 3,
+      "label_counts": {
+        "Recon-OSScan": 2,
+        "VulnerabilityScan": 1
+      }
+    }
+  ]
+}

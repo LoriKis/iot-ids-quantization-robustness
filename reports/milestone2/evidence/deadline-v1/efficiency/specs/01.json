@@ -1,0 +1,27 @@
+{
+  "kind": "fp32",
+  "checkpoint": "/home/crysys/IOT-network-traffic-DL-M2-VM-deadline-v1/artifacts/m2-deadline-v1/models/V1/checkpoint.pt",
+  "architecture": {
+    "input_dim": 39,
+    "d_model": 96,
+    "n_heads": 4,
+    "n_layers": 3,
+    "d_ff": 384,
+    "n_classes": 27,
+    "max_seq_len": 50,
+    "dropout": 0.1
+  },
+  "variant": "V1",
+  "threads": 1,
+  "rows_path": "/home/crysys/IOT-network-traffic-DL-M2-VM-deadline-v1/artifacts/m2-deadline-v1/efficiency/fixed_rows.npy",
+  "rows_sha256": "20d537420a786911f4e2cf748396ea48d9e03331d06ee7d241214e2e6cf01fae",
+  "batch_size": 256,
+  "batch1": {
+    "warmup": 20,
+    "timed": 200
+  },
+  "batch256": {
+    "warmup": 5,
+    "timed": 30
+  }
+}

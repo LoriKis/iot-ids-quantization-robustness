@@ -1,0 +1,58 @@
+{
+  "gates": {
+    "finite_logits": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true
+    },
+    "n_quantized_linears_23": {
+      "V2": true,
+      "V4": true
+    },
+    "pred_range_0_26": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true
+    },
+    "ptq_reload_bitexact": {
+      "V2": true,
+      "V4": true
+    }
+  },
+  "informational": {
+    "int8_parent_argmax_agreement": {
+      "V2": 0.9460874116723371,
+      "V4": 0.9065689610049725
+    }
+  },
+  "kind": "m2_deadline_val_check",
+  "models": {
+    "V1": {
+      "n": 3821,
+      "pred_max": 26,
+      "pred_min": 0
+    },
+    "V2": {
+      "n": 3821,
+      "pred_max": 26,
+      "pred_min": 0
+    },
+    "V3": {
+      "n": 3821,
+      "pred_max": 26,
+      "pred_min": 0
+    },
+    "V4": {
+      "n": 3821,
+      "pred_max": 26,
+      "pred_min": 0
+    }
+  },
+  "n_val": 3821,
+  "note": "validation data only; no accuracy or F1 was computed and nothing here selects any setting",
+  "passed": true,
+  "run_id": "m2-deadline-v1",
+  "schema": 1
+}

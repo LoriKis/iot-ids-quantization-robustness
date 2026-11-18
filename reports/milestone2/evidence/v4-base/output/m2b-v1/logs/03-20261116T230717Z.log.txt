@@ -1,0 +1,45 @@
+[03] log: output/m2b-v1/logs/03-20261116T230717Z.log
+/home/crysys/IOT-network-traffic-DL-M2-VM-v4/.venv/lib/python3.11/site-packages/torch/ao/quantization/observer.py:229: UserWarning: Please use quant_min and quant_max to specify the range for observers.                     reduce_range will be deprecated in a future release of PyTorch.
+  warnings.warn(
+PASS  platform.os                Linux x86_64; supported: Linux x86_64
+PASS  platform.arch              x86_64
+PASS  platform.python            Python 3.11.16; the pinned stack is Python 3.11.x
+PASS  platform.avx2              avx2 present
+PASS  platform.avx512            avx512 present
+PASS  platform.glibc             2.39
+PASS  import.torch               2.5.1+cpu
+PASS  import.numpy               1.26.4
+PASS  import.pandas              2.2.3
+PASS  import.scipy               1.14.1
+PASS  import.scikit-learn        1.5.2
+PASS  import.matplotlib          3.9.4
+PASS  import.psutil              6.1.1
+PASS  import.pytest              8.3.4
+PASS  int8.fbgemm                supported engines ['qnnpack', 'none', 'onednn', 'x86', 'fbgemm']; engine set to fbgemm
+PASS  int8.ptq_linear            random 8x8 Linear: PTQ converted, finite output, quantized::linear in the profiler trace
+PASS  int8.qat_convert           tiny QAT prepare + convert works (no optimizer steps)
+PASS  data.size                  5444531 bytes (expected 5444531)
+PASS  data.sha256                0d869e334cc9a2795c96996fbde8fb04a8acac61f5e67c5d46aee2b0717a53ed (frozen 0d869e334cc9a2795c96996fbde8fb04a8acac61f5e67c5d46aee2b0717a53ed)
+PASS  data.header                header equals the 39 feature names plus Label
+PASS  data.rows                  29997 rows (expected 29997)
+PASS  pave.identity              PAVE tree id and file hashes equal PACKAGE_IDENTITY.json
+PASS  pave.model_file            standard_transformer.py sha256 b046d0f68da063dcf972ecc80ea3385e83c32e33322ec3a70617ddc4e157fdb1
+PASS  split.audit                split_v2 audited read-only: manifest 842cbb882f5062946bdcab097f1370ddd796ff47439ad3581c493eec917b5d62, rows {'train': 22412, 'validation': 3821, 'test': 3764}, 0 shared groups, all classes in every partition
+PASS  split.freeze               split_freeze.json: 9 artifact hashes verified
+PASS  split.original_present     original M2A split artifacts present
+PASS  config.siblings            campaign_v2.json valid; 5 sibling hashes match
+PASS  config.training            training.json is the unchanged M2 recipe (25 epochs, batch 512)
+PASS  fingerprints.compute       components: source_train=54c024d7, source_quant=8a440780, source_attack=8a440780, source_eff=a809b85d, config=6a903f6c, data=3435e322, split=cc496950, env=683a35e7
+PASS  fingerprints.state         no campaign state yet (fresh run)
+PASS  resources.disk             28.1 GB free (need 5 GB)
+PASS  resources.ram              33.7 GB total (need 8 GB for 1 worker(s))
+PASS  resources.cores            8 cores for 1 worker(s) x 2 thread(s)
+PASS  resources.load             1/5/15-minute load ['0.70', '0.29', '0.10']
+PASS  writable.m2b-v1            /home/crysys/IOT-network-traffic-DL-M2-VM-v4/output/m2b-v1: create, fsync, atomic rename and delete work
+PASS  writable.logs              /home/crysys/IOT-network-traffic-DL-M2-VM-v4/output/m2b-v1/logs: create, fsync, atomic rename and delete work
+PASS  writable..mplconfig        /home/crysys/IOT-network-traffic-DL-M2-VM-v4/output/.mplconfig: create, fsync, atomic rename and delete work
+PASS  scripts.bash_n             bash -n passed for 13 script(s)
+PASS  threads.smt                nproc 8, physical cores 8, torch default threads 8
+preflight PASS: recommended_workers = 4 (cores 8, RAM 33.65 GB); written /home/crysys/IOT-network-traffic-DL-M2-VM-v4/output/m2b-v1/preflight.json
+Stage 03 passed. Recommended workers are in output/m2b-v1/preflight.json.
+[03] marker written: output/m2b-v1/stage_markers/03.ok

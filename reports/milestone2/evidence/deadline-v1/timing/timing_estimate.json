@@ -1,0 +1,217 @@
+{
+  "candidates": [
+    {
+      "components_s": {
+        "efficiency": 222.6316305398941,
+        "overhead": 10.2894157608971,
+        "ptq": 12.329842992126942,
+        "report": 120.0,
+        "robustness": 104.87252223615846,
+        "test": 16.224938216377648,
+        "train_adversarial": 9307.08614368923,
+        "train_ordinary": 1191.4880789040276,
+        "validation": 16.470639990642667
+      },
+      "epochs": 25,
+      "fits": true,
+      "per_class": 10,
+      "planned_hours": 3.8199281987254703,
+      "raw_s": 11001.393212329354
+    },
+    {
+      "components_s": {
+        "efficiency": 222.6316305398941,
+        "overhead": 10.2894157608971,
+        "ptq": 12.329842992126942,
+        "report": 120.0,
+        "robustness": 52.43626111807923,
+        "test": 16.224938216377648,
+        "train_adversarial": 9307.08614368923,
+        "train_ordinary": 1191.4880789040276,
+        "validation": 16.470639990642667
+      },
+      "epochs": 25,
+      "fits": true,
+      "per_class": 5,
+      "planned_hours": 3.8017211636150257,
+      "raw_s": 10948.956951211274
+    },
+    {
+      "components_s": {
+        "efficiency": 222.6316305398941,
+        "overhead": 10.2894157608971,
+        "ptq": 12.329842992126942,
+        "report": 120.0,
+        "robustness": 104.87252223615846,
+        "test": 16.224938216377648,
+        "train_adversarial": 3722.834457475692,
+        "train_ordinary": 476.59523156161106,
+        "validation": 16.470639990642667
+      },
+      "epochs": 10,
+      "fits": true,
+      "per_class": 10,
+      "planned_hours": 1.6327252356852084,
+      "raw_s": 4702.2486787734
+    },
+    {
+      "components_s": {
+        "efficiency": 222.6316305398941,
+        "overhead": 10.2894157608971,
+        "ptq": 12.329842992126942,
+        "report": 120.0,
+        "robustness": 52.43626111807923,
+        "test": 16.224938216377648,
+        "train_adversarial": 3722.834457475692,
+        "train_ordinary": 476.59523156161106,
+        "validation": 16.470639990642667
+      },
+      "epochs": 10,
+      "fits": true,
+      "per_class": 5,
+      "planned_hours": 1.6145182005747643,
+      "raw_s": 4649.812417655321
+    },
+    {
+      "components_s": {
+        "efficiency": 222.6316305398941,
+        "overhead": 10.2894157608971,
+        "ptq": 12.329842992126942,
+        "report": 120.0,
+        "robustness": 104.87252223615846,
+        "test": 16.224938216377648,
+        "train_adversarial": 1861.417228737846,
+        "train_ordinary": 238.29761578080553,
+        "validation": 16.470639990642667
+      },
+      "epochs": 5,
+      "fits": true,
+      "per_class": 10,
+      "planned_hours": 0.9036575813384545,
+      "raw_s": 2602.533834254749
+    },
+    {
+      "components_s": {
+        "efficiency": 222.6316305398941,
+        "overhead": 10.2894157608971,
+        "ptq": 12.329842992126942,
+        "report": 120.0,
+        "robustness": 52.43626111807923,
+        "test": 16.224938216377648,
+        "train_adversarial": 1861.417228737846,
+        "train_ordinary": 238.29761578080553,
+        "validation": 16.470639990642667
+      },
+      "epochs": 5,
+      "fits": true,
+      "per_class": 5,
+      "planned_hours": 0.8854505462280101,
+      "raw_s": 2550.0975731366693
+    }
+  ],
+  "config_sha256": "4f12845e86270944be7c9abd885c9af6c9cfb98282ae3a5f4581c0c0fd1c888a",
+  "contention": {
+    "busy_processes": [],
+    "contended": false,
+    "contention_accepted": false,
+    "load_after": 0.0,
+    "load_before": 0.1
+  },
+  "created_utc": "2026-11-17T12:29:08Z",
+  "data": {
+    "n_test": 3764,
+    "n_train": 22412,
+    "n_val": 3821,
+    "updates_per_epoch": 44
+  },
+  "decision": {
+    "cap_hours": 9.0,
+    "epochs": 25,
+    "per_class": 10,
+    "planned_hours": 3.8199281987254703,
+    "robustness_n_upper_bound": 270,
+    "rule": "first fitting of (25,10),(25,5),(10,10),(10,5),(5,10),(5,5); runtime only",
+    "status": "feasible"
+  },
+  "host": {
+    "cpu_count": 8,
+    "platform": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39",
+    "python": "3.11.16",
+    "torch": "2.5.1+cpu"
+  },
+  "inputs": {
+    "cap_hours": 9.0,
+    "hard_cap_hours": 9.0,
+    "hours_remaining": 12.0,
+    "reserve_hours": 3.0,
+    "safety_multiplier": 1.25
+  },
+  "kind": "m2_deadline_timing_estimate",
+  "measurements": {
+    "attack_seconds_per_example": {
+      "bpda_int8": {
+        "clean": 0.004269732323325711,
+        "fgsm": 0.01760175673544039,
+        "pgd5": 0.03548539001034734
+      },
+      "fp32_direct": {
+        "clean": 0.002936858166423109,
+        "fgsm": 0.012835653360795092,
+        "pgd5": 0.027578091904245042
+      },
+      "probe_n": 81
+    },
+    "checkpoint_write_s": 0.24752374924719334,
+    "efficiency_s": 222.6316305398941,
+    "load_arrays_s": 0.28941576089709997,
+    "noisy": false,
+    "noisy_accepted": false,
+    "ptq_s": 6.164921496063471,
+    "train_step_seconds": {
+      "adversarial": {
+        "mean": 8.455361863598228,
+        "n_timed": 10,
+        "p90": 8.503573339805007,
+        "std": 0.04392672493270833,
+        "step_cv": 0.005195132466396306,
+        "step_used": 8.455361863598228
+      },
+      "ordinary": {
+        "mean": 1.0775454410662253,
+        "n_timed": 6,
+        "p90": 1.092376091517508,
+        "std": 0.016635316681808787,
+        "step_cv": 0.015438157916893262,
+        "step_used": 1.0775454410662253
+      }
+    },
+    "val_eval_s": {
+      "fp32": 4.530862886458635,
+      "int8": 3.704457108862698,
+      "n_rows": 3821
+    }
+  },
+  "no_performance_inspected": true,
+  "prior_evidence": [
+    {
+      "adv_over_ord_ratio": {
+        "measured": 7.846872662030562,
+        "pilot": 6.766715602636824,
+        "within_factor_2": true
+      },
+      "compatibility": {
+        "compatible": false,
+        "epochs_match": false,
+        "os_match": false,
+        "split_match": false,
+        "threads_match": true
+      },
+      "path": "/home/crysys/IOT-network-traffic-DL-M2-VM-v4/artifacts/m2a-pilot/pilot_runtime.json",
+      "sha256": "ce7f90f2cb63ce7f82e7c3cad4a1aaf2458ac2b7daa0801aef92a6984ef7a700",
+      "used_in_estimate": false
+    }
+  ],
+  "run_id": "m2-deadline-v1",
+  "schema": 1,
+  "v4_manifest_sha256": "5f49c93af30704a181ea77d3c09c23e99062accee40efc6c93ec9365e8a88d99"
+}

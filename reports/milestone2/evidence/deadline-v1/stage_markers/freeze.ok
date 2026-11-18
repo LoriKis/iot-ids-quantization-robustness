@@ -1,0 +1,19 @@
+{
+  "config_sha256": "4f12845e86270944be7c9abd885c9af6c9cfb98282ae3a5f4581c0c0fd1c888a",
+  "epochs": 25,
+  "finished_utc": "2026-11-17T12:31:52Z",
+  "lock_sha256": "1b1ced84ab3a68569c2ace4654b468c6679926dc7546bf7752da4fcfd72f6ccb",
+  "outputs": {
+    "protocol/protocol.frozen.json": "ab4be7d39508372414c11ae4dd9b16635751afd2f64fe95daf6fee55da5efd8e",
+    "protocol/protocol.json": "62adf121b39054f8109fd7c89a2c3577a4303f9f1610d60742521fd7dcf47b36",
+    "protocol/protocol.json.sha256": "8a85338b3e4322fb445cb9e16c0edebd8b0f10560aaa823ddd20ec114b145138",
+    "protocol/robustness_subset_counts.json": "ed6a07f4e3449ea4a94182a55bc96e7032a890e10d7f629803843996670235fb",
+    "protocol/robustness_subset_ids.csv": "dbafdd5afa486e08fa48b8f211eedcc193bb17238ec50dbea4ead4f17cf6f919",
+    "run_identity.json": "c2edd73431203beb822ecb75186bf44a96e432e2ed8800671279d23a3b961126"
+  },
+  "protocol_sha256": "62adf121b39054f8109fd7c89a2c3577a4303f9f1610d60742521fd7dcf47b36",
+  "run_id": "m2-deadline-v1",
+  "seconds": 0.3266714848577976,
+  "stage": "freeze",
+  "started_utc": "2026-11-17T12:31:52Z"
+}

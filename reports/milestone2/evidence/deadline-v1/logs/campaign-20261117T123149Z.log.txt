@@ -1,0 +1,7 @@
+2026-11-17T12:31:49Z INFO launch: epochs=25 per_class=10 hours_remaining=11.00 out=/home/crysys/IOT-network-traffic-DL-M2-VM-deadline-v1/artifacts/m2-deadline-v1 log=/home/crysys/IOT-network-traffic-DL-M2-VM-deadline-v1/artifacts/m2-deadline-v1/logs/campaign-20261117T123149Z.log
+2026-11-17T12:31:49Z INFO stage preflight: start
+2026-11-17T12:31:52Z INFO stage preflight: marker written after 2.7 s
+2026-11-17T12:31:52Z INFO stage freeze: start
+2026-11-17T12:31:52Z INFO freeze: protocol 62adf121b39054f8109fd7c89a2c3577a4303f9f1610d60742521fd7dcf47b36, subset n=270 (written=True)
+2026-11-17T12:31:52Z INFO stage freeze: marker written after 0.3 s
+2026-11-17T12:31:52Z INFO stopping after stage freeze as requested

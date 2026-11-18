@@ -1,0 +1,3 @@
+Pilot results are non-scientific development checks (1 seed, 2 epochs, small subsets, validation data only) and carry no accuracy or robustness conclusion.
+
+This is a new group-disjoint evaluation partition within a previously examined dataset, not a completely untouched external benchmark. The dataset was seen by Milestone 1; the earlier test partition was evaluated; identical feature vectors with conflicting labels remain in the data.
